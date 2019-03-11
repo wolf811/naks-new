@@ -1,0 +1,258 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Header -->
+    <div class="header-image">
+        <img class="img-fluid w-100" src="{% static 'images/header-img.png' %}" alt="">
+        <div class="container pt-1">
+            <div class="row align-items-center">
+                <div class="col-xs-12 col-sm-7 col-lg-6 col-xl-5">
+                    <h2 class="text-white">Национальное Агентство Контроля Сварки</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="all-docs">
+        <div class="container">
+            <h4 class="text-dark mt-5">Новости</h4>
+            <div class="row">
+                <div class="col-xs-12 col-sm-10">
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb mt-3 mb-2 p-0">
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Новости</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-xs-12 col-sm-2">
+                    <a href="{% url 'index' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+                </div>
+            </div>
+            <hr>
+
+            <form class="mt-4 mb-3">
+                <h6 class="font-weight-bold">Быстрый поиск</h6>
+                <div class="form-row">
+                    <div class="form-group col-xs-12 col-sm-4">
+                        <label for="" class="pb-0">Название</label>
+                        <input type="text" class="form-control form-control-sm" aria-label="Найти">
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-4">
+                        <label for="" class="pb-0">Раздел</label>
+                        <select id="" class="form-control form-control-sm">
+                            <option selected>Все</option>
+                            <option>Общее</option>
+                            <option>Новости САСв</option>
+                            <option>Новости СПКС</option>
+                            <option>Новости СДС</option>
+                            <option>Новости ТК 364</option>
+                        </select>
+                    </div>
+                    <div class="form-group col col-sm-2">
+                        <label for="" class="">Период: с</label>
+                        <div class="input-group input-group-sm date" name="datepicker">
+                            <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
+                            <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group col col-sm-2">
+                        <label for="" class="pt-0">по</label>
+                        <div class="input-group input-group-sm date" name="datepicker">
+                            <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
+                            <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                        <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                    </div>
+                </div>
+            </form>
+
+            <hr>
+
+            <div class="news-all mt-4">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4 my-3">
+                        <div class="card card-news rounded-0">
+                            <div class="card-top">
+                                <img class="card-img-top img-fluid" src="{% static 'images/naks_al_logo.png' %}" alt="Card image cap">
+                                <div class="card-img-overlay" id="">01.02.2018</div>
+                                <div class="card-img-overlay-right" id="">НАКС</div>
+                            </div>
+                            <div class="card-body p-3">
+                                <h6 class="card-title mb-2">Соглашение о сотрудничестве между Ассоциацией "Объединение производителей, поставщиков и потребителей алюминия" и СРО НП "НАКС"</h6>
+                                <p class="mb-2"><a href="#" class="">Соглашение<i class="fa fa-angle-right ml-2"></i></a></p>
+                                <a href="#" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedDoc">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                            </div>
+                            <div class="card-footer">
+                                <div class="share d-inline-block">
+                                    <div class="ya-share2" data-services="vkontakte,telegram,facebook" data-size="s"></div>
+                                </div>
+                                <a href="#" role="button" class="btn btn-link btn-sm float-right text-secondary pr-0" data-toggle="modal" data-target="#sendLink" title="Отправить ссылку на e-mail"><i class="fa fa-envelope mr-2"></i>Отправить ссылку</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 my-3">
+                        <div class="card card-news rounded-0">
+                            <div class="card-top">
+                                <img class="card-img-top img-fluid" src="{% static 'images/forum_ndt.png' %}" alt="Card image cap">
+                                <div class="card-img-overlay">29.01.2018</div>
+                                <div class="card-img-overlay-right" id="">Общее</div>
+                            </div>
+                            <div class="card-body p-3">
+                                <h6 class="card-title mb-2">V Международный промышленный форум "Территория NDT. Неразрушающий контроль. Испытания. Диагностика."</h6>
+                                <p class="mb-2"><a href="#" class="">Информационное письмо<i class="fa fa-angle-right ml-2"></i></a></p>
+                                <p class="mb-2"><a href="#" class="">Программа форума<i class="fa fa-angle-right ml-2"></i></a></p>
+                                <a href="#" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedInfo">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                            </div>
+                            <div class="card-footer">
+                                <div class="share d-inline-block">
+                                    <div class="ya-share2" data-services="vkontakte,telegram,facebook" data-size="s"></div>
+                                </div>
+                                <a href="#" role="button" class="btn btn-link btn-sm float-right text-secondary pr-0" data-toggle="modal" data-target="#sendLink" title="Отправить ссылку на e-mail"><i class="fa fa-envelope mr-2"></i>Отправить ссылку</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 my-3">
+                        <div class="card card-news rounded-0">
+                            <div class="card-top">
+                                <img class="card-img-top img-fluid" src="{% static 'images/kurnosova.jpg' %}" alt="Card image cap">
+                                <div class="card-img-overlay">13.01.2018</div>
+                                <div class="card-img-overlay-right" id="">САСв</div>
+                            </div>
+                            <div class="card-body p-3">
+                                <h6 class="card-title mb-2">Юбилей Курносовой Нелли Дмитриевны</h6>
+                                <p class="card-text text-secondary mb-0">13 января 2018 года отметила свой юбилей Курносова Нелли Дмитриевна - почетный энергетик Российской Федерации, кандидат технических наук, руководитель центра специальной подготовки и информационно-методического обеспечения ООО «АНТЦ «Энергомонтаж» (член СРО НП "НАКС").</p>
+                                <a href="#" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedInfo">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                            </div>
+                            <div class="card-footer">
+                                <div class="share d-inline-block">
+                                    <div class="ya-share2" data-services="vkontakte,telegram,facebook" data-size="s"></div>
+                                </div>
+                                <a href="#" role="button" class="btn btn-link btn-sm float-right text-secondary pr-0" data-toggle="modal" data-target="#sendLink" title="Отправить ссылку на e-mail"><i class="fa fa-envelope mr-2"></i>Отправить ссылку</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 my-3">
+                        <div class="card card-news rounded-0">
+                            <div class="card-top">
+                                 <div class="embed-responsive embed-responsive-16by9">
+                                    <video controls="" id="" src="{% static 'video/NAKS25.mp4' %}" type="video/mp4"></video>
+                                </div>
+                                <div class="card-img-overlay">25.12.2017</div>
+                                <div class="card-img-overlay-right" id="">НАКС</div>
+                            </div>
+                            <div class="card-body p-3">
+                                <h6 class="card-title mb-2">Юбилейные мероприятия СРО НП "НАКС"</h6>
+                                <p class="mb-2"><a href="#" class="">Фоторепортаж<i class="fa fa-angle-right ml-2"></i></a></p>
+                                <p class="mb-2"><a href="#" class="">Видеоролик<i class="fa fa-angle-right ml-2"></i></a></p>
+                                <a href="#" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedVideo">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                            </div>
+                            <div class="card-footer">
+                                <div class="share d-inline-block">
+                                    <div class="ya-share2" data-services="vkontakte,telegram,facebook" data-size="s"></div>
+                                </div>
+                                <a href="#" role="button" class="btn btn-link btn-sm float-right text-secondary pr-0" data-toggle="modal" data-target="#sendLink" title="Отправить ссылку на e-mail"><i class="fa fa-envelope mr-2"></i>Отправить ссылку</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 my-3">
+                        <div class="card card-news rounded-0">
+                            <div class="card-top">
+                                <img class="card-img-top img-fluid" src="{% static 'images/anons261217.png' %}" alt="Card image cap">
+                                <div class="card-img-overlay">24.12.2017</div>
+                                <div class="card-img-overlay-right" id="">СПКС</div>
+                            </div>
+                            <div class="card-body p-3">
+                                <h6 class="card-title mb-2">Соглашение между СПКС и Департаментом труда и занятости населения Кемеровской области</h6>
+                                <p class="mb-2"><a href="#" class="">Соглашение<i class="fa fa-angle-right ml-2"></i></a></p>
+                                <a href="#" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedDoc">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                            </div>
+                            <div class="card-footer">
+                                <div class="share d-inline-block">
+                                    <div class="ya-share2" data-services="vkontakte,telegram,facebook" data-size="s"></div>
+                                </div>
+                                <a href="#" role="button" class="btn btn-link btn-sm float-right text-secondary pr-0" data-toggle="modal" data-target="#sendLink" title="Отправить ссылку на e-mail"><i class="fa fa-envelope mr-2"></i>Отправить ссылку</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 my-3">
+                        <div class="card card-news rounded-0">
+                            <div class="card-top">
+                                <img class="card-img-top img-fluid" src="{% static 'images/journal.jpg' %}" alt="Card image cap">
+                                <div class="card-img-overlay">24.12.2017</div>
+                                <div class="card-img-overlay-right" id="">Общее</div>
+                            </div>
+                            <div class="card-body p-3">
+                                <h6 class="card-title mb-2">Новый номер журнала "Сварка и Диагностика" №6-2017</h6>
+                                <p class="card-text text-secondary mb-2">Скачать журнал можно на сайте <a href="http://svarka.naks.ru/" target="_blank">svarka.naks.ru</a></p>
+                                <p class="mb-2"><a href="#" class="">Содержание журнала<i class="fa fa-angle-right ml-2"></i></a></p>
+                                <a href="#" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedDoc">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                            </div>
+                            <div class="card-footer">
+                                <div class="share d-inline-block">
+                                    <div class="ya-share2" data-services="vkontakte,telegram,facebook" data-size="s"></div>
+                                </div>
+                                <a href="#" role="button" class="btn btn-link btn-sm float-right text-secondary pr-0" data-toggle="modal" data-target="#sendLink" title="Отправить ссылку на e-mail"><i class="fa fa-envelope mr-2"></i>Отправить ссылку</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="blockNews_02" style="display: none;">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-4 my-3">
+                                <div class="card card-news rounded-0">
+                                    <div class="card-top">
+                                        <img class="card-img-top img-fluid" src="{% static 'images/Soglash_TKanons021017u.png' %}" alt="Card image cap">
+                                        <div class="card-img-overlay">23.12.2017</div>
+                                        <div class="card-img-overlay-right" id="">ТК364</div>
+                                    </div>
+                                    <div class="card-body p-3">
+                                        <h6 class="card-title mb-2">Cоглашение о взаимодействии между техническими комитетами по стандартизации ТК 099 «Алюминий» и ТК 364 «Сварка и родственные процессы»</h6>
+                                        <p class="mb-2"><a href="#" class="">Соглашение<i class="fa fa-angle-right ml-2"></i></a></p>
+                                        <a href="#" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedDoc">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="share d-inline-block">
+                                    <div class="ya-share2" data-services="vkontakte,telegram,facebook" data-size="s"></div>
+                                </div>
+                                <a href="#" role="button" class="btn btn-link btn-sm float-right text-secondary pr-0" data-toggle="modal" data-target="#sendLink" title="Отправить ссылку на e-mail"><i class="fa fa-envelope mr-2"></i>Отправить ссылку</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4 my-3">
+                                <div class="card card-news rounded-0">
+                                    <div class="card-top">
+                                        <img class="card-img-top img-fluid" src="{% static 'images/_small.jpg' %}" alt="Card image cap">
+                                        <div class="card-img-overlay">07.12.2017</div>
+                                        <div class="card-img-overlay-right" id="">Общее</div>
+                                    </div>
+                                    <div class="card-body p-3">
+                                        <h6 class="card-title mb-2">Международная научно-техническая конференция "Инновационные машиностроительные технологии, оборудование и материалы - 2017"</h6>
+                                        <p class="card-text text-secondary mb-0">С 6 по 8 декабря 2017 года в Казани проходит Международная научно-техническая конференция "Инновационные машиностроительные технологии, оборудование и материалы - 2017".</p>
+                                        <a href="#" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedInfo">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="share d-inline-block">
+                                    <div class="ya-share2" data-services="vkontakte,telegram,facebook" data-size="s"></div>
+                                </div>
+                                <a href="#" role="button" class="btn btn-link btn-sm float-right text-secondary pr-0" data-toggle="modal" data-target="#sendLink" title="Отправить ссылку на e-mail"><i class="fa fa-envelope mr-2"></i>Отправить ссылку</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="text-center mt-4"><div class="btn btn-outline-primary" id="btnNews_showMore">Показать еще<i class="fa fa-angle-down ml-2"></i></div></div>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

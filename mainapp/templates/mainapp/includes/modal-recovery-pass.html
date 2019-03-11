@@ -1,0 +1,41 @@
+{% load static %}
+
+<!-- Восстановление пароля -->
+<div id="pass-recovery" style="display: none;"> 
+    <div class="modal-header">
+        <h5 class="modal-title" id="">Восстановление пароля</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-9 mx-auto">
+                    <p class="text-sm text-secondary mb-4">Инструкция для смены пароля будут отправлены на указанный вами Email (логин).</p>
+                    <div class="form-group justify-content-center">
+                        <label for="" class="sr-only">E-mail<span class="text-danger">*</span>:</label>
+                        <input type="email" class="form-control" id="" required placeholder="Email">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="container-fluid p-0">
+                <div class="row">
+                    <div class="col-sm-9 mx-auto">
+                        <div class="row">
+                            <div class="col pr-0">
+                                <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-secondary btn-block" data-dismiss="modal">Отмена</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

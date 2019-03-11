@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+	<head>
+		<title>{{ title }}</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		{% block css %}
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'css/bootstrap-datetimepicker.css' %}">
+
+		<!-- My styles -->
+		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+		<link rel="stylesheet" href="{% static 'css/media.css' %}">
+		<link rel="stylesheet" href="{% static 'css/mystyle_ie.css' %}">
+		{% endblock %}
+
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+		<script src="https://api-maps.yandex.ru/2.1/?lang=ru" type="text/javascript"></script>
+		<script src="https://yastatic.net/share2/share.js" async="async"></script>
+	</head>
+	<body>
+		{% include 'mainapp/includes/header.html' %}
+
+		{% block content%} 
+
+		{% endblock %}
+
+		{% include 'mainapp/includes/footer.html' %}
+
+		{% include 'mainapp/includes/modal-questions.html' %}
+		{% include 'mainapp/includes/modal-sending-link.html' %}
+		{% include 'mainapp/includes/modal-login-account.html' %}
+		{% include 'mainapp/includes/modal-news-examples.html' %}
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/PageScroll2id.min.js" type="text/javascript' %}"></script>
+		<script src="{% static 'js/moment-with-locales.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
+
+		<!-- My scripts -->
+		<script src="{% static 'js/map-script.js' %}"></script>
+		<script src="{% static 'js/myscript.js' %}"></script>
+	</body>
+</html>

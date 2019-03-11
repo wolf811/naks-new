@@ -1,0 +1,363 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header -->
+<div class="header-image">
+    <img class="img-fluid w-100" src="{% static 'images/header-img.png' %}" alt="">
+    <div class="container pt-1">
+        <div class="row align-items-center">
+            <div class="col-xs-12 col-sm-7 col-lg-6 col-xl-5">
+                <h2 class="text-white">Национальное Агентство Контроля Сварки</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h4 class="text-dark mt-5">Контакты НАКС</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb mt-3 mb-2 p-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Контакты НАКС</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <a href="{% url 'index' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+        </div>
+    </div>
+    <hr>
+
+    <div class="main-content mt-4">
+
+        <!-- Big Radiobuttons -->
+        <div class="show-units">
+            <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block active" id="pills-composition-tab" data-toggle="pill" href="#pills-composition" role="tab" aria-controls="pills-composition" aria-selected="true">Контакты</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-protocols-tab" data-toggle="pill" href="#pills-protocols" role="tab" aria-controls="pills-protocols" aria-selected="false">Реквизиты</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-committees-tab" data-toggle="pill" href="#pills-committees" role="tab" aria-controls="pills-committees" aria-selected="false">Схема проезда</a>
+                </li>
+            </ul>
+        </div><!-- End Big Radiobuttons -->
+
+        <div class="tab-content" id="pills-tabContent">
+
+            <div class="tab-pane fade show active" id="pills-composition" role="tabpanel" aria-labelledby="pills-composition-tab">
+                <h5 class="text-primary my-4">Контакты</h5>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-contacts mb-0" id="">
+                        <tr>
+                            <th>Президент</th>
+                            <td>Алёшин Николай Павлович<br><small>Академик РАН</small></td>
+                            <td width="200">
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74992636802">(499) 263-68-02</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74992614257">(499) 261-42-57</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:aleshin@bmstu.ru">aleshin@bmstu.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Генеральный директор</th>
+                            <td>Прилуцкий Андрей Иванович<br><small>к.т.н.</small></td>
+                            <td>
+                                <div><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847700">(499) 784-77-00</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-77-11</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:vip@naks.ru">vip@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Приемная<br><small>Помощник генерального директора</small></th>
+                            <td>Захарченко Светлана Николаевна</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847700">(499) 784-77-00</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-77-11</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:office@naks.ru">office@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Заместитель генерального директора по научно-методической работе</th>
+                            <td>Жабин Александр Николаевич</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847279">(499) 784-72-79</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-72-79</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:info@naks.ru">info@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Заместитель генерального директора</th>
+                            <td>Марков Николай Николаевич</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847250">(499) 784-72-50</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:mnn@naks.ru">mnn@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Технический директор</th>
+                            <td>Чупрак Александр Иванович</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847275">(499) 784-72-75</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:tk364@naks.ru">tk364@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Главный бухгалтер</th>
+                            <td>Тарабрина Ольга Николаевна</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847269">(499) 784-72-69</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:buh@naks.ru">buh@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="5">Бухгалтерия</th>
+                            <td>Зеленина Людмила Владимировна</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847269">(499) 784-72-69</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:buh2@naks.ru">buh2@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Сальникова Лариса Анатольевна</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847268">(499) 784-72-68</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:buh1@naks.ru">buh1@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Фильченко Евгения Анатольевна</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847268">(499) 784-72-68</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-72-68</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:buh3@naks.ru">buh3@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Голубева Татьяна Геннадьевна</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847268">(499) 784-72-68</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:buh4@naks.ru">buh4@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Соловьева Елена Владимировна</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847268">(499) 784-72-68</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:buh5@naks.ru">buh5@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="4">Экспертный отдел</th>
+                            <td>Казаченок Сергей Сергеевич<br><small>Начальник отдела</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847285">(499) 784-72-85</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-72-85</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:nedk@naks.ru">nedk@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Кузнецов Павел Сергеевич</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847285">(499) 784-72-85</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-72-85</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:expert@naks.ru">expert@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Казаченок Максим Сергеевич</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74956548079">(495) 654-80-79</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:expert@naks.ru">expert@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Гончаров Александр Александрович</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74956548079">(495) 654-80-79</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:expert@naks.ru">expert@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Отдел саморегулирования</th>
+                            <td>Маркова Полина Николаевна<br><small>Начальник отдела</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74956548083">(495) 654-80-83</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:sro@naks.ru">sro@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Отдел по связям с общественностью</th>
+                            <td>Лобанов Никита Алексеевич</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74956548083">(495) 654-80-83</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:pr@naks.ru">pr@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Отдел качества</th>
+                            <td>Пономаренко Алексей Сергеевич<br><small>Начальник отдела</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847287">(499) 784-72-87</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:naks@naks.ru">naks@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="3">Научно-методический отдел</th>
+                            <td>Лучина Татьяна Леонидовна<br><small>Начальник отдела</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847182">(499) 784-71-82</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:nmo@naks.ru">nmo@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Егоров Роман Викторович<br><small>Заместитель начальника отдела, к.т.н.</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847182">(499) 784-71-82</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-71-82</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:nmo1@naks.ru">nmo1@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Кузнецов Сергей Владимирович</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847182">(499) 784-71-82</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:nmo2@naks.ru">nmo2@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="3">Отдел технического регулирования и оценки квалификации</th>
+                            <td>Чупрак Светлана Михайловна<br><small>Начальник отдела</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847283">(499) 784-72-83</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:spks@naks.ru">spks@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Минаев Сергей Михайлович<br><small>Заместитель начальника отдела</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74956548083">(495) 654-80-83</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:cert@naks.ru">cert@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Куртабашев Николай Александрович</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847283">(499) 784-72-83</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:spks2@naks.ru">spks2@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="4">Аналитический отдел</th>
+                            <td>Попов Анатолий Викторович<br><small>Начальник отдела</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847289">(499) 784-72-89</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:soft@naks.ru">soft@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Прилуцкий Иван Андреевич</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847289">(499) 784-72-89</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:it@naks.ru">it@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Киселев Кирилл Александрович</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847286">(499) 784-72-86</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:dev@naks.ru">dev@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Комбаров Валентин Анатольевич</td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847286">(499) 784-72-86</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:dev1@naks.ru">dev1@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Отдел доставки<br><small>Канцелярия</small></th>
+                            <td>Артамонова Ольга Сергеевна<br><small>Заведующий</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847682">(499) 784-76-82</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-76-82</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:mail@naks.ru">mail@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">Редакция журнала "Сварка и Диагностика"</th>
+                            <td>Алёшин Николай Павлович<br><small>Главный редактор</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74992636802">(499) 263-68-02</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:aleshin@bmstu.ru">aleshin@bmstu.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Титов Алексей Сергеевич<br><small>Зам. главного редактора</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74993460345">(499) 346-03-45</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:svarka@naks.ru">svarka@naks.ru</a></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-protocols" role="tabpanel" aria-labelledby="pills-protocols-tab">
+                <h5 class="text-primary my-4">Реквизиты</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-contacts mb-0" id="">
+                        <tr>
+                            <th>Полное наименование</th>
+                            <td>Саморегулируемая организация Ассоциация «Национальное Агентство Контроля Сварки»</td>
+                        </tr>
+                        <tr>
+                            <th>Краткое наименование</th>
+                            <td>СРО Ассоциация «НАКС»</td>
+                        </tr>
+                        <tr>
+                            <th>ИНН</th>
+                            <td>7723367927</td>
+                        </tr>
+                        <tr>
+                            <th>КПП</th>
+                            <td>772301001</td>
+                        </tr>
+                        <tr>
+                            <th>Расчетный счет</th>
+                            <td>40703810538250001521<br>Московский банк Сбербанка России ОАО</td>
+                        </tr>
+                        <tr>
+                            <th>Корреспондентский счет</th>
+                            <td>30101810400000000225<br>В ОПЕРУ МОСКОВСКОГО ГТУ БАНКА РОССИИ</td>
+                        </tr>
+                        <tr>
+                            <th>БИК</th>
+                            <td>044525225</td>
+                        </tr>
+                        <tr>
+                            <th>Юридический адрес</th>
+                            <td>109469, г.Москва, ул. Марьинский парк, д.23, корп.3</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-committees" role="tabpanel" aria-labelledby="pills-committees-tab">
+                <h5 class="text-primary my-4">Схема проезда</h5>
+                <div class="alert alert-secondary rounded-0" role="alert">
+                    Станция метро «Братиславская», выход из последнего вагона. Ул. Братиславская, д.6, 4 подъезд, 4 этаж (комплекс «Первый Деловой Дом», пешком 600 м. от станции метро)
+                </div>
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af3119275a59b984d3c7b66daa87d80fb906555637f767420395115407306fa8a&amp;width=100%25&amp;height=600&amp;lang=ru_RU&amp;scroll=false"></script>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

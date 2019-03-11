@@ -1,0 +1,81 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header -->
+<div class="header-image">
+    <img class="img-fluid w-100" src="{% static 'images/header-img.png' %}" alt="">
+    <div class="container pt-1">
+        <div class="row align-items-center">
+            <div class="col-xs-12 col-sm-7 col-lg-6 col-xl-5">
+                <h2 class="text-white">Национальное Агентство Контроля Сварки</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h4 class="text-dark mt-5">Система аттестации сварочного производства (САСв)</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">САСв</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-sm-none mt-3 mb-4">
+                {% include 'mainapp/includes/mobil-right-menu.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <h5 class="text-primary mt-2 mb-4">Аттестационные центры на карте</h5>
+            <!-- Big Radiobuttons -->
+            <div class="show-units" id="btn-card-units">
+                <div class="d-block">
+                    <div class="row mb-3">
+                        <div class="col mb-4">
+                            <a href="#" class="btn btn-outline-danger btn-block btn-sm active" role="button">Аттестация персонала</a>
+                        </div>
+                        <div class="col mb-4">
+                            <a href="#" class="btn btn-outline-danger btn-block btn-sm" role="button">Аттестация сварочных материалов</a>
+                        </div>
+                        <div class="col mb-4">
+                            <a href="#" class="btn btn-outline-danger btn-block btn-sm" role="button">Аттестация сварочного оборудования</a>
+                        </div>
+                        <div class="col mb-4">
+                            <a href="#" class="btn btn-outline-danger btn-block btn-sm" role="button">Аттестация сварочных технологий</a>
+                        </div>
+                        <div class="col align-self-center mb-4">
+                            <a href="#" class="btn btn-outline-danger btn-block btn-sm" role="button">Центры специальной подготовки</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Big Radiobuttons -->
+
+            <!-- Yandex Maps -->
+            <div id="map" class="w-100"></div>
+            <!-- End map -->
+            
+            <hr class="mt-4">
+            <div class="main-content mt-4">
+                <h5 class="text-primary my-4">Наши партнёры</h5>
+                <div id="sasvPartnersContent">
+                    <!-- Partners -->
+                    {% include 'mainapp/includes/partners.html' %}
+                    <!-- End Partners -->
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/content-right-menu.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

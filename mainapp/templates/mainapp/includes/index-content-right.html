@@ -1,0 +1,118 @@
+{% load static %}
+
+<!-- Анонсы событий справа -->
+<div class="block-right-announce">
+    <h5 class="mb-3">Анонсы событий</h5>
+    <div class="card" id="announceRight_01">
+        <div class="card-header bg-naks text-white rounded-0">
+            6 - 7 сентября 2018 года
+        </div>
+        <div class="card-body text-white">
+            <hr class="mt-2 mb-3">
+            <h4 class="card-title"><strong>6 - 7 сентября</strong><br>в г. Москва</h4>
+            <p class="card-text">Семинар «Обработка персональных данных при проведении аттестации и оценки квалификации»</p>
+            <hr class="mt-3 mb-4">
+            <a href="{% url 'news_one' %}" class="btn btn-outline-light btn-sm">Подробнее</a>
+        </div>
+    </div>
+    <hr class="my-3">
+    <div class="card" id="announceRight_02">
+        <div class="card-header bg-naks text-white rounded-0">
+            18 - 21 сентября 2018 года
+        </div>
+        <div class="card-body text-white">
+            <hr class="mt-2 mb-3">
+            <h4 class="card-title"><strong>18 - 21 сентября</strong><br>в г. Пермь</h4>
+            <p class="card-text">Съезд НАКС в Перми</p>
+            <hr class="mt-3 mb-4">
+            <a href="{% url 'news_one' %}" class="btn btn-outline-light btn-sm">Подробнее</a>
+        </div>
+    </div>
+</div><!-- Конец анонсов -->
+
+<hr class="my-4">
+
+<!-- Новости НАКС справа -->
+<div class="block-right-news">
+    <h5 class="mb-3">Новости НАКС</h5>
+    <div class="news-right" id="newsRight_01">
+        <img src="{% static 'images/imgRight_01.png' %}" alt="" class="img-fluid">
+        <p class="text-secondary mt-3 mb-2">18 Июня 2017</p>
+        <p class="mb-1">Ежегодный научно-практический семинар "Металлургия сварки и сварочные материалы" (Петровские чтения - 2017)</p>
+        <a href="{% url 'news_one' %}" class="btn btn-link btn-sm pl-0" role="button">Читать дальше<i class="fa fa-angle-right ml-2"></i></a>
+    </div>
+    <hr class="mt-2 mb-4">
+    <div class="news-right" id="newsRight_02">
+        <img src="{% static 'images/imgRight_02.png' %}" alt="" class="img-fluid">
+        <p class="text-secondary mt-3 mb-2">4 Мая 2017</p>
+        <p class="mb-1">Руководство НАКС в Краснодаре</p>
+        <a href="#" class="btn btn-link btn-sm pl-0" role="button">Читать дальше<i class="fa fa-angle-right ml-2"></i></a>
+    </div>
+    <a href="{% url 'news_all' %}" class="btn btn-outline-dark btn-sm mt-3" role="button">Все новости</a>
+</div> <!-- Конец новостей -->
+
+<hr class="my-4">
+
+<!-- Документы НАКС справа -->
+<div class="block-right-docs">
+    <h5 class="mb-3">Документы НАКС</h5>
+    <h6 class="text-secondary">Соглашения</h6>
+    <hr class="my-2">
+    <div class="docs-right" id="docsRight_01">
+        <span class="d-inline-block text-truncate" style="max-width: 230px;">
+            <small>Соглашение о сотрудничестве<br>между АСРО "Содружество строителей РТ", СРО Ассоциацией "ППСО" и СРО НП "НАКС"</small>
+        </span>
+        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#" class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
+    </div>
+    <hr class="my-2">
+    <div class="docs-right" id="docsRight_02">
+        <span class="d-inline-block text-truncate" style="max-width: 230px;">
+            <small>Соглашение о взаимодействии<br>между Инспекцией государственного строительного надзора Кемеровской области и СРО НП "НАКС"</small>
+        </span>
+        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#" class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
+    </div>
+
+    <h6 class="text-secondary mt-3">Нормативные документы</h6>
+    <hr class="my-2">
+    <div class="docs-right" id="docsRight_03">
+        <span class="d-inline-block text-truncate" style="max-width: 230px;">
+            <small>РД 03-495-02 "Технологический<br>регламент проведения аттестации сварщиков и специалистов сварочного производства"</small>
+        </span>
+        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#" class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
+    </div>
+    <hr class="my-2">
+    <div class="docs-right" id="docsRight_04">
+        <span class="d-inline-block text-truncate" style="max-width: 230px;">
+            <small>ПБ-03-273-99 "Правила аттестации<br>сварщиков и специалистов сварочного производства"</small>
+        </span>
+        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#" class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
+    </div>
+    <a href="{% url 'sasv_docs' %}" class="btn btn-outline-dark btn-sm mt-3" role="button">Все документы</a>
+</div> <!-- Конец документов -->
+
+<hr class="my-4">
+
+<!-- Проекты НАКС справа -->
+<div class="block-right-projects">
+    <h5 class="mb-3">Проекты НАКС</h5>
+    <div class="text-center" id="projectRight_01">
+        <a href="http://rsps.site/" target="_blank"><img src="{% static 'images/projectRsps.png' %}" class="img-fluid" alt="Логотип РСПС" class="img-fluid"></a>
+    </div>
+    <hr class="my-3">
+    <div class="text-center" id="projectRight_02">
+        <a href="https://ac.naks.ru/" target="_blank"><img src="{% static 'images/projectEdo.png' %}" class="img-fluid" alt="Логотип ЭДО" class="img-fluid"></a>
+    </div>
+    <hr class="my-3">
+    <div class="text-center" id="projectRight_03">
+        <a href="http://svarka.naks.ru/" target="_blank"><img src="{% static 'images/projectJournal.png' %}" class="img-fluid" alt="Логотип журнала" class="img-fluid"></a>
+    </div>
+    <hr class="my-3">
+    <div class="text-center" id="projectRight_04">
+        <a href="http://www.bewelder.ru/" target="_blank"><img src="{% static 'images/projectBewelder.png' %}" class="img-fluid" alt="Логотип Bewelder" class="img-fluid"></a>
+    </div>
+    <hr class="my-3">
+    <div class="text-center" id="projectRight_05">
+        <a href="http://naks.ru/naksmedia/" target="_blank"><img src="{% static 'images/projectNaksMedia.png' %}" class="img-fluid" alt="Логотип Накс Медиа" class="img-fluid"></a>
+    </div>
+    <hr class="my-3">
+</div> <!-- Конец проектов -->

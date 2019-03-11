@@ -1,0 +1,20 @@
+{% load static %}
+
+<!-- Вход в личный кабинет -->
+<div class="modal fade" id="modal-authorization" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Авторизация -->
+            {% include 'mainapp/includes/modal-authorization.html' %}
+            <!-- End Авторизация -->
+
+            <!-- Регистрация -->
+            {% include 'mainapp/includes/modal-registration.html' %}
+            <!-- End Регистрация -->
+
+             <!-- Восстановление -->
+             {% include 'mainapp/includes/modal-recovery-pass.html' %}
+            <!-- End Восстановление -->
+        </div>
+    </div>
+</div>

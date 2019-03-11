@@ -1,0 +1,174 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header -->
+<div class="header-image">
+    <img class="img-fluid w-100" src="{% static 'images/header-img.png' %}" alt="">
+    <div class="container pt-1">
+        <div class="row align-items-center">
+            <div class="col-xs-12 col-sm-7 col-lg-6 col-xl-5">
+                <h2 class="text-white">Национальное Агентство Контроля Сварки</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="all-docs">
+    <div class="container">
+        <h4 class="text-dark mt-5">Партнеры и соглашения</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb mt-3 mb-2 p-0">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Партнеры и соглашения</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <a href="{% url 'index' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Radiobuttons -->
+        <div class="show-units">
+            <ul class="row nav nav-fill mt-4 mb-3" id="pills-tab" role="tablist">
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block active" id="pills-ac-tab" data-toggle="pill" href="#pills-ac" role="tab" aria-controls="pills-ac" aria-selected="true">Партнеры</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-ap-tab" data-toggle="pill" href="#pills-ap" role="tab" aria-controls="pills-ap" aria-selected="false">Соглашения</a>
+                </li>
+            </ul>
+        </div>
+        <!-- End Radiobuttons -->
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-ac" role="tabpanel" aria-labelledby="pills-ac-tab">
+                <div class="main-content mt-4">
+                    <h5 class="text-primary my-4">Наши партнёры</h5>
+                    <div id="partnersContent">
+                        <!-- Partners -->
+                        {% include 'mainapp/includes/partners.html' %}
+                        <!-- End Partners -->
+                        <hr class="mb-4">>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-ap" role="tabpanel" aria-labelledby="pills-ap-tab">
+                <h5 class="text-primary my-4">Соглашения</h5>
+                <form class="mt-4 mb-3">
+                    <h6 class="font-weight-bold">Быстрый поиск документа</h6>
+                    <div class="form-row">
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label for="" class="pb-0">Название</label>
+                            <input type="text" class="form-control form-control-sm" aria-label="Найти">
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                            <label for="" class="pb-0">По годам</label>
+                            <select id="" class="form-control form-control-sm">
+                                <option selected>Все</option>
+                                <option>2003</option>
+                                <option>2004</option>
+                                <option>2009</option>
+                                <option>2010</option>
+                                <option>2012</option>
+                                <option>2013</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                            <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-agreement mb-0">
+                        <tr class="bg-secondary">
+                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0"><h5 class="mb-0">2017</h5></th>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между АСРО "Содружество строителей РТ", СРО Ассоциацией "ППСО" и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о взаимодействии между Инспекцией государственного строительного надзора Кемеровской области и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Рамочное соглашение о будущем сотрудничестве между НАКС и DVS</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о взаимодействии между Инспекцией государственного строительного надзора Камчатского края и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между China Petroleum Pipeline Engineering Company Limited и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между Советом по профессиональным квалификациям в области сварки и Правительством Самарской области</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о взаимодействии между Региональной службой государственного строительного надзора Ростовской области и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между ООО "Группа ПОЛИПЛАСТИК" и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между отраслевой Ассоциацией предприятий химического и нефтяного машиностроения и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr class="bg-secondary">
+                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0"><h5 class="mb-0">2016</h5></th>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между Общероссийской Общественной организацией "Российское общество по неразрушающему контролю и технической диагностике" и Советом по профессиональным квалификациям в области сварки</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между Ассоциацией "Объединение участников бизнеса по развитию стального строительства" и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между ООО "Волжанин" и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между НО "АСПМ" и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr class="bg-secondary">
+                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0"><h5 class="mb-0">2015</h5></th>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве между ООО "ТехноНИКОЛЬ-Строительные Системы" и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Соглашение о сотрудничестве и взаимодействии между союзом "Агентство развития профессиональных сообществ и рабочих кадров "Ворлдскиллс Россия" и СРО НП "НАКС"</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

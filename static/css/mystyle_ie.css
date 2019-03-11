@@ -1,0 +1,49 @@
+/*стили только для IE 10*/
+_:-ms-lang(x), .card-news {
+	display: table-cell;
+}
+
+_:-ms-lang(x), .share {
+	display: none;
+}
+/*стили только для IE 11*/
+_:-ms-fullscreen, :root .card-news {
+	display: block;
+}
+_:-ms-fullscreen, :root .share {
+	display: block;
+}
+
+/*стили для Edge*/
+@supports (-ms-ime-align:auto) {
+	.card-news {
+		display: flex;
+	}
+}
+
+/*стили для IE 10 и IE 11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.navbar-nav .dropdown-menu-right {
+		width: 80%;
+	}
+	.button-activities img {
+		width: 70px;
+	}
+	.img-news .img-news-vertical {
+		height: 100%;
+		width: auto !important;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.card-news .card-footer {
+		background-color: #fff;
+	}
+	#btn-card-units .btn {
+		white-space: normal;
+		height: 80px;
+		vertical-align: middle;
+		display: table-cell;
+	}
+}
+
