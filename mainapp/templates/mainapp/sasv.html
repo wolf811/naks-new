@@ -2,23 +2,15 @@
 {% load static %}
 {% block content %}
 
-<!-- Header -->
-<div class="header-image">
-    <img class="img-fluid w-100" src="{% static 'images/header-img.png' %}" alt="">
-    <div class="container pt-1">
-        <div class="row align-items-center">
-            <div class="col-xs-12 col-sm-7 col-lg-6 col-xl-5">
-                <h2 class="text-white">Национальное Агентство Контроля Сварки</h2>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
 
 <div class="container">
     <h4 class="text-dark mt-5">Система аттестации сварочного производства (САСв)</h4>
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb my-4 p-0">
-            <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
             <li class="breadcrumb-item active" aria-current="page">САСв</li>
         </ol>
     </nav>
