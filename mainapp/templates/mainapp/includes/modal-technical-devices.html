@@ -1,0 +1,209 @@
+{% load static %}
+
+<!-- Технические устройства -->
+<div id="modalTechnicalDevices" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Группы технических устройств</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div data-spy="scroll" data-offset="0" class="scrollspy-modal">
+                        <table class="table table-sm table-hover" id="table-technicalDevices">
+                            <tbody>
+                                <tr class="table-secondary font-weight-bold">
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ГДО</span>
+                                        </label>
+                                    </td>
+                                    <td>Горнодобывающее оборудование</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ГДО (1)</span>
+                                        </label>
+                                    </td>
+                                    <td>Технические устройства для горнодобывающих и горно-обогатительных производств и подземных объектов</td>
+                                </tr>
+                                <tr class="table-secondary font-weight-bold">
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ГО</span>
+                                        </label>
+                                    </td>
+                                    <td>Газовое оборудование</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ГО (1)</span>
+                                        </label>
+                                    </td>
+                                    <td>Трубопроводы систем внутреннего газоснабжения</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ГО (2м)</span>
+                                        </label>
+                                    </td>
+                                    <td>Наружные газопроводы низкого, среднего и высокого давления стальные</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ГО (2п)</span>
+                                        </label>
+                                    </td>
+                                    <td>Наружные газопроводы низкого, среднего и высокого давления из неметаллических материалов</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ГО (3)</span>
+                                        </label>
+                                    </td>
+                                    <td>Газовое оборудование котлов, технологических линий и агрегатов</td>
+                                </tr>
+                                <tr class="table-secondary font-weight-bold">
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КО</span>
+                                        </label>
+                                    </td>
+                                    <td>Котельное оборудование</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КО (1)</span>
+                                        </label>
+                                    </td>
+                                    <td>Паровые котлы с давлением пара более 0,07 МПа и водогрейные котлы с температурой воды выше 115°С</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КО (2)</span>
+                                        </label>
+                                    </td>
+                                    <td>Трубопроводы пара и горячей воды с рабочим давлением пара более 0,07 МПа и температурой воды свыше 115°С</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КО (3)</span>
+                                        </label>
+                                    </td>
+                                    <td>Сосуды, работающие под давлением свыше 0,07МПа</td>
+                                </tr>
+                                <tr class="table-secondary font-weight-bold">
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КСМ</span>
+                                        </label>
+                                    </td>
+                                    <td>Конструкции стальных мостов</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КСМ (1)</span>
+                                        </label>
+                                    </td>
+                                    <td>Металлические конструкции пролётных строений, опор и пилонов стальных мостов при изготовлении в заводских условиях</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КСМ (2)</span>
+                                        </label>
+                                    </td>
+                                    <td>Металлические конструкции пролётных строений, опор и пилонов стальных мостов при сборке, сварке и ремонте в монтажных условиях</td>
+                                </tr>
+                                <tr class="table-secondary font-weight-bold">
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">МО</span>
+                                        </label>
+                                    </td>
+                                    <td>Металлургическое оборудование</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">МО (1)</span>
+                                        </label>
+                                    </td>
+                                    <td>Доменное, коксовое, сталеплавильное оборудование</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">МО (2)</span>
+                                        </label>
+                                    </td>
+                                    <td>Технологическое оборудование и трубопроводы для черной и цветной металлургии</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">МО (3)</span>
+                                        </label>
+                                    </td>
+                                    <td>Технические устройства для производства черных и цветных металлов и сплавов на их основе</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Сохранить</button>
+                    <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">Закрыть</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

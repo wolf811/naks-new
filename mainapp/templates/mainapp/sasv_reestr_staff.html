@@ -1,1152 +1,270 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>NAKS.RU | Реестр персонала</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
-    <!-- My styles -->
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/mystyle.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="css/mystyle_ie.css">
-</head>
-<body>
-    <div class="header-menu">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html"><img src="images/logo-main.png" class="img-fluid" alt="Логотип НАКС"></a>
-                <div class="other-brand">
-                    <img src="images/otherLogo-1.png" class="img-fluid" alt="Логотип Премия Правительства" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Лауреат Премии Правительства РФ в области качества 2012 года">
-                    <img src="images/otherLogo-3.png" class="img-fluid" alt="Логотип Члена МИС" data-toggle="tooltip" data-placement="bottom" title="Член Международного Института Сварки">
-                    <img src="images/otherLogo-2.png" class="img-fluid" alt="Логотип Премия СНГ" data-toggle="tooltip" data-placement="bottom" title="Лауреат Премии СНГ 2013 года за достижения в области качества">
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class=""><i class="fa fa-bars" aria-hidden="true"></i></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="news_all.html">Новости</a>
-                        </li>
-                        <li class="nav-item mr-md-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Деятельность <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right rounded-0" aria-labelledby="navbarDropdown">
-                                <div class="row mb-4">
-                                    <div class="col-xs-12 col-sm-4">
-                                        <a href='sasv.html' class="dropdown-item" style='font-weight: bold;'>САСв - Система аттестации сварочного производства</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='sasv_ac.html' class="dropdown-item">Аттестация специалистов сварочного производства</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='sasv_acsm.html' class="dropdown-item">Аттестация сварочных материалов</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='sasv_acso.html' class="dropdown-item">Аттестация сварочного оборудования</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='sasv_acst.html' class="dropdown-item">Аттестация сварочных технологий</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='sro.html' class="dropdown-item" style='font-weight: bold;'>СРО - Саморегулируемая организация НАКС</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='http://bewelder.ru/' class="dropdown-item" target="_blank" style='font-weight: bold;'>Bewelder.ru</a>
-                                        <div class="dropdown-divider d-xs-block d-sm-none"></div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4">
-                                        <a href='#' class="dropdown-item" style='font-weight: bold;'>СПКС - Совет по профессиональным квалификациям в области сварки</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='#' class="dropdown-item">Профессиональные стандарты</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='#' class="dropdown-item">Оценка квалификаций</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='#' class="dropdown-item">Мониторинг рынка труда</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='tk364.html' class="dropdown-item" style='font-weight: bold;'>ТК364 - Технический комитет Росстандарта "Сварка и родственные процессы"</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='http://svarka.naks.ru/' class="dropdown-item" target="_blank" style='font-weight: bold;'>Журнал "Сварка и диагностика"</a>
-                                        <div class="dropdown-divider d-xs-block d-sm-none"></div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4">
-                                        <a href='#' class="dropdown-item" style='font-weight: bold;'>СДС - Система добровольной сертификации</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='#' class="dropdown-item">Сертификация персонала сварочного производства, специалистов неразрушающего контроля и разрушающих испытаний</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='#' class="dropdown-item">Сертификация сварочного оборудования</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='#' class="dropdown-item">Сертификация сварочных материалов</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href='#' class="dropdown-item">Сертификация сварочных технологических процессов</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item mr-md-1">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Реестры <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right rounded-0" aria-labelledby="navbarDropdown">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6">
-                                        <a class="dropdown-item" href="sasv_reestr_staff.html">Реестр аттестованного персонала</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="sasv_reestr_sm.html">Реестр аттестованных сварочных материалов</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="sasv_reestr_so.html">Реестр аттестованного сварочного оборудования</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="sasv_reestr_st.html">Реестр аттестованных сварочных технологий</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="spks_reestr.html">Реестр свидетельств о квалификации</a>
-                                        <div class="dropdown-divider d-xs-block d-sm-none"></div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <a class="dropdown-item" href="#">Реестр сертифицированного персонала</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Реестр сертифицированных сварочных материалов</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Реестр сертифицированного сварочного оборудования</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Реестр сертифицированных сварочных технологических процессов</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item mr-md-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Документы <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                            <div class="dropdown-menu dropdown-menu-center rounded-0" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="sasv_docs.html">Документы САСв</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="docs_spks.html">Документы СПКС</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="docs_sds.html">Документы СДС</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="docs_sro.html">Документы НАКС</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="agreement.html">Соглашения с партнерами</a>
-                            </div>
-                        </li>
-                        <li class="nav-item mr-md-1">
-                            <a class="nav-link" href="contacts.html">Контакты</a>
-                        </li>
-                    </ul>
-                    <a href="#" class="btn btn-primary btn-sign-in"><i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Войти</a>
-                </div>
-            </nav>
-        </div>
-    </div>
-    
-    <!-- Header -->
-    <div class="header-image">
-        <img class="img-fluid w-100" src="images/header-img.png" alt="">
-        <div class="container pt-1">
-            <div class="row align-items-center">
-                <div class="col-xs-12 col-sm-7 col-lg-6 col-xl-5">
-                    <h2 class="text-white">Национальное Агентство Контроля Сварки</h2>
-                </div>
-                <!-- <div class="d-none d-lg-block col-lg-6 col-xl-7">
-                    <a href="agreement.html" class="d-block text-right text-white">Партнеры и соглашения</a>
-                </div> -->
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="all-staff">
+    <div class="container">
+        <h4 class="text-dark mt-5">Реестр аттестованного персонала</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb mt-3 mb-2 p-0">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'sasv' %}">САСв</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Реестр аттестованного персонала</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <a href="{% url 'sasv' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
             </div>
         </div>
-    </div>
+        
+        <hr>
 
-    <div class="all-staff">
-        <div class="container">
-            <h4 class="text-dark mt-5">Реестр аттестованного персонала</h4>
-            <div class="row">
-                <div class="col-xs-12 col-sm-10">
-                    <nav aria-label="breadcrumb" role="navigation">
-                        <ol class="breadcrumb mt-3 mb-2 p-0">
-                            <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-                            <li class="breadcrumb-item"><a href="sasv.html">САСв</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Реестр аттестованного персонала</li>
-                        </ol>
+        <form class="my-4">
+            <h6 class="font-weight-bold mb-4">Поиск по параметрам</h6>
+            <!-- Фильтр реестра персонала -->
+            {% include 'mainapp/includes/filter-reestr-staff.html' %}
+            <!-- End Фильтр реестра персонала -->
+        </form>
+        
+        <hr>
+
+        <div id="reestr-staff" class="mt-4">
+            <h6>Найдено записей: <span class="font-weight-bold">9465</span></h6>
+            <div class="row d-flex align-items-center">
+                <div class="col-sm-5">
+                    <p class="text-secondary">Элементы 1 - 10 из 9465</p>
+                </div>
+                <div class="col-sm-7">
+                    <nav aria-label="..." class="float-sm-right">
+                        <ul class="pagination pagination-sm">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
-                <div class="col-xs-12 col-sm-2">
-                    <a href="sasv.html" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
-                </div>
-            </div>
-            
-            <hr>
-
-            <form class="mt-4 mb-4">
-                <h6 class="font-weight-bold mb-4">Поиск по параметрам</h6>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="form-group row">
-                            <label for="" class="col-xs-12 col-lg-4 col-form-label col-form-label-sm">Место аттестации:</label>
-                            <div class="col-6 col-lg-5">
-                                <select class="form-control form-control-sm" id="">
-                                    <option></option>
-                                    <option>АР-1ГАЦ</option>
-                                    <option>АР-ГАЦ</option>
-                                    <option>БР-АЦ</option>
-                                    <option>БР-1ГАЦ</option>
-                                    <option>БР-ГАЦ</option>
-                                    <option>ВВР-1АЦ</option>
-                                </select>
-                            </div>
-                            <div class="col-6 col-lg-3">
-                                <input type="text" class="form-control form-control-sm" id="" placeholder="АП">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-lg-4 col-form-label col-form-label-sm">ФИО:</label>
-                            <div class="col-lg-8">
-                                <input type="text" class="form-control form-control-sm" id="">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Организация:</label>
-                            <div class="col-lg-8">
-                                <input type="text" class="form-control form-control-sm" id="">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-xs-12 col-lg-4 col-form-label col-form-label-sm">№ удостоверения:</label>
-                            <div class="col-6 col-sm-4 col-lg-3">
-                                <select class="form-control form-control-sm" id="">
-                                    <option></option>
-                                    <option>АР-1ГАЦ</option>
-                                    <option>АР-ГАЦ</option>
-                                    <option>БР-АЦ</option>
-                                    <option>БР-1ГАЦ</option>
-                                    <option>БР-ГАЦ</option>
-                                    <option>ВВР-1АЦ</option>
-                                </select>
-                            </div>
-                            <div class="col-6 col-sm-4 col-lg-2">
-                                <select class="form-control form-control-sm" id="">
-                                    <option></option>
-                                    <option>I</option>
-                                    <option>II</option>
-                                    <option>III</option>
-                                    <option>IV</option>
-                                </select>
-                            </div>
-                            <div class="col-6 col-sm-4 col-lg-3 mt-3 mt-sm-0">
-                                <input type="text" class="form-control form-control-sm" id="" placeholder="">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Клеймо:</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control form-control-sm" id="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="form-group row">
-                            <label for="" class="col-xs-12 col-lg-4 col-form-label col-form-label-sm">Дата аттестации:</label>
-                            <div class="col col-lg-4">
-                                <div class="input-group input-group-sm date" name="datepicker">
-                                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
-                                    <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </div>
-                            <div class="col col-lg-4">
-                                <div class="input-group input-group-sm date" name="datepicker">
-                                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
-                                    <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-xs-12 col-lg-4 col-form-label col-form-label-sm">Срок аттестации:</label>
-                            <div class="col col-lg-4">
-                                <div class="input-group input-group-sm date" name="datepicker">
-                                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
-                                    <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </div>
-                            <div class="col col-lg-4">
-                                <div class="input-group input-group-sm date" name="datepicker">
-                                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
-                                    <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-xs-12 col-lg-4 col-form-label col-form-label-sm">Срок продления:</label>
-                            <div class="col col-lg-4">
-                                <div class="input-group input-group-sm date" name="datepicker">
-                                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
-                                    <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </div>
-                            <div class="col col-lg-4">
-                                <div class="input-group input-group-sm date" name="datepicker">
-                                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
-                                    <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Вид деятельности:</label>
-                            <div class="col-lg-8">
-                                <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" id="" placeholder="">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-outline-secondary btn-sm" type="button" data-toggle="modal" data-target="#modalActivity" title="Выбрать"><i class="fa fa-angle-up"></i></button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Область аттестации:</label>
-                            <div class="col-lg-8">
-                                <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" id="" placeholder="">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-outline-secondary btn-sm" type="button" data-toggle="modal" data-target="#modalTechnicalDevices" title="Выбрать"><i class="fa fa-angle-up"></i></button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12 col-lg-8 offset-lg-2">
-                        <div class="form-check mb-0">
-                            <label class="custom-control custom-checkbox col-form-label-sm mb-0">
-                                <input type="checkbox" class="custom-control-input">
-                                <span class="custom-control-indicator mt-1"></span>
-                                <span class="custom-control-description">- с учетом требований ПАО "АК "Транснефть"</span>
-                            </label>
-                        </div>
-                        <div class="form-check mb-3">
-                            <label class="custom-control custom-checkbox col-form-label-sm mb-0">
-                                <input type="checkbox" class="custom-control-input">
-                                <span class="custom-control-indicator mt-1"></span>
-                                <span class="custom-control-description">- с учетом требований ПАО "Газпром"</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
-                        <button type="button" class="btn btn-link btn-sm">Сбросить</button>
-                    </div>
-                </div>
-
-            </form>
-            <hr>
-
-            <div id="reestr-staff" class="mt-4">
-                <h6>Найдено записей: <span class="font-weight-bold">9465</span></h6>
-                <div class="row d-flex align-items-center">
-                    <div class="col-sm-5">
-                        <p class="text-secondary">Элементы 1 - 10 из 9465</p>
-                    </div>
-                    <div class="col-sm-7">
-                        <nav aria-label="..." class="float-sm-right">
-                            <ul class="pagination pagination-sm">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                
-
-                
-                
-                <table class="table table-responsive table-striped table-bordered table-hover text-center">
-                    <thead>
-                        <tr class="table-secondary">
-                            <th rowspan="2">Фамилия, Имя, Отчество</th>
-                            <th rowspan="2">Шифр клейма</th>
-                            <th rowspan="2">Место работы<br>(Организация)</th>
-                            <th rowspan="2">Должность<br>(Специальность)</th>
-                            <th class="border-bottom-0">Номер удостоверения</th>
-                            <th rowspan="2">Доп. Атт.</th>
-                            <th colspan="2" class="border-bottom-0">Место аттестации</th>
-                            <th rowspan="2">Дата аттестации</th>
-                            <th rowspan="2">Окончание срока действия удостоверения</th>
-                            <th rowspan="2">Срок продления</th>
-                            <th rowspan="2">Вид деятельности</th>
-                            <th rowspan="2">Область аттестации</th>
-                        </tr>
-                        <tr class="table-secondary">
-                            <th>Шифр АЦ, Уровень, Номер</th>
-                            <th>АЦ</th>
-                            <th>АП</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Еромасов Иван Александрович</td>
-                            <td>61ZZ</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>АР-1ГАЦ-I-05577</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td></td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                        <tr>
-                            <td>Логинов Сергей Викторович</td>
-                            <td>5N1R</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>СУР-12АЦ-I-28659</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td>8АП</td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                        <tr>
-                            <td>Еромасов Иван Александрович</td>
-                            <td>61ZZ</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>АР-1ГАЦ-I-05577</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td></td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                        <tr>
-                            <td>Логинов Сергей Викторович</td>
-                            <td>5N1R</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>СУР-12АЦ-I-28659</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td>8АП</td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                        <tr>
-                            <td>Еромасов Иван Александрович</td>
-                            <td>61ZZ</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>АР-1ГАЦ-I-05577</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td></td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                        <tr>
-                            <td>Логинов Сергей Викторович</td>
-                            <td>5N1R</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>СУР-12АЦ-I-28659</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td>8АП</td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                        <tr>
-                            <td>Еромасов Иван Александрович</td>
-                            <td>61ZZ</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>АР-1ГАЦ-I-05577</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td></td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                        <tr>
-                            <td>Логинов Сергей Викторович</td>
-                            <td>5N1R</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>СУР-12АЦ-I-28659</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td>8АП</td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                        <tr>
-                            <td>Еромасов Иван Александрович</td>
-                            <td>61ZZ</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>АР-1ГАЦ-I-05577</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td></td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                        <tr>
-                            <td>Логинов Сергей Викторович</td>
-                            <td>5N1R</td>
-                            <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
-                            <td>Сварщик 5-го разряда</td>
-                            <td>СУР-12АЦ-I-28659</td>
-                            <td></td>
-                            <td>АР-1ГАЦ</td>
-                            <td>8АП</td>
-                            <td>29.07.2016</td>
-                            <td>29.07.2018</td>
-                            <td></td>
-                            <td>ААД</td>
-                            <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- <nav aria-label="...">
-                    <ul class="pagination pagination-sm">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
-                        </li>
-                    </ul>
-                </nav> -->
-                <div class="row d-flex align-items-center">
-                    <div class="col-sm-5">
-                        <p class="text-secondary">Элементы 1 - 10 из 9465</p>
-                    </div>
-                    <div class="col-sm-7">
-                        <nav aria-label="..." class="float-sm-right">
-                            <ul class="pagination pagination-sm">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
             </div>
 
+            <table class="table table-responsive table-striped table-bordered table-hover text-center">
+                <thead>
+                    <tr class="table-secondary">
+                        <th rowspan="2">Фамилия, Имя, Отчество</th>
+                        <th rowspan="2">Шифр клейма</th>
+                        <th rowspan="2">Место работы<br>(Организация)</th>
+                        <th rowspan="2">Должность<br>(Специальность)</th>
+                        <th class="border-bottom-0">Номер удостоверения</th>
+                        <th rowspan="2">Доп. Атт.</th>
+                        <th colspan="2" class="border-bottom-0">Место аттестации</th>
+                        <th rowspan="2">Дата аттестации</th>
+                        <th rowspan="2">Окончание срока действия удостоверения</th>
+                        <th rowspan="2">Срок продления</th>
+                        <th rowspan="2">Вид деятельности</th>
+                        <th rowspan="2">Область аттестации</th>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th>Шифр АЦ, Уровень, Номер</th>
+                        <th>АЦ</th>
+                        <th>АП</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Еромасов Иван Александрович</td>
+                        <td>61ZZ</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>АР-1ГАЦ-I-05577</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td></td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                    <tr>
+                        <td>Логинов Сергей Викторович</td>
+                        <td>5N1R</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>СУР-12АЦ-I-28659</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td>8АП</td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                    <tr>
+                        <td>Еромасов Иван Александрович</td>
+                        <td>61ZZ</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>АР-1ГАЦ-I-05577</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td></td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                    <tr>
+                        <td>Логинов Сергей Викторович</td>
+                        <td>5N1R</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>СУР-12АЦ-I-28659</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td>8АП</td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                    <tr>
+                        <td>Еромасов Иван Александрович</td>
+                        <td>61ZZ</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>АР-1ГАЦ-I-05577</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td></td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                    <tr>
+                        <td>Логинов Сергей Викторович</td>
+                        <td>5N1R</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>СУР-12АЦ-I-28659</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td>8АП</td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                    <tr>
+                        <td>Еромасов Иван Александрович</td>
+                        <td>61ZZ</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>АР-1ГАЦ-I-05577</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td></td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                    <tr>
+                        <td>Логинов Сергей Викторович</td>
+                        <td>5N1R</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>СУР-12АЦ-I-28659</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td>8АП</td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                    <tr>
+                        <td>Еромасов Иван Александрович</td>
+                        <td>61ZZ</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>АР-1ГАЦ-I-05577</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td></td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>КО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                    <tr>
+                        <td>Логинов Сергей Викторович</td>
+                        <td>5N1R</td>
+                        <td>ЗАО "Редукционно-охладительные установки", Барнаул</td>
+                        <td>Сварщик 5-го разряда</td>
+                        <td>СУР-12АЦ-I-28659</td>
+                        <td></td>
+                        <td>АР-1ГАЦ</td>
+                        <td>8АП</td>
+                        <td>29.07.2016</td>
+                        <td>29.07.2018</td>
+                        <td></td>
+                        <td>ААД</td>
+                        <td>НГДО, ОХНВП, ПТО<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row d-flex align-items-center">
+                <div class="col-sm-5">
+                    <p class="text-secondary">Элементы 1 - 10 из 9465</p>
+                </div>
+                <div class="col-sm-7">
+                    <nav aria-label="..." class="float-sm-right">
+                        <ul class="pagination pagination-sm">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
+
     </div>
+</div>
 
-
-    <!-- Footer -->
-    <div class="footer bg-dark text-white w-100 mt-5 py-4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xs-12 col-sm-2 col-lg-3" id="logoFooter">
-                    <img src="images/logo-footer.png" class="img-fluid mb-2" alt="Логотип НАКС">
-                </div>
-                <div class="col-xs-12 col-sm-7 col-lg-6">
-                    <p class="d-none d-md-block text-center"><small>Саморегулируемая организация Ассоциация</small><br><strong>Национальное Агентство Контроля Сварки</strong></p>
-                    <div class="text-center mb-3" style="font-size: 0.8rem;">
-                        <a href="#" class="text-white d-block mb-1" target="_blank">Политика СРО Ассоциация "НАКС" в отношении обработки персональных данных</a>
-                        <a href="#" class="text-white d-block" target="_blank">Политика ООО "НЭДК" в отношении обработки персональных данных<br><small>(в соответствии с Протоколом №14 Общего собрания членов СРО НП "НАКС" от 21 января 2015 г.)</small></a>
-                    </div>
-                    <p class="text-center mb-0">© Все права защищены, 2002-2018</p>
-                </div>
-                <div class="d-none d-md-block col-sm-3 col-lg-3">
-                    <p class="contacts-bottom float-right mb-0">
-                        <a href="tel:+74997847700" class="d-block mb-1"><i class="fa fa-phone-square mr-1"></i>+7 (499) 784-77-00</a>
-                        <a href="tel:+74997847711" class="d-block mb-1"><i class="fa fa-fax mr-1"></i>+7 (499) 784-77-11</a>
-                        <a href="mailto:info@naks.ru" class="d-block mb-1"><i class="fa fa-envelope mr-1"></i>info@naks.ru</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div><!--End Footer -->
-
-    <!-- Modal -->
-    <div id="modalActivity" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="">Виды деятельности</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form>
-                    <div class="modal-body">
-                        <div data-spy="scroll" data-offset="0" class="scrollspy-modal">
-                            <table class="table table-striped table-sm table-hover">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ААД</span>
-                                            </label>
-                                        </td>
-                                        <td>Автоматическая аргонодуговая сварка неплавящимся электродом</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ААДН</span>
-                                            </label>
-                                        </td>
-                                        <td>Автоматическая аргонодуговая наплавка неплавящимся электродом</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ААДП</span>
-                                            </label>
-                                        </td>
-                                        <td>Автоматическая аргонодуговая сварка плавящимся электродом</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">АПГ</span>
-                                            </label>
-                                        </td>
-                                        <td>Автоматическая сварка плавящимся электродом в среде активных газов и смесях</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">АПС</span>
-                                            </label>
-                                        </td>
-                                        <td>Автоматическая сварка самозащитной порошковой проволокой</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">АФ</span>
-                                            </label>
-                                        </td>
-                                        <td>Автоматическая сварка под флюсом</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">АФЛН</span>
-                                            </label>
-                                        </td>
-                                        <td>Автоматическая наплавка ленточным электродом под флюсом</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">АФПН</span>
-                                            </label>
-                                        </td>
-                                        <td>Автоматическая наплавка проволочным электродом под флюсом</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ВЧС</span>
-                                            </label>
-                                        </td>
-                                        <td>Высокочастотная сварка</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">Г</span>
-                                            </label>
-                                        </td>
-                                        <td>Газовая сварка</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ЗН</span>
-                                            </label>
-                                        </td>
-                                        <td>Сварка с закладными нагревателями</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КСО</span>
-                                            </label>
-                                        </td>
-                                        <td>Контактная стыковая сварка оплавлением</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КСС</span>
-                                            </label>
-                                        </td>
-                                        <td>Контактная стыковая сварка сопротивлением</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КТС</span>
-                                            </label>
-                                        </td>
-                                        <td>Контактно-точечная сварка</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КШС</span>
-                                            </label>
-                                        </td>
-                                        <td>Контактная шовная сварка</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">Л</span>
-                                            </label>
-                                        </td>
-                                        <td>Лазерная сварка</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description" style="margin-top: 0.125rem !important;">Руководство и технический контроль</span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description" style="margin-top: 0.125rem !important;">Участие в работе органов по подготовке и аттестации (ПиА)</span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Сохранить</button>
-                        <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">Закрыть</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Технические устройства -->
-    <div id="modalTechnicalDevices" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="">Область аттестации</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form>
-                    <div class="modal-body">
-                        <div data-spy="scroll" data-offset="0" class="scrollspy-modal">
-                            <table class="table table-sm table-hover" id="table-technicalDevices">
-                                <tbody>
-                                    <tr class="table-secondary font-weight-bold">
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ГДО</span>
-                                            </label>
-                                        </td>
-                                        <td>Горнодобывающее оборудование</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ГДО (1)</span>
-                                            </label>
-                                        </td>
-                                        <td>Технические устройства для горнодобывающих и горно-обогатительных производств и подземных объектов</td>
-                                    </tr>
-                                    <tr class="table-secondary font-weight-bold">
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ГО</span>
-                                            </label>
-                                        </td>
-                                        <td>Газовое оборудование</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ГО (1)</span>
-                                            </label>
-                                        </td>
-                                        <td>Трубопроводы систем внутреннего газоснабжения</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ГО (2м)</span>
-                                            </label>
-                                        </td>
-                                        <td>Наружные газопроводы низкого, среднего и высокого давления стальные</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ГО (2п)</span>
-                                            </label>
-                                        </td>
-                                        <td>Наружные газопроводы низкого, среднего и высокого давления из неметаллических материалов</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">ГО (3)</span>
-                                            </label>
-                                        </td>
-                                        <td>Газовое оборудование котлов, технологических линий и агрегатов</td>
-                                    </tr>
-                                    <tr class="table-secondary font-weight-bold">
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КО</span>
-                                            </label>
-                                        </td>
-                                        <td>Котельное оборудование</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КО (1)</span>
-                                            </label>
-                                        </td>
-                                        <td>Паровые котлы с давлением пара более 0,07 МПа и водогрейные котлы с температурой воды выше 115°С</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КО (2)</span>
-                                            </label>
-                                        </td>
-                                        <td>Трубопроводы пара и горячей воды с рабочим давлением пара более 0,07 МПа и температурой воды свыше 115°С</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КО (3)</span>
-                                            </label>
-                                        </td>
-                                        <td>Сосуды, работающие под давлением свыше 0,07МПа</td>
-                                    </tr>
-                                    <tr class="table-secondary font-weight-bold">
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КСМ</span>
-                                            </label>
-                                        </td>
-                                        <td>Конструкции стальных мостов</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КСМ (1)</span>
-                                            </label>
-                                        </td>
-                                        <td>Металлические конструкции пролётных строений, опор и пилонов стальных мостов при изготовлении в заводских условиях</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">КСМ (2)</span>
-                                            </label>
-                                        </td>
-                                        <td>Металлические конструкции пролётных строений, опор и пилонов стальных мостов при сборке, сварке и ремонте в монтажных условиях</td>
-                                    </tr>
-                                    <tr class="table-secondary font-weight-bold">
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">МО</span>
-                                            </label>
-                                        </td>
-                                        <td>Металлургическое оборудование</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">МО (1)</span>
-                                            </label>
-                                        </td>
-                                        <td>Доменное, коксовое, сталеплавильное оборудование</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">МО (2)</span>
-                                            </label>
-                                        </td>
-                                        <td>Технологическое оборудование и трубопроводы для черной и цветной металлургии</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox mb-0">
-                                                <input type="checkbox" class="custom-control-input">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">МО (3)</span>
-                                            </label>
-                                        </td>
-                                        <td>Технические устройства для производства черных и цветных металлов и сплавов на их основе</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Сохранить</button>
-                        <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">Закрыть</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Удостоверение подробно -->
-    <div id="modalDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="">ПР-3АЦ-I-15667</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-two-table">
-                        <table class="table table-bordered table-modal">
-                            <tbody>
-                                <tr>
-                                    <th class="table-secondary">Фамилия, Имя, Отчество</th>
-                                    <td>Логинов Евгений Николаевич</td>
-                                </tr>
-                                <tr>
-                                    <th class="table-secondary">Допущен к:</th>
-                                    <td>Ручная дуговая сварка покрытыми электродами</td>
-                                </tr>
-                                <tr>
-                                    <th class="table-secondary">Группы технических устройств опасных производственных объектов:</th>
-                                    <td>Нефтегазодобывающее оборудование (пп. 1, 3, 4, 5),<br>Оборудование химических, нефтехимических, нефтеперерабатывающих и взрывопожароопасных производств (пп. 1, 4, 16),<br>Строительные конструкции (пп. 1, 2, 3)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div data-spy="scroll" data-offset="0" class="scrollspy-modal">
-                            
-                            <table class="table table-bordered table-striped table-hover text-center">
-                                <thead>
-                                    <tr class="table-secondary">
-                                        <th>Параметры сварки</th>
-                                        <th colspan="2">Область распространения</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Вид (способ) сварки (наплавки)</td>
-                                        <td colspan="2">РД</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Вид деталей</td>
-                                        <td>Т, Л, Л+Т</td>
-                                        <td>С+Л, С+С</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Типы швов</td>
-                                        <td>СШ, УШ</td>
-                                        <td>СШ, УШ</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Группа свариваемого материала</td>
-                                        <td>М01, М03</td>
-                                        <td>М01, М07, М01+М07</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Сварочные материалы</td>
-                                        <td>А, Р, РА, РБ, РЦ, Б</td>
-                                        <td>РБ, Б</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Толщина деталей, мм</td>
-                                        <td>от 3,0 и выше</td>
-                                        <td>от 4,0 и выше</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Диаметр деталей, мм</td>
-                                        <td>от 28,5 и выше для М01; от 325,0 и выше для М03</td>
-                                        <td>от 8,0 до 40,0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Положение при сварке</td>
-                                        <td>Л: Н1, Н2, Г, П1, П2, В1; Т: Н1, Н2, П2, В1</td>
-                                        <td>Н1, Н2, Г, П1, П2, В1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Вид соединения</td>
-                                        <td>ос (бп), ос (сп), дс (бз), дс (зк)</td>
-                                        <td>ос</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Положение осей стержней</td>
-                                        <td></td>
-                                        <td>В, Г</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Тип сварного соединения</td>
-                                        <td></td>
-                                        <td>С21-Рн, С23-Рэ, Т12-Рз, Н1-Рш, К3-Рп*</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" class="font-weight-normal">* Установленная область распространения может быть применена к сварным соединениям арматуры, арматурных и закладных изделий железобетонных конструкций (элементов железобетонных конструкций) иных типов с указанными характеристиками</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Закрыть</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Optional JavaScript -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/moment-with-locales.min.js"></script>
-    <script src="js/PageScroll2id.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-datetimepicker.js"></script>
-    
-
-    <!-- My scripts -->
-    <script src="js/myscript.js"></script>
-
-</body>
-</html>
+{% endblock %}

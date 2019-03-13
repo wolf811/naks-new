@@ -1,0 +1,206 @@
+{% load static %}
+
+<div id="modalActivity" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Виды деятельности</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div data-spy="scroll" data-offset="0" class="scrollspy-modal">
+                        <table class="table table-striped table-sm table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ААД</span>
+                                        </label>
+                                    </td>
+                                    <td>Автоматическая аргонодуговая сварка неплавящимся электродом</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ААДН</span>
+                                        </label>
+                                    </td>
+                                    <td>Автоматическая аргонодуговая наплавка неплавящимся электродом</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ААДП</span>
+                                        </label>
+                                    </td>
+                                    <td>Автоматическая аргонодуговая сварка плавящимся электродом</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">АПГ</span>
+                                        </label>
+                                    </td>
+                                    <td>Автоматическая сварка плавящимся электродом в среде активных газов и смесях</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">АПС</span>
+                                        </label>
+                                    </td>
+                                    <td>Автоматическая сварка самозащитной порошковой проволокой</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">АФ</span>
+                                        </label>
+                                    </td>
+                                    <td>Автоматическая сварка под флюсом</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">АФЛН</span>
+                                        </label>
+                                    </td>
+                                    <td>Автоматическая наплавка ленточным электродом под флюсом</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">АФПН</span>
+                                        </label>
+                                    </td>
+                                    <td>Автоматическая наплавка проволочным электродом под флюсом</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ВЧС</span>
+                                        </label>
+                                    </td>
+                                    <td>Высокочастотная сварка</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">Г</span>
+                                        </label>
+                                    </td>
+                                    <td>Газовая сварка</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ЗН</span>
+                                        </label>
+                                    </td>
+                                    <td>Сварка с закладными нагревателями</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КСО</span>
+                                        </label>
+                                    </td>
+                                    <td>Контактная стыковая сварка оплавлением</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КСС</span>
+                                        </label>
+                                    </td>
+                                    <td>Контактная стыковая сварка сопротивлением</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КТС</span>
+                                        </label>
+                                    </td>
+                                    <td>Контактно-точечная сварка</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">КШС</span>
+                                        </label>
+                                    </td>
+                                    <td>Контактная шовная сварка</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">Л</span>
+                                        </label>
+                                    </td>
+                                    <td>Лазерная сварка</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description" style="margin-top: 0.125rem !important;">Руководство и технический контроль</span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description" style="margin-top: 0.125rem !important;">Участие в работе органов по подготовке и аттестации (ПиА)</span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Сохранить</button>
+                    <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">Закрыть</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
