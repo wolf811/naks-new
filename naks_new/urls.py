@@ -33,8 +33,7 @@ urlpatterns = [
     path('agreement/', mainapp.agreement, name = 'agreement'),
     path('contacts/', mainapp.contacts, name = 'contacts'),
     path('news_all/', mainapp.news_all, name = 'news_all'),
-    path('news_one/', mainapp.news_one, name = 'news_one'),
-    # path('details/<slug:pk>', mainapp.details, name='details'),
+    path('news_details/<slug:pk>', mainapp.news_details, name='news_details'),
     path('sasv/', mainapp.sasv, name = 'sasv'),
     path('sasv_ac/', mainapp.sasv_ac, name = 'sasv_ac'),
     path('sasv_acsm/', mainapp.sasv_acsm, name = 'sasv_acsm'),
@@ -62,7 +61,7 @@ urlpatterns = [
     path('sds_reestr_so/', mainapp.sds_reestr_so, name = 'sds_reestr_so'),
     path('sds_reestr_st/', mainapp.sds_reestr_st, name = 'sds_reestr_st'),
     # path('reestr/', mainapp.reestr, name = 'reestr'),
-    # path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(

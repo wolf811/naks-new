@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from mainapp.models import Post
+from mainapp.models import Photo
 
 # Create your views here.
 def index(request):
     title = 'НАКС - Главная'
     content = {
-        'title': title
+        'title': title,
     }
     return render(request, 'mainapp/index.html', content)
 
@@ -15,12 +17,16 @@ def news_all(request):
     }
     return render(request, 'mainapp/news_all.html', content)
 
-def news_one(request):
+def news_details(request, pk):
+    post = Post.objects.get(pk=pk)
+    photos = Photo.objects.filter(post_id=pk)
     title = 'НАКС - Новости'
     content = {
-        'title': title
+        'title': title,
+        'post': post,
+        'photos': photos,
     }
-    return render(request, 'mainapp/news_one.html', content)
+    return render(request, 'mainapp/news_details.html', content)
 
 def agreement(request):
     title = 'НАКС - Соглашения'
