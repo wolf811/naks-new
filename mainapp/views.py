@@ -12,15 +12,28 @@ def index(request):
 
 def news_all(request):
     title = 'НАКС - Новости'
+    news_page_posts = []
+    all_posts = Post.objects.all()
+    for post in all_posts:
+        photo = Photo.objects.filter(post__pk=post.pk).first()
+        news_page_posts.append(
+            {'post': post, 'photo': photo, }
+        )
+    # for publication in news_page_posts:
+    #     print (publication['post'], publication['photo'])
+    # paginator = Paginator(news_page_posts, 9)
+    # page = request.GET.get('page')
+    # posts = paginator.get_page(page)
     content = {
-        'title': title
+        'title': title,
+        'post': post,
     }
     return render(request, 'mainapp/news_all.html', content)
 
 def news_details(request, pk):
+    title = 'НАКС - Новости'
     post = Post.objects.get(pk=pk)
     photos = Photo.objects.filter(post_id=pk)
-    title = 'НАКС - Новости'
     content = {
         'title': title,
         'post': post,

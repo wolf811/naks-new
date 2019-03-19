@@ -70,24 +70,10 @@
         <div class="news-all mt-4">
             <div class="row">
                 <div class="col-sm-6 col-lg-4 my-3">
-                    <div class="card card-news rounded-0">
-                        <div class="card-top">
-                            <img class="card-img-top img-fluid" src="{% static 'images/naks_al_logo.png' %}" alt="Card image cap">
-                            <div class="card-img-overlay" id="">01.02.2018</div>
-                            <div class="card-img-overlay-right" id="">НАКС</div>
-                        </div>
-                        <div class="card-body p-3">
-                            <h6 class="card-title mb-2">Соглашение о сотрудничестве между Ассоциацией "Объединение производителей, поставщиков и потребителей алюминия" и СРО НП "НАКС"</h6>
-                            <p class="mb-2"><a href="#" class="">Соглашение<i class="fa fa-angle-right ml-2"></i></a></p>
-                            <a href="#" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedDoc">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
-                        </div>
-                        <div class="card-footer">
-                            <div class="share d-inline-block">
-                                <div class="ya-share2" data-services="vkontakte,telegram,facebook" data-size="s"></div>
-                            </div>
-                            <a href="#" role="button" class="btn btn-link btn-sm float-right text-secondary pr-0" data-toggle="modal" data-target="#sendLink" title="Отправить ссылку на e-mail"><i class="fa fa-envelope mr-2"></i>Отправить ссылку</a>
-                        </div>
-                    </div>
+                    <!-- {% for publication in posts %}
+                        {% include 'mainapp/includes/news-list-card.html' %}
+                    {% endfor %} -->
+                    {% include 'mainapp/includes/news-list-card.html' %}
                 </div>
                 <div class="col-sm-6 col-lg-4 my-3">
                     <div class="card card-news rounded-0">
