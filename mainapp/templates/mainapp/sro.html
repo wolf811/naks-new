@@ -7,11 +7,11 @@
 <!-- End Header-page -->
 
 <div class="container">
-    <h4 class="text-dark mt-5">Система аттестации сварочного производства (САСв)</h4>
+    <h4 class="text-dark mt-5">Саморегулируемая организация Ассоциация НАКС</h4>
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb my-4 p-0">
             <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-            <li class="breadcrumb-item active" aria-current="page">САСв</li>
+            <li class="breadcrumb-item active" aria-current="page">СРО</li>
         </ol>
     </nav>
     <hr>
@@ -20,13 +20,13 @@
 
             <!-- Mobil right main -->
             <div class="d-block d-sm-none mt-3 mb-4">
-                {% include 'mainapp/includes/sasv/mobil-right-menu-sasv.html' %}
+                {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
             </div> 
             <!-- End mobil right main -->
 
-            <h5 class="text-primary mt-2 mb-4">Аттестационные центры на карте</h5>
+            <h5 class="text-primary mt-2 mb-4">СРО Ассоциация НАКС</h5>
             <!-- Big Radiobuttons -->
-            <div class="show-units" id="btn-card-units">
+            <!-- <div class="show-units" id="btn-card-units">
                 <div class="d-block">
                     <div class="row mb-3">
                         <div class="col mb-4">
@@ -46,8 +46,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- End Big Radiobuttons -->
+            <p class="text-secondary">Национальное Агентство Контроля Сварки наделено <a href="http://nspkrf.ru/" target="_blank">Национальным советом при Президенте РФ по профессиональным квалификациям</a> полномочиями <strong>Совета по профессиональным квалификациям в области сварки</strong>.</p>
+            <p class="text-secondary">Саморегулируемая организация Ассоциация «Национальное Агентство Контроля Сварки» (СРО Ассоциация «НАКС», НАКС) - центральный орган <a href="{% url 'sasv' %}">Системы аттестации сварочного производства ( САСв) Ростехнадзора</a>.</p>
+            <p class="text-secondary">СРО Ассоциация «НАКС» зарегистрирована в государственном реестре саморегулируемых организаций и объединяет организации, занимающиеся оценкой соответствия в области сварочного производства.</p>
+            <p class="text-secondary">На базе НАКС функционирует Технический комитет Росстандарта <a href="{% url 'tk364' %}" target="_blank">ТК 364 "Сварка и родственные процессы"</a>, занимающийся разработкой национальных стандартов по сварке и их гармонизацией  с международными.</p>
 
             <!-- Yandex Maps -->
             <div id="map" class="w-100"></div>
@@ -65,7 +69,7 @@
         </div>
         <div class="d-none d-md-block col-md-4 col-xl-3">
             <!-- Content Right menu -->
-            {% include 'mainapp/includes/sasv/right-menu-sasv.html' %}
+            {% include 'mainapp/includes/sro/right-menu-sro.html' %}
             <!-- End Content Right menu -->
         </div>
     </div>
