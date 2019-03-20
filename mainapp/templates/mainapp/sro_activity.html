@@ -1,0 +1,131 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Саморегулируемая организация Ассоциация НАКС</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb mt-3 mb-2 p-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'sro' %}">СРО</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">СРО Ассоциация НАКС</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <a href="{% url 'sro' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-sm-none mt-3 mb-4">
+                {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <div class="main-content mt-4">
+
+        <!-- Big Radiobuttons -->
+        <div class="show-units">
+            <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block active" id="pills-composition-tab" data-toggle="pill" href="#pills-composition" role="tab" aria-controls="pills-composition" aria-selected="true">Деятельность</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-protocols-tab" data-toggle="pill" href="#pills-protocols" role="tab" aria-controls="pills-protocols" aria-selected="false">Обеспечение ответственности</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-committees-tab" data-toggle="pill" href="#pills-committees" role="tab" aria-controls="pills-committees" aria-selected="false">Регистрационные документы</a>
+                </li>
+            </ul>
+        </div><!-- End Big Radiobuttons -->
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-composition" role="tabpanel" aria-labelledby="pills-composition-tab">
+                <h5 class="text-primary my-4">Деятельность</h5>
+                <p class="text-secondary">Саморегулируемая организация Ассоциация «Национальное Агентство Контроля Сварки» (СРО Ассоциация «НАКС», НАКС) - центральный орган Системы аттестации сварочного производства. НАКС создан в 1992 году по инициативе МГТУ им. Н.Э. Баумана совместным решением Президиума Российской академии наук, Министерства науки, высшей школы и технической политики России, Госгортехнадзора России, Госатомнадзора России и Госстандарта России.</p>
+
+                <div class="d-flex justify-content-center mb-4">
+                    <a href="#"><img src="{% static 'images/postanovlenie_naks.png' %}" alt=""></a>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-sm-4">
+                        <div class="mb-2"><img src="{% static 'images/aleshin.png' %}" alt=""></div>
+                        <p><small>Президентом НАКС является академик <a href="http://ras.ru/" target="_blank">Российской академии наук</a> Николай Павлович Алёшин - доктор технических наук, профессор, заведующий кафедрой "<a href="http://welding.bmstu.ru/" target="_blank">Технологии сварки и диагностики</a>" МГТУ им. Н.Э. Баумана.</small></p>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="mb-2"><img src="{% static 'images/paton.png' %}" alt=""></div>
+                        <p><small>Почетным президентом НАКС является директор Института Электросварки им. Е.О. Патона, академик РАН Борис Евгеньевич Патон.</small></p>
+                    </div>
+                </div>
+
+                <p class="text-secondary">С 2009 года НАКС функционирует в статусе саморегулируемой организации, члены которой работают по единым стандартам и правилам. В работе Системы аттестации сварочного производства принимают участие около 7 000 высококвалифицированных специалистов сварочного производства, в том числе 148 д.т.н., 247 к.т.н. К этой работе привлечены специалисты 36 технических университетов России, 11 ведущих научно-исследовательских центров, таких как ВНИИГАЗ, ЦНИИТМАШ, ЦНИИ КМ «Прометей», ЦНИИС и др., крупных промышленных компаний – ОАО «Газпром», ОАО «АК «Транснефть», ОАО Корпорация «Трансстрой». Регулярные региональные и международные семинары, конференции и вебинары, способствуют высокой информированности участников САСв и обеспечению качества услуг по аттестации на всей территории России.</p>
+                <p class="text-secondary">Деятельность НАКС направлена на повышение качества и конкурентоспособности продукции сварочного производства. В настоящее время в структуру СРО Ассоциация «НАКС» входит 284 аттестационных центра, расположенных во всех промышленно развитых субъектах РФ, а также в Германии, Китае, Белоруссии. Аттестационные центры на профессиональном уровне занимаются аттестацией и сертификацией сварочного производства. За прошедшее время проведено более 1,3 млн. аттестаций специалистов сварочного производства, более 6500 марок сварочных материалов, более 60 000 единиц сварочного оборудования и более 70 000 технологий сварки.</p>
+                <div class="d-flex justify-content-center mb-4">
+                    <a href="#"><img src="{% static 'images/110orgs.jpg' %}" class="img-fluid" alt=""></a>
+                </div>
+                <p class="text-secondary">В последние годы в НАКС произошли масштабные изменения в управлении организацией и внешними связями. Стратегические цели развития НАКС стали ориентированы на менеджмент качества, как один из ключевых направлений в развитии сварочного производства в целом. В широко распределенной территориальной структуре Системы аттестации сварочного производства требуется применение единого, централизованного подхода к управлению, правильному позиционированию и подходу к качеству оказываемых услуг.</p>
+                <p class="text-secondary">Повышение безопасности и снижение рисков в значительной степени определяются качеством сварочных работ, так как сварка является одним из основных технологических процессов при изготовлении, сооружении, реконструкции и ремонте подавляющего большинства оборудования, трубопроводов, металлоконструкций зданий и сооружений и других объектов, влияющих на безопасные условия эксплуатации опасных производственных объектов.</p>
+                <p class="text-secondary">НАКС - это постоянно развивающаяся, высокотехнологичная организация, которая следует стратегическим планам развития, ведет широкомасштабную политику в области сварочного производства, разрабатывает национальные стандарты в области сварочного производства, участвует в разработке законов и нормативно-правовых актов в составе Общественного совета при Федеральной службе по экологическому, технологическому и атомному надзору (<a href="http://www.gosnadzor.ru/" target="_blank">Ростехнадзор</a>), Общественного совета Федеральной службы по аккредитации (<a href="http://fsa.gov.ru/" target="_blank">Росаккредитация</a>), Экспертного совета Министерства труда и социальной защиты (<a href="http://www.rosmintrud.ru/" target="_blank">Минтруд</a>), Совета по развитию саморегулирования и комитета по стандартизации Российского союза промышленников и предпринимателей (<a href="http://рспп.рф/" target="_blank">РСПП</a>), и в рамках сотрудничества с Министерством образования и науки РФ (<a href="http://минобрнауки.рф/" target="_blank">Минобр</a>), Федеральным агентством по техническому регулированию и метрологии (<a href="http://www.gost.ru/wps/portal/" target="_blank">Росстандарт</a>), Агентством стратегических инициатив,Национальным объединением строителей (<a href="http://www.nostroy.ru/" target="_blank">НОСТРОЙ</a>), Национальным агентством развития квалификаций (<a href="http://www.nark-rspp.ru/" target="_blank">НАРК</a>),Фондом "Образование обществу" - национальным оператором <a href="http://worldskills.ru/" target="_blank">WorldSkills International</a> в Российской Федерации, Национальным промышленным сварочным обществом (<a href="https://www.нпсо.рф/">НПСО</a>).</p>
+
+                <hr>
+
+                <p class="text-secondary">В 2018 году НАКС прошел процедуру сертификации системы менеджмента качества на соответствие ISO 9001 версии 2015 года в международном сертификационном органе TÜV Rheinland. НАКС выдан сертификат по ISO 9001:2015 в области разработки, установления и контроля исполнения правил оценки соответствия, квалификации, аттестации, сертификации в области сварочного производства.</p>
+                <!-- IMAGE -->
+                <hr>
+
+                <div class="row align-items-center">
+                    <div class="col-sm-2">
+                        <img src="{% static 'images/prprav.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-sm-2">
+                        <img src="{% static 'images/prsng.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-sm-8">
+                        <p class="text-muted mb-0"><small>СРО Ассоциация «НАКС» является лауреатом Премии Правительства РФ в области качества 2012 года и Премии СНГ 2013 года за достижения в области качества продукции и услуг. Победа в конкурсе на соискание Премии Правительства РФ и СНГ в области качества позволило подтвердить на правительственном и международном уровнях высокое развитие менеджмента качества, продемонстрировать возможности и подтвердить статус надежного партнера.</small></p>
+                    </div>
+                </div>
+                <hr>
+
+                <p class="text-secondary">В НАКС разработана собственная система электронного документооборота (ЭДО НАКС), которая позволяет обеспечивать все документируемые процессы при аттестации на принципах формализованности, комплексности, оперативности и корпоративности. Инновационное развитие – это залог успеха каждой современной организации, созданной для реализации крупномасштабных целей. НАКС может с гордостью заявить о себе, как о высокоорганизованном, социально ориентированном партнерстве.</p>
+                <p class="text-secondary">За более чем 22 года работы Национальное Агентство Контроля Сварки получило заслуженный имидж лидера в управлении качеством выполняемых услуг и профессиональный авторитет в области сварочного производства, продолжает активно совершенствовать методы работы и постоянно внедряет инновационные технологии. НАКС сегодня - это бренд, символизирующий профессионализм и высшее качество.</p>
+            </div>
+
+            <div class="tab-pane fade" id="pills-protocols" role="tabpanel" aria-labelledby="pills-protocols-tab">
+                <h5 class="text-primary my-4">Обеспечение имущественной ответственности</h5>
+                <div class="table-responsive">
+                    <!-- Протоколы -->
+                    {% include 'mainapp/includes/sasv/sasv_nts_protocols.html' %}
+                    <!-- End Протоколы -->
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-committees" role="tabpanel" aria-labelledby="pills-committees-tab">
+                <h5 class="text-primary my-4">Регистрационные документы</h5>
+                <div class="table-responsive">
+                    <!-- Комитеты -->
+                    {% include 'mainapp/includes/sasv/sasv_nts_committees.html' %}
+                    <!-- End Комитеты -->
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/sro/right-menu-sro.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

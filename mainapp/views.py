@@ -153,6 +153,13 @@ def sro(request):
     }
     return render(request, 'mainapp/sro.html', content)
 
+def sro_activity(request):
+    title = 'НАКС - СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sro_activity.html', content)
+
 def sro_docs(request):
     title = 'НАКС - СРО'
     content = {

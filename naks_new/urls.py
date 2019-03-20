@@ -49,6 +49,7 @@ urlpatterns = [
     path('sasv_reestr_so/', mainapp.sasv_reestr_so, name = 'sasv_reestr_so'),
     path('sasv_reestr_st/', mainapp.sasv_reestr_st, name = 'sasv_reestr_st'),
     path('sro/', mainapp.sro, name = 'sro'),
+    path('sro_activity/', mainapp.sro_activity, name = 'sro_activity'),
     path('sro_docs/', mainapp.sro_docs, name = 'sro_docs'),
     path('tk364/', mainapp.tk364, name = 'tk364'),
     path('spks/', mainapp.spks, name = 'spks'),
