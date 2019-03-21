@@ -720,3 +720,9 @@ a.dropdown-item:focus, a.dropdown-item:hover {
   color: #868e96; }
 
 /* ================ END Styles OLD ================== */
+.table-docs th, .table-docs td {
+  font-size: 0.875rem;
+  vertical-align: middle;
+  color: #7e7e7e; }
+  .table-docs th:first-child, .table-docs td:first-child {
+    border-left: 1px solid #1880e7; }

@@ -10,7 +10,7 @@ def index(request):
     }
     return render(request, 'mainapp/index.html', content)
 
-def news_all(request):
+def news(request):
     title = 'НАКС - Новости'
     news_page_posts = []
     all_posts = Post.objects.all()
@@ -28,7 +28,7 @@ def news_all(request):
         'title': title,
         'post': post,
     }
-    return render(request, 'mainapp/news_all.html', content)
+    return render(request, 'mainapp/news.html', content)
 
 def news_details(request, pk):
     title = 'НАКС - Новости'
