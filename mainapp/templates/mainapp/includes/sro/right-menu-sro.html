@@ -1,6 +1,51 @@
 {% load static %}
 
 <div id="wrap" class="w-100">
+    <div class="right-main">
+        <div class="card rounded-0">
+            <div class="card-header bg-naks">
+                <a href="{% url 'sro_activity' %}">Деятельность<br>СРО Ассоциация НАКС</a>
+            </div>
+        </div>
+
+        <div class="card rounded-0">
+            <div class="card-header bg-naks bg-naks-active">
+                <a href="{% url 'sro_docs' %}">Стандарты и правила НАКС</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks">
+                <a href="#">Реестр членов<br>СРО Ассоциация НАКС</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks">
+                <a href="#">Органы управления</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks">
+                <a href="#">Комитеты и комиссии</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks">
+                <a href="#">Законодательство</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks">
+                <a href="#">Формы документов</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks">
+                <a href="{% url 'agreement' %}">Партнеры и соглашения</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div id="wrap" class="w-100">
     <div id="accordion_02" class="right-main">
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_00">
@@ -23,9 +68,9 @@
             </div>
             <div id="collapse_02" class="collapse" aria-labelledby="heading_02" data-parent="#accordion_02">
                 <div class="card-body">
-                    <a href="#" class="dropdown-item">Стандарты СТО НАКС</a>
+                    <a href="{% url 'sro_docs' %}" class="dropdown-item">Стандарты СТО НАКС</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Правила СРО Ассоциация "НАКС"</a>
+                    <a href="{% url 'sro_docs' %}" class="dropdown-item">Правила СРО Ассоциация "НАКС"</a>
                 </div>
             </div>
         </div>
@@ -98,4 +143,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

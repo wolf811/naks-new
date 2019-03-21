@@ -157,3 +157,29 @@ $('#to-recovery').click(function() {
 	$('#pass-recovery').fadeIn('slow');
 	$('#login-page').hide();
 });
+
+// jQuery(document).ready(function($) {
+// 	var url=document.location.href;
+// 	$.each($("#menu a"),function(){
+// 		if(this.href==url){
+// 			$(this).addClass('active');
+// 		}
+// 	});
+// });
+
+// Изменение текста при меньшем разрешении экрана
+$(document).ready(function() {
+$(window).resize(function() {
+	var windowWidth = $(window).width();
+	if(windowWidth > 768) {
+		console.log('skdjgfdkj');
+		$('.btn-outline-dark[name="btnOpenDoc"]').html('<i class="fa fa-file-pdf-o mr-2"></i>Открыть документ');
+	}
+	else {
+		$('.btn-outline-dark[name="btnOpenDoc"]').html('<i class="fa fa-file-pdf-o mr-2"></i>Открыть');
+	}
+});
+});
+// END
+
+

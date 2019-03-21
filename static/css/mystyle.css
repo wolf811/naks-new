@@ -411,9 +411,7 @@ a.dropdown-item:focus, a.dropdown-item:hover {
   font-size: 0.75rem; }
 
 .scrollspy-modal th, .scrollspy-modal td {
-  vertical-align: middle;
-  /* border-bottom: 1px solid #1880e7;
-	/* padding: 0.5rem; */ }
+  vertical-align: middle; }
 
 .scrollspy-modal .table-secondary:hover > th {
   background-color: #dddfe2; }
@@ -726,3 +724,12 @@ a.dropdown-item:focus, a.dropdown-item:hover {
   color: #7e7e7e; }
   .table-docs th:first-child, .table-docs td:first-child {
     border-left: 1px solid #1880e7; }
+
+.right-main .bg-naks-active {
+  color: #292929;
+  border-top: none;
+  border-bottom: none;
+  border-left: 3px solid #1880e7;
+  background-color: #f8f9fa; }
+  .right-main .bg-naks-active a {
+    color: #292929; }

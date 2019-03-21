@@ -108,6 +108,7 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 .table-sm td:last-child {font-size: 0.875rem;}
 .modal-content {border-radius: 0;}
 /* End Change */
+
 .header-menu {background-color: #fff;}
 .navbar-brand {margin-right: 2rem;}
 .other-brand {display: inline-block;}
@@ -361,6 +362,7 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 	margin: auto;
 }
 /* End Наверх */
+
 .scrollspy-modal {
 	position: relative;
 	height: 600px;
@@ -372,8 +374,6 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 }
 .scrollspy-modal th, .scrollspy-modal td {
 	vertical-align: middle;
-	/* border-bottom: 1px solid #1880e7;
-	/* padding: 0.5rem; */
 }
 .scrollspy-modal .table-secondary:hover > th {
 	background-color: #dddfe2;
@@ -429,6 +429,7 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 	margin-left: auto;
 	margin-right: auto; 
 }
+
 /* Правое меню */
 .right-main .card-header a, .right-main-xs .card-header a {
 	font-size: 0.875rem;
@@ -639,4 +640,16 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 			border-left: 1px solid #1880e7;
 		}
 	}
+}
+
+.right-main .bg-naks-active {
+	color: #292929;
+	border-top: none;
+	border-bottom: none;
+    border-left: 3px solid #1880e7;
+    background-color: #f8f9fa;
+
+    a {
+    	color: #292929;
+    }
 }
