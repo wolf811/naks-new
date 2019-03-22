@@ -48,6 +48,14 @@ def agreement(request):
     }
     return render(request, 'mainapp/agreement.html', content)
 
+def contacts(request):
+    title = 'НАКС - Контакты'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/contacts.html', content)
+
+# ============= SASv ===============
 def sasv(request):
     title = 'НАКС - САСв'
     content = {
@@ -145,7 +153,9 @@ def sasv_reestr_st(request):
         'title': title
     }
     return render(request, 'mainapp/sasv_reestr_st.html', content)
+# ============= end SASv ===============
 
+# ============= SRO ===============
 def sro(request):
     title = 'НАКС - СРО'
     content = {
@@ -167,20 +177,24 @@ def sro_docs(request):
     }
     return render(request, 'mainapp/sro_docs.html', content)
 
-def contacts(request):
-    title = 'НАКС - Контакты'
+def sro_reestr(request):
+    title = 'НАКС - СРО'
     content = {
         'title': title
     }
-    return render(request, 'mainapp/contacts.html', content)
+    return render(request, 'mainapp/sro_reestr.html', content)
+# ============= end SRO ===============
 
+# ============= TK364 ===============
 def tk364(request):
     title = 'НАКС - ТК-364'
     content = {
         'title': title
     }
     return render(request, 'mainapp/tk364.html', content)
+# ============= end TK364 ===============
 
+# ============= SPKS ===============
 def spks(request):
     title = 'НАКС - СПКС'
     content = {
@@ -201,7 +215,9 @@ def spks_reestr(request):
         'title': title
     }
     return render(request, 'mainapp/spks_reestr.html', content)
+# ============= end SPKS ===============
 
+# ============= SDS ===============
 def sds(request):
     title = 'НАКС - СДС'
     content = {
@@ -243,3 +259,4 @@ def sds_reestr_st(request):
         'title': title
     }
     return render(request, 'mainapp/sds_reestr_st.html', content)
+# ============= end SDS ===============

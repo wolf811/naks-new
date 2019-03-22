@@ -51,6 +51,7 @@ urlpatterns = [
     path('sro/', mainapp.sro, name = 'sro'),
     path('sro_activity/', mainapp.sro_activity, name = 'sro_activity'),
     path('sro_docs/', mainapp.sro_docs, name = 'sro_docs'),
+    path('sro_reestr/', mainapp.sro_reestr, name = 'sro_reestr'),
     path('tk364/', mainapp.tk364, name = 'tk364'),
     path('spks/', mainapp.spks, name = 'spks'),
     path('spks_docs/', mainapp.spks_docs, name = 'spks_docs'),

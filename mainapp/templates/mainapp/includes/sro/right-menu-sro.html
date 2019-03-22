@@ -2,12 +2,19 @@
 
 <div id="wrap" class="w-100">
     <div class="right-main">
+        <!-- <div class="card rounded-0">
+            <div class="card-header bg-naks pl-1">
+                <a href="{% url 'sro_activity' %}" class="d-flex align-items-center">
+                    <i class="fa fa-angle-left fa-2x mr-2"></i>
+                    <span>Деятельность<br>СРО Ассоциация НАКС</span>
+                </a>
+            </div>
+        </div> -->
         <div class="card rounded-0">
             <div class="card-header bg-naks">
                 <a href="{% url 'sro_activity' %}">Деятельность<br>СРО Ассоциация НАКС</a>
             </div>
         </div>
-
         <div class="card rounded-0">
             <div class="card-header bg-naks bg-naks-active">
                 <a href="{% url 'sro_docs' %}">Стандарты и правила НАКС</a>
@@ -15,7 +22,7 @@
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks">
-                <a href="#">Реестр членов<br>СРО Ассоциация НАКС</a>
+                <a href="{% url 'sro_reestr' %}">Реестр членов<br>СРО Ассоциация НАКС</a>
             </div>
         </div>
         <div class="card rounded-0">

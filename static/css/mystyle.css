@@ -733,3 +733,20 @@ a.dropdown-item:focus, a.dropdown-item:hover {
   background-color: #f8f9fa; }
   .right-main .bg-naks-active a {
     color: #292929; }
+    .right-main .bg-naks-active a:hover {
+      color: inherit; }
+
+.reestr-block p {
+  font-size: 0.875rem; }
+
+.reestr-block table {
+  font-size: 0.75rem; }
+  .reestr-block table a {
+    font-size: 0.75rem; }
+  .reestr-block table th, .reestr-block table td {
+    vertical-align: middle;
+    border-bottom: 1px solid #1880e7;
+    padding: 0.5rem; }
+
+.reestr-block .table-secondary:hover > th {
+  background-color: #dddfe2; }

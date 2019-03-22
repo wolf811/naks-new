@@ -1,0 +1,228 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="all-docs">
+    <div class="container">
+        <h4 class="text-dark mt-5">Реестр членов СРО Ассоциация "НАКС"</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb mt-3 mb-2 p-0">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'sro' %}">СРО</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Реестр членов СРО Ассоциация НАКС</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <a href="{% url 'sro' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-xl-9">
+
+                <!-- Mobil right main -->
+                <div class="d-block d-md-none mt-3 mb-4">
+                    {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
+                </div> 
+                <!-- End mobil right main -->
+
+                <form class="mt-4 mb-3">
+                    <h6 class="font-weight-bold">Быстрый поиск</h6>
+                    <div class="form-row">
+                        <div class="form-group col-sm-6">
+                            <label for="" class="pb-0">Наименование</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="" class="pb-0">Город</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="" class="pb-0">Свидетельство</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="№">
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-auto"><label>Статус членства:</label></div>
+                        <div class="col-auto">
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="includedStatus" name="status" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">включен</span>
+                            </label>
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="exceptionStatus" name="status" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">исключен</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                            <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+
+                <div class="reestr-block mt-4">
+                    <h6>Найдено записей: <span class="font-weight-bold">150</span></h6>
+                    <div class="row d-flex align-items-center">
+                        <div class="col-sm-5">
+                            <p class="text-secondary">Элементы 1 - 30 из 150</p>
+                        </div>
+                        <div class="col-sm-7">
+                            <nav aria-label="..." class="float-sm-right">
+                                <ul class="pagination pagination-sm">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover text-center">
+                        <thead>
+                            <tr class="table-secondary">
+                                <th>№ Свидетельства о членстве</th>
+                                <th>Наименование организации</th>
+                                <th>Город</th>
+                                <th>Статус членства</th>
+                                <th>Просмотр</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0001</td>
+                                <td>ООО "ГОССп ЮР"</td>
+                                <td>Ростов-на-Дону</td>
+                                <td>Член СРО</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                            <tr>
+                                <td>0002</td>
+                                <td>ООО "ГАЦ РБ"</td>
+                                <td>Уфа</td>
+                                <td>Член СРО</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                            <tr>
+                                <td>0003</td>
+                                <td>ООО "РСЗ МАЦ"</td>
+                                <td>Санкт-Петербург</td>
+                                <td>Член СРО</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                            <tr>
+                                <td>0004</td>
+                                <td>ООО "Тихоокеанский ГАЦ"</td>
+                                <td>Владивосток</td>
+                                <td>Член СРО</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                            <tr>
+                                <td>0005</td>
+                                <td>ООО "Головной аттестационно - сертификационный центр Центрального региона"</td>
+                                <td>Воронеж</td>
+                                <td>Член СРО</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                            <tr>
+                                <td>0006</td>
+                                <td>ООО "ГАЦ ВСР"</td>
+                                <td>Иркутск</td>
+                                <td>Член СРО</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                            <tr>
+                                <td>0007</td>
+                                <td>ООО "Аттестационный центр ЦНИИТМАШ"</td>
+                                <td>Москва</td>
+                                <td>Член СРО</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                            <tr class="text-muted">
+                                <td>0008</td>
+                                <td>АНО "АЦ "НАКС ПРОМ"</td>
+                                <td>Москва</td>
+                                <td>Исключен<br>14.05.2018</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                            <tr>
+                                <td>0009</td>
+                                <td>ООО "ГАЦ-ССР"</td>
+                                <td>Красноярск</td>
+                                <td>Член СРО</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                            <tr>
+                                <td>0010</td>
+                                <td>ООО "ГАЦ МР НАКС"</td>
+                                <td>Москва</td>
+                                <td>Член СРО</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-membership-detail">Открыть</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    
+                    <div class="row d-flex align-items-center">
+                        <div class="col-sm-5">
+                            <p class="text-secondary">Элементы 1 - 30 из 150</p>
+                        </div>
+                        <div class="col-sm-7">
+                            <nav aria-label="..." class="float-sm-right">
+                                <ul class="pagination pagination-sm">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-none d-md-block col-md-4 col-xl-3">
+                <!-- Content Right menu -->
+                {% include 'mainapp/includes/sro/right-menu-sro.html' %}
+                <!-- End Content Right menu -->
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}
