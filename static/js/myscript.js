@@ -169,17 +169,24 @@ $('#to-recovery').click(function() {
 
 // Изменение текста при меньшем разрешении экрана
 $(document).ready(function() {
-$(window).resize(function() {
-	var windowWidth = $(window).width();
-	if(windowWidth > 768) {
-		console.log('skdjgfdkj');
-		$('.btn-outline-dark[name="btnOpenDoc"]').html('<i class="fa fa-file-pdf-o mr-2"></i>Открыть документ');
-	}
-	else {
-		$('.btn-outline-dark[name="btnOpenDoc"]').html('<i class="fa fa-file-pdf-o mr-2"></i>Открыть');
-	}
-});
+	$(window).resize(function() {
+		var windowWidth = $(window).width();
+		if(windowWidth > 768) {
+			$('.btn-outline-dark[name="btnOpenDoc"]').html('<i class="fa fa-file-pdf-o mr-2"></i>Открыть документ');
+		}
+		else {
+			$('.btn-outline-dark[name="btnOpenDoc"]').html('<i class="fa fa-file-pdf-o mr-2"></i>Открыть');
+		}
+	});
 });
 // END
 
 
+// $(document).ready(function() {
+//     $("nav > ul > li").mouseover(function() {
+//         var the_width = $(this).find("a").width();
+//         var child_width = $(this).find("ul").width();
+//         var width = parseInt((child_width - the_width)/2);
+//         $(this).find("ul").css('left', -width);
+//     });
+// });

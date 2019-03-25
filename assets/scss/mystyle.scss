@@ -629,11 +629,24 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 	color: #868e96;
 }
 /* ================ END Styles OLD ================== */
+.shadow-none {
+	box-shadow: none!important;
+}
+.shadow-sm {
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+.shadow {
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.shadow-lg {
+	box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
 
 .table-docs {
+
 	th, td {
 		font-size: 0.875rem;
-		vertical-align: middle;
+		vertical-align: middle !important;
 		color: #7e7e7e;
 
 		&:first-child {
@@ -646,15 +659,15 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 	color: #292929;
 	border-top: none;
 	border-bottom: none;
-    border-left: 3px solid #1880e7;
-    background-color: #f8f9fa;
+	border-left: 3px solid #1880e7;
+	background-color: #f8f9fa;
 
-    a {
-    	color: #292929;
-    	&:hover {
-    		color: inherit;
-    	}
-    }
+	a {
+		color: #292929;
+		&:hover {
+			color: inherit;
+		}
+	}
 }
 
 .reestr-block {
@@ -670,5 +683,38 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 	}
 	.table-secondary:hover > th {
 		background-color: #dddfe2;
+	}
+}
+
+.list-circle-sm {
+	font-size: 0.8rem;
+	list-style-type: circle;
+}
+
+.main-content .card.accordion-card:hover {
+	border: 1px solid rgba(0, 0, 0, 0.125) !important;
+	border-left: 1px solid #1880e7 !important;
+}
+.accordion-card {
+	border-left: 1px solid #1880e7 !important;
+
+	.btn-link {
+		white-space: normal;
+	}
+	.table-docs {
+		th {
+			color: #777;
+			text-align: center;
+			line-height: 1.2;
+			&:first-child {
+				border-left: inherit;
+			}
+		}
+		td {
+			line-height: 1.2;
+			&:first-child {
+				border-left: inherit;
+			}
+		}
 	}
 }

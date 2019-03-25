@@ -1,0 +1,105 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Саморегулируемая организация Ассоциация НАКС</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb mt-3 mb-2 p-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'sro' %}">СРО</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Общее собрание</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <a href="{% url 'sro' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <div class="main-content mt-4">
+                <h5 class="text-primary my-4">Общее собрание</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-docs mb-0">
+                        <tr class="table-secondary">
+                            <th colspan="2">2019 г.</th>
+                        </tr>
+                        <tr>
+                            <th>Протокол №23 Общего собрания от 28 июня 2019г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Протокол №22 Общего собрания от 22 января 2019г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th colspan="2">2018 г.</th>
+                        </tr>
+                        <tr>
+                            <th>Протокол №21 Общего собрания от 19 сентября 2018г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Протокол №20 Общего собрания от 22 января 2018г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th colspan="2">2017 г.</th>
+                        </tr>
+                        <tr>
+                            <th>Протокол №19 Общего собрания от 13 июня 2017г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Протокол №18 Общего собрания от 25 января 2017г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th colspan="2">2016 г.</th>
+                        </tr>
+                        <tr>
+                            <th>Протокол №17 Общего собрания от 21 июня 2016г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Протокол №16 Общего собрания от 20 января 2016г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th colspan="2">2015 г.</th>
+                        </tr>
+                        <tr>
+                            <th>Протокол №15 Общего собрания от 12 сентября 2015г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Протокол №14 Общего собрания от 21 января 2015г.</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/sro/right-menu-sro.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

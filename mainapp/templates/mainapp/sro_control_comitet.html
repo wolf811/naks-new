@@ -1,0 +1,173 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Саморегулируемая организация Ассоциация НАКС</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb mt-3 mb-2 p-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'sro' %}">СРО</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Комитет по контролю</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <a href="{% url 'sro' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <div class="main-content mt-4">
+
+        <!-- Big Radiobuttons -->
+        <div class="show-units">
+            <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block active" id="pills-composition-tab" data-toggle="pill" href="#pills-composition" role="tab" aria-controls="pills-composition" aria-selected="true">Комитет по контролю</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-protocols-tab" data-toggle="pill" href="#pills-protocols" role="tab" aria-controls="pills-protocols" aria-selected="false">Состав</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-committees-tab" data-toggle="pill" href="#pills-committees" role="tab" aria-controls="pills-committees" aria-selected="false">Протоколы</a>
+                </li>
+            </ul>
+        </div><!-- End Big Radiobuttons -->
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-composition" role="tabpanel" aria-labelledby="pills-composition-tab">
+                <!-- <h5 class="text-primary my-4">Деятельность</h5> -->
+                <p class="text-secondary">Комитет по контролю является постоянно действующим специализированным органом, осуществляющим контроль за соблюдением членами Ассоциации Стандартов и Правил предпринимательской деятельности и условий членства в Ассоциации.</p>
+
+                <div class="row mb-4">
+                    <div class="col-xl-6">
+                        <div class="card rounded-0">
+                            <div class="card-body">
+                                <p class="card-text">Положение о Комитете по контролю</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-docs mb-0">
+                        <tbody>
+                            <tr>
+                                <th>План проведения проверок деятельности организаций-членов СРО Ассоциация "НАКС" на 2019г.</th>
+                                <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" name="btnOpenDoc" aria-hidden="true"></i>Открыть документ</a></td>
+                            </tr>
+                            <tr>
+                                <th>План проведения проверок деятельности организаций-членов СРО НП "НАКС" на 2018г.</th>
+                                <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" name="btnOpenDoc" aria-hidden="true"></i>Открыть документ</a></td>
+                            </tr>
+                            <tr>
+                                <th>План проведения проверок деятельности организаций-членов СРО НП "НАКС" на 2017г.</th>
+                                <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" name="btnOpenDoc" aria-hidden="true"></i>Открыть документ</a></td>
+                            </tr>
+                            <tr>
+                                <th>План проведения проверок деятельности организаций-членов СРО НП "НАКС" на 2016г.</th>
+                                <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" name="btnOpenDoc" aria-hidden="true"></i>Открыть документ</a></td>
+                            </tr>
+                            <tr>
+                                <th>План проведения проверок деятельности организаций-членов СРО НП "НАКС" на 2015г.</th>
+                                <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" name="btnOpenDoc" aria-hidden="true"></i>Открыть документ</a></td>
+                            </tr>
+                            <tr>
+                                <th>План проведения проверок деятельности организаций-членов СРО НП "НАКС" на 2014г.</th>
+                                <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" name="btnOpenDoc" aria-hidden="true"></i>Открыть документ</a></td>
+                            </tr>
+                            <tr>
+                                <th>План проведения проверок деятельности организаций-членов СРО НП "НАКС" на 2013г.</th>
+                                <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" name="btnOpenDoc" aria-hidden="true"></i>Открыть документ</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+
+            <div class="tab-pane fade" id="pills-protocols" role="tabpanel" aria-labelledby="pills-protocols-tab">
+                <div class="row mb-4">
+                    <div class="col-xl-6">
+                        <div class="card rounded-0">
+                            <div class="card-body">
+                                <p class="card-text">Состав Комитета по контролю утвержден решением Президиума СРО НП "НАКС" (Протокол №49 от 25 января 2017 г.)</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-nts mb-0" id="table-composition">
+                        <tbody>
+                            <tr>
+                                <th width="30%">Жабин Александр Николаевич</th>
+                                <td>руководитель комитета, заместитель генерального директора СРО Ассоциация "НАКС", Москва</td>
+                            </tr>
+                            <tr>
+                                <th>Викулов Вадим Александрович</th>
+                                <td>директор АНО "Вологодский региональный аттестационный центр", Вологда</td>
+                            </tr>
+                            <tr>
+                                <th>Гребенчук Виктор Георгиевич</th>
+                                <td>заместитель директора филиала ОАО НИИ транспортного строительства, филиал "НИЦ "Мосты", Воронеж</td>
+                            </tr>
+                            <tr>
+                                <th>Марков Николай Николаевич</th>
+                                <td>заместитель генерального директора СРО Ассоциация "НАКС", Москва</td>
+                            </tr>
+                            <tr>
+                                <th>Усатый Сергей Геннадьевич</th>
+                                <td>технический директор ООО "НТЦ "Сура", Пенза</td>
+                            </tr>
+                            <tr>
+                                <th>Чупрак Александр Иванович</th>
+                                <td>технический директор СРО Ассоциация "НАКС", Москва</td>
+                            </tr>
+                            <tr>
+                                <th>Штоколов Сергей Александрович</th>
+                                <td>генеральный директор ООО «Научно-исследовательский институт по монтажным работам», Краснодар</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-committees" role="tabpanel" aria-labelledby="pills-committees-tab">
+                <!-- <h5 class="text-primary my-4">Регистрационные документы</h5> -->
+                <!-- Протоколы -->
+                {% include 'mainapp/includes/sro/sro-control-comitet-protocols.html' %}
+                <!-- END Протоколы -->
+            </div>
+        </div>
+    </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/sro/right-menu-sro.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

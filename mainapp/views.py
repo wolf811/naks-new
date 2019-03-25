@@ -183,6 +183,34 @@ def sro_reestr(request):
         'title': title
     }
     return render(request, 'mainapp/sro_reestr.html', content)
+
+def sro_sobranie(request):
+    title = 'НАКС - СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sro_sobranie.html', content)
+
+def sro_presidium(request):
+    title = 'НАКС - СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sro_presidium.html', content)
+
+def sro_president(request):
+    title = 'НАКС - СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sro_president.html', content)
+
+def sro_control_comitet(request):
+    title = 'НАКС - СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sro_control_comitet.html', content)
 # ============= end SRO ===============
 
 # ============= TK364 ===============
