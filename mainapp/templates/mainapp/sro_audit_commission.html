@@ -1,0 +1,77 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Саморегулируемая организация Ассоциация НАКС</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb mt-3 mb-2 p-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'sro' %}">СРО</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Ревизионная комиссия</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <a href="{% url 'sro' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <div class="main-content mt-4">
+                <h5 class="text-primary my-4">Ревизионная комиссия</h5>
+                <p class="text-secondary">Ревизионная комиссия является постоянно действующим коллегиальным органом для осуществления контроля за финансово-хозяйственной деятельностью Партнерства.</p>
+                <div class="row mb-4">
+                    <div class="col-xl-7">
+                        <div class="card rounded-0">
+                            <div class="card-body">
+                                <p class="card-text">Положение о ревизионной комиссии СРО НП "НАКС" <small>(утверждено решением Президиума СРО НП "НАКС", <a href="#" target="_blank">Протокол №17 от 17 января 2012г.</a>)</small></p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть Положение</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <p class="text-secondary"><small><a href="#" target="_blank">Положение о ревизионной комиссии СРО НП "НАКС"</a> (утверждено решением Президиума СРО НП "НАКС", <a href="#" target="_blank">Протокол №17 от 17 января 2012г.</a>).</small></p> -->
+                <h5>Состав Ревизионной комиссии СРО Ассоциация "НАКС"<br><small class="text-muted">(утвержден решением Общего собрания СРО НП "НАКС")</small></h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-docs mb-0">
+                        <tr>
+                            <th>Штенников Василий Сергеевич</th>
+                            <td>председатель комиссии, Ижевск</td>
+                        </tr>
+                        <tr>
+                            <th>Голубева Татьяна Геннадьевна</th>
+                            <td>Москва</td>
+                        </tr>
+                        <tr>
+                            <th>Коротин Александр Иванович</th>
+                            <td>Саранск</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/sro/right-menu-sro.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

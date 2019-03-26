@@ -629,6 +629,9 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 	color: #868e96;
 }
 /* ================ END Styles OLD ================== */
+.card-body {
+    padding: 0.8rem 1.25rem;
+}
 .shadow-none {
 	box-shadow: none!important;
 }
@@ -655,7 +658,7 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 	}
 }
 
-.right-main .bg-naks-active {
+.right-main .bg-naks-active, .right-main-xs .bg-naks-active {
 	color: #292929;
 	border-top: none;
 	border-bottom: none;
@@ -713,8 +716,15 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 		td {
 			line-height: 1.2;
 			&:first-child {
+				text-align: center;
 				border-left: inherit;
 			}
 		}
+	}
+}
+
+@media (min-width: 768px) {
+	#heightContent {
+		height: 1000px;
 	}
 }

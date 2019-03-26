@@ -211,6 +211,34 @@ def sro_control_comitet(request):
         'title': title
     }
     return render(request, 'mainapp/sro_control_comitet.html', content)
+
+def sro_disciplinary_comitet(request):
+    title = 'НАКС - СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sro_disciplinary_comitet.html', content)
+
+def sro_audit_commission(request):
+    title = 'НАКС - СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sro_audit_commission.html', content)
+
+def sro_legislation(request):
+    title = 'НАКС - СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sro_legislation.html', content)
+
+def sro_forms_docs(request):
+    title = 'НАКС - СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sro_forms_docs.html', content)
 # ============= end SRO ===============
 
 # ============= TK364 ===============

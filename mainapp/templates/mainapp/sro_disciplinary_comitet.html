@@ -1,0 +1,138 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Саморегулируемая организация Ассоциация НАКС</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb mt-3 mb-2 p-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'sro' %}">СРО</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Дисциплинарный комитет</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <a href="{% url 'sro' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <div class="main-content mt-4">
+
+        <!-- Big Radiobuttons -->
+        <div class="show-units">
+            <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block active" id="pills-composition-tab" data-toggle="pill" href="#pills-composition" role="tab" aria-controls="pills-composition" aria-selected="true">Дисциплинарный комитет</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-protocols-tab" data-toggle="pill" href="#pills-protocols" role="tab" aria-controls="pills-protocols" aria-selected="false">Состав</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-committees-tab" data-toggle="pill" href="#pills-committees" role="tab" aria-controls="pills-committees" aria-selected="false">Протоколы</a>
+                </li>
+            </ul>
+        </div><!-- End Big Radiobuttons -->
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-composition" role="tabpanel" aria-labelledby="pills-composition-tab">
+                <h5 class="text-primary my-4">Дисциплинарный комитет</h5>
+                <p class="text-secondary">Дисциплинарный комитет СРО Ассоциация "НАКС" является постоянно действующим специализированным органом по рассмотрению дел о применении в отношении членов Партнерства мер дисциплинарного воздействия в соответствии с "Положением о мерах дисциплинарного воздействия, порядке и основаниях их применения, порядке рассмотрения дел о применении мер дисциплинарного воздействия"</p>
+
+                <div class="row mb-4">
+                    <div class="col-xl-6">
+                        <div class="card rounded-0">
+                            <div class="card-body">
+                                <p class="card-text">Положение о Дисциплинарном комитете</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-protocols" role="tabpanel" aria-labelledby="pills-protocols-tab">
+                <h5 class="text-primary my-4">Состав Дисциплинарного комитета</h5>
+                <div class="row mb-4">
+                    <div class="col-xl-6">
+                        <div class="card rounded-0">
+                            <div class="card-body">
+                                <p class="card-text">Состав Дисциплинарного комитета утвержден решением Президиума СРО НП "НАКС" (Протокол №53 от 14 ноября 2017 г.)</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-nts mb-0" id="table-composition">
+                        <tbody>
+                            <tr>
+                                <th width="30%">Прилуцкий Андрей Иванович</th>
+                                <td>руководитель комитета, генеральный директор СРО Ассоциация "НАКС", Москва</td>
+                            </tr>
+                            <tr>
+                                <th>Атрощенко Валерий Владимирович</th>
+                                <td>заведующий кафедрой "Оборудование и технологии сварочного производства" УГАТУ, Уфа</td>
+                            </tr>
+                            <tr>
+                                <th>Бродягин Владимир Николаевич</th>
+                                <td>заместитель генерального директора ООО "Аттестационный Центр Городского Хозяйства", Москва</td>
+                            </tr>
+                            <tr>
+                                <th>Малолетков Алексей Владимирович</th>
+                                <td>генеральный директор ООО "Головной аттестационный центр Межрегиональный Национального Агентства Контроля и Сварки", Москва</td>
+                            </tr>
+                            <tr>
+                                <th>Орлов Александр Семёнович</th>
+                                <td>заведующий кафедрой металлических конструкций и сварки в строительстве ФГБОУ ВПО "Воронежский государственный архитектурно-строительный университет", директор Центра переподготовки специалистов сварочного производства, Воронеж</td>
+                            </tr>
+                            <tr>
+                                <th>Прокопьев Сергей Викторович</th>
+                                <td>директор ООО "Головной аттестационный центр - Средне - Сибирского региона", Красноярск</td>
+                            </tr>
+                            <tr>
+                                <th>Смородинский Яков Гаврилович</th>
+                                <td>заведующий лабораторией комплексных методов контроля ФГБУ науки Институт физики металлов имени М.Н. Михеева Уральского отделения Российской академии наук, Екатеринбург</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-committees" role="tabpanel" aria-labelledby="pills-committees-tab">
+                <h5 class="text-primary my-4">Протоколы заседаний</h5>
+                <!-- Протоколы -->
+                {% include 'mainapp/includes/sro/sro-disciplinary-comitet-protocols.html' %}
+                <!-- END Протоколы -->
+            </div>
+        </div>
+    </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/sro/right-menu-sro.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,55 +1,12 @@
 {% load static %}
 
-<!-- <div id="wrap" class="w-100">
-    <div class="right-main">
-        <div class="card rounded-0">
-            <div class="card-header bg-naks">
-                <a href="{% url 'sro_activity' %}">Деятельность<br>СРО Ассоциация НАКС</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
-            <div class="card-header bg-naks bg-naks-active">
-                <a href="{% url 'sro_docs' %}">Стандарты и правила НАКС</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
-            <div class="card-header bg-naks">
-                <a href="{% url 'sro_reestr' %}">Реестр членов<br>СРО Ассоциация НАКС</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
-            <div class="card-header bg-naks">
-                <a href="{% url 'sro_sobranie' %}">Органы управления</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
-            <div class="card-header bg-naks">
-                <a href="#">Комитеты и комиссии</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
-            <div class="card-header bg-naks">
-                <a href="#">Законодательство</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
-            <div class="card-header bg-naks">
-                <a href="#">Формы документов</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
-            <div class="card-header bg-naks">
-                <a href="{% url 'agreement' %}">Партнеры и соглашения</a>
-            </div>
-        </div>
-    </div>
-</div> -->
 <div id="wrap" class="w-100">
     <div id="accordion_02" class="right-main">
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_00">
                 <a href="#" data-toggle="collapse" data-target="#collapse_10" aria-expanded="true" aria-controls="collapse_10">СРО Ассоциация НАКС</a>
             </div>
+            <!-- TODO: Здесь со всех подпунктов переход на одну страницу под разные табы, надо учесть активность кнопок -->
             <div id="collapse_10" class="collapse" aria-labelledby="heading_00" data-parent="#accordion_02">
                 <div class="card-body">
                     <a href="{% url 'sro_activity' %}" class="dropdown-item">Деятельность</a>
@@ -60,42 +17,22 @@
                 </div>
             </div>
         </div>
-
         <div class="card rounded-0">
-            <!-- TODO Добавляем класс .bg-naks-active -->
+            <!-- TODO: При переходе на страницу к .bg-naks добавляем класс .bg-naks-active -->
             <div class="card-header bg-naks bg-naks-active" id="heading_02">
-                <a href="{% url 'sro_docs' %}" class="collapsed">Стандарты и правила</a>
+                <a href="{% url 'sro_docs' %}" class="collapsed">Стандарты и правила НАКС</a>
             </div>
-
-            <!-- <div class="card-header bg-naks bg-naks-active" id="heading_02">
-                <a href="{% url 'sro_docs' %}" class="collapsed" data-toggle="collapse" data-target="#collapse_02" aria-expanded="false" aria-controls="collapse_02">Стандарты и правила</a>
-            </div>
-            <div id="collapse_02" class="collapse" aria-labelledby="heading_02" data-parent="#accordion_02">
-                <div class="card-body">
-                    <a href="{% url 'sro_docs' %}" class="dropdown-item">Стандарты СТО НАКС</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_docs' %}" class="dropdown-item">Правила СРО Ассоциация "НАКС"</a>
-                </div>
-            </div> -->
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_03">
                 <a href="{% url 'sro_reestr' %}" class="collapsed">Реестр членов СРО Ассоциация НАКС</a>
             </div>
-
-            <!-- <div class="card-header bg-naks" id="heading_03">
-                <a href="{% url 'sro_reestr' %}" class="collapsed" data-toggle="collapse" data-target="#collapse_03" aria-expanded="false" aria-controls="collapse_03">Реестр членов СРО Ассоциация НАКС</a>
-            </div>
-            <div id="collapse_03" class="collapse" aria-labelledby="heading_03" data-parent="#accordion_02">
-                <div class="card-body">
-                    <a href="{% url 'sro_reestr' %}" class="dropdown-item">Информация</a>
-                </div>
-            </div> -->
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_04">
                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_14" aria-expanded="false" aria-controls="collapse_14">Органы управления</a>
             </div>
+            <!-- TODO: По клику на пункте меню к collapse добавляется .show, а к .dropdown-item добавляем .active -->
             <div id="collapse_14" class="collapse" aria-labelledby="heading_04" data-parent="#accordion_02">
                 <div class="card-body">
                     <a href="{% url 'sro_sobranie' %}" class="dropdown-item">Общее собрание</a>
@@ -114,53 +51,26 @@
                 <div class="card-body">
                     <a href="{% url 'sro_control_comitet' %}" class="dropdown-item">Комитет по контролю</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Дисциплинарный комитет</a>
+                    <a href="{% url 'sro_disciplinary_comitet' %}" class="dropdown-item">Дисциплинарный комитет</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Ревизионная комиссия</a>
+                    <a href="{% url 'sro_audit_commission' %}" class="dropdown-item">Ревизионная комиссия</a>
                 </div>
             </div>
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_05">
-                <a href="#" class="collapsed">Законодательство</a>
+                <a href="{% url 'sro_legislation' %}" class="collapsed">Законодательство</a>
             </div>
-
-            <!-- <div class="card-header bg-naks" id="heading_05">
-                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_05" aria-expanded="false" aria-controls="collapse_05">Законодательство</a>
-            </div>
-            <div id="collapse_05" class="collapse" aria-labelledby="heading_05" data-parent="#accordion_02">
-                <div class="card-body">
-                    <a href="#" class="dropdown-item">Информация</a>
-                </div>
-            </div> -->
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_06">
-                <a href="#" class="collapsed">Формы документов</a>
+                <a href="{% url 'sro_forms_docs' %}" class="collapsed">Формы документов</a>
             </div>
-
-            <!-- <div class="card-header bg-naks" id="heading_06">
-                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_06" aria-expanded="false" aria-controls="collapse_06">Формы документов</a>
-            </div>
-            <div id="collapse_06" class="collapse" aria-labelledby="heading_06" data-parent="#accordion_02">
-                <div class="card-body">
-                    <a href="#" class="dropdown-item">Информация</a>
-                </div>
-            </div> -->
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_08">
                 <a href="{% url 'agreement' %}" class="collapsed">Партнеры и соглашения</a>
             </div>
-
-            <!-- <div class="card-header bg-naks" id="heading_08">
-                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_18" aria-expanded="false" aria-controls="collapse_18">Партнеры и соглашения</a>
-            </div>
-            <div id="collapse_18" class="collapse" aria-labelledby="heading_08" data-parent="#accordion_02">
-                <div class="card-body">
-                    <a href="{% url 'agreement' %}" class="dropdown-item">Информация</a>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>

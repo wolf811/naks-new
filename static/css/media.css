@@ -230,10 +230,10 @@
 	.popover.bs-popover-bottom, .popover.bs-popover-auto[x-placement^="bottom"] {
 		margin-top: 0.8rem;
 	}
-	#logoFooter {
+	/* #logoFooter {
 		display: block !important;
 		text-align: center;
-	}
+	} */
 	.button-activities a {
 		font-size: 0.8rem;
 	}
@@ -297,8 +297,10 @@
 /* 4 колонки на lg и xl */
 @media (min-width: 992px) {
 	#openNaksContent .card-columns {
-		-webkit-column-count: 4;
-		column-count: 4;
+		-webkit-column-count: 3;
+		column-count: 3;
+		/* -webkit-column-count: 4;
+		column-count: 4; */
 	}
 
 	#sasvPartnersContent .card-columns {

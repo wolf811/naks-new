@@ -39,6 +39,7 @@
             <div class="card-header bg-naks" id="heading_03">
                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_03" aria-expanded="false" aria-controls="collapse_03">Аттестация сварочного оборудования</a>
             </div>
+            <!-- TODO: По клику на пункте меню к collapse добавляется .show, а к .dropdown-item добавляем .active -->
             <div id="collapse_03" class="collapse" aria-labelledby="heading_03" data-parent="#accordion_00">
                 <div class="card-body">
                     <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
@@ -80,19 +81,16 @@
             </div>
         </div>
         <div class="card rounded-0">
+            <!-- TODO: При переходе на страницу к .bg-naks добавляем класс .bg-naks-active -->
             <div class="card-header bg-naks" id="heading_05">
-                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_05" aria-expanded="false" aria-controls="collapse_05">Справочно-техническая информация</a>
-            </div>
-            <div id="collapse_05" class="collapse" aria-labelledby="heading_05" data-parent="#accordion_00">
-                <div class="card-body">
-                    <a href="{% url 'sasv_helpInfo' %}" class="dropdown-item">Информация</a>
-                </div>
+                <a href="{% url 'sasv_helpInfo' %}" class="collapsed">Справочно-техническая информация</a>
             </div>
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_06">
                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_06" aria-expanded="false" aria-controls="collapse_06">Научно-технический совет НАКС</a>
             </div>
+            <!-- TODO: Здесь со всех подпунктов переход на одну страницу под разные табы, надо учесть активность кнопок -->
             <div id="collapse_06" class="collapse" aria-labelledby="heading_06" data-parent="#accordion_00">
                 <div class="card-body">
                     <a href="{% url 'sasv_nts' %}" class="dropdown-item">Состав НТС</a>
@@ -105,22 +103,12 @@
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_07">
-                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_07" aria-expanded="false" aria-controls="collapse_07">Открытый НАКС</a>
-            </div>
-            <div id="collapse_07" class="collapse" aria-labelledby="heading_07" data-parent="#accordion_00">
-                <div class="card-body">
-                    <a href="{% url 'sasv_openNaks' %}" class="dropdown-item">Информация</a>
-                </div>
+                <a href="{% url 'sasv_openNaks' %}" class="collapsed">Открытый НАКС</a>
             </div>
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_08">
-                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_08" aria-expanded="false" aria-controls="collapse_08">Партнеры и соглашения</a>
-            </div>
-            <div id="collapse_08" class="collapse" aria-labelledby="heading_08" data-parent="#accordion_00">
-                <div class="card-body">
-                    <a href="{% url 'agreement' %}" class="dropdown-item">Информация</a>
-                </div>
+                <a href="{% url 'agreement' %}" class="collapsed">Партнеры и соглашения</a>
             </div>
         </div>
     </div>

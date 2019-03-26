@@ -1,0 +1,128 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Саморегулируемая организация Ассоциация НАКС</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb mt-3 mb-2 p-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'sro' %}">СРО</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Формы документов</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <a href="{% url 'sro' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <div class="main-content mt-4">
+                <h5 class="text-primary my-4">Формы документов</h5>
+                <h5>Перечень документов для вступления в члены СРО Ассоциация «НАКС»</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-docs mb-5">
+                        <tr>
+                            <td>1.</td>
+                            <th>Заявление от юридического лица о вступлении в СРО Ассоциация «НАКС»</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <th>Оригинал протокола собрания учредителей (участников) с решением о вступлении  в СРО Ассоциация «НАКС»</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <th>Нотариально заверенная копия свидетельства о государственной регистрации юридического лица (ОГРН)</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <th>Нотариально заверенная копия свидетельства о постановке на налоговый учет</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <th>Нотариально заверенная копия Устава юридического лица</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <th>Оригинал выписки из ЕГРЮЛ (с датой выдачи не ранее одного месяца до дня подачи заявления)</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <th>Коды ОКВЭД, обязательные для членов СРО Ассоциация «НАКС»</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <th>Заверенная нотариально или страховой компанией копия страхового полиса (договора страхования) на страхование гражданской ответственности при осуществлении деятельности на страховую сумму в размере не менее 1 000 000 руб. в год (Представляется после решения Президиума о приеме в члены)</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h5>Перечень документов для получения Свидетельства о допуске к осуществлению определенного вида (видов) деятельности</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-docs mb-5">
+                        <tr>
+                            <td>1.</td>
+                            <th>Заявление на выдачу свидетельства (свидетельств) о допуске к осуществлению определенного вида (видов) деятельности</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <th>Для аттестационных центров (органов по сертификации): Аттестат соответствия аттестационного центра САСв, и(или) аттестат аккредитации в Системах добровольной сертификации НАКС № РОСС RU.И.105.04СО00 и (или) № РОСС RU.И106.04СС00</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <th>Для испытательных лабораторий: Аттестат (свидетельство) аккредитации и (или) свидетельство об аттестации в соответствии с ПБ 03-372-00 или ГОСТ Р 51000.4-2008</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <th>Для экспертных организаций: Лицензия Ростехнадзора (с приложениями) на проведение экспертизы промышленной безопасности</th>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h5>Формы иных документов</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-docs mb-0">
+                        <tr>
+                            <td>1.</td>
+                            <th>Образец доверенности на право участия в общем собрании</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/sro/right-menu-sro.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -24,70 +24,86 @@
     </div>
     <hr>
 
-    <div class="main-content mt-4">
+    
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
+            </div> 
+            <!-- End mobil right main -->
 
-        <!-- Big Radiobuttons -->
-        <div class="show-units">
-            <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
-                <li class="col-auto col-lg-6 nav-item mb-4">
-                    <a class="btn btn-outline-danger btn-block active" id="pills-composition-tab" data-toggle="pill" href="#pills-composition" role="tab" aria-controls="pills-composition" aria-selected="true">Состав НТС</a>
-                </li>
-                <li class="col-auto col-lg-6 nav-item mb-4">
-                    <a class="btn btn-outline-danger btn-block" id="pills-protocols-tab" data-toggle="pill" href="#pills-protocols" role="tab" aria-controls="pills-protocols" aria-selected="false">Протоколы НТС</a>
-                </li>
-                <li class="col-auto col-lg-6 nav-item mb-4">
-                    <a class="btn btn-outline-danger btn-block" id="pills-committees-tab" data-toggle="pill" href="#pills-committees" role="tab" aria-controls="pills-committees" aria-selected="false">Комитеты НТС</a>
-                </li>
-            </ul>
-        </div><!-- End Big Radiobuttons -->
+            <div class="main-content mt-4">
+                
+                <!-- Big Radiobuttons -->
+                <div class="show-units">
+                    <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
+                        <li class="col-auto col-lg-6 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block active" id="pills-composition-tab" data-toggle="pill" href="#pills-composition" role="tab" aria-controls="pills-composition" aria-selected="true">Состав НТС</a>
+                        </li>
+                        <li class="col-auto col-lg-6 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block" id="pills-protocols-tab" data-toggle="pill" href="#pills-protocols" role="tab" aria-controls="pills-protocols" aria-selected="false">Протоколы НТС</a>
+                        </li>
+                        <li class="col-auto col-lg-6 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block" id="pills-committees-tab" data-toggle="pill" href="#pills-committees" role="tab" aria-controls="pills-committees" aria-selected="false">Комитеты НТС</a>
+                        </li>
+                    </ul>
+                </div><!-- End Big Radiobuttons -->
 
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-composition" role="tabpanel" aria-labelledby="pills-composition-tab">
-                <h5 class="text-primary my-4">Состав НТС НАКС</h5>
-                <div class="mt-3 mb-4">
-                    <div class="card-deck">
-                        <div class="card rounded-0">
-                            <div class="card-body">
-                                <p class="card-text">Положение о Научно-техническом совете НАКС</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-composition" role="tabpanel" aria-labelledby="pills-composition-tab">
+                        <h5 class="text-primary my-4">Состав НТС НАКС</h5>
+                        <div class="mt-3 mb-4">
+                            <div class="card-deck">
+                                <div class="card rounded-0">
+                                    <div class="card-body">
+                                        <p class="card-text">Положение о Научно-техническом совете НАКС</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                                    </div>
+                                </div>
+                                <div class="card rounded-0">
+                                    <div class="card-body">
+                                        <p class="card-text">Состав НТС НАКС утвержден решением Президиума СРО НП «НАКС», протокол №49 от 25 января 2017г.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card rounded-0">
-                            <div class="card-body">
-                                <p class="card-text">Состав НТС НАКС утвержден решением Президиума СРО НП «НАКС», протокол №49 от 25 января 2017г.</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
-                            </div>
+                        <div class="table-responsive">
+                            <!-- Состав -->
+                            {% include 'mainapp/includes/sasv/sasv_nts_sostav.html' %}
+                            <!-- End Состав -->
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-protocols" role="tabpanel" aria-labelledby="pills-protocols-tab">
+                        <h5 class="text-primary my-4">Протоколы НТС НАКС</h5>
+                        <div class="table-responsive">
+                            <!-- Протоколы -->
+                            {% include 'mainapp/includes/sasv/sasv_nts_protocols.html' %}
+                            <!-- End Протоколы -->
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-committees" role="tabpanel" aria-labelledby="pills-committees-tab">
+                        <h5 class="text-primary my-4">Комитеты НТС НАКС</h5>
+                        <div class="table-responsive">
+                            <!-- Комитеты -->
+                            {% include 'mainapp/includes/sasv/sasv_nts_committees.html' %}
+                            <!-- End Комитеты -->
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <!-- Состав -->
-                    {% include 'mainapp/includes/sasv/sasv_nts_sostav.html' %}
-                    <!-- End Состав -->
-                </div>
             </div>
-
-            <div class="tab-pane fade" id="pills-protocols" role="tabpanel" aria-labelledby="pills-protocols-tab">
-                <h5 class="text-primary my-4">Протоколы НТС НАКС</h5>
-                <div class="table-responsive">
-                    <!-- Протоколы -->
-                    {% include 'mainapp/includes/sasv/sasv_nts_protocols.html' %}
-                    <!-- End Протоколы -->
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="pills-committees" role="tabpanel" aria-labelledby="pills-committees-tab">
-                <h5 class="text-primary my-4">Комитеты НТС НАКС</h5>
-                <div class="table-responsive">
-                    <!-- Комитеты -->
-                    {% include 'mainapp/includes/sasv/sasv_nts_committees.html' %}
-                    <!-- End Комитеты -->
-                </div>
-            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/sasv/right-menu-sasv.html' %}
+            <!-- End Content Right menu -->
         </div>
     </div>
 </div>

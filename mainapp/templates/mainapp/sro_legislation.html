@@ -1,0 +1,69 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Саморегулируемая организация Ассоциация НАКС</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb mt-3 mb-2 p-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'sro' %}">СРО</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Законодательство</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <a href="{% url 'sro' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <div class="main-content mt-4">
+                <h5 class="text-primary my-4">Законодательство</h5>
+                <p class="text-secondary">Саморегулирование - самостоятельная и инициативная деятельность, которая осуществляется субъектами предпринимательской или профессиональной деятельности и содержанием которой являются разработка и установление стандартов и правил указанной деятельности, а также контроль за соблюдением требований указанных стандартов и правил.</p>
+                <p class="text-secondary">Саморегулирование в соответствии с Федеральным законом от 1 декабря 2007 года N 315-ФЗ «О саморегулируемых организациях» осуществляется на условиях объединения субъектов предпринимательской или профессиональной деятельности в саморегулируемые организации.</p>
+                <p class="text-secondary">Саморегулируемая организация - некоммерческая организация, созданная в соответствии с Гражданским кодексом Российской Федерации и Федеральным законом от 12 января 1996 года N 7-ФЗ "О некоммерческих организациях", при условии ее соответствия всем установленным Федеральным законом от 1 декабря 2007 года N 315-ФЗ «О саморегулируемых организациях» требованиям.</p>
+                <div class="mt-3 mb-4">
+                    <div class="card-deck">
+                        <div class="card rounded-0">
+                            <div class="card-body">
+                                <p class="card-text">Федеральный закон №7-Ф3 "О некоммерческих организациях"</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                            </div>
+                        </div>
+                        <div class="card rounded-0">
+                            <div class="card-body">
+                                <p class="card-text">Федеральный закон №315-Ф3 "О саморегулируемых организациях"</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/sro/right-menu-sro.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

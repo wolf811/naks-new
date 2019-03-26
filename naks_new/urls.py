@@ -56,6 +56,10 @@ urlpatterns = [
     path('sro_presidium/', mainapp.sro_presidium, name = 'sro_presidium'),
     path('sro_president/', mainapp.sro_president, name = 'sro_president'),
     path('sro_control_comitet/', mainapp.sro_control_comitet, name = 'sro_control_comitet'),
+    path('sro_disciplinary_comitet/', mainapp.sro_disciplinary_comitet, name = 'sro_disciplinary_comitet'),
+    path('sro_audit_commission/', mainapp.sro_audit_commission, name = 'sro_audit_commission'),
+    path('sro_legislation/', mainapp.sro_legislation, name = 'sro_legislation'),
+    path('sro_forms_docs/', mainapp.sro_forms_docs, name = 'sro_forms_docs'),
     path('tk364/', mainapp.tk364, name = 'tk364'),
     path('spks/', mainapp.spks, name = 'spks'),
     path('spks_docs/', mainapp.spks_docs, name = 'spks_docs'),
@@ -66,7 +70,6 @@ urlpatterns = [
     path('sds_reestr_sm/', mainapp.sds_reestr_sm, name = 'sds_reestr_sm'),
     path('sds_reestr_so/', mainapp.sds_reestr_so, name = 'sds_reestr_so'),
     path('sds_reestr_st/', mainapp.sds_reestr_st, name = 'sds_reestr_st'),
-    # path('reestr/', mainapp.reestr, name = 'reestr'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 if settings.DEBUG:
