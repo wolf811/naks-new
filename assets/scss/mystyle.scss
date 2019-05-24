@@ -5,108 +5,7 @@ body {
 	background-repeat: no-repeat;
 }
 /* Change Bootstrap */
-:root {
-	--blue: #0463B1;  /* My color */
-	--red: #ed2629; /* My color */
-	--primary: #0463B1;  /* My color */
-	--danger: #ed2629; /* My color */
-}
-.navbar {padding: 0.5rem 0;}
-.popover {border-radius: 0;}
-.tooltip.show {opacity: 1;}
-.btn-primary {
-	background-color: #0463B1;
-	border-color: #0463B1;
-}
-.btn-outline-primary {
-	color: #0463B1;
-	border-color: #0463B1;
-}
-.btn-outline-primary:hover {
-	background-color: #0463B1;
-	border-color: #0463B1;
-}
-
-.btn-danger {
-	background-color: #ed2629;
-	border-color: #ed2629;
-}
-.btn-outline-danger {
-	color: #ed2629;
-	border-color: #ed2629;
-}
-.btn-outline-danger:hover {
-	background-color: #ed2629;
-	border-color: #ed2629;
-}
-.btn-outline-danger:not([disabled]):not(.disabled):active, 
-.btn-outline-danger:not([disabled]):not(.disabled).active, 
-.show > .btn-outline-danger.dropdown-toggle {
-	color: #fff;
-	background-color: #ed2629;
-	border-color: #ed2629;
-}
-.page-item.active .page-link {
-	background-color: #0463B1;
-	border-color: #0463B1;
-}
-.carousel-control-prev, .carousel-control-next {
-	opacity: 1;
-}
-.carousel-indicators {
-	bottom: 0;
-}
-.carousel-indicators .active {
-	outline: 3px solid #fff;
-}
-.carousel-caption {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	top: 25%;
-	z-index: 10;
-	padding-top: 0;
-	padding-bottom: 0;
-	color: #fff;
-	text-align: left;
-}
-.dropdown-toggle::after {
-	display: none;
-}
-.dropdown-menu {
-	padding: 1rem;
-}
-a.dropdown-item {
-	display: block;
-	color: #7e7e7e;
-	font-size: 14px;
-	font-weight: 300;
-	border-left: 3px solid transparent;
-	padding-left: 10px;
-	white-space: normal;
-}
-a.dropdown-item:focus, a.dropdown-item:hover {
-	text-decoration: none;
-	color: #292929;
-	border-left: 3px solid #1880e7;
-}
-.dropdown-item.active, .dropdown-item:active {
-	color: #292929;
-	border-left: 3px solid #1880e7;
-	background-color: #f8f9fa;
-}
-.breadcrumb {
-	background-color: transparent;
-	font-size: 0.875rem;
-}
-.custom-control-input:checked~.custom-control-indicator {
-	background-color: #868e96;
-}
-.btn, .btn-group-lg > .btn, .btn-group-sm > .btn, .form-control, a.page-link {border-radius: 0 !important;}
-.table-sm td {vertical-align: middle !important;}
-.table-sm td:last-child {font-size: 0.875rem;}
-.modal-content {border-radius: 0;}
+@import "change-bootstrap";
 /* End Change */
 
 .header-menu {background-color: #fff;}
@@ -190,53 +89,17 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 	right: 20%;
 	padding-right: 15px;
 }
+
+// Центральные кнопки, карта
 .main-activity {
 	background-color: #fff;
+
+	/* Button-activities */
+	@import "button-activities";
+	/* End Button-activities */
 }
-.button-activities {
-	width: 100%;
-	background: -webkit-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
-	background: -moz-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
-	background: -o-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
-	background: -ms-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
-	background: linear-gradient(227deg, #0066cc 28%, #0356a8 72%);
-	color: #fff;
-}
-.button-activities:hover {
-	background: -webkit-linear-gradient(-137deg, #0066cc 35%, #0356a8 65%);
-	background: -moz-linear-gradient(-137deg, #0066cc 35%, #0356a8 65%);
-	background: -o-linear-gradient(-137deg, #0066cc 35%, #0356a8 65%);
-	background: -ms-linear-gradient(-137deg, #0066cc 35%, #0356a8 65%);
-	background: linear-gradient(227deg, #0066cc 35%, #0356a8 65%);
-}
-.button-activities a {
-	font-size: 0.7rem;
-	text-transform: uppercase;
-	color: #fff;
-	line-height: 1.5;
-}
-.button-activities a:hover {
-	text-decoration: none;
-	color: #ddd;
-}
-.button-activities .table td:first-child {
-	font-size: 1.625rem;
-	width: 35% !important;
-	text-align: center;
-}
-.button-activities .table {margin-bottom: 0; height: 100px;}
-.button-activities .table td {
-	border-top: none;
-	vertical-align: middle;
-}
-.line-right {
-	border-right: 2px solid #fff; 
-	height: 30px;
-}
-#ico_journal {width: 40px;}
-.button-activities .table td:last-child {
-	padding-right: 5px;
-}
+// End Центральные кнопки, карта
+
 .show-units .btn-outline-danger, .nav-docs .btn-outline-danger {
 	color: #7e7e7e;
 	background-color: transparent;
@@ -330,37 +193,7 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 	content: "\e109";
 }
 /* Наверх */
-.top-arrow.top-arrow-active {
-	bottom: 20px;
-}
-.top-arrow {
-	position: fixed;
-	right: 20px;
-	width: 40px;
-	height: 40px;
-	transition: 0.4s;
-	opacity: 0.7;
-	border: 1px solid #fff;
-	background-color: #343A40;
-	z-index: 100;
-	outline: 0 !important;
-	cursor: pointer;
-}
-.top-arrow:hover {opacity: 1;}
-.top-arrow::after {
-	content: '';
-	width: 10px;
-	height: 10px;
-	border-top: 1px solid #fff;
-	border-left: 1px solid #fff;
-	transform: rotate(45deg);
-	position: absolute;
-	top: 4px;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
-}
+@import "top-arrow";
 /* End Наверх */
 
 .scrollspy-modal {
@@ -494,10 +327,7 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 
 /* Maps Style */
 .ymaps-2-1-56-copyright {display: none !important;}
-.button-activities.active, .button-activities:focus, .button-activities:hover {
-	border-color: #005cbf;
-	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-}
+
 .img-news {
 	height: 450px;
 	overflow: hidden;

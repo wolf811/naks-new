@@ -29,6 +29,9 @@ body {
   background-color: #0463B1;
   border-color: #0463B1; }
 
+button:hover {
+  cursor: pointer; }
+
 .btn-outline-primary {
   color: #0463B1;
   border-color: #0463B1; }
@@ -213,48 +216,49 @@ a.dropdown-item:focus, a.dropdown-item:hover {
   padding-right: 15px; }
 
 .main-activity {
-  background-color: #fff; }
-
-.button-activities {
-  width: 100%;
-  background: linear-gradient(227deg, #0066cc 28%, #0356a8 72%);
-  color: #fff; }
-
-.button-activities:hover {
-  background: linear-gradient(227deg, #0066cc 35%, #0356a8 65%); }
-
-.button-activities a {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  color: #fff;
-  line-height: 1.5; }
-
-.button-activities a:hover {
-  text-decoration: none;
-  color: #ddd; }
-
-.button-activities .table td:first-child {
-  font-size: 1.625rem;
-  width: 35% !important;
-  text-align: center; }
-
-.button-activities .table {
-  margin-bottom: 0;
-  height: 100px; }
-
-.button-activities .table td {
-  border-top: none;
-  vertical-align: middle; }
-
-.line-right {
-  border-right: 2px solid #fff;
-  height: 30px; }
-
-#ico_journal {
-  width: 40px; }
-
-.button-activities .table td:last-child {
-  padding-right: 5px; }
+  background-color: #fff;
+  /* Button-activities */
+  /* End Button-activities */ }
+  .main-activity .button-activities {
+    width: 100%;
+    background: linear-gradient(227deg, #0066cc 28%, #0356a8 72%);
+    color: #fff; }
+    .main-activity .button-activities:hover, .main-activity .button-activities:focus {
+      border-color: #005cbf;
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+      background: linear-gradient(227deg, #0066cc 35%, #0356a8 65%);
+      -webkit-transition: 0.3s;
+      transition: 0.3s; }
+    .main-activity .button-activities .button-activities.active {
+      border-color: #005cbf;
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); }
+    .main-activity .button-activities a {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.5; }
+      .main-activity .button-activities a:hover {
+        text-decoration: none;
+        color: #ddd; }
+    .main-activity .button-activities .table {
+      margin-bottom: 0;
+      height: 100px; }
+      .main-activity .button-activities .table td {
+        border-top: none;
+        vertical-align: middle; }
+        .main-activity .button-activities .table td:first-child {
+          font-size: 1.625rem;
+          width: 35% !important;
+          text-align: center; }
+        .main-activity .button-activities .table td:last-child {
+          padding-right: 5px; }
+    .main-activity .button-activities .line-right {
+      border-right: 2px solid #fff;
+      height: 30px; }
+    .main-activity .button-activities #ico_journal {
+      width: 40px; }
 
 .show-units .btn-outline-danger, .nav-docs .btn-outline-danger {
   color: #7e7e7e;
@@ -555,11 +559,6 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 /* Maps Style */
 .ymaps-2-1-56-copyright {
   display: none !important; }
-
-.button-activities.active, .button-activities:focus, .button-activities:hover {
-  border-color: #005cbf;
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); }
 
 .img-news {
   height: 450px;

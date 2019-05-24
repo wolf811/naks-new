@@ -1,0 +1,64 @@
+.button-activities {
+	width: 100%;
+	background: -webkit-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
+	background: -moz-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
+	background: -o-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
+	background: -ms-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
+	background: linear-gradient(227deg, #0066cc 28%, #0356a8 72%);
+	color: #fff;
+
+	&:hover, &:focus {
+		border-color: #005cbf;
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+		background: -webkit-linear-gradient(-137deg, #0066cc 35%, #0356a8 65%);
+		background: -moz-linear-gradient(-137deg, #0066cc 35%, #0356a8 65%);
+		background: -o-linear-gradient(-137deg, #0066cc 35%, #0356a8 65%);
+		background: -ms-linear-gradient(-137deg, #0066cc 35%, #0356a8 65%);
+		background: linear-gradient(227deg, #0066cc 35%, #0356a8 65%);
+		transition: 0.3s;
+	}
+
+	.button-activities.active {
+		border-color: #005cbf;
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+	}
+
+	a {
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		color: #fff;
+		line-height: 1.5;
+
+		&:hover {
+			text-decoration: none;
+			color: #ddd;
+		}
+	}
+
+	.table {
+		margin-bottom: 0; 
+		height: 100px;
+
+		td {
+			border-top: none;
+			vertical-align: middle;
+
+			&:first-child {
+				font-size: 1.625rem;
+				width: 35% !important;
+				text-align: center;
+			}
+			&:last-child {
+				padding-right: 5px;
+			}
+		}
+
+	}
+
+	.line-right {
+		border-right: 2px solid #fff; 
+		height: 30px;
+	}
+
+	#ico_journal {width: 40px;}
+}

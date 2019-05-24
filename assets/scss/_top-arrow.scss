@@ -1,0 +1,31 @@
+.top-arrow.top-arrow-active {
+	bottom: 20px;
+}
+.top-arrow {
+	position: fixed;
+	right: 20px;
+	width: 40px;
+	height: 40px;
+	transition: 0.4s;
+	opacity: 0.7;
+	border: 1px solid #fff;
+	background-color: #343A40;
+	z-index: 100;
+	outline: 0 !important;
+	cursor: pointer;
+}
+.top-arrow:hover {opacity: 1;}
+.top-arrow::after {
+	content: '';
+	width: 10px;
+	height: 10px;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	transform: rotate(45deg);
+	position: absolute;
+	top: 4px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
