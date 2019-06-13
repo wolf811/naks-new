@@ -12,6 +12,7 @@
 	border-color: #0463B1;
 }
 button:hover {cursor: pointer;}
+.btn {white-space: nowrap;}
 .btn-outline-primary {
 	color: #0463B1;
 	border-color: #0463B1;
@@ -101,3 +102,4 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 .table-sm td {vertical-align: middle !important;}
 .table-sm td:last-child {font-size: 0.875rem;}
 .modal-content {border-radius: 0;}
+

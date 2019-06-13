@@ -190,3 +190,59 @@ $(document).ready(function() {
 //         $(this).find("ul").css('left', -width);
 //     });
 // });
+
+
+//     var data = {
+//     	'modal-title': 'Форум «Территория NDT»',
+//     	'modal-text': 'Ежегодный Форум «Территория NDT» является ведущей профессиональной \
+//     	площадкой для конструктивного диалога заинтересованных сторон и демонстрации новейших \
+//     	достижений и разработок. Крупнейшая специализированная выставка оборудования и технологий \
+//     	неразрушающего контроля и технической диагностики ежегодно объединяет более 100 компаний – \
+//     	разработчиков и поставщиков российских и зарубежных брендов, сервисные учебные и сертификационные \
+//     	центры, ВУЗы, НИИ, специализированные издания.',
+//     	'modal-photos': ['/static/images/NDT-0617.jpg', '/static/images/NDT-0427.jpg', '/static/images/IMG_7428.JPG']
+
+//     };
+
+// function insertToModal (data) {
+// 	$('.modal-title').html(data['modal-title']);
+// 	$('.modal-text').html(data['modal-text']);
+// 	for(var element of data['modal-photos']) {
+// 		$($('.carousel-inner > .carousel-item')[data['modal-photos'].indexOf(element)]).attr('src', element);
+// 	}
+// }
+
+// insertToModal(data);
+
+$(document).ready(function() {
+	// Фильтр квалификаций в зависимости от стандрта
+	$('#filter-ps').change(function() {
+		var val = $(this).val();
+		if (val == 'ps-01') {
+			$('#filter-kval option[data-name="welder"]').show();
+			$('#filter-kval option[data-name="operator"]').hide();
+			$('#filter-kval option[data-name="rezchik"]').hide();
+			$('#filter-kval option[data-name="controler"]').hide();
+		} else if (val == 'ps-02') {
+			$('#filter-kval option[data-name="operator"]').show();
+			$('#filter-kval option[data-name="welder"]').hide();
+			$('#filter-kval option[data-name="rezchik"]').hide();
+			$('#filter-kval option[data-name="controler"]').hide();
+		} else if (val == 'ps-03') {
+			$('#filter-kval option[data-name="rezchik"]').show();
+			$('#filter-kval option[data-name="welder"]').hide();
+			$('#filter-kval option[data-name="operator"]').hide();
+			$('#filter-kval option[data-name="controler"]').hide();
+		} else if (val == 'ps-04') {
+			$('#filter-kval option[data-name="controler"]').show();
+			$('#filter-kval option[data-name="welder"]').hide();
+			$('#filter-kval option[data-name="operator"]').hide();
+			$('#filter-kval option[data-name="rezchik"]').hide();
+		} else if (val == 'ps-00') {
+			$('#filter-kval option[data-name="welder"]').show();
+			$('#filter-kval option[data-name="operator"]').show();
+			$('#filter-kval option[data-name="rezchik"]').show();
+			$('#filter-kval option[data-name="controler"]').show();
+		}
+	});
+});

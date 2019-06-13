@@ -1,0 +1,133 @@
+{% load static %}
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label for="" class="col-lg-4 col-form-label col-form-label-sm">ФИО:</label>
+            <div class="col-lg-8">
+                <input type="text" class="form-control form-control-sm" id="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-lg-4 col-form-label col-form-label-sm">№ свидетельства:</label>
+            <div class="col-lg-8">
+                <input type="text" class="form-control form-control-sm" id="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-lg-4 col-form-label col-form-label-sm">ЦОК:</label>
+            <div class="col-lg-8">
+                <select class="form-control form-control-sm" id="">
+                    <option></option>
+                    <option>76.003 Ярославль</option>
+                    <option>78.012 Санкт-Петербург</option>
+                    <option>58.003 Пенза</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Проф. стандарт:</label>
+            <div class="col-lg-8">
+                <select class="form-control form-control-sm" id="filter-ps">
+                    <option value="ps-00"></option>
+                    <option value="ps-01">Сварщик</option>
+                    <option value="ps-02">Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</option>
+                    <option value="ps-03">Резчик термической резки металлов</option>
+                    <option value="ps-04">Контролер сварочных работ</option>
+                    <option value="ps-05">Специалист сварочного производства</option>
+                    <option value="ps-06">Специалист по неразрушающему контролю</option>
+                    <option value="ps-07">Специалист по механическим испытаниям сварных соединений и наплавленного металла</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Квалификация:</label>
+            <div class="col-lg-8">
+                <select class="form-control form-control-sm" id="filter-kval">
+                    <option></option>
+                    <option data-name="welder">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</option>
+                    <option data-name="welder">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</option>
+                    <option data-name="welder">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</option>
+                    <option data-name="operator">Оператор автоматической сварки плавлением металлических материалов (3 уровень квалификации)</option>
+                    <option data-name="operator">Оператор автоматической сварки давлением металлических материалов (3 уровень квалификации)</option>
+                    <option data-name="operator">Оператор автоматической сварки полимерных материалов (3 уровень квалификации)</option>
+                    <option data-name="rezchik">Резчик ручной кислородной резки (2 уровень квалификации)</option>
+                    <option data-name="rezchik">Резчик ручной плазменной резки (2 уровень квалификации)</option>
+                    <option data-name="rezchik">Резчик ручной кислородной резки (3 уровень квалификации)</option>
+                    <option data-name="controler">Контролер подготовительных и сборочных работ в сварочном производстве (4 уровень квалификации)</option>
+                    <option data-name="controler">Контролер сварочных работ (4 уровень квалификации)</option>
+                    <option data-name="controler">Контролер технического контроля сварочного производства (5 уровень квалификации)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Дата рождения:</label>
+            <div class="col col-lg-4">
+                <div class="input-group input-group-sm date" name="datepicker">
+                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
+                    <div class="input-group-append input-group-addon">
+                        <button class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-calendar"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-4">
+                <div class="input-group input-group-sm date" name="datepicker">
+                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
+                    <div class="input-group-append input-group-addon">
+                        <button class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-calendar"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Дата регистрации в реестре:</label>
+            <div class="col col-lg-4">
+                <div class="input-group input-group-sm date" name="datepicker">
+                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
+                    <div class="input-group-append input-group-addon">
+                        <button class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-calendar"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-4">
+                <div class="input-group input-group-sm date" name="datepicker">
+                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
+                    <div class="input-group-append input-group-addon">
+                        <button class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-calendar"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Окончание срока действия:</label>
+            <div class="col col-lg-4">
+                <div class="input-group input-group-sm date" name="datepicker">
+                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
+                    <div class="input-group-append input-group-addon">
+                        <button class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-calendar"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-4">
+                <div class="input-group input-group-sm date" name="datepicker">
+                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
+                    <div class="input-group-append input-group-addon">
+                        <button class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-calendar"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-auto">
+        <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+        <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+    </div>
+</div>
+

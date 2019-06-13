@@ -155,7 +155,6 @@ def sasv_reestr_st(request):
     return render(request, 'mainapp/sasv_reestr_st.html', content)
 # ============= end SASv ===============
 
-# ============= SRO ===============
 def sro(request):
     title = 'НАКС - СРО'
     content = {
@@ -265,12 +264,12 @@ def spks_docs(request):
     }
     return render(request, 'mainapp/spks_docs.html', content)
 
-def spks_reestr(request):
+def spks_reestr_svid(request):
     title = 'НАКС - СПКС'
     content = {
         'title': title
     }
-    return render(request, 'mainapp/spks_reestr.html', content)
+    return render(request, 'mainapp/spks_reestr_svid.html', content)
 # ============= end SPKS ===============
 
 # ============= SDS ===============

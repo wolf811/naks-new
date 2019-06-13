@@ -1,0 +1,38 @@
+.header-xs {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	height: auto;
+	background-color: #0065CB;
+
+	img {
+		opacity: 0.5;
+	}
+
+	.container {
+		position: absolute;
+		top: 0;
+		z-index: 10;
+		text-align: left;
+	}
+	.contacts-top a {
+		color: #fff;
+		font-size: 16px;
+	}
+	p {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 359px) and (min-width: 321px) {
+	.header-xs-hr {display: none;}
+	.header-xs .container {padding-top: 10px !important;}
+	.header-xs .contacts-top {margin-top: 10px !important;}
+	.header-xs .contacts-top a {font-size: 14px;}
+}
+
+@media (max-width: 320px) {
+	.header-xs-hr {display: none;}
+	.header-xs .contacts-top a {font-size: 14px;}
+	.header-xs .contacts-top {margin-top: 10px !important;}
+}

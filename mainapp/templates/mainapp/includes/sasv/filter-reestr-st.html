@@ -5,11 +5,11 @@
         <div class="form-group row">
             <label for="" class="col-lg-4 col-form-label col-form-label-sm">Раздел:</label>
             <div class="col-lg-8">
-                <div class="input-group">
-                    <input type="text" class="form-control form-control-sm" id="" placeholder="">
-                    <span class="input-group-btn">
-                        <button class="btn btn-outline-secondary btn-sm" type="button" data-toggle="modal" data-target="#modalSection" title="Выбрать"><i class="fa fa-angle-up"></i></button>
-                    </span>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modalSection" title="Выбрать"><i class="fa fa-angle-up"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,17 +53,21 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="" class="col-xs-12 col-lg-4 col-form-label col-form-label-sm">Срок действия свидетельства до:</label>
+            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Срок действия свидетельства до:</label>
             <div class="col col-lg-4">
                 <div class="input-group input-group-sm date" name="datepicker">
-                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
-                    <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
+                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
+                    <div class="input-group-append input-group-addon">
+                        <button class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-calendar"></i></button>
+                    </div>
                 </div>
             </div>
             <div class="col col-lg-4">
                 <div class="input-group input-group-sm date" name="datepicker">
-                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг" aria-describedby="">
-                    <span class="input-group-addon bg-light rounded-0"><i class="fa fa-calendar"></i></span>
+                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
+                    <div class="input-group-append input-group-addon">
+                        <button class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-calendar"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,43 +83,37 @@
         <div class="form-group row">
             <label for="" class="col-lg-4 col-form-label col-form-label-sm">Способы сварки:</label>
             <div class="col-lg-8">
-                <div class="input-group">
-                    <input type="text" class="form-control form-control-sm" id="" placeholder="">
-                    <span class="input-group-btn">
-                        <button class="btn btn-outline-secondary btn-sm" type="button" data-toggle="modal" data-target="#modal-welding-method" title="Выбрать"><i class="fa fa-angle-up"></i></button>
-                    </span>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal-welding-method" title="Выбрать"><i class="fa fa-angle-up"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="form-group row">
             <label for="" class="col-lg-4 col-form-label col-form-label-sm">Группы технических устройств (ГТУ):</label>
             <div class="col-lg-8">
-                <div class="input-group">
-                    <input type="text" class="form-control form-control-sm" id="" placeholder="">
-                    <span class="input-group-btn">
-                        <button class="btn btn-outline-secondary btn-sm" type="button" data-toggle="modal" data-target="#modalTechnicalDevices" title="Выбрать"><i class="fa fa-angle-up"></i></button>
-                    </span>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modalTechnicalDevices" title="Выбрать"><i class="fa fa-angle-up"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-xs-12 col-lg-8 offset-lg-2">
-        <div class="form-check mb-0">
-            <label class="custom-control custom-checkbox col-form-label-sm mb-0">
-                <input type="checkbox" class="custom-control-input">
-                <span class="custom-control-indicator mt-1"></span>
-                <span class="custom-control-description">- с учетом требований ПАО "АК "Транснефть"</span>
-            </label>
+<div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="custom-control custom-checkbox col-form-label-sm">
+            <input type="checkbox" class="custom-control-input" id="including-tn">
+            <label class="custom-control-label" for="including-tn">- с учетом требований ПАО "АК "Транснефть"</label>
         </div>
-        <div class="form-check mb-3">
-            <label class="custom-control custom-checkbox col-form-label-sm mb-0">
-                <input type="checkbox" class="custom-control-input">
-                <span class="custom-control-indicator mt-1"></span>
-                <span class="custom-control-description">- с учетом требований ПАО "Газпром"</span>
-            </label>
+        <div class="custom-control custom-checkbox col-form-label-sm">
+            <input type="checkbox" class="custom-control-input" id="including-gp">
+            <label class="custom-control-label" for="including-gp">- с учетом требований ПАО "Газпром"</label>
         </div>
     </div>
 </div>

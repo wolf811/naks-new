@@ -8,87 +8,22 @@ body {
 @import "change-bootstrap";
 /* End Change */
 
-.header-menu {background-color: #fff;}
-.navbar-brand {margin-right: 2rem;}
-.other-brand {display: inline-block;}
-.other-brand img {margin-right: 1.2rem;}
-.navbar-light .navbar-nav .nav-link {
-	color:  #006fb7;
-	border-bottom: 3px solid transparent;
-}
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-	color: #007bff;
-	border-bottom: 3px solid #1880e7;
-}
-.navbar-light .navbar-nav .nav-link.active {
-	color: #007bff;
-	border-bottom: 3px solid #1880e7;
-}
-.navbar-light .navbar-toggler {
-	color: #0065CB;
-	border-color: #0065CB;
-}
-.tooltip-inner {
-	max-width: 200px;
-	padding: 3px 8px;
-	color: #fff;
-	text-align: center;
-	background: -webkit-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
-	background: -moz-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
-	background: -o-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
-	background: -ms-linear-gradient(-137deg, #0066cc 28%, #0356a8 72%);
-	background: linear-gradient(227deg, #0066cc 28%, #0356a8 72%);
-	border-radius: 0.25rem;
-}
-.tooltip.bs-tooltip-bottom .arrow::before, 
-.tooltip.bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
-	border-bottom-color: #0065CB;
-}
-.header-slider {
-	width: 100%;
-	max-height: 470px;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-color: #0065CB;
-}
-.header-slider .row:first-child {
-	margin-bottom: 1rem;
-}
-.header-slider img {
-	opacity: 0.5;
-	height: 470px;
-}
-.title-slider h2 {
-	font-size: 35px;
-}
-.text-slider {font-size: 18px;}
+/* Наверх */
+@import "top-arrow";
+/* End Наверх */
 
-.carousel-indicators li::before {
-	content: none;
-}
-.carousel-indicators li::after {
-	content: none;
-}
-.contacts-top a {
-	color: #fff;
-	font-size: 16px;
-	text-decoration: none;
-}
-.contacts-bottom a {
-	color: #fff;
-	font-size: 14px;
-	text-decoration: none;
-}
-.contacts-modal a {
-	color: #212529;
-	text-decoration: none;
-}
-.contacts-quest {
-	position: absolute;
-	top: 30%;
-	right: 20%;
-	padding-right: 15px;
-}
+/* HEADER-MENU */
+@import "_header-menu.scss";
+/* HEADER-MENU */
+
+/* HEADER-SLIDER */
+@import "_header-slider.scss";
+/* HEADER-SLIDER */
+
+/* HEADER-XS */
+@import "_header-xs.scss";
+/* HEADER-XS */
+
 
 // Центральные кнопки, карта
 .main-activity {
@@ -122,53 +57,36 @@ body {
 .bg-naks {background-color:  #0463B1;}
 .card-header.bg-naks {border-bottom: 1px solid #065DA3;}
 
-.header-xs {
-	position: relative;
-	width: 100%;
-	overflow: hidden;
-	height: auto;
-	background-color: #0065CB;
-}
-.header-xs img {
-	opacity: 0.5;
-}
-.header-xs .container {
-	position: absolute;
-	top: 0;
-	z-index: 10;
-	text-align: left;
-}
-.header-xs .contacts-top a {
-	font-size: 16px;
-}
-.header-xs p {
-	font-size: 14px;
-}
-.carouselHeader-control {
-	position: absolute;
-	left: 20%;
-	bottom: 10%;
-}
-.control-next, .control-prev {
+
+.control-next, 
+.control-prev {
 	padding: 15px 20px;
 	color: #fff;
 	text-align: center;
 	opacity: 0.7;
 }
-.control-next:hover, .control-prev:hover {
+.control-next:hover, 
+.control-prev:hover {
 	color: #fff;
 	text-decoration: none;
 	opacity: 1;
 }
-.control-next i, .control-prev i {
+.control-next i, 
+.control-prev i {
 	vertical-align: middle;
 }
-.carousel-control-prev i, .carousel-control-next i {
+.carousel-control-prev i, 
+.carousel-control-next i {
 	padding: 5px 15px;
 	border: 1px solid #fff;
 }
-.carousel-control-prev i:hover, .carousel-control-next i:hover {
+.carousel-control-prev i:hover, 
+.carousel-control-next i:hover {
 	background: rgba(255, 255, 255, 0.5);
+}
+.carousel-indicators li::before,
+.carousel-indicators li::after {
+	content: none;
 }
 .header-image {
 	position: relative;
@@ -192,13 +110,21 @@ body {
 .glyphicon-calendar:before {
 	content: "\e109";
 }
-/* Наверх */
-@import "top-arrow";
-/* End Наверх */
+
+.contacts-bottom a {
+	color: #fff;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.contacts-modal a {
+	color: #212529;
+	text-decoration: none;
+}
 
 .scrollspy-modal {
 	position: relative;
-	height: 600px;
+	max-height: 600px;
 	margin-top: 10px;
 	overflow: auto;
 }
@@ -218,18 +144,7 @@ body {
 .scrollspy-modal .table-secondary .custom-control-indicator {
 	background-color: #C1C1C1;
 }
-#reestr-staff p {font-size: 0.875rem;}
-#reestr-staff table, #reestr-staff table a {
-	font-size: 0.75rem;
-}
-#reestr-staff th, #reestr-staff td {
-	vertical-align: middle;
-	border-bottom: 1px solid #1880e7;
-	padding: 0.5rem;
-}
-#reestr-staff .table-secondary:hover > th {
-	background-color: #dddfe2;
-}
+
 .carousel-content .carousel-inner {
     /* display:flex;
     justify-content: center; */ /*центрируем элемент по горизонтали */
@@ -254,7 +169,7 @@ body {
 	background-color: transparent;
 }
 .carousel-content .carousel-indicators li.active {
-	border: 3px solid #fff !important;
+	outline: 2px solid #fff !important;
 }
 .element_vertical { /* для вертикальных */
 	max-width: 100%;
@@ -363,11 +278,7 @@ body {
 .all-docs p.text-news-all {
 	font-size: 1rem;
 }
-.carouselHeader-lang {
-	position: absolute;
-	right: 20%;
-	bottom: 8%;
-}
+
 .news-all .row {
 	display: flex;
 	flex-wrap: wrap;
@@ -425,7 +336,8 @@ body {
 	vertical-align: middle;
 }
 .modal-two-table .scrollspy-modal {
-	height: 400px;
+	max-height: 400px;
+	overflow: auto;
 }
 .title-slider .table td {
 	border-top: 0;
@@ -445,7 +357,7 @@ body {
 	position: fixed;
 	top: 0;
 }
-.navbar-brand img {width: 154px;}
+// .navbar-brand img {width: 154px;}
 .card-top .card-img-overlay-right {
 	position: absolute;
 	top: 0;
@@ -461,7 +373,7 @@ body {
 /* ================ END Styles OLD ================== */
 
 .card-body {
-    padding: 0.8rem 1.25rem;
+	padding: 0.8rem 1.25rem;
 }
 .shadow-none {
 	box-shadow: none!important;
@@ -504,22 +416,6 @@ body {
 	}
 }
 
-.reestr-block {
-	p {font-size: 0.875rem;}
-	table {
-		font-size: 0.75rem;
-		a {font-size: 0.75rem;}
-		th, td {
-			vertical-align: middle;
-			border-bottom: 1px solid #1880e7;
-			padding: 0.5rem;
-		}
-	}
-	.table-secondary:hover > th {
-		background-color: #dddfe2;
-	}
-}
-
 .list-circle-sm {
 	font-size: 0.8rem;
 	list-style-type: circle;
@@ -558,4 +454,25 @@ body {
 	#heightContent {
 		height: 1000px;
 	}
+}
+
+.table-reestr {
+	p {font-size: 0.875rem;}
+	.table, .table a {
+		font-size: 0.75rem;
+	}
+	.table th, .table td {
+		vertical-align: middle;
+		border-bottom: 1px solid #1880e7;
+		padding: 0.5rem;
+	}
+	.table-secondary {
+	    th {background-color: #dddfe2;}
+	    &:hover > th {background-color: #dddfe2;}
+	}
+}
+
+.btn-xs {
+	padding: .1rem .3rem;
+    font-size: .75rem;
 }

@@ -3,22 +3,23 @@
 <div class="header-menu">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo-main.png' %}" class="img-fluid" alt="Логотип НАКС"></a>
+            <a class="navbar-brand mr-xl-2" href="{% url 'index' %}"><img src="{% static 'images/logo-main.png' %}" class="img-fluid" alt="Логотип НАКС"></a>
             <div class="other-brand">
                 <img src="{% static 'images/otherLogo-1.png' %}" class="img-fluid" alt="Логотип Премия Правительства" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Лауреат Премии Правительства РФ в области качества 2012 года">
                 <img src="{% static 'images/otherLogo-3.png' %}" class="img-fluid" alt="Логотип Члена МИС" data-toggle="tooltip" data-placement="bottom" title="Член Международного Института Сварки">
                 <img src="{% static 'images/otherLogo-2.png' %}" class="img-fluid" alt="Логотип Премия СНГ" data-toggle="tooltip" data-placement="bottom" title="Лауреат Премии СНГ 2013 года за достижения в области качества">
+                <img src="{% static 'images/otherLogo-4.png' %}" class="img-fluid" alt="Логотип Премия СНГ" data-toggle="tooltip" data-placement="bottom" title="Система менеджмента качества сертифицирована по ISO 9001:2015">
             </div>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""><i class="fa fa-bars" aria-hidden="true"></i></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'news' %}">Новости</a>
                     </li>
-                    <li class="nav-item mr-md-1">
+                    <li class="nav-item mr-xl-1">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Деятельность <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <div class="dropdown-menu dropdown-menu-right shadow rounded-0" aria-labelledby="navbarDropdown">
                             <div class="row mb-4">
@@ -66,7 +67,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item mr-md-1">
+                    <li class="nav-item mr-xl-1">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Реестры <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <div class="dropdown-menu dropdown-menu-right shadow rounded-0" aria-labelledby="navbarDropdown">
                             <div class="row">
@@ -79,7 +80,7 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'sasv_reestr_st' %}">Реестр аттестованных сварочных технологий</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{% url 'spks_reestr' %}">Реестр свидетельств о квалификации</a>
+                                    <a class="dropdown-item" href="{% url 'spks_reestr_svid' %}">Реестр свидетельств о квалификации</a>
                                     <div class="dropdown-divider d-xs-block d-sm-none"></div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6">
@@ -94,7 +95,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item mr-md-1">
+                    <li class="nav-item mr-xl-1">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Документы <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <div class="dropdown-menu dropdown-menu-center shadow rounded-0" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'sasv_docs' %}">Документы САСв</a>

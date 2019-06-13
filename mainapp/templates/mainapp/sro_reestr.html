@@ -55,7 +55,15 @@
                     <div class="form-row mb-3">
                         <div class="col-auto"><label>Статус членства:</label></div>
                         <div class="col-auto">
-                            <label class="custom-control custom-radio custom-control-inline">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="includedStatus" name="ul-fl" class="custom-control-input">
+                                <label class="custom-control-label" for="includedStatus">включен</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="exceptionStatus" name="ul-fl" class="custom-control-input">
+                                <label class="custom-control-label" for="exceptionStatus">исключен</label>
+                            </div>
+                            <!-- <label class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="includedStatus" name="status" class="custom-control-input">
                                 <span class="custom-control-indicator"></span>
                                 <span class="custom-control-description">включен</span>
@@ -65,7 +73,7 @@
                                 <input type="radio" id="exceptionStatus" name="status" class="custom-control-input">
                                 <span class="custom-control-indicator"></span>
                                 <span class="custom-control-description">исключен</span>
-                            </label>
+                            </label> -->
                         </div>
                     </div>
 
@@ -78,7 +86,7 @@
                 </form>
                 <hr>
 
-                <div class="reestr-block mt-4">
+                <div class="table-reestr mt-4">
                     <h6>Найдено записей: <span class="font-weight-bold">150</span></h6>
                     <div class="row d-flex align-items-center">
                         <div class="col-sm-5">
