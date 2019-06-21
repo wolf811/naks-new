@@ -50,6 +50,11 @@ button:hover {cursor: pointer;}
 }
 .carousel-indicators {
 	bottom: 0;
+
+	li {
+		border-top: none;
+		border-bottom: none;
+	}
 }
 .carousel-indicators .active {
 	outline: 3px solid #fff;

@@ -71,6 +71,9 @@ button:hover {
 
 .carousel-indicators {
   bottom: 0; }
+  .carousel-indicators li {
+    border-top: none;
+    border-bottom: none; }
 
 .carousel-indicators .active {
   outline: 3px solid #fff; }
