@@ -427,7 +427,12 @@ body {
 }
 .accordion-card {
 	border-left: 1px solid #1880e7 !important;
-
+	.card-header {
+		border-bottom: none;
+		&:hover {
+			border-bottom: none;
+		}
+	}
 	.btn-link {
 		white-space: normal;
 	}
