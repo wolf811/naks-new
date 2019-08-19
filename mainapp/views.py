@@ -24,11 +24,11 @@ def news(request):
     # paginator = Paginator(news_page_posts, 9)
     # page = request.GET.get('page')
     # posts = paginator.get_page(page)
-    content = {
-        'title': title,
-        'post': post,
-    }
-    return render(request, 'mainapp/news.html', content)
+    # content = {
+    #     'title': title,
+    #     'post': post,
+    # }
+    return render(request, 'mainapp/news.html')
 
 def news_details(request, pk):
     title = 'НАКС - Новости'
@@ -62,7 +62,7 @@ def sasv(request):
         'title': title
     }
     return render(request, 'mainapp/sasv.html', content)
-    
+
 def sasv_ac(request):
     title = 'НАКС - САСв'
     content = {

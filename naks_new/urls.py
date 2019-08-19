@@ -26,6 +26,13 @@ from django.urls import path, include
 import mainapp.views as mainapp
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from mainapp.sitemap import *
+
+sitemaps = {
+    'posts': PostSitemap,
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -71,6 +78,7 @@ urlpatterns = [
     path('sds_reestr_so/', mainapp.sds_reestr_so, name = 'sds_reestr_so'),
     path('sds_reestr_st/', mainapp.sds_reestr_st, name = 'sds_reestr_st'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
 if settings.DEBUG:
     urlpatterns += static(

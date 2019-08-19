@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mainapp.models import Post, Photo
+from mainapp.models import *
 from django.urls import reverse
 from django.utils.html import format_html
 from django.forms import TextInput
@@ -16,7 +16,7 @@ def get_picture_preview(obj):
 class PhotoInline(admin.StackedInline):
     model = Photo
     extra = 0
-    fields = ['image', get_picture_preview]
+    fields = ['image', get_picture_preview, 'number']
     readonly_fields = [get_picture_preview]
 
     def get_edit_link(self, obj=None):
@@ -45,3 +45,14 @@ class PostAdmin(admin.ModelAdmin):
     def view_on_site(self, obj):
         url = reverse('news_details', kwargs={'pk': obj.pk})
         return url
+
+@admin.register(Banner)
+class BannerAdmin(admin.ModelAdmin):
+    view_on_site = True
+    list_display = ['title', 'number', get_picture_preview,]
+
+admin.site.register(Contact)
+admin.site.register(OrgProfile)
+admin.site.register(Partner)
+admin.site.register(Document)
+admin.site.register(Photo)
