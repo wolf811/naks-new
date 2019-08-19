@@ -89,3 +89,10 @@ local_settings.py
 
 .env
 db.sqlite3
+
+media/
+**/migrations/**
+log/
+
+*style.css
+*style.css.map
