@@ -20,13 +20,15 @@
 		<link rel="stylesheet" href="{% static 'css/mystyle_ie.css' %}">
 		{% endblock %}
 
+		{% if request.resolver_match.url_name == 'index' %}
 		<script src="https://api-maps.yandex.ru/2.1/?lang=ru" type="text/javascript"></script>
+		{% endif %}
 		<!-- <script src="https://yastatic.net/share2/share.js" async="async"></script> -->
 	</head>
 	<body>
 		{% include 'mainapp/includes/header-menu.html' %}
 
-		{% block content%} 
+		{% block content%}
 
 		{% endblock %}
 
@@ -35,7 +37,7 @@
 		{% include 'mainapp/includes/modal/modal-questions.html' %}
 		{% include 'mainapp/includes/modal/modal-sending-link.html' %}
 		{% include 'mainapp/includes/modal/modal-login-account.html' %}
-		{% include 'mainapp/includes/modal/modal-news-examples.html' %}
+
 		{% include 'mainapp/includes/modal/modal-feedback.html' %}
 		{% include 'mainapp/includes/modal/modal-letter.html' %}
 		{% include 'mainapp/includes/modal/modal-technical-devices.html' %}
@@ -58,8 +60,19 @@
 		<script src="{% static 'js/moment-with-locales.min.js' %}"></script>
 		<script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
 
+		<!-- VUE JS 2 and AXIOS CDN -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<!-- VUE JS 2 and AXIOS CDN -->
+
+
+
 		<!-- My scripts -->
-		<script src="{% static 'js/map-script.js' %}"></script>
+		{% if request.resolver_match.url_name == 'index' %}
+			<script src="{% static 'js/map-script.js' %}"></script>
+		{% endif %}
+
 		<script src="{% static 'js/myscript.js' %}"></script>
+		<script src="{% static 'js/vue_scripts.js' %}"></script>
 	</body>
 </html>

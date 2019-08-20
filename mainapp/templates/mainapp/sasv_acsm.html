@@ -1,0 +1,272 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Аттестация специалистов сварочного производства</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'sasv' %}">САСв</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Список аттестационных центров (АЦ)</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/sasv/mobil-right-menu-sasv.html' %}
+            </div>
+            <!-- End mobil right main -->
+
+            <h5 class="text-primary mt-2 mb-4">Аттестационные центры на карте</h5>
+
+            <!-- Yandex Maps -->
+            <div id="map" class="w-100"></div>
+            <!-- End map -->
+
+            <hr class="mt-4">
+
+            <div id="ac-staff">
+                <h5 class="text-primary my-4">Центры аттестации сварщиков и специалистов сварочного производства (АЦ)</h5>
+                <!-- Поиск АЦ -->
+                <form class="mt-4 mb-3">
+                    <h6 class="font-weight-bold">Быстрый поиск центра</h6>
+                    <div class="form-row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-5">
+                            <label for="" class="pb-0 col-form-label-sm">Название</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-6 col-md-5">
+                            <label for="" class="pb-0 col-form-label-sm">Город</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="custom-control custom-checkbox col-form-label-sm">
+                            <input type="checkbox" class="custom-control-input" id="including-tn">
+                            <label class="custom-control-label" for="including-tn">- АЦ, осуществляющие аттестацию на объектах ПАО "АК "Транснефть"</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col-form-label-sm">
+                            <input type="checkbox" class="custom-control-input" id="including-gp">
+                            <label class="custom-control-label" for="including-gp">- АЦ, осуществляющие аттестацию на объектах ПАО "Газпром"</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                            <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                        </div>
+                    </div>
+                </form> <!-- конец поиска АЦ -->
+
+                <hr class="mt-4">
+
+                <div class="row">
+                    <div class="col-xs-12 col-xl-6">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-all-ac mb-0">
+                                <tr>
+                                    <td></td>
+                                    <td width="100"><a href="{% url 'sasv_br1gac' %}" class="">АР-1ГАЦ</a></td>
+                                    <td>Барнаул</td>
+                                    <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><a href="{% url 'sasv_br1gac' %}" class="">БР-1АЦ</a></td>
+                                    <td>Стерлитамак</td>
+                                    <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="{% static 'images/iconTransneft.png' %}" title="АЦ осуществляет аттестацию на объектах ПАО «АК «Транснефть»"><br>
+                                        <img src="{% static 'images/iconGazprom.png' %}" title="АЦ осуществляет аттестацию на объектах ПАО «Газпром»"></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">БР-1ГАЦ</a></td>
+                                        <td>Уфа</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="{% static 'images/iconGazprom.png' %}" title="АЦ осуществляет аттестацию на объектах ПАО «Газпром»"></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">ВВР-2АЦ</a></td>
+                                        <td>Ярославль</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">ВВР-2ГАЦ</a></td>
+                                        <td>Владимир</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">АР-1ГАЦ</a></td>
+                                        <td>Барнаул</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">БР-1АЦ</a></td>
+                                        <td>Стерлитамак</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="{% static 'images/iconTransneft.png' %}" title="АЦ осуществляет аттестацию на объектах ПАО «АК «Транснефть»"></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">БР-1ГАЦ</a></td>
+                                        <td>Уфа</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">ВВР-2АЦ</a></td>
+                                        <td>Ярославль</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">ВВР-2ГАЦ</a></td>
+                                        <td>Владимир</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-xl-6">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped table-all-ac mb-0">
+                                    <tr>
+                                        <td></td>
+                                        <td width="100"><a href="{% url 'sasv_br1gac' %}" class="">СЗР-11АЦ</a></td>
+                                        <td>Великий Новгород</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="{% static 'images/iconGazprom.png' %}" title="АЦ осуществляет аттестацию на объектах ПАО «Газпром»"></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">СЗР-12АЦ</a></td>
+                                        <td>Архангельск</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">СЗР-13АЦ</a></td>
+                                        <td>Ленинградская область</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">СЗР-1АЦ</a></td>
+                                        <td>Вологда</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="{% static 'images/iconTransneft.png' %}" title="АЦ осуществляет аттестацию на объектах ПАО «АК «Транснефть»"></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">СЗР-1ГАЦ</a></td>
+                                        <td>Санкт-Петербург</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">СЗР-11АЦ</a></td>
+                                        <td>Великий Новгород</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="{% static 'images/iconGazprom.png' %}" title="АЦ осуществляет аттестацию на объектах ПАО «Газпром»"></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">СЗР-12АЦ</a></td>
+                                        <td>Архангельск</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">СЗР-13АЦ</a></td>
+                                        <td>Ленинградская область</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">СЗР-1АЦ</a></td>
+                                        <td>Вологда</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="{% static 'images/iconTransneft.png' %}" title="АЦ осуществляет аттестацию на объектах ПАО «АК «Транснефть»"></td>
+                                        <td><a href="{% url 'sasv_br1gac' %}" class="">СЗР-1ГАЦ</a></td>
+                                        <td>Санкт-Петербург</td>
+                                        <td><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-entrance">Подать заявку</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-4">
+
+                    <h5 class="text-primary my-4">Аттестационные центры, прекратившие деятельность</h5>
+                    <div class="row">
+                        <div class="col-xs-12 col-xl-6">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped table-all-ac mb-0">
+                                    <tr>
+                                        <td></td>
+                                        <td width="100"><a href="#" class="">АР-ГАЦ</a></td>
+                                        <td>Барнаул<span class="text-danger">*</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="#" class="">БР-ГАЦ</a></td>
+                                        <td>Уфа<span class="text-danger">**</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="#" class="">ВВР-1АЦ</a></td>
+                                        <td>Иваново<span class="text-danger">*</span></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-xl-6">
+                            <div class="table-responsive">
+                                <table class="table  table-hover table-striped table-all-ac mb-0">
+                                    <tr>
+                                        <td></td>
+                                        <td width="100"><a href="#" class="">СВР-4АЦ</a></td>
+                                        <td>Саратов<span class="text-danger">*</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><a href="#" class="">СВР-4ГАЦ</a></td>
+                                        <td>Саратов<span class="text-danger">*</span></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-4">
+
+                    <div><span class="text-danger">*</span><small>&nbsp;&nbsp;&nbsp;- Исключен из реестра</small></div>
+                    <div><span class="text-danger">**</span><small>&nbsp;- Деятельность приостановлена</small></div>
+                </div>
+            </div>
+
+            <div class="d-none d-md-block col-md-4 col-xl-3">
+                <!-- Content Right menu -->
+                {% include 'mainapp/includes/sasv/right-menu-sasv.html' %}
+                <!-- End Content Right menu -->
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock %}

@@ -28,6 +28,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from mainapp.sitemap import *
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'posts', mainapp.PostViewSet)
+# router.register(r'^posts/{pk}/$', mainapp.PostDetailsAPI)
 
 sitemaps = {
     'posts': PostSitemap,
@@ -78,7 +83,9 @@ urlpatterns = [
     path('sds_reestr_so/', mainapp.sds_reestr_so, name = 'sds_reestr_so'),
     path('sds_reestr_st/', mainapp.sds_reestr_st, name = 'sds_reestr_st'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('naks_api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 if settings.DEBUG:
     urlpatterns += static(

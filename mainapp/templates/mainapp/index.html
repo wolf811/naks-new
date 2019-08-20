@@ -15,7 +15,9 @@
     <!-- End Big Buttons -->
 
     <!-- Big Radiobuttons & Map -->
-    {% include 'mainapp/includes/map-index.html' %}
+    {% if request.resolver_match.url_name == 'index'%}
+        {% include 'mainapp/includes/map-index.html' %}
+    {% endif %}
     <!-- End Big Radiobuttons & Map -->
 </div>
 

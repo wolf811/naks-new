@@ -1,6 +1,11 @@
 from django.shortcuts import render
-from mainapp.models import Post
-from mainapp.models import Photo
+from django.http import Http404
+from mainapp.models import *
+from rest_framework import viewsets, generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .serializers import PostSerializer
 
 # Create your views here.
 def index(request):
@@ -12,23 +17,22 @@ def index(request):
 
 def news(request):
     title = 'НАКС - Новости'
-    news_page_posts = []
-    all_posts = Post.objects.all()
-    for post in all_posts:
-        photo = Photo.objects.filter(post__pk=post.pk).first()
-        news_page_posts.append(
-            {'post': post, 'photo': photo, }
-        )
-    # for publication in news_page_posts:
-    #     print (publication['post'], publication['photo'])
-    # paginator = Paginator(news_page_posts, 9)
-    # page = request.GET.get('page')
-    # posts = paginator.get_page(page)
-    # content = {
-    #     'title': title,
-    #     'post': post,
-    # }
-    return render(request, 'mainapp/news.html')
+    # news_page_posts = []
+    # all_posts = Post.objects.all()
+    # for post in all_posts:
+    #     photo = Photo.objects.filter(post__pk=post.pk).first()
+    #     news_page_posts.append(
+    #         {'post': post, 'photo': photo, }
+    #     )
+    # return render(request, 'mainapp/news.html')
+    posts = Post.objects.filter(active=True).order_by('-published_date')
+    categories = Category.objects.all()
+    content = {
+        'posts': posts,
+        'categories': categories
+    }
+    # import pdb; pdb.set_trace()
+    return render(request, 'mainapp/news.html', content)
 
 def news_details(request, pk):
     title = 'НАКС - Новости'
@@ -315,3 +319,25 @@ def sds_reestr_st(request):
     }
     return render(request, 'mainapp/sds_reestr_st.html', content)
 # ============= end SDS ===============
+
+
+# ++++++++++++++DJANGO REST+++++++++++++++#
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.filter(active=True).order_by('-published_date')
+    serializer_class = PostSerializer
+
+class PostDetailsAPI(APIView):
+    """
+    Retrieve, update or delete a Post instance.
+    """
+    def get_object(self, pk):
+        try:
+            return Post.objects.get(pk=pk)
+        except Post.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        post = self.get_object(pk)
+        serializer = PostDetailsSerializer(post)
+        return Response(serializer.data)

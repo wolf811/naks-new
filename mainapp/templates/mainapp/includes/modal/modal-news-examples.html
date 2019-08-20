@@ -11,24 +11,27 @@
             </div>
             <div class="modal-body">
                 <div class="alert alert-secondary rounded-0 modal-text" role="alert">
-                    Ежегодный Форум «Территория NDT» является ведущей профессиональной площадкой для конструктивного диалога заинтересованных сторон и демонстрации новейших достижений и разработок. Крупнейшая специализированная выставка оборудования и технологий неразрушающего контроля и технической диагностики ежегодно объединяет более 100 компаний – разработчиков и поставщиков российских и зарубежных брендов, сервисные учебные и сертификационные центры, ВУЗы, НИИ, специализированные издания.
+                    <div><strong>TEST</strong>: [[ post_title ]]</div>
+                    <div>
+                        [[ post_full_description ]]
+                    </div>
                 </div>
                 <div id="carouselLastNews" class="carousel carousel-content slide mt-3 mb-4" data-ride="false" data-pause="false">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselLastNews" data-slide-to="0" class="active"><img class="d-block w-100" src="{% static 'images/NDT-0617.jpg' %}" alt="First slide"></li>
-                        <li data-target="#carouselLastNews" data-slide-to="1"><img class="content-centering_element d-block w-100" src="{% static 'images/NDT-0427.jpg' %}" alt="Second slide"></li>
-                        <li data-target="#carouselLastNews" data-slide-to="2"><img class="content-centering_element d-block w-100" src="{% static 'images/IMG_7428.JPG' %}" alt="Third slide"></li>
+                        <li data-target="#carouselLastNews" data-slide-to="0" class="active"><img class="d-block w-100" :src="post_main_picture_url" alt="First slide"></li>
+                        {% comment %} <li data-target="#carouselLastNews" data-slide-to="1"><img class="content-centering_element d-block w-100" src="{% static 'images/NDT-0427.jpg' %}" alt="Second slide"></li> {% endcomment %}
+                        {% comment %} <li data-target="#carouselLastNews" data-slide-to="2"><img class="content-centering_element d-block w-100" src="{% static 'images/IMG_7428.JPG' %}" alt="Third slide"></li> {% endcomment %}
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100 modal-photos" src="{% static 'images/NDT-0617.jpg' %}" alt="First slide">
+                            <img class="w-100" :src="post_main_picture_url" alt="First slide">
                         </div>
-                        <div class="carousel-item">
+                        {% comment %} <div class="carousel-item">
                             <img class="d-block w-100 modal-photos" src="{% static 'images/NDT-0427.jpg' %}" alt="Second slide">
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100 modal-photos" src="{% static 'images/IMG_7428.JPG' %}" alt="Third slide">
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                     <a class="carousel-control-prev" href="#carouselLastNews" role="button" data-slide="prev">
                         <span><i class="fa fa-angle-left fa-2x" aria-hidden="true"></i></span>
@@ -51,14 +54,14 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="">Форум «Территория NDT»</h5>
+                <h5 class="modal-title" >Форум «Территория NDT»</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="stopVideo()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <video controls="" id="myVideoPlayer" src="{% static 'video/NAKS25.mp4' %}" type="video/mp4"></video>
+                    {% comment %} <video controls="" id="myVideoPlayer" src="{% static 'video/NAKS25.mp4' %}" type="video/mp4"></video> {% endcomment %}
                 </div>
             </div>
             <div class="modal-footer">
@@ -96,7 +99,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="">ИНСТИТУТ МЕХАНИКИ И МАШИНОСТРОЕНИЯ</h5>
+                <h5 class="modal-title" >ИНСТИТУТ МЕХАНИКИ И МАШИНОСТРОЕНИЯ</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

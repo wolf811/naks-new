@@ -9,7 +9,7 @@ from stdimage.models import StdImageField
 # Create your models here.
 
 class Tag(models.Model):
-    name = models.CharField(u'Название тэга', max_length=200)
+    name = models.CharField(u'Название тэга', max_length=100)
 
     class Meta:
         verbose_name = 'Тэг'
@@ -18,13 +18,24 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+class Category(models.Model):
+    name = models.CharField(u'Название раздела', max_length=100)
+
+    class Meta:
+        verbose_name = 'Раздел'
+        verbose_name_plural = 'Разделы'
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     """model for publications"""
+    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=150, verbose_name='Заголовок публикации')
     subtitle = models.CharField(max_length=200, verbose_name='Подзаголовок публикации', blank=True, default='')
     short_description = RichTextUploadingField(verbose_name='Краткий текст', blank=True, null=True)
     full_description = RichTextUploadingField(verbose_name='Подробный текст', blank=True, null=True)
-    main_picture = models.ImageField(verbose_name='Главная картинка', blank=True, null=True)
+    main_picture = models.ImageField(verbose_name='Главная картинка', upload_to='post_images', blank=True, null=True)
     published_date = models.DateTimeField(u'Дата публикации', default=timezone.now)
     active = models.BooleanField(u'Опубликована', default=True)
 

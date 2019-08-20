@@ -35,8 +35,9 @@ class PhotoInline(admin.StackedInline):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     view_on_site = True
-    fields = ('published_date', 'title', 'subtitle', 'short_description', 'full_description')
-    list_display = ['published_date', 'title', 'subtitle']
+    # fields = ('published_date', 'category', 'title', 'subtitle', 'short_description', 'full_description', 'main_picture')
+
+    list_display = ['title', 'category', 'active', 'published_date']
     inlines = [PhotoInline]
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size':'100'})},
@@ -56,3 +57,5 @@ admin.site.register(OrgProfile)
 admin.site.register(Partner)
 admin.site.register(Document)
 admin.site.register(Photo)
+admin.site.register(Tag)
+admin.site.register(Category)
