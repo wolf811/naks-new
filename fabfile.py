@@ -3,7 +3,7 @@ from fabric.contrib import files
 from fabric.contrib.files import exists, sed
 from fabric.colors import green, red, blue
 from fabric.contrib import project
-# import time
+import time
 import json
 # import os
 # import zipfile
