@@ -16,7 +16,7 @@
                     </div>
                     <small>Опубликовано: [[ post_published_date ]]</small>
                 </div>
-                <div id="carouselLastNews" class="carousel carousel-content slide mt-3 mb-4" data-ride="false" data-pause="false">
+                <div v-if="post_has_main_picture == 1" id="carouselLastNews" class="carousel carousel-content slide mt-3 mb-4" data-ride="false" data-pause="false">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselLastNews" data-slide-to="0" class="active"><img class="d-block w-100" :src="post_main_picture_url" alt="First slide"></li>
                         {% comment %} <li data-target="#carouselLastNews" data-slide-to="1"><img class="content-centering_element d-block w-100" src="{% static 'images/NDT-0427.jpg' %}" alt="Second slide"></li> {% endcomment %}

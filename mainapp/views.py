@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from mainapp.models import *
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
@@ -17,6 +18,15 @@ def index(request):
 
 def news(request):
     title = 'НАКС - Новости'
+    post_list = Post.objects.filter(active=True).order_by('-published_date')
+    page = request.GET.get('page', 1)
+    paginator = Paginator(post_list, 9)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     # news_page_posts = []
     # all_posts = Post.objects.all()
     # for post in all_posts:
@@ -25,7 +35,7 @@ def news(request):
     #         {'post': post, 'photo': photo, }
     #     )
     # return render(request, 'mainapp/news.html')
-    posts = Post.objects.filter(active=True).order_by('-published_date')
+
     categories = Category.objects.all()
     content = {
         'posts': posts,
@@ -54,8 +64,19 @@ def agreement(request):
 
 def contacts(request):
     title = 'НАКС - Контакты'
+    subdivisions = ContactSubdivision.objects.all().order_by('number')
+    departments = []
+    for sub in subdivisions:
+        departments.append({
+            'department': {
+                'name': sub.title,
+                'members': [member for member in Contact.objects.filter(subdivision=sub).order_by('number')]
+            }
+            })
+    # import pdb; pdb.set_trace()
     content = {
-        'title': title
+        'title': title,
+        'departments': departments,
     }
     return render(request, 'mainapp/contacts.html', content)
 

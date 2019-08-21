@@ -20,7 +20,7 @@
 		<link rel="stylesheet" href="{% static 'css/mystyle_ie.css' %}">
 		{% endblock %}
 
-		{% if request.resolver_match.url_name == 'index' %}
+		{% if request.resolver_match.url_name == 'index' or request.resolver_match.url_name == 'sasv' %}
 		<script src="https://api-maps.yandex.ru/2.1/?lang=ru" type="text/javascript"></script>
 		{% endif %}
 		<!-- <script src="https://yastatic.net/share2/share.js" async="async"></script> -->
@@ -68,7 +68,7 @@
 
 
 		<!-- My scripts -->
-		{% if request.resolver_match.url_name == 'index' %}
+		{% if request.resolver_match.url_name == 'index' or request.resolver_match.url_name == 'sasv' %}
 			<script src="{% static 'js/map-script.js' %}"></script>
 		{% endif %}
 

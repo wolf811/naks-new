@@ -32,3 +32,18 @@ def commit():
         ********************
         """
     ))
+
+def push():
+    commit()
+    local('git push -u origin master')
+
+def start():
+    local('google-chrome http://127.0.0.1:8000/')
+    local('python3 manage.py runserver')
+
+def migrate():
+    local('python3 manage.py makemigrations --noinput')
+    local('python3 manage.py migrate')
+
+def admin():
+    local('google-chrome http://127.0.0.1:8000/admin/')

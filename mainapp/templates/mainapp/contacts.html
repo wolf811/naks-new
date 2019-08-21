@@ -47,6 +47,26 @@
 
                 <div class="table-responsive">
                     <table class="table table-bordered table-contacts mb-0" >
+                    {% if departments %}
+                    {% for d in departments %}
+                        {% for member in d.department.members %}
+                        <tr>
+                            {% if forloop.first %}
+                             <th rowspan="{{d.department.members|length}}">{{ d.department.name }}</th>
+                            {% endif %}
+                            <td>{{ member.name }}<br><small>{{ member.description }}</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:{{ member.phone }}">{{ member.phone }}</a></div>
+                                {% if member.phone_secondary %}
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:{{ member.phone_secondary }}">{{ member.phone_secondary }}</a></div>
+                                {% endif %}
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:{{ member.email }}">{{ member.email }}</a></div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endfor %}
+
+                    {% else %}
                         <tr>
                             <th>Президент</th>
                             <td>Алёшин Николай Павлович<br><small>Академик РАН</small></td>
@@ -297,6 +317,7 @@
                                 <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:svarka@naks.ru">svarka@naks.ru</a></div>
                             </td>
                         </tr>
+                    {% endif %}
                     </table>
                 </div>
             </div>

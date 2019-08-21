@@ -125,21 +125,34 @@ class Partner(models.Model):
     logotype = models.FileField(u'Логотип', upload_to='partners_logotypes/')
 
     class Meta:
-        verbose_name = 'Партнер'
+        # verbose_name = 'Партнер'
         verbose_name_plural = 'Партнеры'
+
+    def __str__(self):
+        return self.title
+
+class ContactSubdivision(models.Model):
+    number = models.SmallIntegerField(u'Порядок вывода отдела', blank=True, null=True)
+    title = models.CharField(u'Название отдела', max_length=50)
+    subtitle = models.CharField(u'Подзаголовок', max_length=50, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Отдел'
+        verbose_name_plural = 'Отделы (для контактов)'
 
     def __str__(self):
         return self.title
 
 class Contact(models.Model):
     """model for contacts handling"""
+    subdivision = models.ForeignKey(ContactSubdivision, null=True, blank=True, on_delete=models.SET_NULL)
     number = models.SmallIntegerField(u'Порядок вывода на сайт', blank=True, null=True)
-    job = models.CharField(u'Должность', max_length=50, default='')
     name = models.CharField(u'ФИО', max_length=100)
     description = models.CharField(u'Описание (например, "к.т.н.")', max_length=100)
     phone = models.CharField(u'Номер телефона', max_length=50, default='')
     phone_secondary = models.CharField(u'Второй номер телефона (необязательно)', max_length=50, blank=True, null=True)
     email = models.EmailField(u'Адрес электронной почты', blank=True, null=True)
+    active = models.BooleanField(u'Активен', default=True)
 
     class Meta:
         verbose_name = 'Контакт'

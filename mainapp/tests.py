@@ -61,7 +61,8 @@ class SiteTest(TestCase):
 # #######pytest tests#######
 # ##########################
 
-def test_html_in_contacts(client, rf):
+
+def test_html_in_contacts(client, db, rf):
     response = client.get(reverse('contacts'))
     html = response.content.decode('utf8')
     assert html.strip().startswith('<!doctype html>') is True
@@ -197,3 +198,21 @@ def test_api_contain_images_urls(db, client):
     assert post.main_picture.thumbnail.url in api_data['image_urls']['thumbnail']
     assert post.main_picture.medium.url in api_data['image_urls']['medium']
     assert post.main_picture.large.url in api_data['image_urls']['large']
+
+
+def test_can_make_contacts_and_publish_them(db, client):
+    subdivision = mixer.blend(ContactSubdivision)
+    contacts = mixer.cycle(10).blend(
+        Contact,
+        subdivision=subdivision,
+        phone=mixer.RANDOM,
+        email=mixer.RANDOM,
+        )
+    response = client.get('/contacts/')
+    assert response.status_code == 200
+    html = response.content.decode('utf8')
+    for contact in contacts:
+        assert contact.name in html
+        assert contact.phone in html
+        assert contact.email in html
+    assert subdivision.title in html

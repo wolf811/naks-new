@@ -52,7 +52,15 @@ class BannerAdmin(admin.ModelAdmin):
     view_on_site = True
     list_display = ['title', 'number', get_picture_preview,]
 
-admin.site.register(Contact)
+# admin.site.register(Contact)
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'subdivision', 'number']
+
+@admin.register(ContactSubdivision)
+class ContactSubdivisionAdmin(admin.ModelAdmin):
+    list_display = ['title', 'number']
+
 admin.site.register(OrgProfile)
 admin.site.register(Partner)
 admin.site.register(Document)

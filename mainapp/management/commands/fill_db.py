@@ -7,17 +7,26 @@ import random, os
 for r, d, f in os.walk(os.path.join(os.getcwd(), 'media')):
     for file in f:
         if file.startswith(('img', 'document', 'file')) and len(file) > 13:
+            print('removed trash: ', file)
             os.remove(os.path.join(r, file))
 
 news_titles = [
     'Конференция НАКС',
     'Общее собрание',
     'Семинар НАКС',
+    'Семинар НАКС',
+    'Семинар НАКС',
+    'Семинар НАКС',
+    'Семинар НАКС',
+    'Семинар НАКС',
     'Вебинар НАКС',
+    'Съезд НАКС',
     'Съезд НАКС',
     'Открытие центра',
     'Заключение соглашения',
-    'Новая редакция нормативного документа'
+    'Заключение соглашения',
+    'Новая редакция нормативного документа',
+    'Новая редакция нормативного документа',
 ]
 
 categories = [
@@ -47,6 +56,19 @@ class Command(BaseCommand):
         Tag.objects.all().delete()
         Post.objects.all().delete()
         Category.objects.all().delete()
+        Contact.objects.all().delete()
+        ContactSubdivision.objects.all().delete()
+
+        mixer.cycle(10).blend(ContactSubdivision, title=mixer.sequence('subdivision_{0}'))
+        mixer.cycle(20).blend(
+            Contact,
+            description=mixer.RANDOM,
+            subdivision=mixer.SELECT,
+            phone=mixer.RANDOM,
+            phone_secondary=mixer.RANDOM,
+            email=mixer.RANDOM,
+            number=mixer.RANDOM
+            )
 
         for i in range(len(tags)):
             mixer.blend(Tag, name=tags[i])
@@ -58,7 +80,7 @@ class Command(BaseCommand):
             mixer.blend(
                 Post,
                 title=news_titles[i],
-                active=True if random.randint(0, 100) > 30 else False,
+                active=True if random.randint(0, 100) > 20 else False,
                 category=random.choice([category for category in Category.objects.all()]),
                 subtitle=mixer.RANDOM,
                 short_description=mixer.RANDOM,
