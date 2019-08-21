@@ -1,5 +1,6 @@
 from django.contrib.admin.sites import AdminSite
 from django.test import TestCase, RequestFactory, Client
+from rest_framework.test import APIRequestFactory
 from django.core.files import File
 from django.urls import resolve, reverse
 from django.shortcuts import get_object_or_404
@@ -8,7 +9,8 @@ from mainapp.models import *
 import re
 import mainapp.views as mainapp
 from functools import wraps
-import pytest, os
+import pytest, os, json
+# import requests
 
 # Create your tests here.
 # for r, d, f in os.walk(os.path.join(os.getcwd(), 'media')):
@@ -175,5 +177,23 @@ def test_can_create_and_publish_posts(db, client):
     response = client.get(reverse('news'))
     html = response.content.decode('utf8')
     assert post.title in html
-    assert post.main_picture.url in html
+    assert post.main_picture.medium.url in html
     assert post.short_description in html
+
+def test_can_retrieve_api_urls_after_publishing_posts(db, client):
+    posts = mixer.cycle(3).blend(Post, active=True)
+    for post in posts:
+        response = client.get('/naks_api/posts/{}/'.format(post.pk))
+        # import pdb; pdb.set_trace()
+        assert response.status_code == 200
+        api_data = json.loads(response.content.decode('utf8'))
+        assert api_data['title'] == post.title
+        assert api_data['short_description'] == post.short_description
+
+def test_api_contain_images_urls(db, client):
+    post = mixer.blend(Post, main_picture=File(open('media/img_1.jpg', 'rb')))
+    response = client.get('/naks_api/posts/{}/'.format(post.pk))
+    api_data = json.loads(response.content.decode('utf8'))
+    assert post.main_picture.thumbnail.url in api_data['image_urls']['thumbnail']
+    assert post.main_picture.medium.url in api_data['image_urls']['medium']
+    assert post.main_picture.large.url in api_data['image_urls']['large']

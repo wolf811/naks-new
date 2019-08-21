@@ -35,7 +35,18 @@ class Post(models.Model):
     subtitle = models.CharField(max_length=200, verbose_name='Подзаголовок публикации', blank=True, default='')
     short_description = RichTextUploadingField(verbose_name='Краткий текст', blank=True, null=True)
     full_description = RichTextUploadingField(verbose_name='Подробный текст', blank=True, null=True)
-    main_picture = models.ImageField(verbose_name='Главная картинка', upload_to='post_images', blank=True, null=True)
+    # main_picture = models.ImageField(verbose_name='Главная картинка', upload_to='post_images', blank=True, null=True)
+    main_picture = StdImageField(
+        u'Главная картинка публикации',
+        null=True,
+        blank=True,
+        upload_to='post_images/',
+        variations={
+            'thumbnail': {"width": 200, "height": 100, "crop": True},
+            'medium': {"width": 1024, "height": 768, "crop": True},
+            'large': {"width": 1920, "height": 1080, "crop": True}
+        }
+    )
     published_date = models.DateTimeField(u'Дата публикации', default=timezone.now)
     active = models.BooleanField(u'Опубликована', default=True)
 
@@ -75,7 +86,16 @@ class Banner(models.Model):
 
 class Photo(models.Model):
     """model for handling photos"""
-    image = models.ImageField(u'Фото', upload_to='photos/')
+    # image = models.ImageField(u'Фото', upload_to='photos/')
+    image = StdImageField(
+        u'Картинка для публикации',
+        upload_to='post_images/',
+        variations={
+            'thumbnail': {"width": 200, "height": 100, "crop": True},
+            'medium': {"width": 1024, "height": 768, "crop": True},
+            'large': {"width": 1920, "height": 1080, "crop": True}
+        }
+    )
     post = models.ForeignKey(Post, null=True, on_delete=models.CASCADE)
     number = models.SmallIntegerField(verbose_name='Порядок вывода', default=0)
 
@@ -84,7 +104,7 @@ class Photo(models.Model):
         verbose_name_plural = 'Фотографии'
 
     def __str__(self):
-        return 'Публикация {}, дата {}'.format(self.title, self.published_date)
+        return 'picture {}'.format(self.pk)
 
 class Document(models.Model):
     """model for upload and store documents"""

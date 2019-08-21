@@ -76,8 +76,8 @@
                     <div class="col-sm-6 col-lg-4 my-3">
                         <div class="card card-news rounded-0 w-100">
                             <div class="card-top bg-light">
-                                <img class="card-img-top img-fluid" src="{{ post.main_picture.url }}" alt="Card image cap">
-                                <div class="card-img-overlay">29.01.2018</div>
+                                <img class="card-img-top img-fluid" src="{% if post.main_picture %}{{ post.main_picture.medium.url }}{% else %}{% static 'images/no_pict_icon.jpg' %}{% endif %}" alt="Card image cap">
+                                <div class="card-img-overlay">{{ post.published_date }}</div>
                                 <div class="card-img-overlay-right" >{{ post.category }}</div>
                             </div>
                             <div class="card-body p-3">
@@ -85,7 +85,9 @@
                                 {% comment %} <p class="mb-2"><a href="#" class="">Информационное письмо<i class="fa fa-angle-right ml-2"></i></a></p>
                                 <p class="mb-2"><a href="#" class="">Программа форума<i class="fa fa-angle-right ml-2"></i></a></p> {% endcomment %}
                                 <p class="card-text">{{ post.short_description|safe }}</p>
-                                <a id="{{ post.id }}" href="#" v-on:click="greet" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedInfo">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                                {% if post.full_description %}
+                                <a id="{{ post.id }}" href="#" v-on:click="load_publication_content" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedInfo">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
+                                {% endif %}
                             </div>
                             <div class="card-footer">
                                 <div class="share d-inline-block mt-1">
@@ -156,9 +158,9 @@
             </div>
             <div class="text-center mt-4"><div class="btn btn-outline-primary" id="btnNews_showMore">Показать еще<i class="fa fa-angle-down ml-2"></i></div></div>
             {% include 'mainapp/includes/modal/modal-news-examples.html' %}
-            <div class="alert alert-info">[[ info ]]</div>
+            {% comment %} <div class="alert alert-info">[[ info ]]</div> {% endcomment %}
             {% comment %} <div class="text text-warning">[[ title ]]</div> {% endcomment %}
-            <div class="text text-info">[[ counter ]]</div>
+            {% comment %} <div class="text text-info">[[ counter ]]</div> {% endcomment %}
         </div>
 
 
