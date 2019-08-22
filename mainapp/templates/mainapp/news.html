@@ -84,7 +84,7 @@
                                 <h6 class="card-title mb-2">{{ post.title }}</h6>
                                 {% comment %} <p class="mb-2"><a href="#" class="">Информационное письмо<i class="fa fa-angle-right ml-2"></i></a></p>
                                 <p class="mb-2"><a href="#" class="">Программа форума<i class="fa fa-angle-right ml-2"></i></a></p> {% endcomment %}
-                                <p class="card-text">{{ post.short_description|safe }}</p>
+                                <p class="card-text text-secondary">{{ post.short_description|safe }}</p>
                                 {% if post.full_description %}
                                 <a id="{{ post.id }}" href="#" v-on:click="load_publication_content" class="card-link-detailed" data-toggle="modal" data-target="#modalDetailedInfo">Подробнее<i class="fa fa-caret-right ml-2"></i></a>
                                 {% endif %}
@@ -163,7 +163,7 @@
             {% comment %} <div class="text text-info">[[ counter ]]</div> {% endcomment %}
     {% if posts.has_other_pages %}
     <nav aria-label="Page navigation">
-        <ul class="pagination">
+        <ul class="pagination pagination-sm">
             {% if posts.has_previous %}
             <li class="page-item"><a class="page-link" href="?page={{ users.previous_page_number }}">&laquo;</a></li>
             {% else %}

@@ -18,6 +18,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+
 class Category(models.Model):
     name = models.CharField(u'Название раздела', max_length=100)
 
@@ -27,6 +28,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Post(models.Model):
     """model for publications"""
@@ -60,6 +62,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("news_details", kwargs={"pk": self.pk})
 
+
 class Banner(models.Model):
     """banners for main page"""
     title = models.CharField(u'Название баннера', max_length=100)
@@ -75,6 +78,7 @@ class Banner(models.Model):
         }
     )
     number = models.SmallIntegerField(verbose_name='Порядок вывода', default=0)
+    active = models.BooleanField(verbose_name='Активен', default=True)
 
     class Meta:
         verbose_name = 'Баннер'
@@ -106,6 +110,7 @@ class Photo(models.Model):
     def __str__(self):
         return 'picture {}'.format(self.pk)
 
+
 class Document(models.Model):
     """model for upload and store documents"""
     title = models.CharField(u'Название документа', max_length=200)
@@ -119,6 +124,7 @@ class Document(models.Model):
     def __str__(self):
         return self.title
 
+
 class Partner(models.Model):
     """model for partners page"""
     title = models.CharField(u'Название', max_length=200)
@@ -131,6 +137,7 @@ class Partner(models.Model):
     def __str__(self):
         return self.title
 
+
 class ContactSubdivision(models.Model):
     number = models.SmallIntegerField(u'Порядок вывода отдела', blank=True, null=True)
     title = models.CharField(u'Название отдела', max_length=50)
@@ -142,6 +149,7 @@ class ContactSubdivision(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Contact(models.Model):
     """model for contacts handling"""
@@ -160,6 +168,7 @@ class Contact(models.Model):
 
     def __str__(self):
         return '{}, {}'.format(self.name, self.description)
+
 
 class OrgProfile(models.Model):
     short_name = models.CharField(u'Краткое название компании', max_length=80, default='')

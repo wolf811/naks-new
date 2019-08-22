@@ -10,7 +10,7 @@ import re
 import mainapp.views as mainapp
 from functools import wraps
 import pytest, os, json
-# import requests
+from stdimage.models import *
 
 # Create your tests here.
 # for r, d, f in os.walk(os.path.join(os.getcwd(), 'media')):
@@ -76,7 +76,7 @@ def test_status_code_of_admin_page(admin_client):
     assert response.status_code == 200
 
 
-def test_request_factory_of_index_view(rf):
+def test_request_factory_of_index_view(rf, db):
     """rf - is an instance of django.test.RequestFactory"""
     request = rf.get('/')
     response = mainapp.index(request)
@@ -191,6 +191,7 @@ def test_can_retrieve_api_urls_after_publishing_posts(db, client):
         assert api_data['title'] == post.title
         assert api_data['short_description'] == post.short_description
 
+
 def test_api_contain_images_urls(db, client):
     post = mixer.blend(Post, main_picture=File(open('media/img_1.jpg', 'rb')))
     response = client.get('/naks_api/posts/{}/'.format(post.pk))
@@ -216,3 +217,37 @@ def test_can_make_contacts_and_publish_them(db, client):
         assert contact.phone in html
         assert contact.email in html
     assert subdivision.title in html
+
+
+def test_can_make_banners_and_publish_them(db, rf):
+    banner = mixer.blend(Banner, active=True)
+    request = rf.get('/')
+    response = mainapp.index(request)
+    html = response.content.decode('utf8')
+    assert banner.title in html
+    # check if banner.image has different size, made by StdImage
+    assert isinstance(banner.image, StdImageFieldFile)
+    assert banner.image.large.url in html
+
+
+def test_can_make_publications_on_main_page(db, rf):
+    post = mixer.blend(
+        Post,
+        active=True,
+        main_picture=File(open('media/img_1.jpg', 'rb'))
+    )
+    request = rf.get('/')
+    response = mainapp.index(request)
+    html = response.content.decode('utf8')
+    assert post.title in html
+    assert post.main_picture.medium.url in html
+    # additional photos to publication
+    # File(open('media/img_2.jpg', 'rb'))
+    additional_photo = mixer.blend(
+        Photo,
+        image=File(open('media/img_2.jpg', 'rb')),
+        post=post
+    )
+    assert additional_photo.image.medium.url in html
+    # secondary posts
+

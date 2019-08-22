@@ -27,6 +27,11 @@
         <hr class="line-title">
         <div class="row mt-5">
             <div class="col-sm-8 col-xl-9">
+                {% if main_posts %}
+                    {% for post in main_posts %}
+                        {% include 'mainapp/includes/main_page/news_block_main.html' %}
+                    {% endfor %}
+                {% else %}
                 <!-- Content Left -->
                 <div id="latestNews_01">
                     <h6 class="text-secondary mb-3"><span class="text-uppercase mr-2">Последние новости</span>|<span class="ml-2">22 Июня 2017</span></h6>
@@ -156,6 +161,7 @@
                     </div>
                 </div>
                 <hr class="my-4">
+                {% endif %}
                 <div class="text-center"><a href="{% url 'news' %}" class="btn btn-outline-primary" role="button">Все новости<i class="fa fa-angle-right ml-2"></i></a></div>
                 <!-- End Content Left -->
             </div>

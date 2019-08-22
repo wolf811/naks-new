@@ -1,0 +1,34 @@
+<div id="latestNews_01">
+                    <h6>
+                        <span class="text-secondary mb-3">{{ post.published_date|date:"d M. Y" }}</span>
+                    </h6>
+                    <h4>{{ post.title }}</h4>
+                    <div class="img-news mt-3 mb-4">
+                        <img src="{{ post.main_picture.medium.url }}" alt="Заглушка новости" class="img-fluid d-block w-100 img-news-vertical">
+                    </div>
+                    <h5 class="font-weight-bold">
+                        {{ post.subtitle }}
+                    </h5>
+                    <p class="text-secondary">
+                        {{ post.full_description|safe }}
+                    </p>
+                    <p class="text-secondary font-weight-bold">Содержание журнала:<a href="#" class="font-weight-normal ml-2" target="_blank">Открыть<i class="fa fa-angle-right ml-2"></i></a></p>
+                    <p class="text-secondary font-weight-bold">Скачать журнал можно на сайте<a href="http://svarka.naks.ru/" class="font-weight-normal ml-2">svarka.naks.ru</a></p>
+
+                    <p class="text-muted mb-1"><small>Поделиться:</small></p>
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div class="share">
+                                <a href="#" class="btn btn-outline-secondary btn-sm" title="Vkontakte" role="button"><i class="fa fa-vk"></i></a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" title="Telegram" role="button"><i class="fa fa-telegram"></i></a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" title="Facebook" role="button"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                <!-- <div class="ya-share2" data-services="vkontakte,facebook,twitter"></div> -->
+                            </div>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-dark btn-sm float-right" data-toggle="modal" data-target="#sendLink">Отправить на e-mail</button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">

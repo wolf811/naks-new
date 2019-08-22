@@ -9,12 +9,42 @@ from rest_framework.views import APIView
 from .serializers import PostSerializer
 
 # Create your views here.
+
+
 def index(request):
     title = 'НАКС - Главная'
+    banners = Banner.objects.filter(active=True).order_by('number')
+    all_posts = [post for post in Post.objects.filter(active=True).order_by('-published_date')]
+    # posts for central part of page
+    main_posts = all_posts[-3:]
+    main_posts_final = []
+    for p in main_posts:
+        post_with_additional_photos = {
+            'post': None,
+            'additional_photos': []
+        }
+        post_with_additional_photos['post'] = p
+        add_photos = Photo.objects.filter(post=p)
+        if len(add_photos) > 0:
+            for photo in add_photos:
+                post_with_additional_photos['additional_photos'].append(photo)
+            main_posts_final.append(post_with_additional_photos)
+        else:
+            post_with_additional_photos['post'] = p
+            post_with_additional_photos['additional_photos'] = None
+            main_posts_final.append(post_with_additional_photos)
+
+
+    # posts for side part of page
+    secondary_posts = all_posts[-5:-3]
     content = {
         'title': title,
+        'banners': banners,
+        'main_posts': main_posts,
+        'secondary_posts': secondary_posts,
     }
     return render(request, 'mainapp/index.html', content)
+
 
 def news(request):
     title = 'НАКС - Новости'
@@ -62,6 +92,7 @@ def agreement(request):
     }
     return render(request, 'mainapp/agreement.html', content)
 
+
 def contacts(request):
     title = 'НАКС - Контакты'
     subdivisions = ContactSubdivision.objects.all().order_by('number')
@@ -80,6 +111,7 @@ def contacts(request):
     }
     return render(request, 'mainapp/contacts.html', content)
 
+
 # ============= SASv ===============
 def sasv(request):
     title = 'НАКС - САСв'
@@ -88,12 +120,14 @@ def sasv(request):
     }
     return render(request, 'mainapp/sasv.html', content)
 
+
 def sasv_ac(request):
     title = 'НАКС - САСв'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sasv_ac.html', content)
+
 
 def sasv_acsm(request):
     title = 'НАКС - САСв'
@@ -102,12 +136,14 @@ def sasv_acsm(request):
     }
     return render(request, 'mainapp/sasv_acsm.html', content)
 
+
 def sasv_acso(request):
     title = 'НАКС - САСв'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sasv_acso.html', content)
+
 
 def sasv_acst(request):
     title = 'НАКС - САСв'
@@ -116,12 +152,14 @@ def sasv_acst(request):
     }
     return render(request, 'mainapp/sasv_acst.html', content)
 
+
 def sasv_br1gac(request):
     title = 'НАКС - БР-1ГАЦ'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sasv_br1gac.html', content)
+
 
 def sasv_docs(request):
     title = 'НАКС - Документы САСв'
@@ -130,12 +168,14 @@ def sasv_docs(request):
     }
     return render(request, 'mainapp/sasv_docs.html', content)
 
+
 def sasv_nts(request):
     title = 'НАКС - НТС'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sasv_nts.html', content)
+
 
 def sasv_helpInfo(request):
     title = 'НАКС - САСв'
@@ -144,12 +184,14 @@ def sasv_helpInfo(request):
     }
     return render(request, 'mainapp/sasv_helpInfo.html', content)
 
+
 def sasv_openNaks(request):
     title = 'НАКС - Обратная связь'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sasv_openNaks.html', content)
+
 
 def sasv_reestr_staff(request):
     title = 'НАКС - Реестр персонала'
@@ -158,6 +200,7 @@ def sasv_reestr_staff(request):
     }
     return render(request, 'mainapp/sasv_reestr_staff.html', content)
 
+
 def sasv_reestr_sm(request):
     title = 'НАКС - Реестр сварочных материалов'
     content = {
@@ -165,12 +208,14 @@ def sasv_reestr_sm(request):
     }
     return render(request, 'mainapp/sasv_reestr_sm.html', content)
 
+
 def sasv_reestr_so(request):
     title = 'НАКС - Реестр сварочного оборудования'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sasv_reestr_so.html', content)
+
 
 def sasv_reestr_st(request):
     title = 'НАКС - Реестр сварочных технологий'
@@ -180,12 +225,14 @@ def sasv_reestr_st(request):
     return render(request, 'mainapp/sasv_reestr_st.html', content)
 # ============= end SASv ===============
 
+
 def sro(request):
     title = 'НАКС - СРО'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sro.html', content)
+
 
 def sro_activity(request):
     title = 'НАКС - СРО'
@@ -194,12 +241,14 @@ def sro_activity(request):
     }
     return render(request, 'mainapp/sro_activity.html', content)
 
+
 def sro_docs(request):
     title = 'НАКС - СРО'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sro_docs.html', content)
+
 
 def sro_reestr(request):
     title = 'НАКС - СРО'
@@ -208,12 +257,14 @@ def sro_reestr(request):
     }
     return render(request, 'mainapp/sro_reestr.html', content)
 
+
 def sro_sobranie(request):
     title = 'НАКС - СРО'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sro_sobranie.html', content)
+
 
 def sro_presidium(request):
     title = 'НАКС - СРО'
@@ -222,12 +273,14 @@ def sro_presidium(request):
     }
     return render(request, 'mainapp/sro_presidium.html', content)
 
+
 def sro_president(request):
     title = 'НАКС - СРО'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sro_president.html', content)
+
 
 def sro_control_comitet(request):
     title = 'НАКС - СРО'
@@ -236,12 +289,14 @@ def sro_control_comitet(request):
     }
     return render(request, 'mainapp/sro_control_comitet.html', content)
 
+
 def sro_disciplinary_comitet(request):
     title = 'НАКС - СРО'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sro_disciplinary_comitet.html', content)
+
 
 def sro_audit_commission(request):
     title = 'НАКС - СРО'
@@ -250,12 +305,14 @@ def sro_audit_commission(request):
     }
     return render(request, 'mainapp/sro_audit_commission.html', content)
 
+
 def sro_legislation(request):
     title = 'НАКС - СРО'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sro_legislation.html', content)
+
 
 def sro_forms_docs(request):
     title = 'НАКС - СРО'
@@ -264,6 +321,7 @@ def sro_forms_docs(request):
     }
     return render(request, 'mainapp/sro_forms_docs.html', content)
 # ============= end SRO ===============
+
 
 # ============= TK364 ===============
 def tk364(request):
@@ -274,6 +332,7 @@ def tk364(request):
     return render(request, 'mainapp/tk364.html', content)
 # ============= end TK364 ===============
 
+
 # ============= SPKS ===============
 def spks(request):
     title = 'НАКС - СПКС'
@@ -282,12 +341,14 @@ def spks(request):
     }
     return render(request, 'mainapp/spks.html', content)
 
+
 def spks_docs(request):
     title = 'НАКС - Документы СПКС'
     content = {
         'title': title
     }
     return render(request, 'mainapp/spks_docs.html', content)
+
 
 def spks_reestr_svid(request):
     title = 'НАКС - СПКС'
@@ -297,6 +358,7 @@ def spks_reestr_svid(request):
     return render(request, 'mainapp/spks_reestr_svid.html', content)
 # ============= end SPKS ===============
 
+
 # ============= SDS ===============
 def sds(request):
     title = 'НАКС - СДС'
@@ -305,12 +367,14 @@ def sds(request):
     }
     return render(request, 'mainapp/sds.html', content)
 
+
 def sds_docs(request):
     title = 'НАКС - Документы СДС'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sds_docs.html', content)
+
 
 def sds_reestr_staff(request):
     title = 'НАКС - СДС'
@@ -319,6 +383,7 @@ def sds_reestr_staff(request):
     }
     return render(request, 'mainapp/sds_reestr_staff.html', content)
 
+
 def sds_reestr_sm(request):
     title = 'НАКС - СДС'
     content = {
@@ -326,12 +391,14 @@ def sds_reestr_sm(request):
     }
     return render(request, 'mainapp/sds_reestr_sm.html', content)
 
+
 def sds_reestr_so(request):
     title = 'НАКС - СДС'
     content = {
         'title': title
     }
     return render(request, 'mainapp/sds_reestr_so.html', content)
+
 
 def sds_reestr_st(request):
     title = 'НАКС - СДС'
@@ -347,6 +414,7 @@ def sds_reestr_st(request):
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.filter(active=True).order_by('-published_date')
     serializer_class = PostSerializer
+
 
 class PostDetailsAPI(APIView):
     """
