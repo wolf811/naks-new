@@ -51,6 +51,7 @@ class Post(models.Model):
     )
     published_date = models.DateTimeField(u'Дата публикации', default=timezone.now)
     active = models.BooleanField(u'Опубликована', default=True)
+    mark_as_announcement = models.BooleanField(u'Отметить как анонс события', default=False)
 
     class Meta:
         verbose_name = 'Публикация'

@@ -14,11 +14,10 @@ from .serializers import PostSerializer
 def index(request):
     title = 'НАКС - Главная'
     banners = Banner.objects.filter(active=True).order_by('number')
-    all_posts = [post for post in Post.objects.filter(active=True).order_by('-published_date')]
+    all_posts =Post.objects.filter(active=True).order_by('-published_date')[:4]
     # posts for central part of page
-    main_posts = all_posts[-3:]
     main_posts_final = []
-    for p in main_posts:
+    for p in all_posts:
         post_with_additional_photos = {
             'post': None,
             'additional_photos': []
@@ -34,14 +33,18 @@ def index(request):
             post_with_additional_photos['additional_photos'] = None
             main_posts_final.append(post_with_additional_photos)
 
-
     # posts for side part of page
-    secondary_posts = all_posts[-5:-3]
+    secondary_posts = Post.objects.filter(active=True).order_by('-published_date')[4:6]
+
+    # announcements
+    events = Post.objects.filter(mark_as_announcement=True).order_by('-published_date')[:2]
+
     content = {
         'title': title,
         'banners': banners,
-        'main_posts': main_posts,
+        'main_posts': main_posts_final,
         'secondary_posts': secondary_posts,
+        'events': events,
     }
     return render(request, 'mainapp/index.html', content)
 

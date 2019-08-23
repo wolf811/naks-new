@@ -28,7 +28,7 @@
         <div class="row mt-5">
             <div class="col-sm-8 col-xl-9">
                 {% if main_posts %}
-                    {% for post in main_posts %}
+                    {% for p in main_posts %}
                         {% include 'mainapp/includes/main_page/news_block_main.html' %}
                     {% endfor %}
                 {% else %}

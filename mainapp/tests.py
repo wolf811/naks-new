@@ -11,6 +11,7 @@ import mainapp.views as mainapp
 from functools import wraps
 import pytest, os, json
 from stdimage.models import *
+import datetime
 
 # Create your tests here.
 # for r, d, f in os.walk(os.path.join(os.getcwd(), 'media')):
@@ -30,9 +31,11 @@ def measure_time(func):
             timing_report[func.__name__] = end_ if end_ > 0 else 0
     return _time_it
 
+
 class MockSuperUser:
     def has_perm(self, perm):
         return True
+
 
 class SiteTest(TestCase):
     def setUp(self):
@@ -236,18 +239,44 @@ def test_can_make_publications_on_main_page(db, rf):
         active=True,
         main_picture=File(open('media/img_1.jpg', 'rb'))
     )
-    request = rf.get('/')
-    response = mainapp.index(request)
-    html = response.content.decode('utf8')
-    assert post.title in html
-    assert post.main_picture.medium.url in html
-    # additional photos to publication
-    # File(open('media/img_2.jpg', 'rb'))
     additional_photo = mixer.blend(
         Photo,
         image=File(open('media/img_2.jpg', 'rb')),
         post=post
     )
+    request = rf.get('/')
+    response = mainapp.index(request)
+    html = response.content.decode('utf8')
+    assert post.main_picture.medium.url in html
     assert additional_photo.image.medium.url in html
-    # secondary posts
+
+
+def test_side_panel_posts_available_on_main_page(db, rf):
+    dates = []
+    for i in range(6):
+        dates.append(timezone.now() - datetime.timedelta(days=i))
+    for date in dates:
+        mixer.blend(
+            Post,
+            active=True,
+            main_picture=File(open('media/img_1.jpg', 'rb')),
+            published_date=date,
+            full_description=mixer.RANDOM
+        )
+    request = rf.get('/')
+    response = mainapp.index(request)
+    html = response.content.decode('utf8')
+    all_posts = Post.objects.all().order_by('-published_date')[:6]
+    for post in all_posts:
+        assert post.title in html
+    for post in all_posts[5:6]:
+        assert post.main_picture.thumbnail.url in html
+        # test details of news
+        req_details = rf.get('/news_details/{}/'.format(post.pk))
+        res_details = mainapp.news_details(req_details, post.pk)
+        html_details = res_details.content.decode('utf8')
+        assert res_details.status_code == 200
+        assert post.title in html_details
+        assert post.subtitle in html_details
+        assert post.full_description in html_details
 
