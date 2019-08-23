@@ -117,6 +117,7 @@ class Document(models.Model):
     title = models.CharField(u'Название документа', max_length=200)
     file = models.FileField(u'Файл', upload_to='documents/')
     tags = models.ManyToManyField(Tag)
+    main_page_rotation = models.BooleanField(u'Включить в ротацию на главной', default=False)
 
     class Meta:
         verbose_name = 'Документ'

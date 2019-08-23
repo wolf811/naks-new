@@ -37,7 +37,7 @@ class PostAdmin(admin.ModelAdmin):
     view_on_site = True
     # fields = ('published_date', 'category', 'title', 'subtitle', 'short_description', 'full_description', 'main_picture')
 
-    list_display = ['title', 'category', 'active', 'published_date']
+    list_display = ['title', 'category', 'active', 'mark_as_announcement', 'published_date']
     inlines = [PhotoInline]
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size':'100'})},
@@ -61,9 +61,13 @@ class ContactAdmin(admin.ModelAdmin):
 class ContactSubdivisionAdmin(admin.ModelAdmin):
     list_display = ['title', 'number']
 
+@admin.register(Document)
+class DocumentAdmin(admin.ModelAdmin):
+    list_display = ['title', 'main_page_rotation']
+
 admin.site.register(OrgProfile)
 admin.site.register(Partner)
-admin.site.register(Document)
+# admin.site.register(Document)
 admin.site.register(Photo)
 admin.site.register(Tag)
 admin.site.register(Category)

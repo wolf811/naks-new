@@ -14,19 +14,11 @@ news_titles = [
     'Конференция НАКС',
     'Общее собрание',
     'Семинар НАКС',
-    'Семинар НАКС',
-    'Семинар НАКС',
-    'Семинар НАКС',
-    'Семинар НАКС',
-    'Семинар НАКС',
-    'Вебинар НАКС',
     'Съезд НАКС',
     'Съезд НАКС',
     'Открытие центра',
     'Заключение соглашения',
     'Заключение соглашения',
-    'Новая редакция нормативного документа',
-    'Новая редакция нормативного документа',
 ]
 
 categories = [
@@ -47,7 +39,7 @@ tags = [
 pictures = [
     'media/img_1.jpg',
     'media/img_2.jpg',
-    'media/img_3.png',
+    # 'media/img_3.png',
 ]
 
 
@@ -58,6 +50,13 @@ class Command(BaseCommand):
         Category.objects.all().delete()
         Contact.objects.all().delete()
         ContactSubdivision.objects.all().delete()
+        Document.objects.all().delete()
+
+        mixer.cycle(10).blend(
+            Document,
+            # title=mixer.sequence('document_naks_{0}'),
+            main_page_rotation=True,
+        )
 
         mixer.cycle(10).blend(ContactSubdivision, title=mixer.sequence('subdivision_{0}'))
         mixer.cycle(20).blend(
@@ -81,12 +80,11 @@ class Command(BaseCommand):
                 Post,
                 title=news_titles[i],
                 active=True if random.randint(0, 100) > 20 else False,
+                mark_as_announcement=True if random.randint(0, 100) > 60 else False,
                 category=random.choice([category for category in Category.objects.all()]),
                 subtitle=mixer.RANDOM,
                 short_description=mixer.RANDOM,
                 full_description=mixer.RANDOM,
                 main_picture=File(open(random.choice(pictures), 'rb')),
             )
-
             print('creating posts:', news_titles[i])
-

@@ -5,7 +5,7 @@ from mainapp.models import *
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+import random
 from .serializers import PostSerializer
 
 # Create your views here.
@@ -34,10 +34,18 @@ def index(request):
             main_posts_final.append(post_with_additional_photos)
 
     # posts for side part of page
-    secondary_posts = Post.objects.filter(active=True).order_by('-published_date')[4:6]
+    secondary_posts = Post.objects.filter(
+        active=True).order_by('-published_date')[4:6]
 
     # announcements
-    events = Post.objects.filter(mark_as_announcement=True).order_by('-published_date')[:2]
+    events = Post.objects.filter(
+        mark_as_announcement=True).order_by('-published_date')[:2]
+
+    main_page_documents_rotation_list = Document.objects.filter(
+        main_page_rotation=True
+    )
+    shuffled_documents = [doc for doc in main_page_documents_rotation_list]
+    random.shuffle(shuffled_documents)
 
     content = {
         'title': title,
@@ -45,6 +53,7 @@ def index(request):
         'main_posts': main_posts_final,
         'secondary_posts': secondary_posts,
         'events': events,
+        'documents': shuffled_documents[:4]
     }
     return render(request, 'mainapp/index.html', content)
 

@@ -4,20 +4,20 @@
 <div class="block-right-announce" style="margin-top:1.9rem;">
     <h5 class="mb-3">Анонсы событий</h5>
     {% if events %}
-        {% for event in events %}
-        <div class="card mb-4">
-            <div class="card-header bg-naks text-white rounded-0">
-               {{ event.title }}
-            </div>
-            <div class="card-body text-white">
-                <hr class="mt-2 mb-3">
-                <h4 class="card-title"><strong>{{ event.subtitle }}</strong></h4>
-                <p class="card-text">{{ event.short_description|safe }}</p>
-                <hr class="mt-3 mb-4">
-                <a href="{% url 'news_details' event.pk %}" class="btn btn-outline-light btn-sm">Подробнее</a>
-            </div>
+    {% for event in events %}
+    <div class="card mb-4">
+        <div class="card-header bg-naks text-white rounded-0">
+            {{ event.title }}
         </div>
-        {% endfor %}
+        <div class="card-body text-white">
+            <hr class="mt-2 mb-3">
+            <h4 class="card-title"><strong>{{ event.subtitle }}</strong></h4>
+            <p class="card-text">{{ event.short_description|safe }}</p>
+            <hr class="mt-3 mb-4">
+            <a href="{% url 'news_details' event.pk %}" class="btn btn-outline-light btn-sm">Подробнее</a>
+        </div>
+    </div>
+    {% endfor %}
     {% else %}
     <div class="card" id="announceRight_01">
 
@@ -27,7 +27,8 @@
         <div class="card-body text-white">
             <hr class="mt-2 mb-3">
             <h4 class="card-title"><strong>6 - 7 сентября</strong><br>в г. Москва</h4>
-            <p class="card-text">Семинар «Обработка персональных данных при проведении аттестации и оценки квалификации»</p>
+            <p class="card-text">Семинар «Обработка персональных данных при проведении аттестации и оценки квалификации»
+            </p>
             <hr class="mt-3 mb-4">
             <a href="{% url 'news_details' "1" %}" class="btn btn-outline-light btn-sm">Подробнее</a>
         </div>
@@ -55,27 +56,32 @@
 <div class="block-right-news">
     <h5 class="mb-3">Новости НАКС</h5>
     {% if secondary_posts %}
-        {% for post in secondary_posts %}
-        <div class="news-right">
-            <img src="{% if post.main_picture %}{{ post.main_picture.thumbnail.url }}{% else %}{% static 'images/no_pict_icon.jpg' %}{% endif %}" alt="secondary_post_picture_{{ post.pk }}" class="img-fluid">
-            <p class="text-secondary mt-3 mb-2">{{ post.published_date }}</p>
-            <p class="mb-1">{{ post.title }}</p>
-            <a href="{% url 'news_details' post.pk %}" class="btn btn-link btn-sm pl-0" role="button">Читать дальше<i class="fa fa-angle-right ml-2"></i></a>
-        </div>
-        {% endfor %}
+    {% for post in secondary_posts %}
+    <div class="news-right">
+        <img src="{% if post.main_picture %}{{ post.main_picture.thumbnail.url }}{% else %}{% static 'images/no_pict_icon.jpg' %}{% endif %}"
+            alt="secondary_post_picture_{{ post.pk }}" class="img-fluid">
+        <p class="text-secondary mt-3 mb-2">{{ post.published_date }}</p>
+        <p class="mb-1">{{ post.title }}</p>
+        <a href="{% url 'news_details' post.pk %}" class="btn btn-link btn-sm pl-0" role="button">Читать дальше<i
+                class="fa fa-angle-right ml-2"></i></a>
+    </div>
+    {% endfor %}
     {% else %}
     <div class="news-right" id="newsRight_01">
         <img src="{% static 'images/imgRight_01.png' %}" alt="" class="img-fluid">
         <p class="text-secondary mt-3 mb-2">18 Июня 2017</p>
-        <p class="mb-1">Ежегодный научно-практический семинар "Металлургия сварки и сварочные материалы" (Петровские чтения - 2017)</p>
-        <a href="{% url 'news_details' "1" %}" class="btn btn-link btn-sm pl-0" role="button">Читать дальше<i class="fa fa-angle-right ml-2"></i></a>
+        <p class="mb-1">Ежегодный научно-практический семинар "Металлургия сварки и сварочные материалы" (Петровские
+            чтения - 2017)</p>
+        <a href="{% url 'news_details' "1" %}" class="btn btn-link btn-sm pl-0" role="button">Читать дальше<i
+                class="fa fa-angle-right ml-2"></i></a>
     </div>
     <hr class="mt-2 mb-4">
     <div class="news-right" id="newsRight_02">
         <img src="{% static 'images/imgRight_02.png' %}" alt="" class="img-fluid">
         <p class="text-secondary mt-3 mb-2">4 Мая 2017</p>
         <p class="mb-1">Руководство НАКС в Краснодаре</p>
-        <a href="#" class="btn btn-link btn-sm pl-0" role="button">Читать дальше<i class="fa fa-angle-right ml-2"></i></a>
+        <a href="#" class="btn btn-link btn-sm pl-0" role="button">Читать дальше<i
+                class="fa fa-angle-right ml-2"></i></a>
     </div>
     {% endif %}
     <a href="{% url 'news' %}" class="btn btn-outline-dark btn-sm mt-3" role="button">Все новости</a>
@@ -85,41 +91,63 @@
 <hr class="my-4">
 
 <!-- Документы НАКС справа -->
+<h5 class="mb-3">Документы НАКС</h5>
+{% if documents %}
+    {% for document in documents %}
+    <hr class="my-2">
+    <div class="docs-right">
+        <span class="d-inline-block text-truncate" style="max-width: 230px;">
+            <small>{{ document.title }}</small>
+        </span>
+        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="{{ document.file.url }}"
+                class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
+    </div>
+    {% endfor %}
+
+{% else %}
 <div class="block-right-docs">
-    <h5 class="mb-3">Документы НАКС</h5>
-    <h6 class="text-secondary">Соглашения</h6>
+    {% comment %} <h6 class="text-secondary">Соглашения</h6> {% endcomment %}
     <hr class="my-2">
     <div class="docs-right" id="docsRight_01">
         <span class="d-inline-block text-truncate" style="max-width: 230px;">
-            <small>Соглашение о сотрудничестве<br>между АСРО "Содружество строителей РТ", СРО Ассоциацией "ППСО" и СРО НП "НАКС"</small>
+            <small>Соглашение о сотрудничестве<br>между АСРО "Содружество строителей РТ", СРО Ассоциацией "ППСО" и СРО
+                НП "НАКС"</small>
         </span>
-        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#" class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
+        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#"
+                class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
     </div>
     <hr class="my-2">
     <div class="docs-right" id="docsRight_02">
         <span class="d-inline-block text-truncate" style="max-width: 230px;">
-            <small>Соглашение о взаимодействии<br>между Инспекцией государственного строительного надзора Кемеровской области и СРО НП "НАКС"</small>
+            <small>Соглашение о взаимодействии<br>между Инспекцией государственного строительного надзора Кемеровской
+                области и СРО НП "НАКС"</small>
         </span>
-        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#" class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
+        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#"
+                class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
     </div>
 
     <h6 class="text-secondary mt-3">Нормативные документы</h6>
     <hr class="my-2">
     <div class="docs-right" id="docsRight_03">
         <span class="d-inline-block text-truncate" style="max-width: 230px;">
-            <small>РД 03-495-02 "Технологический<br>регламент проведения аттестации сварщиков и специалистов сварочного производства"</small>
+            <small>РД 03-495-02 "Технологический<br>регламент проведения аттестации сварщиков и специалистов сварочного
+                производства"</small>
         </span>
-        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#" class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
+        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#"
+                class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
     </div>
     <hr class="my-2">
     <div class="docs-right" id="docsRight_04">
         <span class="d-inline-block text-truncate" style="max-width: 230px;">
             <small>ПБ-03-273-99 "Правила аттестации<br>сварщиков и специалистов сварочного производства"</small>
         </span>
-        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#" class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
+        <div class="d-iline-block"><i class="fa fa-file-pdf-o mr-1" aria-hidden="true"></i><a href="#"
+                class="btn btn-link btn-sm" target="_blank">Открыть документ</a></div>
     </div>
     <a href="{% url 'sasv_docs' %}" class="btn btn-outline-dark btn-sm mt-3" role="button">Все документы</a>
-</div> <!-- Конец документов -->
+</div>
+{% endif %}
+<!-- Конец документов -->
 
 <hr class="my-4">
 
@@ -127,23 +155,28 @@
 <div class="block-right-projects">
     <h5 class="mb-3">Проекты НАКС</h5>
     <div class="text-center" id="projectRight_01">
-        <a href="http://rsps.site/" target="_blank"><img src="{% static 'images/projectRsps.png' %}" class="img-fluid" alt="Логотип РСПС" class="img-fluid"></a>
+        <a href="http://rsps.site/" target="_blank"><img src="{% static 'images/projectRsps.png' %}" class="img-fluid"
+                alt="Логотип РСПС" class="img-fluid"></a>
     </div>
     <hr class="my-3">
     <div class="text-center" id="projectRight_02">
-        <a href="https://ac.naks.ru/" target="_blank"><img src="{% static 'images/projectEdo.png' %}" class="img-fluid" alt="Логотип ЭДО" class="img-fluid"></a>
+        <a href="https://ac.naks.ru/" target="_blank"><img src="{% static 'images/projectEdo.png' %}" class="img-fluid"
+                alt="Логотип ЭДО" class="img-fluid"></a>
     </div>
     <hr class="my-3">
     <div class="text-center" id="projectRight_03">
-        <a href="http://svarka.naks.ru/" target="_blank"><img src="{% static 'images/projectJournal.png' %}" class="img-fluid" alt="Логотип журнала" class="img-fluid"></a>
+        <a href="http://svarka.naks.ru/" target="_blank"><img src="{% static 'images/projectJournal.png' %}"
+                class="img-fluid" alt="Логотип журнала" class="img-fluid"></a>
     </div>
     <hr class="my-3">
     <div class="text-center" id="projectRight_04">
-        <a href="http://www.bewelder.ru/" target="_blank"><img src="{% static 'images/projectBewelder.png' %}" class="img-fluid" alt="Логотип Bewelder" class="img-fluid"></a>
+        <a href="http://www.bewelder.ru/" target="_blank"><img src="{% static 'images/projectBewelder.png' %}"
+                class="img-fluid" alt="Логотип Bewelder" class="img-fluid"></a>
     </div>
     <hr class="my-3">
     <div class="text-center" id="projectRight_05">
-        <a href="http://naks.ru/naksmedia/" target="_blank"><img src="{% static 'images/projectNaksMedia.png' %}" class="img-fluid" alt="Логотип Накс Медиа" class="img-fluid"></a>
+        <a href="http://naks.ru/naksmedia/" target="_blank"><img src="{% static 'images/projectNaksMedia.png' %}"
+                class="img-fluid" alt="Логотип Накс Медиа" class="img-fluid"></a>
     </div>
     <hr class="my-3">
 </div> <!-- Конец проектов -->
