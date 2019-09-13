@@ -1,18 +1,23 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 
 
-class WeldType(models.Model):
+class Spr(models.Model):
+    short_name = models.CharField(u'Краткое название', max_length=15)
+    full_name = models.CharField(u'Расшифровка', max_length=150)
+    number = models.SmallIntegerField(u'Порядок сортировки', null=True, blank=True)
+
+    class Meta:
+        abstract = True
+
+
+class WeldType(Spr):
     # способ сварки (СП, СТ)
     # short_name
     # full_name
     # international_short_name
     # international_full_name
-    short_name = models.CharField(u'Краткое название', max_length=15)
-    full_name = models.CharField(u'Расшифровка', max_length=150)
-    number = models.SmallIntegerField(u'Порядок сортировки', null=True, blank=True)
-
     class Meta:
         verbose_name = 'Способ сварки'
         verbose_name_plural = 'Способы сварки'
@@ -21,39 +26,90 @@ class WeldType(models.Model):
         return self.short_name
 
 
-class Activity(models.Model):
+class Activity(Spr):
     # только для II-IV уровней
     # руководство и технический контроль за проведением сварочных работ
     # участие в работе органов по подготовке и аттестации
-    pass
+    class Meta:
+        verbose_name = 'Вид деятельности'
+        verbose_name_plural = 'Виды деятельности'
+
+    def __str__(self):
+        return self.short_name
 
 
-class GTU(models.Model):
+class GTU(Spr):
     # ГРУППЫ ТУ
-    pass
+    # участие в работе органов по подготовке и аттестации
+    class Meta:
+        verbose_name = 'Группа ТУ'
+        verbose_name_plural = 'Группы ТУ'
+
+    def __str__(self):
+        return self.short_name
 
 
 class Level(models.Model):
     # I-IV
-    pass
+    level = models.CharField(u'Уровень', max_length=2)
+
+    class Meta:
+        verbose_name = 'Уровень'
+        verbose_name_plural = 'Уровни'
+
+    def __str__(self):
+        return self.level
 
 
-class SO(models.Model):
-    pass
+class SO(Spr):
+    # welding equipment types catalog
+    class Meta:
+        verbose_name = 'Вид СО'
+        verbose_name_plural = 'Виды СО'
+
+    def __str__(self):
+        return self.short_name
 
 
-class SM(models.Model):
-    pass
+class SM(Spr):
+    # materials types catalog
+    class Meta:
+        verbose_name = 'Вид СМ'
+        verbose_name_plural = 'Виды СМ'
+
+    def __str__(self):
+        return self.short_name
 
 
-class PS(models.Model):
-    pass
+class PS(Spr):
+    ps_code = models.CharField(u'Код профстандарта', max_length=10)
+
+    class Meta:
+        verbose_name = 'Профстандарт'
+        verbose_name_plural = 'Профстандарты'
 
 
-class PK(models.Model):
-    # code NOK
-    # title
-    pass
+class PK(Spr):
+    pk_code = models.CharField(u'Код квалификации', max_length=20)
+    ps = models.ForeignKey(PS, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Квалификация'
+        verbose_name_plural = 'Квалификации'
+
+    def __str__(self):
+        return self.short_name
+
+
+class City(models.Model):
+    title = models.CharField(u'Название', max_length=30)
+
+    class Meta:
+        verbose_name = 'Город'
+        verbose_name_plural = 'Города'
+
+    def __str__(self):
+        return self.title
 
 
 class SROMember(models.Model):
@@ -61,11 +117,116 @@ class SROMember(models.Model):
     # phone
     # email
     # address
-    pass
+    active = 'a'
+    not_active = 'na'
+    STATUSES = (
+        (active, 'Действует'),
+        (not_active, 'Исключен')
+    )
+    short_name = models.CharField(u'Краткое наименование', max_length=50)
+    full_name = models.CharField(u'Полное наименование', max_length=200)
+    become_member_information = models.CharField(
+        u'Информация о включении в реестр НАКС',
+        blank=True, null=True, max_length=100)
+    become_member_doc_link = models.URLField(
+        u'Ссылка на документ о включении в реестр НАКС', blank=True, null=True)
+    ur_address = models.CharField(u'Юридический адрес', max_length=200)
+    post_address = models.CharField(
+        u'Почтовый адрес', null=True, blank=True, max_length=200)
+    actual_address = models.CharField(
+        u'Фактический адрес', null=True, blank=True, max_length=200)
+    city = models.ForeignKey(
+        City, null=True, blank=True, on_delete=models.SET_NULL)
+    chief = models.CharField(u'ФИО руководителя организации', max_length=100)
+    phone = models.CharField(u'Телефон(ы)', max_length=100)
+    fax = models.CharField(u'Факс', max_length=50)
+    email = models.EmailField(u'Адрес электронной почты', max_length=50)
+    svid_number = models.CharField(
+        u'Номер свидетельства о членстве', max_length=4)
+    status = models.CharField(
+        u'Статус', max_length=2, choices=STATUSES, default=active)
+
+    class Meta:
+        verbose_name = 'Организация'
+        verbose_name_plural = 'Организации-члены СРО'
+
+    def __str__(self):
+        return self.full_name
+
+
+class CheckProtocol(models.Model):
+    name = models.CharField(u'Название документа', max_length=100)
+    document = models.FileField(u'Файл', upload_to='documents/')
+    date_document = models.DateField(u'Дата документа', default=timezone.now)
+    number_document = models.CharField(u'Номер документа', max_length=10)
+    member = models.ForeignKey(
+        SROMember, null=True, blank=True, on_delete=models.SET_NULL)
+
+    class Meta:
+        verbose_name = 'Документ'
+        verbose_name_plural = 'Документы'
 
 
 class Center(models.Model):
     # active_since
     # active_until
-    pass
+    active_since = models.DateField(
+        u'Дата начала аккредитации', default=timezone.now)
+    active_until = models.DateField(
+        u'Дата окончания аккредитации', null=True, blank=True)
+    chief = models.CharField(u'ФИО руководителя центра', max_length=50)
+    sro_member = models.ForeignKey(SROMember, on_delete=models.CASCADE)
 
+    class Meta:
+        abstract = True
+
+
+class AccreditedCenter(Center):
+    center_short_code = models.CharField(
+        u'Шифр центра',
+        max_length=10
+        )
+    weldtypes = models.ManyToManyField(
+        WeldType,
+        verbose_name='Способы сварки',
+        blank=True
+        )
+    gtus = models.ManyToManyField(
+        GTU,
+        verbose_name='Способы сварки',
+        blank=True
+        )
+    levels = models.ManyToManyField(
+        Level,
+        verbose_name="Уровни",
+        blank=True
+        )
+    acitvities = models.ManyToManyField(
+        Activity,
+        verbose_name='Виды д-сти',
+        blank=True
+        )
+    sm_types = models.ManyToManyField(
+        SM,
+        verbose_name="Шифры СО",
+        blank=True
+        )
+    so_types = models.ManyToManyField(
+        SO,
+        verbose_name="Шифры СМ",
+        blank=True
+        )
+    profstandards = models.ManyToManyField(
+        PS,
+        verbose_name="Профстандарты",
+        blank=True
+        )
+    profqualifications = models.ManyToManyField(
+        PK,
+        verbose_name="Профквалификации",
+        blank=True
+        )
+
+    class Meta:
+        verbose_name = 'Аккредитация'
+        verbose_name_plural = 'Аккредитации'
