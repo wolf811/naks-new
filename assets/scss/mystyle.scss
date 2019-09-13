@@ -24,6 +24,7 @@ body {
 @import "_header-xs.scss";
 /* HEADER-XS */
 
+@import "_footer.scss";
 
 // Центральные кнопки, карта
 .main-activity {
@@ -58,29 +59,29 @@ body {
 .card-header.bg-naks {border-bottom: 1px solid #065DA3;}
 
 
-.control-next, 
+.control-next,
 .control-prev {
 	padding: 15px 20px;
 	color: #fff;
 	text-align: center;
 	opacity: 0.7;
 }
-.control-next:hover, 
+.control-next:hover,
 .control-prev:hover {
 	color: #fff;
 	text-decoration: none;
 	opacity: 1;
 }
-.control-next i, 
+.control-next i,
 .control-prev i {
 	vertical-align: middle;
 }
-.carousel-control-prev i, 
+.carousel-control-prev i,
 .carousel-control-next i {
 	padding: 5px 15px;
 	border: 1px solid #fff;
 }
-.carousel-control-prev i:hover, 
+.carousel-control-prev i:hover,
 .carousel-control-next i:hover {
 	background: rgba(255, 255, 255, 0.5);
 }
@@ -100,8 +101,8 @@ body {
 }
 .header-image .container {
 	position: absolute;
-	top: 50%; 
-	left: 50%;                        
+	top: 50%;
+	left: 50%;
 	transform: translate(-50%, -50%);
 }
 .all-docs p, .all-docs label {font-size: 0.875rem;}
@@ -175,7 +176,7 @@ body {
 	max-width: 100%;
 	width: auto !important;
 	margin-left: auto;
-	margin-right: auto; 
+	margin-right: auto;
 }
 
 /* Правое меню */
@@ -193,27 +194,27 @@ body {
 	z-index: 2;
 }
 /* .right-main-xs */
-.table-all-ac td, 
-.table-ac td, 
-.table-ac th, 
-.table-nts td, 
-.table-nts th, 
-.table-agreement td, 
+.table-all-ac td,
+.table-ac td,
+.table-ac th,
+.table-nts td,
+.table-nts th,
+.table-agreement td,
 .table-agreement th,
-.table-contacts td, 
+.table-contacts td,
 .table-contacts th {
 	font-size: 0.875rem;
 	vertical-align: middle;
 	color: #7e7e7e;
 }
-.table-all-ac td:first-child, 
-.table-ac td:first-child, 
+.table-all-ac td:first-child,
+.table-ac td:first-child,
 .table-ac th:first-child,
-.table-nts td:first-child, 
+.table-nts td:first-child,
 .table-nts th:first-child,
-.table-agreement td:first-child, 
+.table-agreement td:first-child,
 .table-agreement th:first-child,
-.table-contacts td:first-child, 
+.table-contacts td:first-child,
 .table-contacts th:first-child {
 	border-left: 1px solid #1880e7;
 }

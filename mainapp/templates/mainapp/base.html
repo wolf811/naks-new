@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %}{% load sass_tags %}
 <!doctype html>
 <html lang="ru">
 	<head>
@@ -15,7 +15,7 @@
 
 		<!-- My styles -->
 		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-		<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+		<link rel="stylesheet" href="{% sass_src 'scss/mystyle.scss' %}">
 		<link rel="stylesheet" href="{% static 'css/media.css' %}">
 		<link rel="stylesheet" href="{% static 'css/mystyle_ie.css' %}">
 		{% endblock %}
