@@ -151,7 +151,7 @@ class SROMember(models.Model):
         verbose_name_plural = 'Организации-члены СРО'
 
     def __str__(self):
-        return self.full_name
+        return self.short_name
 
 
 class CheckProtocol(models.Model):
