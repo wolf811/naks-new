@@ -50,6 +50,8 @@
 		{% include 'mainapp/includes/modal/modal-range-detail.html' %}
 		{% include 'mainapp/includes/modal/modal-membership-detail.html' %}
 
+		{% include 'mainapp/includes/cookie-warning.html' %}
+
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
@@ -74,5 +76,32 @@
 
 		<script src="{% static 'js/myscript.js' %}"></script>
 		<script src="{% static 'js/vue_scripts.js' %}"></script>
+
+		<script src="jquery.cookie.js"></script>
+		<script>
+			$(function() {
+			  // Проверяем запись в куках о посещении
+			  // Если запись есть - ничего не происходит
+			     if (!$.cookie('hideModal')) {
+			  // если cookie не установлено появится окно
+			  // с задержкой 5 секунд
+			    var delay_popup = 1000;
+			    setTimeout("document.querySelector('.cookie-warning').style.display='inline-block'", delay_popup);
+			     }
+			     $.cookie('hideModal', true, {
+			   // Время хранения cookie в днях
+			    expires: 30,
+			    path: '/'
+			   });
+			});
+
+			// Закрытие полосы cookie
+
+
+			$('.ok').click(function(){
+			    $('.cookie-warning').fadeOut();
+			});
+		</script>
+
 	</body>
 </html>

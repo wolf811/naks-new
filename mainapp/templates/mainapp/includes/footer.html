@@ -2,28 +2,118 @@
 
 <div class="footer bg-dark text-white w-100 mt-5 py-4">
 	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-md-2 col-lg-3">
-				<div class="text-center text-md-left mb-3">
-					<img src="{% static 'images/logo-footer.png' %}" class="img-fluid" alt="Логотип НАКС">
+		<div class="footer-menu d-none d-lg-block">
+			<div class="row">
+				<div class="col">
+					<div class="other-brand mb-5">
+						<img src="{% static 'images/otherLogoBW-1.png' %}" class="img-fluid border" alt="Логотип Премия Правительства" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Лауреат Премии Правительства РФ в области качества 2012 года">
+						<img src="{% static 'images/otherLogoBW-3.png' %}" class="img-fluid border" alt="Логотип Члена МИС" data-toggle="tooltip" data-placement="bottom" title="Член Международного Института Сварки">
+						<img src="{% static 'images/otherLogoBW-2.png' %}" class="img-fluid border" alt="Логотип Премия СНГ" data-toggle="tooltip" data-placement="bottom" title="Лауреат Премии СНГ 2013 года за достижения в области качества">
+						<img src="{% static 'images/otherLogoBW-4.png' %}" class="img-fluid border" alt="Логотип Премия СНГ" data-toggle="tooltip" data-placement="bottom" title="Система менеджмента качества сертифицирована по ISO 9001:2015">
+					</div>
+					<p class="text-bold mb-1">О НАКС</p>
+					<ul>
+						<li><a href="#">Новости</a></li>
+						<li><a href="#">Партнёры и соглашения</a></li>
+						<li><a href="#">Часто задаваемые вопросы</a></li>
+					</ul>
+
 				</div>
-				
-			</div>
-			<div class="col-md-7 col-lg-6">
-				<p class="d-none d-md-block text-center"><small>Саморегулируемая организация Ассоциация</small><br><strong>Национальное Агентство Контроля Сварки</strong></p>
-				<div class="text-center mb-3" style="font-size: 0.8rem;">
-					<a href="#" class="text-white d-block mb-1" target="_blank">Политика обработки ПДн СРО&nbsp;Ассоциация&nbsp;"НАКС"</a>
-					<a href="#" class="text-white d-block" target="_blank">Политика обработки ПДн ООО "НЭДК"</a>
+				<div class="col">
+					<p class="text-bold mb-1">Деятельность</p>
+					<ul>
+						<li><a href="{% url 'spks' %}">СПКС - Совет по профессиональным квалификациям в области сварки</a></li>
+						<li><a href="{% url 'sasv' %}">САСв - Система аттестации сварочного производства</a></li>
+						<li><a href="{% url 'sds' %}">СДС - Система добровольной сертификации</a></li>
+						<li><a href="{% url 'tk364' %}">ТК364 - Технический комитет Росстандарта "Сварка и родственные процессы"</a></li>
+						<li><a href="{% url 'sro' %}">СРО - Саморегулируемая рганизация НАКС</a></li>
+						<li><a href='http://svarka.naks.ru/' target="_blank">Журнал "Сварка и диагностика"</a></li>
+						<li><a href='http://bewelder.ru/' target="_blank">Bewelder.ru</a></li>
+					</ul>
 				</div>
-				<p class="text-center mb-0">© Все права защищены, 2002-2019</p>
+				<div class="col">
+					<p class="text-bold mb-1">Реестры</p>
+					<ul>
+						<li><a href="{% url 'sasv_reestr_staff' %}">Реестр аттестованного персонала</a></li>
+						<li><a href="{% url 'sasv_reestr_sm' %}">Реестр аттестованных сварочных материалов</a></li>
+						<li><a href="{% url 'sasv_reestr_so' %}">Реестр аттестованного сварочного оборудования</a></li>
+						<li><a href="{% url 'sasv_reestr_st' %}">Реестр аттестованных сварочных технологий</a></li>
+						<li><a href="{% url 'spks_reestr_svid' %}">Реестр свидетельств о квалификации</a></li>
+						<li><a href="{% url 'sds_reestr_staff' %}">Реестр сертифицированного персонала</a></li>
+						<li><a href="{% url 'sds_reestr_sm' %}">Реестр сертифицированных сварочных материалов</a></li>
+						<li><a href="{% url 'sds_reestr_so' %}">Реестр сертифицированного сварочного оборудования</a></li>
+						<li><a href="{% url 'sds_reestr_st' %}">Реестр сертифицированных сварочных технологических процессов</a></li>
+					</ul>
+				</div>
 			</div>
-			<div class="d-none d-md-block col-md-3">
-				<p class="contacts-bottom float-right mb-0">
+			<div class="row">
+				<div class="col">
+					<p class="text-bold mb-1">Документы</p>
+					<ul>
+						<li><a href="{% url 'sasv_docs' %}">Документы САСв</a></li>
+						<li><a href="{% url 'spks_docs' %}">Документы СПКС</a></li>
+						<li><a href="{% url 'sds_docs' %}">Документы СДС</a></li>
+						<li><a href="{% url 'sro_docs' %}">Стандарты и правила НАКС</a></li>
+					</ul>
+				</div>
+				<div class="col">
+					<p class="text-bold mb-1">Контакты</p>
+					<ul>
+						<li><a href="{% url 'contacts' %}">Подразделения</a></li>
+						<li><a href="{% url 'contacts' %}">Реквизиты</a></li>
+						<li><a href="{% url 'contacts' %}">Схема проезда</a></li>
+					</ul>
+				</div>
+				<div class="col">
+					<form class="mb-3">
+						<div class="form-group">
+							<label for="inputSubscription"><strong>Подписаться на рассылку</strong></label>
+							<div class="input-group input-group-sm">
+								<input type="text" class="form-control" id="inputSubscription" placeholder="E-mail" aria-label="E-mail" aria-describedby="button-addon2">
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button" id="button-addon2">Отправить</button>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div>
+						<a href="#" class="btn btn-outline-secondary btn-sm mr-2" title="Vkontakte"><i class="fa fa-vk"></i></a>
+						<a href="#" class="btn btn-outline-secondary btn-sm mr-2" title="Twitter"><i class="fa fa-twitter"></i></a>
+						<a href="#" class="btn btn-outline-secondary btn-sm mr-2" title="Facebook"><i class="fa fa-facebook-official"></i></a>
+						<a href="#" class="btn btn-outline-secondary btn-sm mr-2" title="Telegram"><i class="fa fa-telegram"></i></a>
+						<a href="#" class="btn btn-outline-secondary btn-sm mr-2" title="Odnoklassniki"><i class="fa fa-odnoklassniki-square"></i></a>
+						<a href="#" class="btn btn-outline-secondary btn-sm mr-2" title="Instagram"><i class="fa fa-instagram"></i></a>
+					</div>
+				</div>
+			</div>
+			<hr class="border-top border-secondary">
+		</div>
+		
+		<p class="d-block d-md-none mb-3"><small>Саморегулируемая организация Ассоциация</small><br><strong>Национальное Агентство Контроля Сварки</strong></p>
+		<div class="row align-items-center justify-content-between">
+			<div class="col-auto d-none d-md-block">
+				<img src="{% static 'images/logo-footer.png' %}" class="img-fluid" alt="Логотип НАКС">
+			</div>
+			<div class="col-auto d-none d-lg-block">
+				<div class="mb-2 mb-sm-0">
+					<p class="mb-1"><small>Саморегулируемая организация Ассоциация</small><br><strong>Национальное Агентство Контроля Сварки</strong></p>
+					<p class="mb-0"><small>© Все права защищены, 2002-2019</small></p>
+				</div>
+			</div>
+			<div class="col-auto">
+				<div class="mb-3 mb-sm-0" style="font-size: 0.8rem;">
+					<p class="mb-1"><a href="#" class="text-white d-block mb-1" target="_blank"><i class="fa fa-file-text-o mr-1"></i>Политика обработки ПДн СРО&nbsp;Ассоциация&nbsp;"НАКС"</a></p>
+					<p class="mb-0"><a href="#" class="text-white d-block" target="_blank"><i class="fa fa-file-text-o mr-1"></i>Политика обработки ПДн ООО "НЭДК"</a></p>
+				</div>
+			</div>
+			<div class="col-auto">
+				<p class="contacts-bottom mb-0">
 					<a href="tel:+74997847700" class="d-block mb-1"><i class="fa fa-phone-square mr-1"></i>+7 (499) 784-77-00</a>
 					<a href="tel:+74997847711" class="d-block mb-1"><i class="fa fa-fax mr-1"></i>+7 (499) 784-77-11</a>
-					<a href="mailto:info@naks.ru" class="d-block mb-1"><i class="fa fa-envelope mr-1"></i>info@naks.ru</a>
+					<a href="mailto:info@naks.ru" class="d-block"><i class="fa fa-envelope mr-1"></i>info@naks.ru</a>
 				</p>
 			</div>
 		</div>
+		<div class="d-block d-lg-none mt-3"><small>© Все права защищены, 2002-2019</small></div>
 	</div>
 </div>

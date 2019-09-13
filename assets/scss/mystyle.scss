@@ -24,7 +24,13 @@ body {
 @import "_header-xs.scss";
 /* HEADER-XS */
 
+/* Footer */
 @import "_footer.scss";
+/* Footer */
+
+/* Footer */
+@import "cookie-warning.scss";
+/* Footer */
 
 // Центральные кнопки, карта
 .main-activity {
@@ -482,3 +488,5 @@ body {
 	padding: .1rem .3rem;
     font-size: .75rem;
 }
+
+.text-bold {font-weight: bold;}
