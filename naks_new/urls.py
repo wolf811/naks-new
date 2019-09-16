@@ -24,6 +24,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import mainapp.views as mainapp
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
@@ -82,6 +83,7 @@ urlpatterns = [
     path('sds_reestr_sm/', mainapp.sds_reestr_sm, name = 'sds_reestr_sm'),
     path('sds_reestr_so/', mainapp.sds_reestr_so, name = 'sds_reestr_so'),
     path('sds_reestr_st/', mainapp.sds_reestr_st, name = 'sds_reestr_st'),
+    path('reestr/', include('reestr.urls', namespace='reestr')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('naks_api/', include(router.urls)),

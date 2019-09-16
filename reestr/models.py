@@ -88,6 +88,9 @@ class PS(Spr):
         verbose_name = 'Профстандарт'
         verbose_name_plural = 'Профстандарты'
 
+    def __str__(self):
+        return self.short_name
+
 
 class PK(Spr):
     pk_code = models.CharField(u'Код квалификации', max_length=20)
@@ -166,6 +169,9 @@ class CheckProtocol(models.Model):
         verbose_name = 'Документ'
         verbose_name_plural = 'Документы'
 
+    def __str__(self):
+        return self.name
+
 
 class Center(models.Model):
     # active_since
@@ -182,7 +188,44 @@ class Center(models.Model):
 
 
 class AccreditedCenter(Center):
-    center_short_code = models.CharField(
+    materials = 'attsm'
+    equipment = 'attso'
+    technologies = 'attst'
+    personal = 'personal'
+    qualification = 'qualifications'
+    certification = 'cert'
+    DIRECTIONS = (
+        (personal, 'Аттестация персонала'),
+        (materials, 'Аттестация сварочных материалов'),
+        (equipment, 'Аттестация сварочного оборудования'),
+        (technologies, 'Аттестация сварочных технологий'),
+        (qualification, 'Оценка квалификации'),
+        (certification, 'Добровольная сертфикация')
+    )
+    transneft = 'tn'
+    gazprom = 'gp'
+    SPECIAL_REQUIREMENTS = (
+        (transneft, 'Аттестация с учетом требований Транснефть'),
+        (gazprom, 'Аттестация с учетом требований Газпром'),
+    )
+
+    direction = models.CharField(
+        u'Направление деятельности',
+        max_length=14,
+        choices=DIRECTIONS,
+        default=personal
+        )
+
+    special = models.CharField(
+        u'Особые требования',
+        max_length=2,
+        choices=SPECIAL_REQUIREMENTS,
+        blank=True,
+        null=True,
+        default=None
+    )
+
+    short_code = models.CharField(
         u'Шифр центра',
         max_length=10
         )
@@ -230,3 +273,24 @@ class AccreditedCenter(Center):
     class Meta:
         verbose_name = 'Аккредитация'
         verbose_name_plural = 'Аккредитации'
+
+    def __str__(self):
+        return self.center_short_code
+
+
+class AccreditedCertificationPoint(AccreditedCenter):
+    center_short_code = None
+    point_short_code = models.CharField(u'Шифр АП', max_length=50)
+    base_org_name = models.CharField(
+        u'Наименование организации', max_length=100)
+    base_org_ur_address = models.CharField(
+        u'Юридический адрес организации', max_length=100)
+    base_actual_address = models.CharField(
+        u'Фактический адрес организации', max_length=100)
+
+    class Meta:
+        verbose_name = 'Аттестационный пункт'
+        verbose_name_plural = 'Аттестационные пункты'
+
+    def __str__(self):
+        return self.point_short_code
