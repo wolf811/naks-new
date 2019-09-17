@@ -2,13 +2,15 @@
 
 <tr>
     <td>
-        {% if center.special == 'tn' %}
+        {% if center.active %}
+            {% if center.special == 'tn' %}
         <img src="{% static 'images/iconTransneft.png' %}"
         title="АЦ осуществляет аттестацию на объектах ПАО «АК «Транснефть»"><br>
-        {% endif %}
-        {% if center.special == 'gp' %}
-        <img src="{% static 'images/iconGazprom.png' %}"
-        title="АЦ осуществляет аттестацию на объектах ПАО «Газпром»">
+            {% endif %}
+            {% if center.special == 'gp' %}
+            <img src="{% static 'images/iconGazprom.png' %}"
+            title="АЦ осуществляет аттестацию на объектах ПАО «Газпром»">
+            {% endif %}
         {% endif %}
     </td>
     <td><a href="{% url 'sasv_br1gac' %}" class="">{{ center.short_code }}</a></td>

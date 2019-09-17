@@ -111,3 +111,5 @@ log/
 media/upload/*
 media/documents/*
 log/**
+*.service
+*_nginx
