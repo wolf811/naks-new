@@ -1,5 +1,7 @@
 package-lock.json
 node_modules/
+__pycache__/
+*_pycache_*
 # Created by https://www.gitignore.io
 
 ### OSX ###
