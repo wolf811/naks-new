@@ -4,6 +4,11 @@
 	--primary: #0463B1;  /* My color */
 	--danger: #ed2629; /* My color */
 }
+
+/* Variables */
+@import "_variables.scss";
+/* End Variables */
+
 .navbar {padding: 0.5rem 0;}
 .popover {border-radius: 0;}
 .tooltip.show {opacity: 1;}
@@ -21,7 +26,9 @@ button:hover {cursor: pointer;}
 	background-color: #0463B1;
 	border-color: #0463B1;
 }
-
+.btn-link {
+	color: $primary;
+}
 .btn-danger {
 	background-color: #ed2629;
 	border-color: #ed2629;
