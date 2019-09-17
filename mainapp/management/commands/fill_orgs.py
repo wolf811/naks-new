@@ -84,6 +84,7 @@ class Command(BaseCommand):
             mixer.blend(
                 SROMember,
                 chief=random.choice(org_chiefs),
+                short_name=random.choice(org_short_titles),
                 status=lambda: 'a' if random.randint(0, 100) < 80 else 'na'
             )
         print('sro orgs created')

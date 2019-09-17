@@ -10,7 +10,11 @@ from django.urls import reverse
 @pytest.mark.reestr
 @pytest.mark.django_db
 class TestClass:
-    org_names = ['ООО Сварка трубопроводов', 'ООО Аттестационный центр']
+    org_names = [
+        'ООО Сварка трубопроводов',
+        'ООО Аттестационный центр',
+        'ООО АЦ Сварка'
+        ]
     sp_center_accred_details = {
         "name": "cr4gac",
         "gtu": "ГДО, НГДО, ОХНВП",
@@ -85,17 +89,27 @@ class TestClass:
         assert response.status_code == 200
 
     def test_reestr_of_ac_filled_with_centers_by_direction(self, rf):
+        for org in self.org_names:
+            mixer.blend(SROMember, short_name=org, status='a')
         personal_centers = mixer.cycle(5).blend(
             AccreditedCenter, direction='personal', sro_member__status='a')
-        inactive_centers_personal = mixer.cycle(5).blend(
+        inactive_sro_centers_personal = mixer.cycle(5).blend(
             AccreditedCenter, direction='personal', sro_member__status='na')
+        inactive_by_status_centers = mixer.cycle(5).blend(
+            AccreditedCenter,
+            active=False,
+            sro_member=SROMember.objects.filter(short_name__in=self.org_names).first()
+        )
         request = rf.get('/reestr/centers/')
         response = reestr.centers(request, direction='personal')
         html = response.content.decode('utf8')
         for center in personal_centers:
             assert center.short_code in html
 
-        for center in inactive_centers_personal:
+        for center in inactive_sro_centers_personal:
+            assert center.short_code in html
+
+        for center in inactive_by_status_centers:
             assert center.short_code in html
 
 
