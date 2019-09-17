@@ -176,10 +176,16 @@ class CheckProtocol(models.Model):
 class Center(models.Model):
     # active_since
     # active_until
+    active = models.BooleanField(u'Активен', default=True)
     active_since = models.DateField(
         u'Дата начала аккредитации', default=timezone.now)
     active_until = models.DateField(
         u'Дата окончания аккредитации', null=True, blank=True)
+    temporary_suspend_date = models.DateField(
+        u'Временно приостановлен до',
+        null=True,
+        blank=True
+    )
     chief = models.CharField(u'ФИО руководителя центра', max_length=50)
     sro_member = models.ForeignKey(SROMember, on_delete=models.CASCADE)
 
@@ -276,6 +282,11 @@ class AccreditedCenter(Center):
 
     def __str__(self):
         return self.short_code
+
+    def save(self, *args, **kwargs):
+        if self.sro_member.status == 'na':
+            self.active = False
+        super(AccreditedCenter, self).save(*args, **kwargs)
 
 
 class AccreditedCertificationPoint(AccreditedCenter):
