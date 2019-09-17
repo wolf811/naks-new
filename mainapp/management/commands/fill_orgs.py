@@ -83,33 +83,40 @@ class Command(BaseCommand):
         for i in range(105):
             mixer.blend(
                 SROMember,
-                chief=random.choice(org_chiefs)
+                chief=random.choice(org_chiefs),
+                status=lambda: 'a' if random.randint(0, 100) < 80 else 'na'
             )
+        print('sro orgs created')
         for member in SROMember.objects.all():
             member.city = City.objects.order_by("?").first()
             member.save()
+        print('cities set ready')
         for weld in weld_types:
             mixer.blend(
                 WeldType,
                 short_name=weld[0],
                 full_name=weld[1]
             )
+        print('weld set ready')
         for gtu in gtus:
             mixer.blend(
                 GTU,
                 short_name=gtu[0],
                 full_name=gtu[1]
             )
+        print('gtu set ready')
         for member in SROMember.objects.all():
             mixer.blend(
                 AccreditedCenter,
                 sro_member=member,
-                short_code=random.choice(short_codes)
+                short_code=random.choice(short_codes),
+                active=lambda: True if random.randint(0, 100) < 80 else False,
+                temporary_suspend_date=mixer.RANDOM if random.randint(0, 100) > 95 else None
                 )
-
+        print('centers created')
         for lv in levels:
             Level.objects.create(level=lv)
-
+        print('levels created')
         for accred_center in AccreditedCenter.objects.all():
             accred_center.gtus.add(*[gtu for gtu in GTU.objects.all()])
             accred_center.weldtypes.add(*[weld for weld in WeldType.objects.all()])
