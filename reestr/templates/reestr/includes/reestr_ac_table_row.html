@@ -1,21 +1,5 @@
 {% load static %}
-<<<<<<< HEAD
-<tr>
-    <td>
-        {% if center.special == 'tn' %}
-        <img src="{% static 'images/iconTransneft.png' %}"
-        title="АЦ осуществляет аттестацию на объектах ПАО «АК «Транснефть»"><br>
-        {% endif %}
-        {% if center.special == 'gp' %}
-        <img src="{% static 'images/iconGazprom.png' %}"
-        title="АЦ осуществляет аттестацию на объектах ПАО «Газпром»">
-    </td>
-    {% endif %}
-    <td><a href="{% url 'sasv_br1gac' %}" class="">{{ center.short_code }}</a></td>
-    <td>{{ center.sro_member.city.title }}</td>
-    <td><a href="#" class="btn btn-outline-primary btn-xs" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
-</tr>
-=======
+
                                 <tr>
                                     <td>
                                         {% if center.special == 'tn' %}
@@ -38,4 +22,3 @@
                                     {% endif %}
                                     </td>
                                 </tr>
->>>>>>> 61c9a5ac246e59adb30db342644892f9888fbad7
