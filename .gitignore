@@ -97,3 +97,15 @@ log/
 
 *style.css
 *style.css.map
+*component.css
+*component.css.map
+# *.jpg
+# *.pdf
+# *.jpeg
+# *.doc
+# *.docx
+# *.png
+**/migrations/**
+media/upload/*
+media/documents/*
+log/**

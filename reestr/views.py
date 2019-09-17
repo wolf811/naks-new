@@ -19,7 +19,8 @@ def middle_with_round_array(arr):
 def centers(request, direction):
     from .useful import DIRECTIONS
     active_centers = AccreditedCenter.objects.filter(
-        direction=direction, sro_member__status='a', active=True).exclude(temporary_suspend_date__isnull=False).order_by('short_code')
+        direction=direction, sro_member__status='a', active=True).exclude(
+            temporary_suspend_date__isnull=False).order_by('short_code')
     directions = DIRECTIONS
     content = {
         "direction": directions[direction],
