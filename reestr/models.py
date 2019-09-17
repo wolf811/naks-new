@@ -236,7 +236,7 @@ class AccreditedCenter(Center):
         )
     gtus = models.ManyToManyField(
         GTU,
-        verbose_name='Способы сварки',
+        verbose_name='Группы ТУ',
         blank=True
         )
     levels = models.ManyToManyField(

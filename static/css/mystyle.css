@@ -940,3 +940,8 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 .btn-xs {
   padding: .1rem .3rem;
   font-size: .75rem; }
+
+
+.table-excluded-ac td:first-child {
+ border-left: 1px solid #ed2629;
+}

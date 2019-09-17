@@ -224,6 +224,7 @@ body {
 .table-contacts th:first-child {
 	border-left: 1px solid #1880e7;
 }
+
 .table-all-ac td:first-child {
 	text-align: center;
 }
@@ -490,3 +491,11 @@ body {
 }
 
 .text-bold {font-weight: bold;}
+
+.table-excluded-ac td:first-child {
+ 	border-left: 1px solid #ed2629;
+}
+
+.table-paused-ac td:first-child {
+ 	border-left: 1px solid #ffc107;
+}

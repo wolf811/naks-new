@@ -37,7 +37,14 @@
                 <h5 class="text-primary my-4">{{ direction.registry_name }}</h5>
                 <!-- Поиск АЦ -->
                 <form class="mt-4 mb-3">
-                    <h6 class="font-weight-bold">Быстрый поиск</h6>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-auto">
+                            <h6 class="font-weight-bold mb-0">Быстрый поиск</h6>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-secondary btn-sm float-right">Подробный поиск<i class="fa fa-angle-up ml-1"></i></button>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="form-group col-xs-12 col-sm-6 col-md-5">
                             <label for="" class="pb-0 col-form-label-sm">Название <span class="text text-secondary">(например, "ГАЦ РБ")<span></label>
@@ -95,7 +102,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-xl-6">
                             <div class="table-responsive">
-                                <table class="table table-hover table-striped table-all-ac mb-0">
+                                <table class="table table-hover table-striped table-all-ac table-excluded-ac mb-0">
                                     <tr>
                                         <td></td>
                                         <td width="100"><a href="#" class="">АР-ГАЦ</a></td>
@@ -120,7 +127,7 @@
                         </div>
                         <div class="col-xs-12 col-xl-6">
                             <div class="table-responsive">
-                                <table class="table  table-hover table-striped table-all-ac mb-0">
+                                <table class="table  table-hover table-striped table-all-ac table-excluded-ac mb-0">
                                     <tr>
                                         <td></td>
                                         <td width="100"><a href="#" class="">СВР-4АЦ</a></td>
