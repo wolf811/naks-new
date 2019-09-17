@@ -74,7 +74,7 @@ class TestClass:
                 assert str(instance) == instance.level
             if attr_name == 'title':
                 assert str(instance) == instance.title
-            if attr_name == 'center_short_code':
+            if attr_name == 'short_code':
                 assert str(instance) == instance.short_code
             if attr_name == 'point_short_code':
                 assert str(instance) == instance.point_short_code
@@ -84,9 +84,9 @@ class TestClass:
         response = reestr.centers(request, direction='personal')
         assert response.status_code == 200
 
-    def test_reestr_filled_with_centers_by_direction(self, rf):
+    def test_reestr_of_ac_filled_with_centers_by_direction(self, rf):
         personal_centers = mixer.cycle(5).blend(
-            AccreditedCenter, direction='personal')
+            AccreditedCenter, direction='personal', sro_member__status='a')
         request = rf.get('/reestr/centers/')
         response = reestr.centers(request, direction='personal')
         html = response.content.decode('utf8')

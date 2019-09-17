@@ -4,7 +4,7 @@ from .models import *
 
 def get_accred_centers(obj):
     return ", ".join(
-        [center.center_short_code for center in AccreditedCenter.objects.filter(sro_member=obj)])
+        [center.short_code for center in AccreditedCenter.objects.filter(sro_member=obj)])
 
 class AccreditedCenterInline(admin.StackedInline):
     model = AccreditedCenter

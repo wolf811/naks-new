@@ -275,11 +275,11 @@ class AccreditedCenter(Center):
         verbose_name_plural = 'Аккредитации'
 
     def __str__(self):
-        return self.center_short_code
+        return self.short_code
 
 
 class AccreditedCertificationPoint(AccreditedCenter):
-    center_short_code = None
+    short_code = None
     point_short_code = models.CharField(u'Шифр АП', max_length=50)
     base_org_name = models.CharField(
         u'Наименование организации', max_length=100)

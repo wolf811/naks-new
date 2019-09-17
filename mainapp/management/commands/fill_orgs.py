@@ -13,6 +13,29 @@ org_short_titles = [
     'ООО ГАЦ ВВР',
 ]
 
+short_codes = [
+    'БР-1ГАЦ',
+    'ЗУР-1ГАЦ',
+    'СЗР-1ГАЦ',
+    'МУР-1ГАЦ',
+    'БОР-1ГАЦ',
+    'ФУР-1ГАЦ',
+    'ПУК-1ГАЦ',
+]
+
+city_titles = [
+    'Нижний новгород',
+    'Санкт-Петербург',
+    'Петропавловск-Камчатский',
+    'Сочи',
+    'Самара',
+    'Казань',
+    'Архангельск',
+    'Москва',
+    'Магадан',
+    'Петропавловск-Камчатский Архангельский'
+]
+
 
 org_chiefs = [
     'Щеголев Игорь Львович',
@@ -51,13 +74,20 @@ class Command(BaseCommand):
         GTU.objects.all().delete()
         WeldType.objects.all().delete()
         Level.objects.all().delete()
+        AccreditedCenter.objects.all().delete()
+        City.objects.all().delete()
 
-        for i in range(5):
+        for i in range(30):
+            City.objects.create(title=random.choice(city_titles))
+
+        for i in range(105):
             mixer.blend(
                 SROMember,
-                chief=random.choice(org_chiefs),
-                short_name=random.choice(org_short_titles)
+                chief=random.choice(org_chiefs)
             )
+        for member in SROMember.objects.all():
+            member.city = City.objects.order_by("?").first()
+            member.save()
         for weld in weld_types:
             mixer.blend(
                 WeldType,
@@ -71,7 +101,11 @@ class Command(BaseCommand):
                 full_name=gtu[1]
             )
         for member in SROMember.objects.all():
-            mixer.blend(AccreditedCenter, sro_member=member)
+            mixer.blend(
+                AccreditedCenter,
+                sro_member=member,
+                short_code=random.choice(short_codes)
+                )
 
         for lv in levels:
             Level.objects.create(level=lv)
@@ -80,8 +114,13 @@ class Command(BaseCommand):
             accred_center.gtus.add(*[gtu for gtu in GTU.objects.all()])
             accred_center.weldtypes.add(*[weld for weld in WeldType.objects.all()])
             accred_center.levels.add(*[level for level in Level.objects.all()])
-            accred_center.member = random.choice(
-                [member for member in SROMember.objects.all()]
-                )
+            accred_center.direction = 'personal'
+            dice = random.randint(0, 100)
+            if dice > 70:
+                accred_center.special = 'tn'
+            accred_center.save()
+            # accred_center.member = random.choice(
+            #     [member for member in SROMember.objects.all()]
+            #     )
 
         print('orgs creation complete')
