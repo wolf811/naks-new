@@ -4,6 +4,7 @@ from .models import *
 from mixer.backend.django import mixer
 import reestr.views as reestr
 from django.urls import reverse
+from mock import patch
 
 # Create your tests here.
 
@@ -27,6 +28,11 @@ class TestClass:
         "gtu": "ГДО, НГДО, ОХНВП",
         "sm_types": "Пп, Пс, Гг, Гз"
     }
+
+    def context(self, call_args):
+        args, kwargs = call_args
+        request_mock, template, context = args
+        return context
 
     def test_reestr_models(self):
         # WeldType, Activity, GTU, LEVEL, SO, SM, PS
@@ -98,6 +104,7 @@ class TestClass:
         inactive_by_status_centers = mixer.cycle(5).blend(
             AccreditedCenter,
             active=False,
+            direction='personal',
             sro_member=SROMember.objects.filter(short_name__in=self.org_names).first()
         )
         request = rf.get('/reestr/centers/')
@@ -111,6 +118,36 @@ class TestClass:
 
         for center in inactive_by_status_centers:
             assert center.short_code in html
+
+    @patch('reestr.views.render')
+    def test_inactive_and_active_centers_are_different(self, mock_render, rf):
+        orgs = mixer.cycle(5).blend(SROMember, status='a')
+        for org in orgs:
+            mixer.blend(AccreditedCenter, sro_member=org, active=True)
+            mixer.blend(AccreditedCenter, sro_member=org, active=False)
+        active_centers = AccreditedCenter.objects.filter(active=True)
+        inactive_centers = AccreditedCenter.objects.filter(active=False)
+        request = rf.get('/reestr/centers/')
+        response = reestr.centers(request, direction='personal')
+        context = self.context(mock_render.call_args)
+        for center in active_centers:
+            assert center in context['active_centers']['left'] or\
+                center in context['active_centers']['right']
+            assert center not in context['inactive_centers']['left'] or\
+                center not in context['inactive_centers']['right']
+        for center in inactive_centers:
+            assert center in context['inactive_centers']['left'] or\
+                center in context['inactive_centers']['right']
+            assert center not in context['active_centers']['left'] or\
+                center not in context['inactive_centers']['right']
+
+    # @patch('reestr.views.render')
+    # def test_sro_member_shutdown_leads_to_center_inactivity(self, mock_render, rf):
+
+
+
+
+
 
 
 
