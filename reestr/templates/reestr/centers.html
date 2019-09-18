@@ -62,9 +62,8 @@
                         <button class="btn btn-link" data-toggle="modal" data-target="#modalFilterReestrAc" type="button">Поиск по области деятельности<i class="fa fa-angle-right ml-1"></i></button>
                     </div>
                     
-
-                            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
-                            <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                    <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                    <button type="button" class="btn btn-link btn-sm">Сбросить</button>
 
                 </form> <!-- конец поиска АЦ -->
 
@@ -73,83 +72,83 @@
                 <div class="row">
                     <div class="col-xs-12 col-xl-6">
                         <div class="table-responsive">
-                            <table class="table table-hover table-striped table-all-ac mb-0">
+                            <table class="table table-hover table-striped table-all-ac mb-0" id="tableActingAc_01">
                                 {% for center in active_centers.left %}
-                                    {% include 'reestr/includes/reestr_ac_table_row.html' %}
+                                {% include 'reestr/includes/reestr_ac_table_row.html' %}
                                 {% endfor %}
                             </table>
-                            </div>
                         </div>
+                    </div>
 
-                        <div class="col-xs-12 col-xl-6">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-striped table-all-ac mb-0">
+                    <div class="col-xs-12 col-xl-6">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-all-ac mb-0" id="tableActingAc_02">
                                 {% for center in active_centers.right %}
-                                    {% include 'reestr/includes/reestr_ac_table_row.html' %}
+                                {% include 'reestr/includes/reestr_ac_table_row.html' %}
                                 {% endfor %}
-                                </table>
-                            </div>
+                            </table>
                         </div>
                     </div>
-                    <hr class="mt-4">
-
-                    <h5 class="text-primary my-4">Деятельность центров временно приостановлена</h5>
-                    <div class="row">
-                        <div class="col-xs-12 col-xl-6">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-striped table-all-ac table-paused-ac mb-0">
-                                {% for center in suspended_centers.left %}
-                                    {% include 'reestr/includes/reestr_ac_table_row.html' %}
-                                {% endfor %}
-                                </table>
-                            </div>
-
-                        </div>
-                        <div class="col-xs-12 col-xl-6">
-                            <div class="table-responsive">
-                                <table class="table  table-hover table-striped table-all-ac table-paused-ac mb-0">
-                                {% for center in suspended_centers.right %}
-                                    {% include 'reestr/includes/reestr_ac_table_row.html' %}
-                                {% endfor %}
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="mt-4"> 
-
-                    <h5 class="text-primary my-4">Аттестационные центры, прекратившие деятельность</h5>
-                    <div class="row">
-                        <div class="col-xs-12 col-xl-6">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-striped table-all-ac table-excluded-ac mb-0">
-                                {% for center in inactive_centers.left %}
-                                    {% include 'reestr/includes/reestr_ac_table_row.html' %}
-                                {% endfor %}
-                                </table>
-                            </div>
-
-                        </div>
-                        <div class="col-xs-12 col-xl-6">
-                            <div class="table-responsive">
-                                <table class="table  table-hover table-striped table-all-ac table-excluded-ac mb-0">
-                                {% for center in inactive_centers.right %}
-                                    {% include 'reestr/includes/reestr_ac_table_row.html' %}
-                                {% endfor %}
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="mt-4">
                 </div>
-            </div>
+                <hr class="mt-4">
 
-            <div class="d-none d-md-block col-md-4 col-xl-3">
-                <!-- Content Right menu -->
-                {% include 'mainapp/includes/sasv/right-menu-sasv.html' %}
-                <!-- End Content Right menu -->
+                <h5 class="text-primary my-4">Деятельность центров временно приостановлена</h5>
+                <div class="row">
+                    <div class="col-xs-12 col-xl-6">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-all-ac table-paused-ac mb-0" id="tablePausedAc_01">
+                                {% for center in suspended_centers.left %}
+                                {% include 'reestr/includes/reestr_ac_table_row.html' %}
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-xl-6">
+                        <div class="table-responsive">
+                            <table class="table  table-hover table-striped table-all-ac table-paused-ac mb-0" id="tablePausedAc_02">
+                                {% for center in suspended_centers.right %}
+                                {% include 'reestr/includes/reestr_ac_table_row.html' %}
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mt-4"> 
+
+                <h5 class="text-primary my-4">Аттестационные центры, прекратившие деятельность</h5>
+                <div class="row">
+                    <div class="col-xs-12 col-xl-6">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-all-ac table-excluded-ac mb-0" id="tableExcludedAc_01">
+                                {% for center in inactive_centers.left %}
+                                {% include 'reestr/includes/reestr_ac_table_row.html' %}
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-xl-6">
+                        <div class="table-responsive">
+                            <table class="table  table-hover table-striped table-all-ac table-excluded-ac mb-0" id="tableExcludedAc_02">
+                                {% for center in inactive_centers.right %}
+                                {% include 'reestr/includes/reestr_ac_table_row.html' %}
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mt-4">
             </div>
         </div>
 
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/sasv/right-menu-sasv.html' %}
+            <!-- End Content Right menu -->
+        </div>
     </div>
 
-    {% endblock %}
+</div>
+
+{% endblock %}

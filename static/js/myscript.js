@@ -249,3 +249,32 @@ $(document).ready(function() {
 		}
 	});
 });
+
+// Правка цвета таблиц реестра АЦ
+$(window).resize(function() {
+	if ($(window).width() <= 1199) {
+		let rowActingAc = $('#tableActingAc_01 tr').length;
+		let rowPausedAc = $('#tablePausedAc_01 tr').length;
+		let rowExcludedAc = $('#tableExcludedAc_01 tr').length;
+
+		if (rowActingAc % 2 != 0) {
+			$('#tableActingAc_02').removeClass('table-striped');
+			$('#tableActingAc_02').addClass('table-striped-even');
+		};
+
+		if (rowPausedAc % 2 != 0) {
+			$('#tablePausedAc_02').removeClass('table-striped');
+			$('#tablePausedAc_02').addClass('table-striped-even');
+		};
+
+		if (rowExcludedAc % 2 != 0) {
+			$('#tableExcludedAc_02').removeClass('table-striped');
+			$('#tableExcludedAc_02').addClass('table-striped-even');
+		};
+
+	} else {
+		$('#tableActingAc_02, #tablePausedAc_02, #tableExcludedAc_02').addClass('table-striped');
+		$('#tableActingAc_02, #tablePausedAc_02, #tableExcludedAc_02').removeClass('table-striped-even');
+	}
+	
+});

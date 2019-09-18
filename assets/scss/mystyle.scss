@@ -499,3 +499,10 @@ body {
 .table-paused-ac td:first-child {
  	border-left: 1px solid #ffc107;
 }
+
+.table-striped-odd tbody tr:nth-of-type(odd) {
+	background-color: rgba(0,0,0,.05);
+}
+.table-striped-even tbody tr:nth-of-type(even) {
+	background-color: rgba(0,0,0,.05);
+}
