@@ -278,3 +278,10 @@ $(window).resize(function() {
 	}
 	
 });
+
+
+// Выбранные параметры поиска по реестру АЦ
+$('#btnSaveFilterAc').click(function() {
+	$('#btnFilterAc').hide();
+	$('#selectedOptions').show();
+})

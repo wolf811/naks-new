@@ -5,113 +5,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" >Шифр СО</h5>
+                <h5 class="modal-title" >Виды сварочного оборудования</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form>
                 <div class="modal-body">
-                    <table class="table table-striped table-sm table-hover">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="A1">
-                                        <label class="custom-control-label" for="A1">A1</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="A20">
-                                        <label class="custom-control-label" for="A20">A20</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="C2">
-                                        <label class="custom-control-label" for="C2">C2</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="F3">
-                                        <label class="custom-control-label" for="F3">F3</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="K2">
-                                        <label class="custom-control-label" for="K2">K2</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="A10">
-                                        <label class="custom-control-label" for="A10">A10</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="A21">
-                                        <label class="custom-control-label" for="A21">A21</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="C3">
-                                        <label class="custom-control-label" for="C3">C3</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="G1">
-                                        <label class="custom-control-label" for="G1">G1</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="K3">
-                                        <label class="custom-control-label" for="K3">K3</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="A11">
-                                        <label class="custom-control-label" for="A11">A11</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="A3">
-                                        <label class="custom-control-label" for="A3">A3</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="C4">
-                                        <label class="custom-control-label" for="C4">C4</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="G2">
-                                        <label class="custom-control-label" for="G2">G2</label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="custom-control custom-checkbox col-form-label-sm">
-                                        <input type="checkbox" class="custom-control-input" id="k4">
-                                        <label class="custom-control-label" for="k4">K4</label>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="scrollspy-modal">
+                        <!-- gtu -->
+                        {% include 'reestr/includes/reestr_filter_table_so.html' %}
+                        <!-- gtu -->
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Сохранить</button>
