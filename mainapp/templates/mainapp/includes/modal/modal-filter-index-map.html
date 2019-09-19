@@ -1,0 +1,114 @@
+{% load static %}
+
+<div id="modalFilterIndexMap" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Поиск по области деятельности</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="accordion" id="accordionFilterAc">
+                        <div class="card">
+                            <div class="card-header" id="headingAccordFilterAc_00">
+                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_00" aria-expanded="true" aria-controls="collapseAccordFilterAc_00">Уровни профессиональной подготовки&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                                <span class="float-sm-right text-secondary">
+                                    <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">1</span>
+                                </span>
+                            </div>
+                            <div id="collapseAccordFilterAc_00" class="collapse" aria-labelledby="headingAccordFilterAc_00" data-parent="#accordionFilterAc">
+                                <div class="card-body">
+                                    <!-- levels -->
+                                    {% include 'reestr/includes/reestr_filter_table_levels.html' %}
+                                    <!-- levels -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingAccordFilterAc_01">
+                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_01" aria-expanded="true" aria-controls="collapseAccordFilterAc_01">Вид производственной деятельности&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                            </div>
+                            <div id="collapseAccordFilterAc_01" class="collapse" aria-labelledby="headingAccordFilterAc_01" data-parent="#accordionFilterAc">
+                                <div class="card-body">
+                                    <!-- type activity -->
+                                    {% include 'reestr/includes/reestr_filter_table_activity.html' %}
+                                    <!-- type activity -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingAccordFilterAc_02">
+                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_02" aria-expanded="false" aria-controls="collapseAccordFilterAc_02">Способы сварки (наплавки)&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                                <span class="float-sm-right text-secondary">
+                                    <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">2</span>
+                                </span>
+                            </div>
+                            <div id="collapseAccordFilterAc_02" class="collapse" aria-labelledby="headingAccordFilterAc_02" data-parent="#accordionFilterAc">
+                                <div class="card-body scrollspy-modal-accordeon">
+                                    <!-- welding methods -->
+                                    {% include 'reestr/includes/reestr_filter_table_weld_methods.html' %}
+                                    <!-- welding methods -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingAccordFilterAc_03">
+                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_03" aria-expanded="false" aria-controls="collapseAccordFilterAc_03">Группы технических устройств&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                            </div>
+                            <div id="collapseAccordFilterAc_03" class="collapse" aria-labelledby="headingAccordFilterAc_03" data-parent="#accordionFilterAc">
+                                <div class="card-body scrollspy-modal-accordeon">
+                                    <!-- gtu -->
+                                    {% include 'reestr/includes/reestr_filter_table_gtu.html' %}
+                                    <!-- gtu -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingAccordFilterAc_04">
+                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_04" aria-expanded="true" aria-controls="collapseAccordFilterAc_04">Виды сварочного оборудования&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                            </div>
+                            <div id="collapseAccordFilterAc_04" class="collapse" aria-labelledby="headingAccordFilterAc_04" data-parent="#accordionFilterAc">
+                                <div class="card-body scrollspy-modal-accordeon">
+                                    <!-- so -->
+                                    {% include 'reestr/includes/reestr_filter_table_so.html' %}
+                                    <!-- so -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingAccordFilterAc_05">
+                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_05" aria-expanded="false" aria-controls="collapseAccordFilterAc_05">Виды сварочных материалов&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                            </div>
+                            <div id="collapseAccordFilterAc_05" class="collapse" aria-labelledby="headingAccordFilterAc_05" data-parent="#accordionFilterAc">
+                                <div class="card-body scrollspy-modal-accordeon">
+                                    <!-- sm -->
+                                    {% include 'reestr/includes/reestr_filter_table_sm.html' %}
+                                    <!-- sm -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingAccordFilterAc_06">
+                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_06" aria-expanded="false" aria-controls="collapseAccordFilterAc_06">Профессиональные стандарты, квалификации&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                            </div>
+                            <div id="collapseAccordFilterAc_06" class="collapse" aria-labelledby="headingAccordFilterAc_06" data-parent="#accordionFilterAc">
+                                <div class="card-body scrollspy-modal-accordeon">
+                                    <!-- qualifications -->
+                                    {% include 'reestr/includes/reestr_filter_table_qual.html' %}
+                                    <!-- qualifications -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSaveFilterAc" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Сохранить</button>
+                    <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">Закрыть</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

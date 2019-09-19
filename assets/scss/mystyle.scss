@@ -25,11 +25,15 @@ body {
 /* HEADER-XS */
 
 /* Footer */
+@import "_map-block.scss";
+/* Footer */
+
+/* Footer */
 @import "_footer.scss";
 /* Footer */
 
 /* Footer */
-@import "cookie-warning.scss";
+@import "_cookie-warning.scss";
 /* Footer */
 
 // Центральные кнопки, карта
@@ -51,11 +55,7 @@ body {
 	color: #dc3545;
 	border-color: #dc3545;
 }
-#map {height: 375px;}
-.line-title {
-	width: 60px;
-	border-top: 2px solid #2f2f2f;
-}
+
 .block-right-announce .card hr {border-color: #fff;}
 .block-right-announce .card-body {
 	background-image: url(../images/plug-right.png);
