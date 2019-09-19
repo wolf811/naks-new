@@ -10,8 +10,8 @@ from itertools import chain
 # Create your tests here.
 
 
-def combined(arr1, arr2):
-    comb = list(chain(arr1, arr2))
+def combined(*arrs):
+    comb = list(chain(*arrs))
     return comb
 
 
@@ -208,6 +208,21 @@ class TestClass:
                 context['inactive_centers']['left'],
                 context['inactive_centers']['right']
                 )
+
+    @patch('reestr.views.render')
+    def test_filter_parameters_passed_to_reestr_page_context(self, mock_render, rf):
+        weldtypes = mixer.cycle(10).blend(WeldType)
+        gtus = mixer.cycle(10).blend(GTU)
+        levels = mixer.cycle(4).blend(Level)
+        request = rf.get('/reestr/centers/')
+        response = reestr.centers(request, direction='personal')
+        context = self.context(mock_render.call_args)
+        for weld in weldtypes:
+            assert weld in context['weld_types']
+        for gtu in gtus:
+            assert gtu in context['gtus']
+        for level in levels:
+            assert level in context['levels']
 
 
 

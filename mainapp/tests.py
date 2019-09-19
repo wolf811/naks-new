@@ -286,6 +286,8 @@ def test_side_panel_posts_available_on_main_page(db, rf):
         # TODO: make full-size picture for page-details
 
 
+# @pytest.mark.django_db
+# @patch('mainapp.serializers.PostSerializer.get_image_urls')
 def test_news_content_accessable_by_rest_api(db):
     factory = APIRequestFactory()
     post = mixer.blend(
@@ -293,10 +295,20 @@ def test_news_content_accessable_by_rest_api(db):
         active=True,
         # main_picture=File(open('media/img_3.png', 'rb')),
     )
-    request = factory.get('/naks_api/posts/', {'pk': post.pk})
+    request = factory.get('/naks_api/posts/')
     view = mainapp.PostDetailsAPI.as_view()
     response = view(request, pk=post.pk)
     assert response.status_code == 200
     response.render()
     html = response.content.decode('utf8')
     assert post.title in html
+
+def test_with_mock_api_replacement(db):
+    post = mixer.blend(
+        Post,
+        active=True
+    )
+    with patch('django.test.RequestFactory') as mock_factory:
+        mock_factory.get('/naks_api/posts/{}'.format(post.pk))
+        view = mainapp.PostDetailsAPI.as_view()
+        assert

@@ -1,16 +1,18 @@
 {% load static %}
 <table class="table table-striped table-sm table-hover">
 	<tbody>
+		{% for weld in weld_types %}
 		<tr>
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input type="checkbox" class="custom-control-input" >
-					<label class="custom-control-label" for="aad">ААД</label>
+					<input type="checkbox" class="custom-control-input" id="weldtype_{{ weld.pk }}">
+					<label class="custom-control-label" for="weldtype_{{ weld.pk }}">{{ weld.short_name }}</label>
 				</div>
 			</td>
-			<td>Автоматическая аргонодуговая сварка неплавящимся электродом</td>
+			<td>{{ weld.full_name }}</td>
 		</tr>
-		<tr>
+		{% endfor %}
+		{% comment %}<tr>
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
 					<input type="checkbox" class="custom-control-input" >
@@ -19,7 +21,7 @@
 			</td>
 			<td>Автоматическая аргонодуговая наплавка неплавящимся электродом</td>
 		</tr>
-		<tr>
+		 <tr>
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
 					<input type="checkbox" class="custom-control-input" >
@@ -144,6 +146,6 @@
 				</div>
 			</td>
 			<td>Лазерная сварка</td>
-		</tr>
+		</tr> {% endcomment %}
 	</tbody>
 </table>
