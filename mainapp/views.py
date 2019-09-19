@@ -440,5 +440,5 @@ class PostDetailsAPI(APIView):
 
     def get(self, request, pk, format=None):
         post = self.get_object(pk)
-        serializer = PostDetailsSerializer(post)
+        serializer = PostSerializer(post)
         return Response(serializer.data)

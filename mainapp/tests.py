@@ -12,6 +12,10 @@ from functools import wraps
 import pytest, os, json
 from stdimage.models import *
 import datetime
+from mock import patch, MagicMock
+import requests
+from rest_framework.test import APIRequestFactory
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 # Create your tests here.
 # for r, d, f in os.walk(os.path.join(os.getcwd(), 'media')):
@@ -279,4 +283,20 @@ def test_side_panel_posts_available_on_main_page(db, rf):
         assert post.title in html_details
         assert post.subtitle in html_details
         assert post.full_description in html_details
+        # TODO: make full-size picture for page-details
 
+
+def test_news_content_accessable_by_rest_api(db):
+    factory = APIRequestFactory()
+    post = mixer.blend(
+        Post,
+        active=True,
+        # main_picture=File(open('media/img_3.png', 'rb')),
+    )
+    request = factory.get('/naks_api/posts/', {'pk': post.pk})
+    view = mainapp.PostDetailsAPI.as_view()
+    response = view(request, pk=post.pk)
+    assert response.status_code == 200
+    response.render()
+    html = response.content.decode('utf8')
+    assert post.title in html

@@ -132,15 +132,34 @@ class TestClass:
             assert center.short_code in html
 
     @patch('reestr.views.render')
-    def test_inactive_and_active_centers_are_in_different_context(self, mock_render, rf):
+    def test_centers_are_in_different_context(self, mock_render, rf):
         orgs = mixer.cycle(5).blend(SROMember, status='a')
+        counter = 0
         for org in orgs:
-            mixer.blend(AccreditedCenter, sro_member=org, active=True)
-            mixer.blend(AccreditedCenter, sro_member=org, active=False)
-        active_centers = AccreditedCenter.objects.filter(active=True)
+            mixer.blend(
+                AccreditedCenter,
+                short_code=mixer.sequence("active_{}".format(counter)),
+                sro_member=org,
+                active=True
+                )
+            mixer.blend(
+                AccreditedCenter,
+                short_code=mixer.sequence("inactive_{}".format(counter)),
+                sro_member=org,
+                active=False
+                )
+            mixer.blend(
+                AccreditedCenter,
+                short_code=mixer.sequence("suspended_{}".format(counter)),
+                sro_member=org,
+                temporary_suspend_date=mixer.RANDOM
+            )
+            counter += 1
+        active_centers = AccreditedCenter.objects.filter(
+            active=True, temporary_suspend_date__isnull=True)
         inactive_centers = AccreditedCenter.objects.filter(active=False)
         suspended_centers = AccreditedCenter.objects.filter(
-            temporary_suspend_date__is_null=False)
+            temporary_suspend_date__isnull=False)
         request = rf.get('/reestr/centers/')
         response = reestr.centers(request, direction='personal')
         context = self.context(mock_render.call_args)
@@ -158,20 +177,37 @@ class TestClass:
         )
         for center in active_centers:
             assert center in active_centers_cntxt and\
-                center not in inactive_centers_cntxt
+                center not in inactive_centers_cntxt and\
+                center not in suspended_centers_cntxt
         for center in inactive_centers:
             assert center in inactive_centers_cntxt and\
-                center not in active_centers_cntxt
+                center not in active_centers_cntxt and\
+                center not in suspended_centers_cntxt
         for center in suspended_centers:
             assert center in suspended_centers_cntxt and\
-                center not in active_centers and\
-                center not in inactive_centers
+                center not in active_centers_cntxt and\
+                center not in inactive_centers_cntxt
 
-    # @patch('reestr.views.render')
-    # def test_sro_member_shutdown_leads_to_center_inactivity(self,
-    # mock_render, rf):
-
-
+    @patch('reestr.views.render')
+    def test_member_shutdown_cause_to_center_inactivity(self, mock_render, rf):
+        org = mixer.blend(SROMember, status='a')
+        active_centers = mixer.cycle(5).blend(
+            AccreditedCenter,
+            active=True,
+            sro_member=org,
+            direction='personal'
+            )
+        # now shutdown_org
+        org.status = 'na'
+        org.save()
+        request = rf.get('/reestr/centers/')
+        response = reestr.centers(request, direction='personal')
+        context = self.context(mock_render.call_args)
+        for c in active_centers:
+            assert c in combined(
+                context['inactive_centers']['left'],
+                context['inactive_centers']['right']
+                )
 
 
 
