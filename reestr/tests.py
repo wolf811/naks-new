@@ -5,8 +5,15 @@ from mixer.backend.django import mixer
 import reestr.views as reestr
 from django.urls import reverse
 from mock import patch
+from itertools import chain
 
 # Create your tests here.
+
+
+def combined(arr1, arr2):
+    comb = list(chain(arr1, arr2))
+    return comb
+
 
 @pytest.mark.reestr
 @pytest.mark.django_db
@@ -105,7 +112,8 @@ class TestClass:
             AccreditedCenter,
             active=False,
             direction='personal',
-            sro_member=SROMember.objects.filter(short_name__in=self.org_names).first()
+            sro_member=SROMember.objects.filter(
+                short_name__in=self.org_names).first()
         )
         request = rf.get('/reestr/centers/')
         response = reestr.centers(request, direction='personal')
@@ -130,19 +138,25 @@ class TestClass:
         request = rf.get('/reestr/centers/')
         response = reestr.centers(request, direction='personal')
         context = self.context(mock_render.call_args)
+        active_centers_cntxt = combined(
+            context['active_centers']['left'],
+            context['active_centers']['right']
+        )
+        inactive_centers_cntxt = combined(
+            context['inactive_centers']['left'],
+            context['inactive_centers']['right']
+        )
+
         for center in active_centers:
-            assert center in context['active_centers']['left'] or\
-                center in context['active_centers']['right']
-            assert center not in context['inactive_centers']['left'] or\
-                center not in context['inactive_centers']['right']
+            assert center in active_centers_cntxt and\
+                center not in inactive_centers_cntxt
         for center in inactive_centers:
-            assert center in context['inactive_centers']['left'] or\
-                center in context['inactive_centers']['right']
-            assert center not in context['active_centers']['left'] or\
-                center not in context['inactive_centers']['right']
+            assert center in inactive_centers_cntxt and\
+                center not in active_centers_cntxt
 
     # @patch('reestr.views.render')
-    # def test_sro_member_shutdown_leads_to_center_inactivity(self, mock_render, rf):
+    # def test_sro_member_shutdown_leads_to_center_inactivity(self,
+    # mock_render, rf):
 
 
 
