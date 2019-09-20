@@ -12,7 +12,7 @@ from functools import wraps
 import pytest, os, json
 from stdimage.models import *
 import datetime
-from mock import patch, MagicMock
+from mock import patch, MagicMock, Mock
 import requests
 from rest_framework.test import APIRequestFactory
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -303,12 +303,39 @@ def test_news_content_accessable_by_rest_api(db):
     html = response.content.decode('utf8')
     assert post.title in html
 
+# LETS MOCK!
+requests = MagicMock()
+response = MagicMock()
+requests.get.return_value = response
+response.status_code = 200
+response.ok = True
+response.content = b'[\n  {\n    "id": 1,\n    "title": "Post 1"\n  },\
+         \n  {\n    "id": 2,\n    "title": "Post 2"\n  },\n  {\n    "id": 3,\n    "title": "Post 3"\n  }\n]'
+response.json.return_value = [{'id': 1, 'title': 'Post 1'}, {'id': 2, 'title': 'Post 2'}, {'id': 3, 'title': 'Post 3'}]
+
+
 def test_with_mock_api_replacement(db):
-    post = mixer.blend(
-        Post,
-        active=True
-    )
-    with patch('django.test.RequestFactory') as mock_factory:
-        mock_factory.get('/naks_api/posts/{}'.format(post.pk))
-        view = mainapp.PostDetailsAPI.as_view()
-        assert
+    ### real url
+    url = 'https://my-json-server.typicode.com/testpass1982/fake_rest/posts'
+    ### fake_url
+    fake_url = 'https://my-json-server.typicode.com/testpass1982/fake_rest/centers/personal/'
+    response = requests.get(fake_url)
+    # import pdb; pdb.set_trace()
+    assert response.ok
+    assert response.json() == [
+        {'id': 1, 'title': 'Post 1'},
+        {'id': 2, 'title': 'Post 2'},
+        {'id': 3, 'title': 'Post 3'}
+        ]
+    # import pdb; pdb.set_trace()
+    assert json.loads(response.content.decode('utf8')) == [
+        {'id': 1, 'title': 'Post 1'},
+        {'id': 2, 'title': 'Post 2'},
+        {'id': 3, 'title': 'Post 3'}
+        ]
+
+    # mock_response = Mock()
+    # mock_response.content = b'[\n  {\n    "id": 1,\n    "title": "Post 1"\n  },\
+    #     \n  {\n    "id": 2,\n    "title": "Post 2"\n  },\n  {\n    "id": 3,\n    "title": "Post 3"\n  }\n]'
+    # # [{'id': 1, 'title': 'Post 1'}, {'id': 2, 'title': 'Post 2'}, {'id': 3, 'title': 'Post 3'}]
+    # # {'id': 1, 'title': 'Post 1'}
