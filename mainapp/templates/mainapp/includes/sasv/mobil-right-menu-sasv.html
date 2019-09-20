@@ -10,7 +10,7 @@
             <div class="card-body">
                 <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
                 <div class="dropdown-divider"></div>
-                <a href="{% url 'sasv_ac' %}" class="dropdown-item active">Центры аттестации сварщиков и специалистов сварочного производства (АЦ)</a>
+                <a href="{% url 'reestr:centers' 'personal' %}" class="dropdown-item active">Центры аттестации сварщиков и специалистов сварочного производства (АЦ)</a>
                 <div class="dropdown-divider"></div>
                 <a href="{% url 'sasv_reestr_staff' %}" class="dropdown-item">Реестр аттестованного персонала</a>
                 <div class="dropdown-divider"></div>
@@ -43,9 +43,9 @@
             <div class="card-body">
                 <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">Центры аттестации сварочного оборудования (АЦСО)</a>
+                <a href="{% url 'reestr:centers' 'attso' %}" class="dropdown-item">Центры аттестации сварочного оборудования (АЦСО)</a>
                 <div class="dropdown-divider"></div>
-                <a href="{% url 'sasv_reestr_so' %}" class="dropdown-item">Реестр аттестованного сварочного оборудования</a>
+                <a href="{% url 'reestr:centers' 'attso' %}" class="dropdown-item">Реестр аттестованного сварочного оборудования</a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item" target="_blank">Реестр экспертов</a>
             </div>
@@ -59,9 +59,9 @@
             <div class="card-body">
                 <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">Центры аттестации сварочных технологий (АЦСТ)</a>
+                <a href="{% url 'reestr:centers' 'attst' %}" class="dropdown-item">Центры аттестации сварочных технологий (АЦСТ)</a>
                 <div class="dropdown-divider"></div>
-                <a href="{% url 'sasv_reestr_st' %}" class="dropdown-item">Реестр аттестованных сварочных технологий</a>
+                <a href="{% url 'reestr:centers' 'attst' %}" class="dropdown-item">Реестр аттестованных сварочных технологий</a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item" target="_blank">Реестр экспертов</a>
             </div>
@@ -75,7 +75,7 @@
             <div class="card-body">
                 <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">Центры специальной подготовки (ЦСП)</a>
+                <a href="{% url 'reestr:centers' 'specpod' %}" class="dropdown-item">Центры специальной подготовки (ЦСП)</a>
             </div>
         </div>
     </div>

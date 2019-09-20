@@ -198,10 +198,12 @@ class AccreditedCenter(Center):
     equipment = 'attso'
     technologies = 'attst'
     personal = 'personal'
+    csp = 'specpod'
     qualification = 'qualifications'
     certification = 'cert'
     DIRECTIONS = (
         (personal, 'Аттестация персонала'),
+        (csp, 'Специальная подготовка'),
         (materials, 'Аттестация сварочных материалов'),
         (equipment, 'Аттестация сварочного оборудования'),
         (technologies, 'Аттестация сварочных технологий'),

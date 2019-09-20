@@ -47,7 +47,7 @@ def get_sro_member(obj):
 @admin.register(AccreditedCenter)
 class AccreditedCenterAdmin(admin.ModelAdmin):
 
-    list_display = ['short_code', get_city, get_sro_member, 'active', 'temporary_suspend_date']
+    list_display = ['short_code', get_city, get_sro_member, 'active', 'temporary_suspend_date', 'direction']
     list_filter = ['short_code', 'active', 'temporary_suspend_date', SroStatusFilter]
     # import pdb; pdb.set_trace()
 

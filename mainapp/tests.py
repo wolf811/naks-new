@@ -334,6 +334,7 @@ def test_with_mock_api_replacement(db):
         {'id': 3, 'title': 'Post 3'}
         ]
 
+
     # mock_response = Mock()
     # mock_response.content = b'[\n  {\n    "id": 1,\n    "title": "Post 1"\n  },\
     #     \n  {\n    "id": 2,\n    "title": "Post 2"\n  },\n  {\n    "id": 3,\n    "title": "Post 3"\n  }\n]'

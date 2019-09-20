@@ -4,7 +4,7 @@ DIRECTIONS = {
             и специалистов сварочного производства",
             "centers_plural": "Аттестационные центры персонала"
         },
-        "csp": {
+        "specpod": {
             "registry_name": "Реестр центров специально подготовки",
             "centers_plural": "Центры специальной подготовки"
         },
@@ -35,3 +35,19 @@ DIRECTIONS = {
             "centers_plural": "Центры добровольной сертификации"
         }
     }
+
+# SPR_SET_FOR_DIRECTION = {
+#         "personal": [],
+#         "attsm": {
+
+#         },
+#         "attso": {
+
+#         },
+#         "attst": {
+
+#         },
+#         "qualification": {
+
+#         }
+#     }
