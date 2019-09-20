@@ -4,7 +4,7 @@
     <div class="nav-docs">
         <div class="row mt-5 mb-4">
             <div class="col-sm-6 col-lg-3 mb-4">
-                <button type="button" class="btn btn-outline-danger btn-block active">Все подразделения</button>
+                <button type="button" class="btn btn-outline-danger btn-block active">Члены СРО Ассоциация НАКС</button>
             </div>
             <div class="col-sm-6 col-lg-3 mb-4">
                 <button type="button" class="btn btn-outline-danger btn-block">Аттестационные центры</button>
@@ -22,6 +22,8 @@
 <!-- Yandex Maps -->
 <div id="map" class="map-block w-100">
     <div class="container">
-        <button class="btn btn-light btn-sm shadow" data-toggle="modal" data-target="#modalFilterIndexMap"><i class="fa fa-search mr-1"></i>Поиск по области деятельности</button>
+        <button id="btnFilterIndex" class="btn btn-light btn-sm shadow" data-toggle="modal" data-target="#modalFilterIndexMap"><i class="fa fa-search mr-1"></i>Поиск по области деятельности</button>
+
+        <button id="btnFilterResultIndex" class="btn btn-light btn-sm shadow" data-toggle="modal" data-target="#modalFilterIndexMap" title="изменить" style="display: none;"><span class="mr-3 text-secondary">Выбрано параметров:&nbsp;<strong class="text-dark">3</strong></span><i class="fa fa-edit text-primary"></i></button>
     </div>
 </div>

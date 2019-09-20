@@ -280,8 +280,13 @@ $(window).resize(function() {
 });
 
 
-// Выбранные параметры поиска по реестру АЦ
+// Выбранные параметры поиска по реестру АЦ, на главной карте
 $('#btnSaveFilterAc').click(function() {
 	$('#btnFilterAc').hide();
 	$('#selectedOptions').show();
+})
+
+$('#btnSaveFilterIndex').click(function() {
+	$('#btnFilterIndex').hide();
+	$('#btnFilterResultIndex').show();
 })
