@@ -54,3 +54,7 @@ if (document.getElementById('app_loading_naks_news')) {
 
     });
 }
+
+if (document.getElementById('app_reestr_centers')) {
+    console.log('app reestr centers here');
+}

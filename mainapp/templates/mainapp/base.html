@@ -77,29 +77,29 @@
 		<script src="{% static 'js/myscript.js' %}"></script>
 		<script src="{% static 'js/vue_scripts.js' %}"></script>
 
-		<script src="jquery.cookie.js"></script>
+		<script src="{% static 'js/jquery.cookie.js' %}"></script>
 		<script>
 			$(function() {
 			  // Проверяем запись в куках о посещении
 			  // Если запись есть - ничего не происходит
-			     if (!$.cookie('hideModal')) {
+			  var cookie_warning = Cookies.get('hideModal');
+				if (!cookie_warning) {
 			  // если cookie не установлено появится окно
 			  // с задержкой 5 секунд
-			    var delay_popup = 1000;
-			    setTimeout("document.querySelector('.cookie-warning').style.display='inline-block'", delay_popup);
+			    	var delay_popup = 1000;
+			    	setTimeout("document.querySelector('.cookie-warning').style.display='inline-block'", delay_popup);
 			     }
-			     $.cookie('hideModal', true, {
+			});
+
+			// Закрытие полосы cookie и установка куки с параметрами 30 дней
+			$('.ok').click(function(){
+				var cookie_warning = Cookies.set('hideModal', true, {
 			   // Время хранения cookie в днях
 			    expires: 30,
 			    path: '/'
-			   });
-			});
-
-			// Закрытие полосы cookie
-
-
-			$('.ok').click(function(){
+				});
 			    $('.cookie-warning').fadeOut();
+				console.log("COOKIE", cookie_warning);
 			});
 		</script>
 

@@ -12,6 +12,7 @@
             <form>
                 <div class="modal-body">
                     <div class="accordion" id="accordionFilterAc">
+                    {% if 'personal' in request.path or 'specpod' in request.path %}
                         <div class="card">
                             <div class="card-header" id="headingAccordFilterAc_00">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_00" aria-expanded="true" aria-controls="collapseAccordFilterAc_00">Уровни профессиональной подготовки&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
@@ -39,6 +40,8 @@
                                 </div>
                             </div>
                         </div>
+                    {% endif %}
+                    {% if 'personal' in request.path or 'attst' in request.path or 'specpod' in request.path %}
                         <div class="card">
                             <div class="card-header" id="headingAccordFilterAc_02">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_02" aria-expanded="false" aria-controls="collapseAccordFilterAc_02">Способы сварки (наплавки)&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
@@ -54,6 +57,7 @@
                                 </div>
                             </div>
                         </div>
+                    {% endif %}
                         <div class="card">
                             <div class="card-header" id="headingAccordFilterAc_03">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_03" aria-expanded="false" aria-controls="collapseAccordFilterAc_03">Группы технических устройств&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
@@ -66,6 +70,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% if 'attso' in request.path %}
                         <div class="card">
                             <div class="card-header" id="headingAccordFilterAc_04">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_04" aria-expanded="true" aria-controls="collapseAccordFilterAc_04">Виды сварочного оборудования&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
@@ -78,6 +83,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
+                        {% if 'attsm' in request.path %}
                         <div class="card">
                             <div class="card-header" id="headingAccordFilterAc_05">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_05" aria-expanded="false" aria-controls="collapseAccordFilterAc_05">Виды сварочных материалов&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
@@ -90,6 +97,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
+                        {% if 'qualification' in request.path %}
                         <div class="card">
                             <div class="card-header" id="headingAccordFilterAc_06">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_06" aria-expanded="false" aria-controls="collapseAccordFilterAc_06">Профессиональные стандарты, квалификации&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
@@ -102,6 +111,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="modal-footer">
