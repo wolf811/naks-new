@@ -3,6 +3,10 @@ from reestr.models import *
 from django.db.models import Q
 import math
 from .useful import DIRECTIONS
+from .serializers import CenterSerializer
+from rest_framework import viewsets, generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
 # Create your views here.
 
 
@@ -67,5 +71,10 @@ def centers(request, direction):
 
 def center_details(request):
     pass
+
+class CentersViewSet(viewsets.ModelViewSet):
+    queryset = AccreditedCenter.objects.filter(
+        active=True).filter(direction='personal').order_by('short_code')
+    serializer_class = CenterSerializer
 
 

@@ -1,6 +1,6 @@
 {% load static %}
 
-<tr>
+<tr {% if center.active and center.temporary_suspend_date is None %}id="row_{{ center.pk }}"{% endif %}>
     <td>
         {% if center.active %}
             {% if center.special == 'tn' %}
