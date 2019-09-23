@@ -1,0 +1,110 @@
+{% load static %}
+
+<div id="accordion_spks_mobil" class="right-main-xs">
+    <div class="card rounded-0">
+        <div class="card-header bg-naks" id="heading_10">
+            <a href="#" data-toggle="collapse" data-target="#collapse_10" aria-expanded="true" aria-controls="collapse_10">Новости Совета</a>
+        </div>
+        <div id="collapse_10" class="collapse show" aria-labelledby="heading_10" data-parent="#accordion_spks_mobil">
+            <div class="card-body">
+                <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'reestr:centers' 'personal' %}" class="dropdown-item active">Центры аттестации сварщиков и специалистов сварочного производства (АЦ)</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'sasv_reestr_staff' %}" class="dropdown-item">Реестр аттестованного персонала</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item" target="_blank">Реестр экспертов</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card rounded-0">
+        <div class="card-header bg-naks" id="heading_11">
+            <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_11" aria-expanded="false" aria-controls="collapse_11">Аттестация сварочных материалов</a>
+        </div>
+        <div id="collapse_11" class="collapse" aria-labelledby="heading_11" data-parent="#accordion_spks_mobil">
+            <div class="card-body">
+                <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
+                <div class="dropdown-divider"></div>
+                <a href="" class="dropdown-item">Центры аттестации сварочных материалов (АЦСМ)</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'sasv_reestr_sm' %}" class="dropdown-item">Реестр аттестованных сварочных материалов</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item" target="_blank">Реестр экспертов</a>
+            </div>
+        </div>
+    </div>
+    <div class="card rounded-0">
+        <div class="card-header bg-naks" id="heading_12">
+            <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_12" aria-expanded="false" aria-controls="collapse_12">Аттестация сварочного оборудования</a>
+        </div>
+        <div id="collapse_12" class="collapse" aria-labelledby="heading_12" data-parent="#accordion_spks_mobil">
+            <div class="card-body">
+                <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'reestr:centers' 'attso' %}" class="dropdown-item">Центры аттестации сварочного оборудования (АЦСО)</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'reestr:centers' 'attso' %}" class="dropdown-item">Реестр аттестованного сварочного оборудования</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item" target="_blank">Реестр экспертов</a>
+            </div>
+        </div>
+    </div>
+    <div class="card rounded-0">
+        <div class="card-header bg-naks" id="heading_13">
+            <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_13" aria-expanded="false" aria-controls="collapse_13">Аттестация сварочных технологий</a>
+        </div>
+        <div id="collapse_13" class="collapse" aria-labelledby="heading_13" data-parent="#accordion_spks_mobil">
+            <div class="card-body">
+                <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'reestr:centers' 'attst' %}" class="dropdown-item">Центры аттестации сварочных технологий (АЦСТ)</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'reestr:centers' 'attst' %}" class="dropdown-item">Реестр аттестованных сварочных технологий</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item" target="_blank">Реестр экспертов</a>
+            </div>
+        </div>
+    </div>
+    <div class="card rounded-0">
+        <div class="card-header bg-naks" id="heading_14">
+            <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_14" aria-expanded="false" aria-controls="collapse_14">Специальная подготовка</a>
+        </div>
+        <div id="collapse_14" class="collapse" aria-labelledby="heading_14" data-parent="#accordion_spks_mobil">
+            <div class="card-body">
+                <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'reestr:centers' 'specpod' %}" class="dropdown-item">Центры специальной подготовки (ЦСП)</a>
+            </div>
+        </div>
+    </div>
+    <div class="card rounded-0">
+        <div class="card-header bg-naks" id="heading_15">
+            <a href="{% url 'sasv_helpInfo' %}" class="collapsed">Справочно-техническая информация</a>
+        </div>
+    </div>
+    <div class="card rounded-0">
+        <div class="card-header bg-naks" id="heading_17">
+            <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_17" aria-expanded="false" aria-controls="collapse_17">Научно-технический совет НАКС</a>
+        </div>
+        <div id="collapse_17" class="collapse" aria-labelledby="heading_17" data-parent="#accordion_spks_mobil">
+            <div class="card-body">
+                <a href="{% url 'sasv_nts' %}" class="dropdown-item">Состав НТС</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'sasv_nts' %}" class="dropdown-item">Протоколы НТС</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'sasv_nts' %}" class="dropdown-item">Комитеты НТС</a>
+            </div>
+        </div>
+    </div>
+    <div class="card rounded-0">
+        <div class="card-header bg-naks" id="heading_07">
+            <a href="{% url 'sasv_openNaks' %}" class="collapsed">Открытый НАКС</a>
+        </div>
+    </div>
+    <div class="card rounded-0">
+        <div class="card-header bg-naks" id="heading_08">
+            <a href="{% url 'agreement' %}" class="collapsed">Партнеры и соглашения</a>
+        </div>
+    </div>
+</div>

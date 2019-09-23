@@ -25,94 +25,112 @@
         </div>
         <hr>
 
-        <form class="mt-4 mb-3">
-            <h6 class="font-weight-bold">Быстрый поиск документа</h6>
-            <div class="form-row">
-                <div class="form-group col-xs-12 col-sm-4">
-                    <label for="" class="pb-0">Название</label>
-                    <input type="text" class="form-control form-control-sm" aria-label="Найти">
-                </div>
-                <div class="form-group col-xs-12 col-sm-4">
-                    <label for="" class="pb-0">Раздел</label>
-                    <select  class="form-control form-control-sm">
-                        <option selected>Все</option>
-                        <option>Соглашения</option>
-                        <option>Нормативные документы</option>
-                        <option>Руководящие документы</option>
-                        <option>Письма Ростехнадзора</option>
-                        <option>Методические документы</option>
-                    </select>
-                </div>
-                <div class="form-group col-xs-12 col-sm-4">
-                    <label for="" class="pb-0">Направление</label>
-                    <select  class="form-control form-control-sm">
-                        <option selected>Все</option>
-                        <option>Аттестация специалистов сварочного производства</option>
-                        <option>Аттестация сварочных материалов</option>
-                        <option>Аттестация сварочного оборудования</option>
-                        <option>Аттестация сварочных технологий</option>
-                        <option>Специальная подготовка</option>
-                    </select>
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-xl-9">
+                <!-- Mobil right main -->
+                <div class="d-block d-md-none mt-3 mb-4">
+                    {% include 'mainapp/includes/sasv/mobil-right-menu-sasv.html' %}
+                </div> 
+                <!-- End mobil right main -->
+
+                <form class="mt-4 mb-3">
+                    <h6 class="font-weight-bold">Быстрый поиск документа</h6>
+                    <div class="form-row">
+                        <div class="form-group col-xl-6">
+                            <label for="" class="pb-0">Название</label>
+                            <input type="text" class="form-control form-control-sm" aria-label="Найти">
+                        </div>
+                        <div class="form-group col-sm-6 col-xl-3">
+                            <label for="" class="pb-0">Раздел</label>
+                            <select  class="form-control form-control-sm">
+                                <option selected>Все</option>
+                                <option>Соглашения</option>
+                                <option>Нормативные документы</option>
+                                <option>Руководящие документы</option>
+                                <option>Письма Ростехнадзора</option>
+                                <option>Методические документы</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6 col-xl-3">
+                            <label for="" class="pb-0">Направление</label>
+                            <select  class="form-control form-control-sm">
+                                <option selected>Все</option>
+                                <option>Персонал - аттестация сварщиков и специалистов сварочного производства</option>
+                                <option>СМ - аттестация сварочных материалов</option>
+                                <option>СО - аттестация сварочного оборудования</option>
+                                <option>СТ - аттестация сварочных технологий</option>
+                                <option>Специальная подготовка</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                            <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <!-- TODO: на большой экран выводим по 10 (5+5) документов каждого раздела, на средний по 6 (3+3), на маленький 3 -->
+                <div id="docsSasv" class="mt-4">
+                    <!-- Соглашения -->
+                    <h5 class="text-primary my-4">Соглашения</h5>
+
+                    {% include 'mainapp/includes/sasv/docs_sasv_soglash.html' %}
+
+                    <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
+                    <!-- End Соглашения -->
+
+                    <hr class="mt-4">
+
+                    <!-- Нормативные -->
+                    <h5 class="text-primary my-4">Нормативные документы</h5>
+
+                    {% include 'mainapp/includes/sasv/docs_sasv_normativ.html' %}
+
+                    <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
+                    <!-- End Нормативные -->
+
+                    <hr class="mt-4">
+
+                    <!-- Руководящие -->
+                    <h5 class="text-primary my-4">Руководящие документы</h5>
+
+                    {% include 'mainapp/includes/sasv/docs_sasv_rukovod.html' %}
+
+                    <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
+                    <!-- End Руководящие -->
+
+                    <hr class="mt-4">
+
+                    <!-- Письма -->
+                    <h5 class="text-primary my-4">Письма Ростехнадзора</h5>
+
+                    {% include 'mainapp/includes/sasv/docs_sasv_rostech.html' %}
+
+                    <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
+                    <!-- End Письма -->
+
+                    <hr class="mt-4">
+
+                    <!-- Методические -->
+                    <h5 class="text-primary my-4">Методические документы</h5>
+
+                    {% include 'mainapp/includes/sasv/docs_sasv_metodich.html' %}
+
+                    <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
+                    <!-- End Методические -->
                 </div>
             </div>
-            <div class="row">
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
-                    <button type="button" class="btn btn-link btn-sm">Сбросить</button>
-                </div>
+
+            <div class="d-none d-md-block col-md-4 col-xl-3">
+                <!-- Content Right menu -->
+                {% include 'mainapp/includes/sasv/right-menu-sasv.html' %}
+                <!-- End Content Right menu -->
             </div>
-        </form>
-        <hr>
-        <!-- TODO: на большой экран выводим по 10 (5+5) документов каждого раздела, на средний по 6 (3+3), на маленький 3 -->
-        <div id="docsSasv" class="mt-4">
-            <!-- Соглашения -->
-            <h5 class="text-primary my-4">Соглашения</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_soglash.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Соглашения -->
-
-            <hr class="mt-4">
-
-            <!-- Нормативные -->
-            <h5 class="text-primary my-4">Нормативные документы</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_normativ.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Нормативные -->
-
-            <hr class="mt-4">
-
-            <!-- Руководящие -->
-            <h5 class="text-primary my-4">Руководящие документы</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_rukovod.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Руководящие -->
-
-            <hr class="mt-4">
-
-            <!-- Письма -->
-            <h5 class="text-primary my-4">Письма Ростехнадзора</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_rostech.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Письма -->
-
-            <hr class="mt-4">
-
-            <!-- Методические -->
-            <h5 class="text-primary my-4">Методические документы</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_metodich.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Методические -->
         </div>
+
+        
     </div>
 </div>
 

@@ -24,6 +24,9 @@
     <div class="container">
         <button id="btnFilterIndex" class="btn btn-light btn-sm shadow" data-toggle="modal" data-target="#modalFilterIndexMap"><i class="fa fa-search mr-1"></i>Поиск по области деятельности</button>
 
-        <button id="btnFilterResultIndex" class="btn btn-light btn-sm shadow" data-toggle="modal" data-target="#modalFilterIndexMap" title="изменить" style="display: none;"><span class="mr-3 text-secondary">Выбрано параметров:&nbsp;<strong class="text-dark">3</strong></span><i class="fa fa-edit text-primary"></i></button>
+        <div id="btnFilterResultIndex" style="display: none;">
+            <button class="btn btn-light btn-sm shadow" type="button" title="сбросить"><i class="fa fa-times text-secondary"></i></button>
+            <button class="btn btn-light btn-sm shadow" data-toggle="modal" data-target="#modalFilterIndexMap" title="изменить"><i class="fa fa-edit text-primary"></i><span class="ml-2 text-secondary">Выбрано параметров:&nbsp;<strong class="text-dark">3</strong></span></button>
+        </div>
     </div>
 </div>
