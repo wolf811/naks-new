@@ -74,7 +74,7 @@ def center_details(request):
 
 class CentersViewSet(viewsets.ModelViewSet):
     queryset = AccreditedCenter.objects.filter(
-        active=True).filter(direction='personal').order_by('short_code')
+        active=True).order_by('pk')
     serializer_class = CenterSerializer
 
 

@@ -1,6 +1,12 @@
 {% load static %}
 
-<tr {% if center.active and center.temporary_suspend_date is None %}id="row_{{ center.pk }}"{% endif %}>
+<tr {% if center.active and center.temporary_suspend_date is None %}
+        {% if 'personal' in request.path %}id="personal_{{ center.pk }}" ref="personal_{{ center.pk }}"{% endif %}
+        {% if 'specpod' in request.path %}id="specpod_{{ center.pk }}" ref="specpod_{{ center.pk }}"{% endif %}
+        {% if 'attsm' in request.path %}id="attsm_{{ center.pk }}" ref="attsm_{{ center.pk }}"{% endif %}
+        {% if 'attso' in request.path %}id="attso_{{ center.pk }}" ref="attso_{{ center.pk }}"{% endif %}
+        {% if 'attst' in request.path %}id="attst_{{ center.pk }}" ref="attst_{{ center.pk }}"{% endif %}
+    {% endif %}>
     <td>
         {% if center.active %}
             {% if center.special == 'tn' %}

@@ -21,7 +21,6 @@ if (document.getElementById('app_loading_naks_news')) {
                 .get('/naks_api/posts/')
                 .then(response => {
                     this.info = response;
-                    // this.title = response.data.title;
                     this.post_title = response.data.title;
 
                 });
@@ -46,7 +45,6 @@ if (document.getElementById('app_loading_naks_news')) {
                                 this.post_has_main_picture = 1
                             }
                             this.counter += 1;
-                            // console.log('response post title ', response.data.main_picture)
                         });
                 }
             }
@@ -76,7 +74,6 @@ if (document.getElementById('app_reestr_centers')) {
             if (localStorage.activeCenters && centers_updated_flag) {
                     this.activeCenters = JSON.parse(localStorage.activeCenters);
                     console.log('taken from local storage', this.activeCenters.length);
-                // console.log('type of', typeof this.activeCenters);
             } else {
                 this.load_active_centers();
             }
@@ -84,16 +81,11 @@ if (document.getElementById('app_reestr_centers')) {
         methods: {
             iamhere: function() {
                 console.log('VUE is here', this);
-                // console.log('REFS', this.$refs);
             },
             load_active_centers: function() {
                 axios
                     .get('/naks_api/centers/')
                     .then(response => {
-                        // console.log('RESPONSE', response);
-                        // console.log('RESPONSE_type', typeof response);
-                        // console.log('RESPONSE_data_type', typeof response.data);
-                        // console.log('RESPONSE_data_first_element_type', typeof response.data[0]);
                         localStorage.activeCenters = JSON.stringify(response.data);
                         this.activeCenters = localStorage.activeCenters;
                         console.log('saved to local storage', localStorage.activeCenters.length);
@@ -105,28 +97,80 @@ if (document.getElementById('app_reestr_centers')) {
                 console.log('city_input', this.city_input);
             },
             onCityInput: function() {
-                // console.log('city_input', this.city_input);
+                console.log('city_input', this.city_input);
                 if (this.city_input.length > 1) {
+                    // let table = $('table.table-striped');
+                    // table.removeClass('table-striped');
                     this.filtered = this.activeCenters.filter(element => !element.city.includes(this.city_input));
                     let counter = 0;
-                    for (el of this.filtered) {
-                        let row_ = `row_${el.id}`;
-                        let row_to_hide = document.getElementById(row_);
-                        try {
-                            row_to_hide.style.display = 'none';
-                        } catch (e) {
-                            continue;
+                    for (var el of this.filtered) {
+                        if (el.direction == 'personal') {
+                            let row_ = `personal_${el.id}`;
+                            // let ref_ = el.temporary_suspend_date != '' ? this.$refs[row_] : continue;
+                            if (el.temporary_suspend_date == null)
+                                {
+                                    let ref_ = this.$refs[row_]
+                                    // console.log('row_personal', row_, 'ref', ref_, ref_ == undefined, el);
+                                    // ref_.style.display = 'none';
+                                    $(ref_).hide();
+                                } else {
+                                    continue;
+                                }
+                            // let row_to_hide = document.getElementById(row_);
                         }
                         // console.log('el', this.filtered.length, el.city, row_to_hide, counter, el);
                         counter+=1;
                     }
+                    this.make_tables_striped();
+                    console.log('this.filtered.length', this.filtered.length);
+                } else {
+                    this.make_tables_striped();
+                    this.show_if_hidden();
                 }
+                // $("table").each(function(element) {
+                //     var table = $(element);
+                //     console.log('table', table);
+                //     if (!table.hasClass('table-striped')) {
+                //         table.addClass('table-striped');
+                //     }
+                // });
             },
             check: function() {
                 // let filtered_rows = this.row_ids.filter(el => el.innerText.includes(this.city_input));
                 // console.log('filtered rows', filtered_rows);
                 // console.log('ROWS', this.row_ids)
                 console.log(this.filtered);
+            },
+            show_if_hidden: function() {
+                // console.log(this.$refs, typeof this.$refs);
+                for (var ref in this.$refs) {
+                    var ref_ = this.$refs[ref];
+                    if ($(ref_).is(":hidden")) {
+                        $(ref_).show();
+                    }
+                var tables = document.querySelectorAll('table');
+                for (var t of tables) {
+                    if ($(t).hasClass('table-hover')) {
+                        $(t).addClass("table-striped");
+                    }
+                }
+                // $('table').each(function(element){
+                //     $(element).addClass('table-striped');
+                // });
+
+
+                    // if (ref_.style.display == 'none') {
+                    //     ref_.style.display = 'table';
+                    // }
+                    // console.log(ref_);
+                }
+            },
+            make_tables_striped: function() {
+                var tables = document.querySelectorAll('table');
+                for (var table of tables) {
+                    $(table).removeClass('table-striped');
+                }
+
             }
         },
     });
