@@ -42,7 +42,7 @@ def centers(request, direction):
     ).filter(by_direction).order_by('short_code')
     suspended_centers = AccreditedCenter.objects.filter(
         by_temporary_suspend_date
-    ).filter(by_direction).order_by('short_code')
+    ).filter(by_direction).filter(active=True).order_by('short_code')
     content.update({
         "inactive_centers": middle_with_round_array(inactive_centers),
         "suspended_centers": middle_with_round_array(suspended_centers)
@@ -73,8 +73,7 @@ def center_details(request):
     pass
 
 class CentersViewSet(viewsets.ModelViewSet):
-    queryset = AccreditedCenter.objects.filter(
-        active=True).order_by('pk')
+    queryset = AccreditedCenter.objects.all().order_by('pk')
     serializer_class = CenterSerializer
 
 

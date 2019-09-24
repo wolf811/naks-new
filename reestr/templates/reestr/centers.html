@@ -34,6 +34,7 @@
             <hr class="mt-4">
 
             <div id="app_reestr_centers">
+                <div ref="direction" data-direction="{{ direction.title }}"></div>
                 <h5 class="text-primary my-4">{{ direction.registry_name }}</h5>
                 <!-- Поиск АЦ -->
                 <form method="post" class="mt-4 mb-3">
@@ -41,7 +42,7 @@
                     <div class="form-row">
                         <div class="form-group col-xs-12 col-sm-6 col-md-5">
                             <label for="" class="pb-0 col-form-label-sm">Название<i class="fa fa-info-circle text-secondary ml-2" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Можно указать шифр центра, наименование организации, в т.ч. частично"></i></label>
-                            <input type="text" class="form-control form-control-sm">
+                            <input v-model="title_input" @input="onTitleInput()" type="text" class="form-control form-control-sm">
                         </div>
                         <div class="form-group col-xs-12 col-sm-6 col-md-5">
                             <label for="" class="pb-0 col-form-label-sm">Город</label>

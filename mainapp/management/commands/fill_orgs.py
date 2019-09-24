@@ -108,7 +108,7 @@ class Command(BaseCommand):
                 City.objects.create(title=random.choice(city_titles))
 
         if SROMember.objects.count() == 0:
-            for i in range(105):
+            for i in range(100):
                 mixer.blend(
                     SROMember,
                     chief=random.choice(org_chiefs),

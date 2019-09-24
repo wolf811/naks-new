@@ -60,35 +60,42 @@ if (document.getElementById('app_reestr_centers')) {
         el: '#app_reestr_centers',
         data() {
             return {
+                direction: '',
                 counter: 0,
-                activeCenters: [],
+                reestrCenters: [],
                 city_input: '',
                 title_input: '',
-                filtered: [],
+                hidden: [],
+                on_screen: [],
                 row_ids: this.$refs,
             };
         },
         mounted() {
+            // runs once
             this.iamhere();
-            let centers_updated_flag = this.$cookies.get("centers_storage_updated");
-            if (localStorage.activeCenters && centers_updated_flag) {
-                    this.activeCenters = JSON.parse(localStorage.activeCenters);
-                    console.log('taken from local storage', this.activeCenters.length);
-            } else {
-                this.load_active_centers();
-            }
+            // console.log(this.$refs.direction.dataset.direction);
         },
         methods: {
             iamhere: function() {
+                this.direction = this.$refs.direction.dataset.direction;
+                let centers_updated_flag = this.$cookies.get("centers_storage_updated");
+                if (localStorage.reestrCenters && centers_updated_flag) {
+                        this.reestrCenters = JSON.parse(localStorage.reestrCenters);
+                        console.log('taken from local storage', this.reestrCenters.length);
+                } else {
+                    this.load_reestr_centers();
+                }
+                this.reestrCenters = this.reestrCenters.filter(element => element.direction == this.direction)
                 console.log('VUE is here', this);
             },
-            load_active_centers: function() {
+            load_reestr_centers: function() {
                 axios
                     .get('/naks_api/centers/')
                     .then(response => {
-                        localStorage.activeCenters = JSON.stringify(response.data);
-                        this.activeCenters = localStorage.activeCenters;
-                        console.log('saved to local storage', localStorage.activeCenters.length);
+                        localStorage.reestrCenters = JSON.stringify(response.data);
+                        this.reestrCenters = JSON.stringify(response.data);
+                        // this.reestrCenters = localStorage.reestrCenters;
+                        console.log('saved to local storage', localStorage.reestrCenters.length);
                         this.$cookies.set("centers_storage_updated", "1", "1h");
                         console.log('cookies flag set up');
                     });
@@ -97,56 +104,62 @@ if (document.getElementById('app_reestr_centers')) {
                 console.log('city_input', this.city_input);
             },
             onCityInput: function() {
-                console.log('city_input', this.city_input);
                 if (this.city_input.length > 1) {
-                    // let table = $('table.table-striped');
-                    // table.removeClass('table-striped');
-                    this.filtered = this.activeCenters.filter(element => !element.city.includes(this.city_input));
-                    let counter = 0;
-                    for (var el of this.filtered) {
-                        if (el.direction == 'personal') {
-                            let row_ = `personal_${el.id}`;
-                            // let ref_ = el.temporary_suspend_date != '' ? this.$refs[row_] : continue;
-                            if (el.temporary_suspend_date == null)
-                                {
-                                    let ref_ = this.$refs[row_]
-                                    // console.log('row_personal', row_, 'ref', ref_, ref_ == undefined, el);
-                                    // ref_.style.display = 'none';
-                                    $(ref_).hide();
-                                } else {
-                                    continue;
-                                }
-                            // let row_to_hide = document.getElementById(row_);
-                        }
-                        // console.log('el', this.filtered.length, el.city, row_to_hide, counter, el);
-                        counter+=1;
-                    }
-                    this.make_tables_striped();
-                    console.log('this.filtered.length', this.filtered.length);
-                } else {
-                    this.make_tables_striped();
+                    this.hidden = this.reestrCenters.filter(element => !element.city.includes(this.city_input));
+
+                    this.hide_filtered(this.hidden);
+                    // for (var el of this.hidden) {
+                    //         try {
+                    //             let row_ = `${this.direction}_${el.id}`;
+                    //                     let ref_ = this.$refs[row_];
+                    //                     $(ref_).addClass('invisible');
+                    //         } catch (error) {
+                    //             console.log(error);
+                    //         }
+                    //     }
+                        this.on_screen = this.reestrCenters.filter(element => !this.hidden.includes(element));
+                        this.make_tables_unstriped();
+                    } else {
+                        console.log('else');
+
+                    this.make_tables_unstriped();
                     this.show_if_hidden();
                 }
-                // $("table").each(function(element) {
-                //     var table = $(element);
-                //     console.log('table', table);
-                //     if (!table.hasClass('table-striped')) {
-                //         table.addClass('table-striped');
-                //     }
-                // });
+            },
+            onTitleInput: function() {
+                if (this.title_input.length > 1) {
+                    // this.hidden = this.reestrCenters.filter(element => !element.short_code.includes(this.title_input));
+                    for (var i = 0; i < this.reestrCenters.length; i++) {
+                        continue;
+                    }
+                    this.hide_filtered(this.hidden);
+                } else {
+                    console.log('else');
+
+                this.make_tables_unstriped();
+                this.show_if_hidden();
+            }
+                // console.log('title', this.title_input);
+            },
+            hide_filtered: function(arr) {
+                for (var el of arr) {
+                    try {
+                        let row_ = `${this.direction}_${el.id}`;
+                                let ref_ = this.$refs[row_];
+                                $(ref_).addClass('invisible');
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
             },
             check: function() {
-                // let filtered_rows = this.row_ids.filter(el => el.innerText.includes(this.city_input));
-                // console.log('filtered rows', filtered_rows);
-                // console.log('ROWS', this.row_ids)
-                console.log(this.filtered);
+                console.log(this.hidden);
             },
             show_if_hidden: function() {
-                // console.log(this.$refs, typeof this.$refs);
                 for (var ref in this.$refs) {
                     var ref_ = this.$refs[ref];
-                    if ($(ref_).is(":hidden")) {
-                        $(ref_).show();
+                    if ($(ref_).hasClass("invisible")) {
+                        $(ref_).removeClass('invisible');
                     }
                 var tables = document.querySelectorAll('table');
                 for (var t of tables) {
@@ -154,23 +167,13 @@ if (document.getElementById('app_reestr_centers')) {
                         $(t).addClass("table-striped");
                     }
                 }
-                // $('table').each(function(element){
-                //     $(element).addClass('table-striped');
-                // });
-
-
-                    // if (ref_.style.display == 'none') {
-                    //     ref_.style.display = 'table';
-                    // }
-                    // console.log(ref_);
                 }
             },
-            make_tables_striped: function() {
+            make_tables_unstriped: function() {
                 var tables = document.querySelectorAll('table');
                 for (var table of tables) {
                     $(table).removeClass('table-striped');
                 }
-
             }
         },
     });
