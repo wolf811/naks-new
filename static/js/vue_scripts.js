@@ -1,5 +1,9 @@
 console.log('hello from vue js scripts');
 
+// function arrayRemove(arr, value) {
+//     return arr.filter( function(el) { return el != value; })
+// }
+
 if (document.getElementById('app_loading_naks_news')) {
     new Vue({
         delimiters: ['[[', ']]'],
@@ -65,15 +69,24 @@ if (document.getElementById('app_reestr_centers')) {
                 reestrCenters: [],
                 city_input: '',
                 title_input: '',
-                hidden: [],
+                special_gp: false,
+                special_tn: false,
                 on_screen: [],
                 row_ids: this.$refs,
+                parametersAccumulator: [],
             };
         },
         mounted() {
             // runs once
             this.iamhere();
             // console.log(this.$refs.direction.dataset.direction);
+        },
+        watch: {
+            short_inputs: function() {
+                if (this.city_input.length < 2 || this.title_input.length < 2) {
+                    this.show_if_hidden();
+                }
+            }
         },
         methods: {
             iamhere: function() {
@@ -100,23 +113,11 @@ if (document.getElementById('app_reestr_centers')) {
                         console.log('cookies flag set up');
                     });
             },
-            filter_by_city: function() {
-                console.log('city_input', this.city_input);
-            },
-            onCityInput: function() {
+            onCityInput_depricated: function() {
                 if (this.city_input.length > 1) {
                     this.hidden = this.reestrCenters.filter(element => !element.city.includes(this.city_input));
 
                     this.hide_filtered(this.hidden);
-                    // for (var el of this.hidden) {
-                    //         try {
-                    //             let row_ = `${this.direction}_${el.id}`;
-                    //                     let ref_ = this.$refs[row_];
-                    //                     $(ref_).addClass('invisible');
-                    //         } catch (error) {
-                    //             console.log(error);
-                    //         }
-                    //     }
                         this.on_screen = this.reestrCenters.filter(element => !this.hidden.includes(element));
                         this.make_tables_unstriped();
                     } else {
@@ -126,12 +127,19 @@ if (document.getElementById('app_reestr_centers')) {
                     this.show_if_hidden();
                 }
             },
+            onCityInput: function() {
+                if (this.city_input.length > 1) {
+                    this.filterByInput({'parameter': 'city', 'value': this.city_input});
+                }
+            },
             onTitleInput: function() {
                 if (this.title_input.length > 1) {
-                    // this.hidden = this.reestrCenters.filter(element => !element.short_code.includes(this.title_input));
-                    for (var i = 0; i < this.reestrCenters.length; i++) {
-                        continue;
-                    }
+                    this.filterByInput({'parameter': 'short_code', 'value': this.title_input});
+                }
+            },
+            onTitleInput_depricated: function() {
+                if (this.title_input.length > 1) {
+                    this.hidden = this.reestrCenters.filter(element => !element.short_code.includes(this.title_input));
                     this.hide_filtered(this.hidden);
                 } else {
                     console.log('else');
@@ -141,21 +149,59 @@ if (document.getElementById('app_reestr_centers')) {
             }
                 // console.log('title', this.title_input);
             },
-            hide_filtered: function(arr) {
-                for (var el of arr) {
-                    try {
-                        let row_ = `${this.direction}_${el.id}`;
-                                let ref_ = this.$refs[row_];
-                                $(ref_).addClass('invisible');
-                    } catch (error) {
-                        console.log(error);
+            filterByInput: function(input_data) {
+                // var special_parameters = [
+                //     {"parameter": "special_tn", "value": this.special_tn},
+                //     {"parameter": "special_gp", "value": this.special_gp}
+                // ]
+
+                if (!this.parametersAccumulator.includes(input_data)) {
+                    for(var element of this.parametersAccumulator) {
+                        if (element.parameter == input_data.parameter) {
+                            this.parametersAccumulator.splice(this.parametersAccumulator.indexOf(element), 1);
+                        }
+                    }
+                    this.parametersAccumulator.push(input_data);
+                }
+                // var filter_parameters = this.parametersAccumulator.concat(special_parameters);
+                var result_array = [];
+
+                for (var element of this.reestrCenters) {
+                    var passing = true;
+                    for (var param of this.parametersAccumulator) {
+                        // console.log(param.parameter, param.value, element, element[param.parameter].includes(param.value));
+                        if (!element[param.parameter].includes(param.value)) {
+                            passing = false;
+                        }
+                    }
+                    if (passing) {
+                        // console.log('FOUND', element, element.city, element.short_code)
+                        result_array.push(element);
                     }
                 }
+                console.log('RESULT_ARRAY', result_array);
+                this.show_filtered(result_array);
+
+            },
+            show_filtered: function(arr) {
+                console.log('to show', arr);
+                    for (var el of this.reestrCenters) {
+                        console.log(el, arr.includes(el));
+                        if (arr.includes(el)) {
+                            continue;
+                        } else {
+                            let row_ = `${this.direction}_${el.id}`;
+                            let ref_ = this.$refs[row_];
+                            $(ref_).addClass('invisible');
+                        }
+                    }
             },
             check: function() {
                 console.log(this.hidden);
             },
             show_if_hidden: function() {
+                this.city_input = '';
+                this.title_input = '';
                 for (var ref in this.$refs) {
                     var ref_ = this.$refs[ref];
                     if ($(ref_).hasClass("invisible")) {
