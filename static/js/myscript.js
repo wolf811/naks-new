@@ -290,3 +290,15 @@ $('#btnSaveFilterIndex').click(function() {
 	$('#btnFilterIndex').hide();
 	$('#btnFilterResultIndex').show();
 })
+
+$('#btnSubscription').click(function() {
+	$('.subscription').hide();
+	setTimeout(function() {
+		$('.subscription').show();
+	}, 1500);
+	$('.result-subscription').show();
+	setTimeout(function() {
+		$('.result-subscription').hide();
+	}, 1500);
+	return false;
+})
