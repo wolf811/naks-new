@@ -233,6 +233,9 @@ class AccreditedCenter(Center):
         default=None
     )
 
+    special_tn = models.BooleanField('Доп требования ТН', default=False)
+    special_gp = models.BooleanField('Доп требования ГП', default=False)
+
     short_code = models.CharField(
         u'Шифр центра',
         max_length=10

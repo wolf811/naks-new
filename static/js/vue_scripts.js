@@ -106,20 +106,6 @@ if (document.getElementById('app_reestr_centers')) {
                         console.log('cookies flag set up');
                     });
             },
-            onCityInput_depricated: function() {
-                if (this.city_input.length > 1) {
-                    this.hidden = this.reestrCenters.filter(element => !element.city.includes(this.city_input));
-
-                    this.hide_filtered(this.hidden);
-                        this.on_screen = this.reestrCenters.filter(element => !this.hidden.includes(element));
-                        this.make_tables_unstriped();
-                    } else {
-                        console.log('else');
-
-                    this.make_tables_unstriped();
-                    this.show_if_hidden();
-                }
-            },
             onCityInput: function() {
                 this.filterByInput({'parameter': 'city', 'value': this.city_input});
                     if (this.city_input.length < this.city_input_length) {
@@ -142,6 +128,14 @@ if (document.getElementById('app_reestr_centers')) {
                     }
                     this.make_tables_unstriped();
             },
+            onSpecialsTnChekbox: function() {
+                    console.log('special tn', this.special_tn);
+                    this.filterByInput({'parameter': 'special_tn', 'value': this.special_tn});
+                },
+            onSpecialsGpChekbox: function() {
+                    console.log('special gp');
+                    this.filterByInput({'parameter': 'special_gp', 'value': this.special_gp});
+            },
             filterByInput: function(input_data) {
                 if (!this.parametersAccumulator.includes(input_data)) {
                     for(var element of this.parametersAccumulator) {
@@ -150,23 +144,28 @@ if (document.getElementById('app_reestr_centers')) {
                         }
                     }
                     this.parametersAccumulator.push(input_data);
+                    console.log('parameters', this.parametersAccumulator);
                 }
                 var result_array = [];
 
                 for (var element of this.reestrCenters) {
                     var passing = true;
                     for (var param of this.parametersAccumulator) {
-                        // console.log(param.parameter, param.value, element, element[param.parameter].includes(param.value));
-                        if (!element[param.parameter].includes(param.value)) {
-                            passing = false;
-                            break;
+                        if (param.parameter in {"city":1, "short_code": 1}) {
+                            if (!element[param.parameter].includes(param.value)) {
+                                passing = false;
+                                break;
+                            }
+                        }
+                        if (param.parameter in {'special_tn': 1, "special_gp": 1}) {
+                            console.log('continue');
                         }
                     }
                     if (passing) {
                         result_array.push(element);
                     }
                 }
-                console.log('RESULT_ARRAY', result_array);
+                console.log('result_special', result_array)
                 this.on_screen = result_array;
 
             },
@@ -181,9 +180,6 @@ if (document.getElementById('app_reestr_centers')) {
                             $(ref_).addClass('invisible');
                         }
                     }
-            },
-            check: function() {
-                console.log(this.hidden);
             },
             show_hidden_centers: function() {
                 for (var el of this.on_screen) {

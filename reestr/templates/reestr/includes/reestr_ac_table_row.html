@@ -3,11 +3,11 @@
 <tr id="{{ direction.title }}_{{ center.pk }}" ref="{{ direction.title }}_{{ center.pk }}">
     <td>
         {% if center.active %}
-            {% if center.special == 'tn' %}
+            {% if center.special_tn %}
         <img src="{% static 'images/iconTransneft.png' %}"
         title="АЦ осуществляет аттестацию на объектах ПАО «АК «Транснефть»"><br>
             {% endif %}
-            {% if center.special == 'gp' %}
+            {% if center.special_gp %}
             <img src="{% static 'images/iconGazprom.png' %}"
             title="АЦ осуществляет аттестацию на объектах ПАО «Газпром»">
             {% endif %}

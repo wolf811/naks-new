@@ -51,11 +51,11 @@
                     </div>
                     <div class="mb-3">
                         <div class="custom-control custom-checkbox col-form-label-sm">
-                            <input v-model="special_tn" value="special_tn" type="checkbox" class="custom-control-input" id="including-tn">
+                            <input v-model="special_tn" @change="onSpecialsTnChekbox" value="special_tn" type="checkbox" class="custom-control-input" id="including-tn">
                             <label class="custom-control-label" for="including-tn">- АЦ, осуществляющие аттестацию на объектах ПАО "АК "Транснефть"</label>
                         </div>
                         <div class="custom-control custom-checkbox col-form-label-sm">
-                            <input v-model="special_gp" value="special_gp" type="checkbox" class="custom-control-input" id="including-gp">
+                            <input v-model="special_gp" @change="onSpecialsGpChekbox" value="special_gp" type="checkbox" class="custom-control-input" id="including-gp">
                             <label class="custom-control-label" for="including-gp">- АЦ, осуществляющие аттестацию на объектах ПАО "Газпром"</label>
                         </div>
                         {% comment %} <div class="alert alert-info">TN [[ special_tn ]], GP [[ special_gp ]]</div> {% endcomment %}
@@ -68,7 +68,7 @@
                         </div>
                     </div>
 
-                    <button v-on:click.prevent="check" class="btn btn-outline-primary btn-sm"><i class="fa fa-search mr-1"></i>Найти</button>
+                    <button class="btn btn-outline-primary btn-sm"><i class="fa fa-search mr-1"></i>Найти</button>
                     <button v-on:click.prevent="reset_filters" type="button" class="btn btn-link btn-sm">Сбросить</button>
                 </form> <!-- конец поиска АЦ -->
 
