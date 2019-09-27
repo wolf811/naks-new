@@ -226,7 +226,11 @@ class Command(BaseCommand):
                 accred_center.so_types.add(*all_so_types)
             dice = random.randint(0, 100)
             if dice > 70:
-                accred_center.special = 'tn'
+                accred_center.special_tn = True
+            another_dice = random.randint(0, 100)
+            if another_dice > 80:
+                accred_center.special_gp = True
+
             accred_center.save()
 
         print('orgs creation complete')

@@ -3,10 +3,12 @@ from reestr.models import *
 from django.db.models import Q
 import math
 from .useful import DIRECTIONS
-from .serializers import CenterSerializer
+from .serializers import *
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.http import JsonResponse
+from drf_multiple_model.views import ObjectMultipleModelAPIView
 # Create your views here.
 
 
@@ -22,7 +24,10 @@ def middle_with_round_array(arr):
 
 def centers(request, direction):
     if request.method == 'POST':
-        pass
+        print('*** POST ***')
+        print(request.POST)
+        return JsonResponse({"success": "POST RECIEVED"})
+
     active_centers = AccreditedCenter.objects.filter(
         direction=direction, sro_member__status='a', active=True).exclude(
             temporary_suspend_date__isnull=False).order_by('short_code')
@@ -71,6 +76,14 @@ def centers(request, direction):
 
 def center_details(request):
     pass
+
+class FormParametersAPIView(ObjectMultipleModelAPIView):
+    querylist = [
+        {'queryset': Level.objects.all(), 'serializer_class': LevelSerializer},
+        {'queryset': WeldType.objects.all(), 'serializer_class': WeldTypesSerializer},
+        {'queryset': Activity.objects.all(), 'serializer_class': ActivitySerialize},
+        {'queryset': GTU.objects.all(), 'serializer_class': GTUSerializer},
+    ]
 
 class CentersViewSet(viewsets.ModelViewSet):
     queryset = AccreditedCenter.objects.all().order_by('pk')

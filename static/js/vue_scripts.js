@@ -1,4 +1,4 @@
-console.log('hello from vue js scripts');
+// console.log('hello from vue js scripts');
 
 // function arrayRemove(arr, value) {
 //     return arr.filter( function(el) { return el != value; })
@@ -74,12 +74,23 @@ if (document.getElementById('app_reestr_centers')) {
                 special_gp: false,
                 special_tn: false,
                 on_screen: [],
-                row_ids: this.$refs,
                 parametersAccumulator: [],
+                accred_fields: {
+                    levels: {
+                        "I": false,
+                        "II": false,
+                        "III": false,
+                        "IV": false
+                    },
+                    activities: [],
+                    weldtypes: [],
+                    gtus: []
+                }
             };
         },
         mounted() {
             this.iamhere();
+            this.load_form_parameters();
         },
         methods: {
             iamhere: function() {
@@ -87,11 +98,22 @@ if (document.getElementById('app_reestr_centers')) {
                 let centers_updated_flag = this.$cookies.get("centers_storage_updated");
                 if (localStorage.reestrCenters && centers_updated_flag) {
                         this.reestrCenters = JSON.parse(localStorage.reestrCenters);
-                        console.log('taken from local storage', this.reestrCenters.length);
+                        // console.log('taken from local storage', this.reestrCenters.length);
                 } else {
                     this.load_reestr_centers();
                 }
-                console.log('VUE is here', this);
+                // console.log('VUE is here', this, 'direction', this.direction);
+            },
+            count_levels: function() {
+                const filtered_levels = Object.keys(this.accred_fields.levels).filter(key => this.accred_fields.levels[key] == true)
+                console.log('levels', filtered_levels);
+                return filtered_levels
+            },
+            log_change: function() {
+                console.log('changes', this);
+            },
+            load_form_parameters: function() {
+                console.log('test fill parameters');
             },
             load_reestr_centers: function() {
                 localStorage.clear();
@@ -100,9 +122,9 @@ if (document.getElementById('app_reestr_centers')) {
                 .then(response => {
                     localStorage.reestrCenters = JSON.stringify(response.data);
                     var loaded_arr = JSON.parse(localStorage.reestrCenters);
-                    console.log('saved to local storage', localStorage.reestrCenters.length);
+                    // console.log('saved to local storage', localStorage.reestrCenters.length);
                     this.$cookies.set("centers_storage_updated", "1", "1h");
-                    console.log('cookies flag set up');
+                    // console.log('cookies flag set up');
                     this.reestrCenters = loaded_arr.filter(element => element.direction == this.direction);
                     });
                     // this.reestrCenters = this.reestrCenters.filter(element => element.direction == this.direction)
@@ -130,14 +152,14 @@ if (document.getElementById('app_reestr_centers')) {
                     this.make_tables_unstriped();
             },
             onSpecialsTnChekbox: function() {
-                    console.log('special tn', this.special_tn);
+                    // console.log('special tn', this.special_tn);
                         this.filterByInput({'parameter': 'special_tn', 'value': this.special_tn});
                         this.show_filtered(this.on_screen);
                         this.show_hidden_centers();
                         this.make_tables_unstriped();
                 },
             onSpecialsGpChekbox: function() {
-                    console.log('special gp');
+                    // console.log('special gp');
                         this.filterByInput({'parameter': 'special_gp', 'value': this.special_gp});
                         this.show_filtered(this.on_screen);
                         this.show_hidden_centers();
@@ -151,7 +173,7 @@ if (document.getElementById('app_reestr_centers')) {
                         }
                     }
                     this.parametersAccumulator.push(input_data);
-                    console.log('parameters', this.parametersAccumulator);
+                    // console.log('parameters', this.parametersAccumulator);
                 }
                 var result_array = [];
 
@@ -180,12 +202,12 @@ if (document.getElementById('app_reestr_centers')) {
                         result_array.push(element);
                     }
                 }
-                console.log('result_special', result_array)
-                this.on_screen = result_array;
+                // console.log('result_array', result_array.filter(el => el.direction == this.direction));
+                this.on_screen = result_array.filter(el => el.direction == this.direction);
 
             },
             show_filtered: function(arr) {
-                console.log('to show', arr);
+                // console.log('to show', arr);
                     for (var el of this.reestrCenters) {
                         if (arr.includes(el)) {
                             continue;
@@ -223,6 +245,7 @@ if (document.getElementById('app_reestr_centers')) {
                     }
                 }
             }
+            this.on_screen = [];
             this.special_tn = false;
             this.special_gp = false;
             },
@@ -231,6 +254,21 @@ if (document.getElementById('app_reestr_centers')) {
                 for (var table of tables) {
                     $(table).removeClass('table-striped');
                 }
+            },
+            server_search: function() {
+                let data = new FormData()
+                let attrs = {
+                    'city': this.city_input,
+                    'short_code': this.title_input,
+                    'special_tn': this.special_tn,
+                    'special_gp': this.special_gp
+                }
+                for (const [key, value] of Object.entries(attrs)) {
+                    data.append(key, value);
+                }
+                axios
+                    .post(`/reestr/centers/${this.direction}`, data)
+                    .then(response=> {console.log('server_response', response.data)})
             }
         },
     });

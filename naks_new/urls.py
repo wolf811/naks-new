@@ -32,9 +32,12 @@ from django.contrib.sitemaps.views import sitemap
 from mainapp.sitemap import *
 from rest_framework import routers
 
-router = routers.DefaultRouter()
+router = routers.SimpleRouter()
 router.register(r'posts', mainapp.PostViewSet)
 router.register(r'centers', reestr.CentersViewSet)
+# simple router for multiple models viewset
+# https://django-rest-multiple-models.readthedocs.io/en/latest/viewsets.html
+# router.register(r'form_parameters', reestr.FormParametersAPIView, base_name='form_parameters')
 # router.register(r'^posts/{pk}/$', mainapp.PostDetailsAPI)
 
 sitemaps = {

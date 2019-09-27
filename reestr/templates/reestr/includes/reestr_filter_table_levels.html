@@ -8,7 +8,7 @@
 		{% for level in levels %}
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input type="checkbox" class="custom-control-input" id="level_{{ level.pk }}">
+					<input v-model="accred_fields.levels.{{ level.level }}" @change="log_change" type="checkbox" class="custom-control-input" id="level_{{ level.pk }}" ref="level_{{ level.pk }}">
 					<label class="custom-control-label" for="level_{{ level.pk }}">{{ level.level }}</label>
 				</div>
 			</td>

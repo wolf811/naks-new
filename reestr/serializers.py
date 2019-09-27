@@ -1,7 +1,27 @@
 from rest_framework import serializers
 
 
-from .models import AccreditedCenter
+from .models import AccreditedCenter, Level, WeldType, GTU, Activity
+
+
+class LevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Level
+
+
+class WeldTypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WeldType
+
+
+class GTUSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GTU
+
+
+class ActivitySerialize(serializers.ModelSerializer):
+    class Meta:
+        model = Activity
 
 
 class CenterSerializer(serializers.ModelSerializer):

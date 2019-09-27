@@ -68,8 +68,8 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-outline-primary btn-sm"><i class="fa fa-search mr-1"></i>Найти</button>
-                    <button v-on:click.prevent="reset_filters" type="button" class="btn btn-link btn-sm">Сбросить</button>
+                    <button v-on:click.prevent="server_search" class="btn btn-outline-primary btn-sm"><i class="fa fa-search mr-1"></i>Найти</button>
+                    <button v-on:click.prevent="reset_filters" type="button" class="btn btn-link btn-sm">[[ on_screen.length > 0 ? 'Результат поиска: ' + on_screen.length + " (Сбросить)" : "Сбросить" ]]</button>
                 </form> <!-- конец поиска АЦ -->
 
                 <hr class="mt-4">
@@ -144,6 +144,7 @@
                     </div>
                 </div>
                 <hr class="mt-4">
+                {% include 'mainapp/includes/modal/modal-filter-reestr-ac.html' %}
             </div>
         </div>
 
@@ -154,9 +155,8 @@
         </div>
     </div>
 
-
-
 </div>
-{% include 'mainapp/includes/modal/modal-filter-reestr-ac.html' %}
+
+
 
 {% endblock %}
