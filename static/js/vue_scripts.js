@@ -91,21 +91,22 @@ if (document.getElementById('app_reestr_centers')) {
                 } else {
                     this.load_reestr_centers();
                 }
-                this.reestrCenters = this.reestrCenters.filter(element => element.direction == this.direction)
                 console.log('VUE is here', this);
             },
             load_reestr_centers: function() {
+                localStorage.clear();
                 axios
-                    .get('/naks_api/centers/')
-                    .then(response => {
-                        localStorage.reestrCenters = JSON.stringify(response.data);
-                        this.reestrCenters = JSON.stringify(response.data);
-                        // this.reestrCenters = localStorage.reestrCenters;
-                        console.log('saved to local storage', localStorage.reestrCenters.length);
-                        this.$cookies.set("centers_storage_updated", "1", "1h");
-                        console.log('cookies flag set up');
+                .get('/naks_api/centers/')
+                .then(response => {
+                    localStorage.reestrCenters = JSON.stringify(response.data);
+                    var loaded_arr = JSON.parse(localStorage.reestrCenters);
+                    console.log('saved to local storage', localStorage.reestrCenters.length);
+                    this.$cookies.set("centers_storage_updated", "1", "1h");
+                    console.log('cookies flag set up');
+                    this.reestrCenters = loaded_arr.filter(element => element.direction == this.direction);
                     });
-            },
+                    // this.reestrCenters = this.reestrCenters.filter(element => element.direction == this.direction)
+                },
             onCityInput: function() {
                 this.filterByInput({'parameter': 'city', 'value': this.city_input});
                     if (this.city_input.length < this.city_input_length) {
@@ -130,11 +131,17 @@ if (document.getElementById('app_reestr_centers')) {
             },
             onSpecialsTnChekbox: function() {
                     console.log('special tn', this.special_tn);
-                    this.filterByInput({'parameter': 'special_tn', 'value': this.special_tn});
+                        this.filterByInput({'parameter': 'special_tn', 'value': this.special_tn});
+                        this.show_filtered(this.on_screen);
+                        this.show_hidden_centers();
+                        this.make_tables_unstriped();
                 },
             onSpecialsGpChekbox: function() {
                     console.log('special gp');
-                    this.filterByInput({'parameter': 'special_gp', 'value': this.special_gp});
+                        this.filterByInput({'parameter': 'special_gp', 'value': this.special_gp});
+                        this.show_filtered(this.on_screen);
+                        this.show_hidden_centers();
+                        this.make_tables_unstriped();
             },
             filterByInput: function(input_data) {
                 if (!this.parametersAccumulator.includes(input_data)) {
@@ -148,17 +155,25 @@ if (document.getElementById('app_reestr_centers')) {
                 }
                 var result_array = [];
 
+
                 for (var element of this.reestrCenters) {
                     var passing = true;
                     for (var param of this.parametersAccumulator) {
                         if (param.parameter in {"city":1, "short_code": 1}) {
-                            if (!element[param.parameter].includes(param.value)) {
+                            if (!element[param.parameter].toUpperCase().includes(param.value.toUpperCase())) {
                                 passing = false;
                                 break;
                             }
                         }
-                        if (param.parameter in {'special_tn': 1, "special_gp": 1}) {
-                            console.log('continue');
+                        if (param.parameter in {"special_gp": 1, "special_tn": 1}) {
+                            if (param.value == false) {
+                                continue;
+                            } else {
+                                if (element[param.parameter] != param.value) {
+                                    passing = false;
+                                    break;
+                                }
+                            }
                         }
                     }
                     if (passing) {
@@ -207,7 +222,9 @@ if (document.getElementById('app_reestr_centers')) {
                         $(t).addClass("table-striped");
                     }
                 }
-                }
+            }
+            this.special_tn = false;
+            this.special_gp = false;
             },
             make_tables_unstriped: function() {
                 var tables = document.querySelectorAll('table');
