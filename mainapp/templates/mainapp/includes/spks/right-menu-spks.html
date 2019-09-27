@@ -4,31 +4,33 @@
     <div id="accordion_spks" class="right-main">
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_00">
-                <a href="#" data-toggle="collapse" data-target="#collapse_10" aria-expanded="true" aria-controls="collapse_10">Совет по профессиональным квалификациям в области сварки</a>
+                <a href="#" data-toggle="collapse" data-target="#collapse_10" aria-expanded="true" aria-controls="collapse_10">Совет по профессиональным квалификациям в области сварки (СПКС)</a>
             </div>
-            <div id="collapse_10" class="collapse" aria-labelledby="heading_00" data-parent="#accordion_spks">
+            <div id="collapse_10" class="collapse show" aria-labelledby="heading_00" data-parent="#accordion_spks">
                 <div class="card-body">
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">О Совете</a>
+                    <a href="{% url 'spks' %}" class="dropdown-item active">О Совете</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Положение о Совете</a>
+                    <!-- <a href="#" class="dropdown-item">Положение о Совете</a>
+                    <div class="dropdown-divider"></div> -->
+                    <a href="#" class="dropdown-item">Состав Совета</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Состав Совета</a>
+                    <a href="#" class="dropdown-item">План работы</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">План работы</a>
+                    <a href="#" class="dropdown-item">Комиссии</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Комиссии</a>
+                    <a href="#" class="dropdown-item">Протоколы</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Протоколы</a>
+                    <a href="{% url 'spks_docs' %}" class="dropdown-item">Документы</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Документы</a>
+                    <!-- <a href="#" class="dropdown-item">Центральная аттестационная комиссия</a>
+                    <div class="dropdown-divider"></div> -->
+                    <a href="#" class="dropdown-item">Состав представителей Совета в субъектах РФ</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Центральная аттестационная комиссия</a>
+                    <a href="#" class="dropdown-item">Эксперты Совета</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Состав представителей Совета в субъектах РФ</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Эксперты Совета</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Апелляционная комиссия</a>
+                    <!-- <a href="#" class="dropdown-item">Апелляционная комиссия</a>
+                    <div class="dropdown-divider"></div> -->
+                    <a href="#" class="dropdown-item">Контакты СПКС</a>
                 </div>
             </div>
         </div>
@@ -38,75 +40,70 @@
             </div>
             <div id="collapse_11" class="collapse" aria-labelledby="heading_01" data-parent="#accordion_spks">
                 <div class="card-body">
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Реестр Свидетельств о квалификации</a>
+                    <a href="{% url 'spks_reestr_svid' %}" class="dropdown-item">Реестр Свидетельств о квалификации</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Реестр Центров оценки квалификаций</a>
+                    <a href="{% url 'reestr:centers' 'qualification' %}" class="dropdown-item">Реестр Центров оценки квалификаций</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Реестр квалификаций</a>
+                    <a href="#" class="dropdown-item">Реестр квалификаций</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Образцы документов в сфере независимой оценки квалификаций</a>
+                    <a href="#" class="dropdown-item">Образцы документов в сфере независимой оценки квалификаций</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_activity' %}" class="dropdown-item">Примеры заданий, входящих в состав оценочных средств</a>
+                    <a href="#" class="dropdown-item">Примеры заданий, входящих в состав оценочных средств</a>
                     
                     
+                </div>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks" id="heading_02">
+                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_12" aria-expanded="false" aria-controls="collapse_12">Профессиональные стандарты и квалификации</a>
+            </div>
+            <div id="collapse_12" class="collapse" aria-labelledby="heading_02" data-parent="#accordion_spks">
+                <div class="card-body">
+                    <a href="#" class="dropdown-item">Утвержденные профессиональные стандарты</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Разработка профессиональных стандартов</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Разработка проектов квалификации</a>
                 </div>
             </div>
         </div>
         <div class="card rounded-0">
             <!-- TODO: При переходе на страницу к .bg-naks добавляем класс .bg-naks-active -->
-            <div class="card-header bg-naks" id="heading_02">
-                <a href="{% url 'sro_reestr' %}" class="collapsed">Мониторинг рынка труда</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_03">
-                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_12" aria-expanded="false" aria-controls="collapse_12">Профессиональные стандарты и квалификации</a>
-            </div>
-            <div id="collapse_12" class="collapse" aria-labelledby="heading_03" data-parent="#accordion_spks">
-                <div class="card-body">
-                    <a href="{% url 'sro_control_comitet' %}" class="dropdown-item">Утвержденные профессиональные стандарты</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_disciplinary_comitet' %}" class="dropdown-item">Разработка профессиональных стандартов</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_audit_commission' %}" class="dropdown-item">Разработка проектов квалификации</a>
-                </div>
+                <a href="#" class="collapsed">Мониторинг рынка труда</a>
             </div>
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_04">
-                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_13" aria-expanded="false" aria-controls="collapse_13">Применение профессиональных стандартов в системе профессионального образования и обучения</a>
+                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_13" aria-expanded="false" aria-controls="collapse_13">Профессиональные стандарты в системе профессионального образования и обучения</a>
             </div>
             <!-- TODO: По клику на пункте меню к collapse добавляется .show, а к .dropdown-item добавляем .active -->
             <div id="collapse_13" class="collapse" aria-labelledby="heading_04" data-parent="#accordion_spks">
                 <div class="card-body">
-                    <a href="{% url 'sro_sobranie' %}" class="dropdown-item">Федеральные государственные образовательные стандарты в области сварки</a>
+                    <a href="#" class="dropdown-item">Федеральные государственные образовательные стандарты в области сварки</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_presidium' %}" class="dropdown-item">Состав экспертов по проведению профессионально-общественной аккредитации образовательных программ</a>
+                    <a href="#" class="dropdown-item">Состав экспертов по проведению профессионально-общественной аккредитации образовательных программ</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_president' %}" class="dropdown-item">Экспертные организации</a>
+                    <a href="#" class="dropdown-item">Экспертные организации</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sro_president' %}" class="dropdown-item">Реестр аккредитованных образовательных  программ</a>
+                    <a href="#" class="dropdown-item">Реестр аккредитованных образовательных  программ</a>
                 </div>
             </div>
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_05">
-                <a href="{% url 'sro_legislation' %}" class="collapsed">Нормативные правовые акты РФ по вопросам независимой оценки квалификации</a>
+                <a href="#" class="collapsed">Нормативные правовые акты РФ по вопросам независимой оценки квалификации</a>
             </div>
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_06">
-                <a href="{% url 'sro_forms_docs' %}" class="collapsed">СМИ о СПК в области сварки</a>
+                <a href="#" class="collapsed">СМИ о СПК в области сварки</a>
             </div>
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_07">
-                <a href="{% url 'sro_forms_docs' %}" class="collapsed">Справочно-техническая информация</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
-            <div class="card-header bg-naks" id="heading_08">
-                <a href="{% url 'sro_forms_docs' %}" class="collapsed">Контакты СПКС</a>
+                <a href="#" class="collapsed">Справочно-техническая информация</a>
             </div>
         </div>
         <div class="card rounded-0">

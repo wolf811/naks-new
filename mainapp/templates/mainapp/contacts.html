@@ -7,13 +7,13 @@
 <!-- End Header-page -->
 
 <div class="container">
-    <h4 class="text-dark mt-5">Контакты НАКС</h4>
+    <h4 class="text-dark mt-5">Контакты</h4>
     <div class="row">
         <div class="col-xs-12 col-sm-10">
             <nav aria-label="breadcrumb" role="navigation">
                 <ol class="breadcrumb mt-3 mb-2 p-0">
                     <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Контакты НАКС</li>
+                    <li class="breadcrumb-item active" aria-current="page">Контакты</li>
                 </ol>
             </nav>
         </div>
@@ -29,7 +29,10 @@
         <div class="show-units">
             <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
                 <li class="col-auto col-lg-6 nav-item mb-4">
-                    <a class="btn btn-outline-danger btn-block active" id="pills-composition-tab" data-toggle="pill" href="#pills-composition" role="tab" aria-controls="pills-composition" aria-selected="true">Подразделения</a>
+                    <a class="btn btn-outline-danger btn-block active" id="pills-directorate-tab" data-toggle="pill" href="#pills-directorate" role="tab" aria-controls="pills-directorate" aria-selected="true">Дирекция</a>
+                </li>
+                <li class="col-auto col-lg-6 nav-item mb-4">
+                    <a class="btn btn-outline-danger btn-block" id="pills-spks-tab" data-toggle="pill" href="#pills-spks" role="tab" aria-controls="pills-spks" aria-selected="true">СПКС</a>
                 </li>
                 <li class="col-auto col-lg-6 nav-item mb-4">
                     <a class="btn btn-outline-danger btn-block" id="pills-protocols-tab" data-toggle="pill" href="#pills-protocols" role="tab" aria-controls="pills-protocols" aria-selected="false">Реквизиты</a>
@@ -42,8 +45,8 @@
 
         <div class="tab-content" id="pills-tabContent">
 
-            <div class="tab-pane fade show active" id="pills-composition" role="tabpanel" aria-labelledby="pills-composition-tab">
-                <h5 class="text-primary my-4">Контакты</h5>
+            <div class="tab-pane fade show active" id="pills-directorate" role="tabpanel" aria-labelledby="pills-directorate-tab">
+                <h5 class="text-primary my-4">Контакты дирекции НАКС</h5>
 
                 <div class="table-responsive">
                     <table class="table table-bordered table-contacts mb-0" >
@@ -318,6 +321,44 @@
                             </td>
                         </tr>
                     {% endif %}
+                    </table>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade show active" id="pills-spks" role="tabpanel" aria-labelledby="pills-spks-tab">
+                <h5 class="text-primary my-4">Контакты СПКС</h5>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-contacts mb-0" >
+                        <tr>
+                            <th>Председатель Совета</th>
+                            <td>Алёшин Николай Павлович<br><small>Президент СРО Ассоциация "НАКС", академик РАН</small></td>
+                            <td width="200">
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74992636802">(499) 263-68-02</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847700">(499) 784-77-00</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:aleshin@bmstu.ru">aleshin@bmstu.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Секретарь Совета</th>
+                            <td>Чупрак Александр Иванович<br><small>технический директор СРО Ассоциация "НАКС"</small></td>
+                            <td>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847275">(499) 784-72-75</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847700">(499) 784-77-00</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-72-75</a></div>
+                                <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-fax mr-2" aria-hidden="true"></i><a href="#">(499) 784-77-11</a></div>
+                                <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:tk364@naks.ru">tk364@naks.ru</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Фактический адрес</th>
+                            <td colspan="2">109341, г. Москва, ул. Братиславская, д. 6, подъезд 4, этаж 4, офис "НАКС"</td>
+                        </tr>
+                        <tr>
+                            <th>Почтовый адрес</th>
+                            <td colspan="2">109469, г. Москва, ул. Марьинский парк, д.23, корп.3</td>
+                        </tr>
+                        
                     </table>
                 </div>
             </div>
