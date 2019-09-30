@@ -255,7 +255,7 @@ class AccreditedCenter(Center):
         verbose_name="Уровни",
         blank=True
         )
-    acitvities = models.ManyToManyField(
+    actvities = models.ManyToManyField(
         Activity,
         verbose_name='Виды д-сти',
         blank=True

@@ -92,6 +92,11 @@ gtus = [
     ('ПТО', 'Подъемно-транспортное оборудование'),
 ]
 
+activities = [
+    ('РиТК', 'Руководство и технический контроль за проведением сварочных работ'),
+    ('ПиА', 'Участие в работе органов по подготовке и аттестации')
+]
+
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -99,6 +104,7 @@ class Command(BaseCommand):
         SO.objects.all().delete()
         GTU.objects.all().delete()
         WeldType.objects.all().delete()
+        Activity.objects.all().delete()
         Level.objects.all().delete()
         AccreditedCenter.objects.all().delete()
         City.objects.all().delete()
@@ -212,6 +218,7 @@ class Command(BaseCommand):
         all_levels = [level for level in Level.objects.all()]
         all_so_types = [so for so in SO.objects.all()]
         all_sm_types = [sm for sm in SM.objects.all()]
+
         for accred_center in AccreditedCenter.objects.filter(
                 active=True, temporary_suspend_date__isnull=True):
             print('fillig obl_d: {}'.format(accred_center.short_code))
@@ -230,6 +237,8 @@ class Command(BaseCommand):
             another_dice = random.randint(0, 100)
             if another_dice > 80:
                 accred_center.special_gp = True
+            if random.randint(0, 100) > 80:
+                accred_center.actvities.add(*[act for act in Activity.objects.all()])
 
             accred_center.save()
 

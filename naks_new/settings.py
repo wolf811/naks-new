@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'rest_framework',
     'sass_processor',
-    'drf_multiple_model',
+    # 'drf_multiple_model',
 ]
 
 MIDDLEWARE = [

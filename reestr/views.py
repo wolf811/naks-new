@@ -77,13 +77,13 @@ def centers(request, direction):
 def center_details(request):
     pass
 
-class FormParametersAPIView(ObjectMultipleModelAPIView):
-    querylist = [
-        {'queryset': Level.objects.all(), 'serializer_class': LevelSerializer},
-        {'queryset': WeldType.objects.all(), 'serializer_class': WeldTypesSerializer},
-        {'queryset': Activity.objects.all(), 'serializer_class': ActivitySerialize},
-        {'queryset': GTU.objects.all(), 'serializer_class': GTUSerializer},
-    ]
+
+class DirectoriesViewSet(viewsets.ModelViewSet):
+    serializer_class = DirectoriesSerializer
+
+    def get_queryset(self):
+        return [1]
+
 
 class CentersViewSet(viewsets.ModelViewSet):
     queryset = AccreditedCenter.objects.all().order_by('pk')
