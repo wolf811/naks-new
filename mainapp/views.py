@@ -355,7 +355,7 @@ def spks(request):
 
 
 def spks_docs(request):
-    title = 'НАКС - Документы СПКС'
+    title = 'СПКС - Документы'
     content = {
         'title': title
     }
@@ -363,11 +363,39 @@ def spks_docs(request):
 
 
 def spks_reestr_svid(request):
-    title = 'НАКС - СПКС'
+    title = 'СПКС - Реестр свидетельств'
     content = {
         'title': title
     }
     return render(request, 'mainapp/spks_reestr_svid.html', content)
+
+def spks_composition(request):
+    title = 'СПКС - Состав Совета'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_composition.html', content)
+
+def spks_composition_region(request):
+    title = 'СПКС - Состав региональных представителей'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_composition_region.html', content)
+
+def spks_composition_experts(request):
+    title = 'СПКС - Эксперты Совета'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_composition_experts.html', content)
+
+def spks_comiss(request):
+    title = 'СПКС - Эксперты Совета'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_comiss.html', content)
 # ============= end SPKS ===============
 
 
