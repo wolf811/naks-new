@@ -8,7 +8,7 @@ from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.http import JsonResponse
-from drf_multiple_model.views import ObjectMultipleModelAPIView
+# from drf_multiple_model.views import ObjectMultipleModelAPIView
 # Create your views here.
 
 
