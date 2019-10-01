@@ -89,14 +89,27 @@ if (document.getElementById('app_reestr_centers')) {
                 axios
                     .get('/naks_api/dirs/')
                     .then(response => {
-                    // console.log('response', response.data, 'levels', response.data[0].levels);
-                    this.$set(this.accred_fields, 'level', response.data[0].levels);
-                    for (var lv of this.accred_fields.level) {
-                        lv.selected = false;
-                        lv.type = 'level';
-                    }
-                    console.log('beforeMount: api parameters loaded', this, 'level', this.accred_fields.level, 'levels > 0:', this.accred_fields.level.length > 0);
-                });
+                    console.log('response data', response.data[0]);
+                        var dirs = [
+                            {'name': 'activity', 'plural': 'activities'},
+                            {'name': 'weldtype', 'plural': 'weldtypes'},
+                            {'name': 'level', 'plural': 'levels'},
+                            {'name': 'gtu', 'plural': 'gtus'},
+                        ];
+                        for (var dir of dirs) {
+                            this.$set(this.accred_fields, dir.name, response.data[0][dir.plural]);
+                            for (var el of this.accred_fields[dir.name]) {
+                                el.selected = false;
+                                el.type = dir.name;
+                            }
+                        }
+                    })
+                    .finally(() => {
+                        // console.log('beforeMount: api parameters loaded', this, 'weldtype', this.accred_fields.weldtype, 'weldtypes > 0:', this.accred_fields.weldtype.length > 0);
+                        console.log('******************************************');
+                        console.log('beforeMount: api parameters loaded', this);
+                        console.log('******************************************');
+                    });
         },
         mounted() {
             this.iamhere();
@@ -115,7 +128,7 @@ if (document.getElementById('app_reestr_centers')) {
             log_change: function() {
                 console.log('changes', this);
             },
-            load_form_parameters: function() {
+            load_form_parameters_deprecated: function() {
                 console.log('loading dir parameters from api');
                 axios
                     .get('/naks_api/dirs/')
