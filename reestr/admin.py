@@ -59,12 +59,15 @@ class AccreditedCenterAdmin(admin.ModelAdmin):
                         установлена')
         super(AccreditedCenterAdmin, self).save_model(request, obj, form, change)
 
+@admin.register(GTU)
+class GTUAdmin(admin.ModelAdmin):
+    list_display = ['id', 'short_name', 'full_name']
+
 admin.site.register(Level)
 admin.site.register(PS)
 admin.site.register(PK)
 admin.site.register(SM)
 admin.site.register(SO)
-admin.site.register(GTU)
 admin.site.register(WeldType)
 # admin.site.register(SROMember)
 # admin.site.register(AccreditedCenter)

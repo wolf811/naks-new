@@ -4,21 +4,21 @@
 </div>
 <table class="table table-striped table-sm table-hover">
 	<tbody>
-		<tr>
+		<tr v-for="(act, index) in accred_fields.activity">
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input type="checkbox" class="custom-control-input" id="ruk">
-					<label class="custom-control-label" for="ruk">Руководство и технический контроль за проведением сварочных работ</label>
+					<input @change="change_input(act)" type="checkbox" class="custom-control-input" :id="'act_'+index">
+					<label class="custom-control-label" :for="'act_'+index">[[ act.full_name ]]</label>
 				</div>
 			</td>
 		</tr>
-		<tr>
+		{% comment %} <tr>
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
 					<input type="checkbox" class="custom-control-input" id="pia">
 					<label class="custom-control-label" for="pia">Участие в работе органов по подготовке и аттестации (ПиА)</label>
 				</div>
 			</td>
-		</tr>
+		</tr> {% endcomment %}
 	</tbody>
 </table>

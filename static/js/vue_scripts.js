@@ -79,6 +79,7 @@ if (document.getElementById('app_reestr_centers')) {
                 selected: {
                     level: [],
                     weldtype: [],
+                    activity: [],
                     gtu: [],
                     material: [],
                     equipment: [],
@@ -123,7 +124,6 @@ if (document.getElementById('app_reestr_centers')) {
                 } else {
                     this.load_reestr_centers();
                 }
-                console.log('i am here', this);
             },
             log_change: function() {
                 console.log('changes', this);
@@ -294,12 +294,12 @@ if (document.getElementById('app_reestr_centers')) {
             change_input: function(input) {
                 input.selected = !input.selected;
                 this.selected[input.type] = this.filter_selected_inputs(this.accred_fields[input.type]);
-                console.log('change input', this, 'input', input);
+                // console.log('change input', this, 'input', input);
             },
             filter_selected_inputs: function(input_arr) {
                 if (input_arr.length > 0) {
                     var filtered = input_arr.filter(element => element.selected == true);
-                    console.log('counting inputs', filtered, filtered.length);
+                    // console.log('counting inputs', filtered, filtered.length);
                     return filtered;
                 } else {
                     return [];

@@ -7,6 +7,7 @@ class Spr(models.Model):
     short_name = models.CharField(u'Краткое название', max_length=15)
     full_name = models.CharField(u'Расшифровка', max_length=150)
     number = models.SmallIntegerField(u'Порядок сортировки', null=True, blank=True)
+    parent = models.ForeignKey('self', blank=True, null=True, default=None, on_delete=models.CASCADE)
 
     class Meta:
         abstract = True

@@ -1,17 +1,17 @@
 {% load static %}
 <table class="table table-striped table-sm table-hover">
 	<tbody>
-		{% for weld in weld_types %}
-		<tr>
+
+		<tr v-for="(wt, index) in accred_fields.weldtype">
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input type="checkbox" class="custom-control-input" id="weldtype_{{ weld.pk }}">
-					<label class="custom-control-label" for="weldtype_{{ weld.pk }}">{{ weld.short_name }}</label>
+					<input @change="change_input(wt)" type="checkbox" class="custom-control-input" :id="'wtype_'+index">
+					<label class="custom-control-label" :for="'wtype_'+index">[[wt.short_name ]]</label>
 				</div>
 			</td>
-			<td>{{ weld.full_name }}</td>
+			<td>[[ wt.full_name ]]</td>
 		</tr>
-		{% endfor %}
+
 		{% comment %}<tr>
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">

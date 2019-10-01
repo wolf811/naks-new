@@ -19,7 +19,7 @@ class WeldTypesSerializer(serializers.ModelSerializer):
 class GTUSerializer(serializers.ModelSerializer):
     class Meta:
         model = GTU
-        fields = ('short_name', 'full_name')
+        fields = ('short_name', 'full_name', 'parent')
 
 
 class ActivitySerializer(serializers.ModelSerializer):
