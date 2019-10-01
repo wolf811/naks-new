@@ -85,7 +85,7 @@ class CenterSerializer(serializers.ModelSerializer):
             'weldtypes',
             'gtus',
             'levels',
-            'acitvities',
+            'activities',
             'sm_types',
             'so_types',
             'profstandards',

@@ -59,7 +59,7 @@ if (document.getElementById('app_loading_naks_news')) {
 
 if (document.getElementById('app_reestr_centers')) {
     // console.log('-->app reestr centers here');
-    new Vue({
+    var vm = new Vue({
         delimiters: ['[[', ']]'],
         el: '#app_reestr_centers',
         data() {
@@ -75,22 +75,31 @@ if (document.getElementById('app_reestr_centers')) {
                 special_tn: false,
                 on_screen: [],
                 parametersAccumulator: [],
-                accred_fields: {
-                    levels: {
-                        "I": false,
-                        "II": false,
-                        "III": false,
-                        "IV": false
-                    },
-                    activities: [],
-                    weldtypes: [],
-                    gtus: []
-                }
+                accred_fields: {},
+                selected: {
+                    level: [],
+                    weldtype: [],
+                    gtu: [],
+                    material: [],
+                    equipment: [],
+                },
             };
+        },
+        beforeMount() {
+                axios
+                    .get('/naks_api/dirs/')
+                    .then(response => {
+                    // console.log('response', response.data, 'levels', response.data[0].levels);
+                    this.$set(this.accred_fields, 'level', response.data[0].levels);
+                    for (var lv of this.accred_fields.level) {
+                        lv.selected = false;
+                        lv.type = 'level';
+                    }
+                    console.log('beforeMount: api parameters loaded', this, 'level', this.accred_fields.level, 'levels > 0:', this.accred_fields.level.length > 0);
+                });
         },
         mounted() {
             this.iamhere();
-            this.load_form_parameters();
         },
         methods: {
             iamhere: function() {
@@ -98,37 +107,36 @@ if (document.getElementById('app_reestr_centers')) {
                 let centers_updated_flag = this.$cookies.get("centers_storage_updated");
                 if (localStorage.reestrCenters && centers_updated_flag) {
                         this.reestrCenters = JSON.parse(localStorage.reestrCenters);
-                        // console.log('taken from local storage', this.reestrCenters.length);
                 } else {
                     this.load_reestr_centers();
                 }
-                // console.log('VUE is here', this, 'direction', this.direction);
-            },
-            count_levels: function() {
-                const filtered_levels = Object.keys(this.accred_fields.levels).filter(key => this.accred_fields.levels[key] == true)
-                console.log('levels', filtered_levels);
-                return filtered_levels
+                console.log('i am here', this);
             },
             log_change: function() {
                 console.log('changes', this);
             },
             load_form_parameters: function() {
-                console.log('test fill parameters');
+                console.log('loading dir parameters from api');
+                axios
+                    .get('/naks_api/dirs/')
+                    .then(response => {
+                        this.accred_fields.levels = response.data[0].levels;
+                        console.log('updated Vue', this, 'levels', this.accred_fields.levels, this.accred_fields.levels.length);
+                    });
+                console.log('api parameters loaded');
             },
             load_reestr_centers: function() {
                 localStorage.clear();
                 axios
                 .get('/naks_api/centers/')
                 .then(response => {
+                    console.log('loading centers from api');
                     localStorage.reestrCenters = JSON.stringify(response.data);
                     var loaded_arr = JSON.parse(localStorage.reestrCenters);
-                    // console.log('saved to local storage', localStorage.reestrCenters.length);
                     this.$cookies.set("centers_storage_updated", "1", "1h");
-                    // console.log('cookies flag set up');
                     this.reestrCenters = loaded_arr.filter(element => element.direction == this.direction);
                     });
-                    // this.reestrCenters = this.reestrCenters.filter(element => element.direction == this.direction)
-                },
+            },
             onCityInput: function() {
                 this.filterByInput({'parameter': 'city', 'value': this.city_input});
                     if (this.city_input.length < this.city_input_length) {
@@ -157,7 +165,7 @@ if (document.getElementById('app_reestr_centers')) {
                         this.show_filtered(this.on_screen);
                         this.show_hidden_centers();
                         this.make_tables_unstriped();
-                },
+            },
             onSpecialsGpChekbox: function() {
                     // console.log('special gp');
                         this.filterByInput({'parameter': 'special_gp', 'value': this.special_gp});
@@ -244,10 +252,10 @@ if (document.getElementById('app_reestr_centers')) {
                         $(t).addClass("table-striped");
                     }
                 }
-            }
-            this.on_screen = [];
-            this.special_tn = false;
-            this.special_gp = false;
+                }
+                this.on_screen = [];
+                this.special_tn = false;
+                this.special_gp = false;
             },
             make_tables_unstriped: function() {
                 var tables = document.querySelectorAll('table');
@@ -269,7 +277,22 @@ if (document.getElementById('app_reestr_centers')) {
                 axios
                     .post(`/reestr/centers/${this.direction}`, data)
                     .then(response=> {console.log('server_response', response.data)})
+            },
+            change_input: function(input) {
+                input.selected = !input.selected;
+                this.selected[input.type] = this.filter_selected_inputs(this.accred_fields[input.type]);
+                console.log('change input', this, 'input', input);
+            },
+            filter_selected_inputs: function(input_arr) {
+                if (input_arr.length > 0) {
+                    var filtered = input_arr.filter(element => element.selected == true);
+                    console.log('counting inputs', filtered, filtered.length);
+                    return filtered;
+                } else {
+                    return [];
+                }
             }
         },
+
     });
 }

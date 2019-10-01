@@ -5,14 +5,12 @@
 <table class="table table-striped table-sm table-hover">
 	<tbody>
 		<tr>
-		{% for level in levels %}
-			<td>
+			<td v-for="lv in accred_fields.level">
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input v-model="accred_fields.levels.{{ level.level }}" @change="log_change" type="checkbox" class="custom-control-input" id="level_{{ level.pk }}" ref="level_{{ level.pk }}">
-					<label class="custom-control-label" for="level_{{ level.pk }}">{{ level.level }}</label>
+					<input @change="change_input(lv)" type="checkbox" class="custom-control-input" :id="'lv_'+lv.level">
+					<label class="custom-control-label" :for="'lv_'+ lv.level">[[ lv.level ]]</label>
 				</div>
 			</td>
-		{% endfor %}
 			{% comment %} <td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
 					<input type="checkbox" class="custom-control-input" id="II">

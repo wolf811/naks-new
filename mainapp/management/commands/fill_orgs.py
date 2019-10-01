@@ -155,6 +155,13 @@ class Command(BaseCommand):
                     short_name=so[0],
                     full_name=so[1]
                 )
+        if Activity.objects.count() == 0:
+            for act in activities:
+                mixer.blend(
+                    Activity,
+                    short_name=act[0],
+                    full_name=act[1]
+                )
         print('all spr set ready')
         center_count = 0
         for member in SROMember.objects.all():
