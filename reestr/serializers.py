@@ -7,25 +7,25 @@ from .models import AccreditedCenter, Level, WeldType, GTU, Activity
 class LevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Level
-        fields = ('level',)
+        fields = ('id', 'level',)
 
 
 class WeldTypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = WeldType
-        fields = ('short_name', 'full_name')
+        fields = ('id', 'short_name', 'full_name')
 
 
 class GTUSerializer(serializers.ModelSerializer):
     class Meta:
         model = GTU
-        fields = ('short_name', 'full_name', 'parent')
+        fields = ('id', 'short_name', 'full_name', 'parent')
 
 
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
-        fields = ('short_name', 'full_name')
+        fields = ('id', 'short_name', 'full_name')
 
 
 class DirectoriesSerializer(serializers.Serializer):

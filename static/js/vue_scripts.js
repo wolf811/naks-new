@@ -4,6 +4,8 @@
 //     return arr.filter( function(el) { return el != value; })
 // }
 
+var APP_LOG_LIFECYCLE_EVENTS = true;
+
 if (document.getElementById('app_loading_naks_news')) {
     new Vue({
         delimiters: ['[[', ']]'],
@@ -98,11 +100,15 @@ if (document.getElementById('app_reestr_centers')) {
                             {'name': 'gtu', 'plural': 'gtus'},
                         ];
                         for (var dir of dirs) {
-                            this.$set(this.accred_fields, dir.name, response.data[0][dir.plural]);
-                            for (var el of this.accred_fields[dir.name]) {
-                                el.selected = false;
-                                el.type = dir.name;
+                            var reactive_arr = [];
+                            for (var el of response.data[0][dir.plural]) {
+                                var extended_el = el;
+                                extended_el.selected = false;
+                                extended_el.type = dir.name;
+                                reactive_arr.push(extended_el);
                             }
+                            // this.$set(this.accred_fields, dir.name, response.data[0][dir.plural]);
+                            this.$set(this.accred_fields, dir.name, reactive_arr);
                         }
                     })
                     .finally(() => {
@@ -194,27 +200,47 @@ if (document.getElementById('app_reestr_centers')) {
                         }
                     }
                     this.parametersAccumulator.push(input_data);
-                    // console.log('parameters', this.parametersAccumulator);
+                    console.log('parameters', this.parametersAccumulator);
                 }
                 var result_array = [];
 
 
                 for (var element of this.reestrCenters) {
                     var passing = true;
-                    for (var param of this.parametersAccumulator) {
-                        if (param.parameter in {"city":1, "short_code": 1}) {
-                            if (!element[param.parameter].toUpperCase().includes(param.value.toUpperCase())) {
+                    for (var p of this.parametersAccumulator) {
+                        var parameter = p.parameter;
+                        var value = p.value;
+                        if (parameter in {"city":1, "short_code": 1}) {
+                            if (!element[p.parameter].toUpperCase().includes(value.toUpperCase())) {
                                 passing = false;
                                 break;
                             }
                         }
-                        if (param.parameter in {"special_gp": 1, "special_tn": 1}) {
-                            if (param.value == false) {
+                        if (parameter in {"special_gp": 1, "special_tn": 1}) {
+                            if (value == false) {
                                 continue;
                             } else {
-                                if (element[param.parameter] != param.value) {
+                                if (element[p.parameter] != value) {
                                     passing = false;
                                     break;
+                                }
+                            }
+                        }
+                        if (parameter in {"gtus": 1}) {
+                            // {'parameter': 'gtus', 'value': gtu_id_arr};
+                            // each of value: {'id': item.id, 'parent': item.parent}
+                            for (var item of value) {
+                                // if (!element[parameter].includes(item.id) && item.parent === null) {
+                                //     passing = false;
+                                // }
+                                // if (item.parent != null) {
+                                //     if (item.parent)
+                                // }
+                                var searching = null;
+                                item.parent == null ? searching = item.id : searching = item.parent;
+
+                                if (!element[parameter].includes(searching)) {
+                                    passing = false;
                                 }
                             }
                         }
@@ -223,6 +249,7 @@ if (document.getElementById('app_reestr_centers')) {
                         result_array.push(element);
                     }
                 }
+                console.log('result_array', result_array.filter(el=> el.direction == this.direction));
                 // console.log('result_array', result_array.filter(el => el.direction == this.direction));
                 this.on_screen = result_array.filter(el => el.direction == this.direction);
 
@@ -290,6 +317,25 @@ if (document.getElementById('app_reestr_centers')) {
                 axios
                     .post(`/reestr/centers/${this.direction}`, data)
                     .then(response=> {console.log('server_response', response.data)})
+            },
+            selectGtu: function(item) {
+                // console.log('selected', item, item.selected);
+                for (var el of this.accred_fields.gtu) {
+                    if (el === item) {
+                        continue;
+                    } else {
+                        el.parent === item.id ? el.selected = item.selected : null;
+                    }
+                }
+                var gtu_id_arr = Array.from(this.accred_fields.gtu.filter(el => el.selected == true), function(item) {
+                    return {'id': item.id, 'parent': item.parent}
+                });
+                this.selected.gtu = gtu_id_arr;
+                var searchingByGtu = {'parameter': 'gtus', 'value': gtu_id_arr};
+                this.filterByInput(searchingByGtu);
+                this.show_filtered(this.on_screen);
+                this.show_hidden_centers();
+                this.make_tables_unstriped();
             },
             change_input: function(input) {
                 input.selected = !input.selected;

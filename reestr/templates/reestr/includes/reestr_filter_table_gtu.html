@@ -1,24 +1,16 @@
 {% load static %}
 <table class="table table-sm table-hover" id="table-technicalDevices">
 	<tbody>
-		<tr v-for="(gtu, index) in accred_fields.gtu" class="table-active font-weight-bold">
+		<tr v-for="(_gtu_, index) in accred_fields.gtu" :class="{'table-active font-weight-bold': _gtu_.parent === null }">
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input type="checkbox" class="custom-control-input" :id="'gtu_'+index">
-					<label class="custom-control-label" :for="'gtu_'+index">[[ gtu.short_name ]]</label>
+					<input v-model="_gtu_.selected" @change="selectGtu(_gtu_)" type="checkbox" class="custom-control-input" :id="'gtu_'+index">
+					<label class="custom-control-label" :for="'gtu_'+index">[[ _gtu_.short_name ]]</label>
 				</div>
 			</td>
-			<td>[[ gtu.full_name ]]</td>
+			<td>[[ _gtu_.full_name ]]</td>
 		</tr>
-		{% comment %} <tr>
-			<td>
-				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input type="checkbox" class="custom-control-input" id="gdo1">
-					<label class="custom-control-label" for="gdo1">ГДО (1)</label>
-				</div>
-			</td>
-			<td>Технические устройства для горнодобывающих и горно-обогатительных производств и подземных объектов</td>
-		</tr>
+		{% comment %}
 		<tr class="table-active font-weight-bold">
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
