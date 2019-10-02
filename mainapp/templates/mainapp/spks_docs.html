@@ -8,110 +8,153 @@
 
 <div class="all-docs">
     <div class="container">
-        <h4 class="text-dark mt-5">Документы САСв</h4>
+        <h4 class="text-dark mt-5">Совет по профессиональным квалификациям в области сварки (СПКС)</h4>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb mt-3 mb-2 p-0">
                         <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-                        <li class="breadcrumb-item"><a href="{% url 'sasv' %}">САСв</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Документы САСв</li>
+                        <li class="breadcrumb-item"><a href="{% url 'spks' %}">СПКС</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Документы СПКС</li>
                     </ol>
                 </nav>
             </div>
             <div class="col-xs-12 col-sm-2">
-                <a href="{% url 'sasv' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+                <a href="{% url 'spks' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
             </div>
         </div>
         <hr>
 
-        <form class="mt-4 mb-3">
-            <h6 class="font-weight-bold">Быстрый поиск документа</h6>
-            <div class="form-row">
-                <div class="form-group col-xs-12 col-sm-4">
-                    <label for="" class="pb-0">Название</label>
-                    <input type="text" class="form-control form-control-sm" aria-label="Найти">
-                </div>
-                <div class="form-group col-xs-12 col-sm-4">
-                    <label for="" class="pb-0">Раздел</label>
-                    <select  class="form-control form-control-sm">
-                        <option selected>Все</option>
-                        <option>Соглашения</option>
-                        <option>Нормативные документы</option>
-                        <option>Руководящие документы</option>
-                        <option>Письма Ростехнадзора</option>
-                        <option>Методические документы</option>
-                    </select>
-                </div>
-                <div class="form-group col-xs-12 col-sm-4">
-                    <label for="" class="pb-0">Направление</label>
-                    <select  class="form-control form-control-sm">
-                        <option selected>Все</option>
-                        <option>Аттестация специалистов сварочного производства</option>
-                        <option>Аттестация сварочных материалов</option>
-                        <option>Аттестация сварочного оборудования</option>
-                        <option>Аттестация сварочных технологий</option>
-                        <option>Специальная подготовка</option>
-                    </select>
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-xl-9">
+                <!-- Mobil right main -->
+                <div class="d-block d-md-none mt-3 mb-4">
+                    {% include 'mainapp/includes/spks/mobil-right-menu-spks.html' %}
+                </div> 
+                <!-- End mobil right main -->
+
+                <form class="mt-4 mb-3">
+                    <h6 class="font-weight-bold">Быстрый поиск документа</h6>
+                    <div class="form-row">
+                        <div class="form-group col-xl-6">
+                            <label for="" class="pb-0">Название</label>
+                            <input type="text" class="form-control form-control-sm" aria-label="Найти">
+                        </div>
+                        <!-- <div class="form-group col-sm-6 col-xl-3">
+                            <label for="" class="pb-0">Раздел</label>
+                            <select  class="form-control form-control-sm">
+                                <option selected>Все</option>
+                                <option>Соглашения</option>
+                                <option>Нормативные документы</option>
+                                <option>Руководящие документы</option>
+                                <option>Письма Ростехнадзора</option>
+                                <option>Методические документы</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6 col-xl-3">
+                            <label for="" class="pb-0">Направление</label>
+                            <select  class="form-control form-control-sm">
+                                <option selected>Все</option>
+                                <option>Персонал - аттестация сварщиков и специалистов сварочного производства</option>
+                                <option>СМ - аттестация сварочных материалов</option>
+                                <option>СО - аттестация сварочного оборудования</option>
+                                <option>СТ - аттестация сварочных технологий</option>
+                                <option>Специальная подготовка</option>
+                            </select>
+                        </div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                            <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <!-- TODO: на большой экран выводим по 10 (5+5) документов каждого раздела, на средний по 6 (3+3), на маленький 3 -->
+                <div id="docsSpks" class="mt-4">
+                    <h5 class="text-primary my-4">Документы СПКС</h5>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-secondary mb-3">Методические рекомендации определения стоимости проведения профессионального экзамена</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-secondary mb-3">Порядок оценки квалификации экспертов центра оценки квалификации, планирующих участвовать в проведении профессионального экзамена</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="d-block d-sm-none">
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-secondary mb-3">Положение о профессионально-общественной аккредитации образовательных программ</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-secondary mb-3">Положение об апелляционной комиссии Совета по профессиональным квалификациям в области сварки по рассмотрению жалоб, связанных с результатами прохождения профессионального экзамена и выдачей свидетельства о квалификации</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-4">
+                    
+                    <!-- Соглашения -->
+                    <h5 class="text-primary my-4">Соглашения</h5>
+
+                    {% include 'mainapp/includes/spks/docs_spks_soglash.html' %}
+
+                    <!-- <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button> -->
+                    <!-- End Соглашения -->
+
+                    <hr class="mt-4">
+
+                    
                 </div>
             </div>
-            <div class="row">
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
-                    <button type="button" class="btn btn-link btn-sm">Сбросить</button>
-                </div>
+
+            <div class="d-none d-md-block col-md-4 col-xl-3">
+                <!-- Content Right menu -->
+                {% include 'mainapp/includes/spks/right-menu-spks.html' %}
+                <!-- End Content Right menu -->
             </div>
-        </form>
-        <hr>
-        <!-- TODO: на большой экран выводим по 10 (5+5) документов каждого раздела, на средний по 6 (3+3), на маленький 3 -->
-        <div id="docsSasv" class="mt-4">
-            <!-- Соглашения -->
-            <h5 class="text-primary my-4">Соглашения</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_soglash.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Соглашения -->
-
-            <hr class="mt-4">
-
-            <!-- Нормативные -->
-            <h5 class="text-primary my-4">Нормативные документы</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_normativ.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Нормативные -->
-
-            <hr class="mt-4">
-
-            <!-- Руководящие -->
-            <h5 class="text-primary my-4">Руководящие документы</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_rukovod.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Руководящие -->
-
-            <hr class="mt-4">
-
-            <!-- Письма -->
-            <h5 class="text-primary my-4">Письма Ростехнадзора</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_rostech.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Письма -->
-
-            <hr class="mt-4">
-
-            <!-- Методические -->
-            <h5 class="text-primary my-4">Методические документы</h5>
-
-            {% include 'mainapp/includes/sasv/docs_sasv_metodich.html' %}
-
-            <button type="button" class="btn btn-primary btn-sm mt-4" role="button">Показать все<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></button>
-            <!-- End Методические -->
         </div>
     </div>
 </div>

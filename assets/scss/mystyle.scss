@@ -253,7 +253,7 @@ body {
 	width: 30%;
 }
 #table-composition td:first-child, #table-protocols {text-align: center;}
-.main-content .card:hover {
+.main-content .card.card-doc:hover {
 	border: 1px solid #007bff;
 	transition: 0.5s;
 }
@@ -451,7 +451,7 @@ body {
 }
 
 .main-content .card.accordion-card:hover {
-	border-color: rgba(0,0,0,.125) !important;
+	// border-color: rgba(0,0,0,.125) !important;
 	border-left: 1px solid #1880e7 !important;
 }
 .accordion-card {

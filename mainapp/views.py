@@ -391,11 +391,25 @@ def spks_composition_experts(request):
     return render(request, 'mainapp/spks_composition_experts.html', content)
 
 def spks_comiss(request):
-    title = 'СПКС - Эксперты Совета'
+    title = 'СПКС - Комиссии'
     content = {
         'title': title
     }
     return render(request, 'mainapp/spks_comiss.html', content)
+
+def spks_work_plan(request):
+    title = 'СПКС - План работы'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_work_plan.html', content)
+
+def spks_protocols(request):
+    title = 'СПКС - Протоколы'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_protocols.html', content)
 # ============= end SPKS ===============
 
 
