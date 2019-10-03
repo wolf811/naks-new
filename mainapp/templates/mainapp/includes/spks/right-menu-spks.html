@@ -46,11 +46,9 @@
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">Реестр квалификаций</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Образцы документов в сфере независимой оценки квалификаций</a>
+                    <a href="{% url 'spks_docs' %}" class="dropdown-item">Образцы документов</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Примеры заданий, входящих в состав оценочных средств</a>
-                    
-                    
+                    <a href="{% url 'spks_task_examples' %}" class="dropdown-item">Примеры заданий</a>
                 </div>
             </div>
         </div>
@@ -93,7 +91,7 @@
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_05">
-                <a href="#" class="collapsed">Нормативные правовые акты РФ по вопросам независимой оценки квалификации</a>
+                <a href="{% url 'spks_docs' %}" class="collapsed">Нормативные правовые акты РФ по вопросам оценки квалификации</a>
             </div>
         </div>
         <div class="card rounded-0">
@@ -103,7 +101,7 @@
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_07">
-                <a href="#" class="collapsed">Справочно-техническая информация</a>
+                <a href="{% url 'spks_help_info' %}" class="collapsed">Справочно-техническая информация</a>
             </div>
         </div>
         <div class="card rounded-0">

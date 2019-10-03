@@ -1,0 +1,66 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Совет по профессиональным квалификациям в области сварки (СПКС)</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Состав Совета</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/spks/mobil-right-menu-spks.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <div class="main-content mt-4">
+                <h5 class="text-primary my-4">Справочно-техническая информация</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-docs mb-0">
+                        <tr>
+                            <th>Заявление о наделении полномочиями (ЦОК и ЭЦ)</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Заявление на расширение (ЦОК и ЭЦ)</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Заявление о наделении полномочиями (ЭЦ)</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Заявление на расширение (ЭЦ)</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Заявление на включение ЧК</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>Форма заявки на оценку квалификации эксперта ЦОК</th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/spks/right-menu-spks.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

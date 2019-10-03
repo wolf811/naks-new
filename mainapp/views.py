@@ -410,6 +410,20 @@ def spks_protocols(request):
         'title': title
     }
     return render(request, 'mainapp/spks_protocols.html', content)
+
+def spks_help_info(request):
+    title = 'СПКС - Справочно-техническая информация'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_help_info.html', content)
+
+def spks_task_examples(request):
+    title = 'СПКС - Примеры заданий'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_task_examples.html', content)
 # ============= end SPKS ===============
 
 
