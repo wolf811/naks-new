@@ -5,7 +5,7 @@
 		<tr v-for="(wt, index) in accred_fields.weldtype">
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input @change="change_input(wt)" type="checkbox" class="custom-control-input" :id="'wtype_'+index">
+					<input v-model="wt.selected" @change="selectWeldtype(wt)" type="checkbox" class="custom-control-input" :id="'wtype_'+index">
 					<label class="custom-control-label" :for="'wtype_'+index">[[wt.short_name ]]</label>
 				</div>
 			</td>

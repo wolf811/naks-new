@@ -33,7 +33,7 @@
 
             <hr class="mt-4">
 
-            <div id="app_reestr_centers">
+            <div id="app_reestr_centers" v-cloak>
                 <div ref="direction" data-direction="{{ direction.title }}"></div>
                 <h5 class="text-primary my-4">{{ direction.registry_name }}</h5>
                 <!-- Поиск АЦ -->
@@ -61,15 +61,16 @@
                         {% comment %} <div class="alert alert-info">TN [[ special_tn ]], GP [[ special_gp ]]</div> {% endcomment %}
                     </div>
                     <div class="bg-light p-2 mb-3">
-                        <a href="#" id="btnFilterAc" data-toggle="modal" data-target="#modalFilterReestrAc">Поиск по области деятельности<i class="fa fa-angle-right ml-1"></i></a>
-                        <div id="selectedOptions" style="display: none;">
-                            <span class="text-secondary mr-2">Выбрано параметров: <strong class="text-dark">3</strong></span>
+                        <div v-if="selected_lengths_sum() > 0" id="selectedOptions">
+                            <span class="text-secondary mr-2">Выбрано параметров: <strong class="text-dark">[[ selected_lengths_sum() ]]</strong></span>
                             <a href="#" class="text-secondary text-sm" data-toggle="modal" data-target="#modalFilterReestrAc"><i class="fa fa-edit mr-1"></i>Изменить</a>
                         </div>
+                        <a v-else href="#" id="btnFilterAc" data-toggle="modal" data-target="#modalFilterReestrAc">Поиск по области деятельности<i class="fa fa-angle-right ml-1"></i></a>
                     </div>
 
                     <button v-on:click.prevent="server_search" class="btn btn-outline-primary btn-sm"><i class="fa fa-search mr-1"></i>Найти</button>
-                    <button v-on:click.prevent="reset_filters" type="button" class="btn btn-link btn-sm">[[ on_screen.length > 0 ? 'Результат поиска: ' + on_screen.length + " (Сбросить)" : "Сбросить" ]]</button>
+                    <button v-on:click.prevent="reset_filters" type="button" class="btn btn-link btn-sm">Сбросить</button>
+                    <span class="badge badge-light" v-if="on_screen.length > 0">Найдено: [[ on_screen.length ]]</span>
                 </form> <!-- конец поиска АЦ -->
 
                 <hr class="mt-4">

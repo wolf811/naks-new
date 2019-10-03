@@ -92,7 +92,7 @@ if (document.getElementById('app_reestr_centers')) {
                 axios
                     .get('/naks_api/dirs/')
                     .then(response => {
-                    console.log('response data', response.data[0]);
+                    // console.log('response data', response.data[0]);
                         var dirs = [
                             {'name': 'activity', 'plural': 'activities'},
                             {'name': 'weldtype', 'plural': 'weldtypes'},
@@ -121,6 +121,16 @@ if (document.getElementById('app_reestr_centers')) {
         mounted() {
             this.iamhere();
         },
+        watch: {
+            selected: {
+                handler: function(newVal, oldVall) {
+                    {}
+                    // console.log('selected changed', newVal);
+                    // this.selected_lengths_sum();
+                },
+                deep: true
+            }
+        },
         methods: {
             iamhere: function() {
                 this.direction = this.$refs.direction.dataset.direction;
@@ -134,15 +144,12 @@ if (document.getElementById('app_reestr_centers')) {
             log_change: function() {
                 console.log('changes', this);
             },
-            load_form_parameters_deprecated: function() {
-                console.log('loading dir parameters from api');
-                axios
-                    .get('/naks_api/dirs/')
-                    .then(response => {
-                        this.accred_fields.levels = response.data[0].levels;
-                        console.log('updated Vue', this, 'levels', this.accred_fields.levels, this.accred_fields.levels.length);
-                    });
-                console.log('api parameters loaded');
+            selected_lengths_sum: function() {
+                var sum_length = 0;
+                for (var key of Object.keys(this.selected)) {
+                    sum_length+=this.selected[key].length;
+                }
+                return sum_length
             },
             load_reestr_centers: function() {
                 localStorage.clear();
@@ -230,16 +237,18 @@ if (document.getElementById('app_reestr_centers')) {
                             // {'parameter': 'gtus', 'value': gtu_id_arr};
                             // each of value: {'id': item.id, 'parent': item.parent}
                             for (var item of value) {
-                                // if (!element[parameter].includes(item.id) && item.parent === null) {
-                                //     passing = false;
-                                // }
-                                // if (item.parent != null) {
-                                //     if (item.parent)
-                                // }
                                 var searching = null;
                                 item.parent == null ? searching = item.id : searching = item.parent;
 
                                 if (!element[parameter].includes(searching)) {
+                                    passing = false;
+                                }
+                            }
+                        }
+                        if (parameter == 'weldtypes') {
+                            // console.log('searching weldtypes', input_data);
+                            for (var item of value) {
+                                if (!element[parameter].includes(item)) {
                                     passing = false;
                                 }
                             }
@@ -252,7 +261,6 @@ if (document.getElementById('app_reestr_centers')) {
                 console.log('result_array', result_array.filter(el=> el.direction == this.direction));
                 // console.log('result_array', result_array.filter(el => el.direction == this.direction));
                 this.on_screen = result_array.filter(el => el.direction == this.direction);
-
             },
             show_filtered: function(arr) {
                 // console.log('to show', arr);
@@ -296,6 +304,12 @@ if (document.getElementById('app_reestr_centers')) {
                 this.on_screen = [];
                 this.special_tn = false;
                 this.special_gp = false;
+                for (var key of Object.keys(this.selected)) {
+                    this.selected[key] = [];
+                }
+                for (var el of this.accred_fields.gtu) {
+                    el.selected = false;
+                }
             },
             make_tables_unstriped: function() {
                 var tables = document.querySelectorAll('table');
@@ -318,6 +332,13 @@ if (document.getElementById('app_reestr_centers')) {
                     .post(`/reestr/centers/${this.direction}`, data)
                     .then(response=> {console.log('server_response', response.data)})
             },
+            selectWeldtype: function(item) {
+                var selected_weldtypes = Array.from(this.accred_fields.weldtype.filter(wt => wt.selected == true), function(item){
+                    return item.id;
+                });
+                this.selected.weldtype = selected_weldtypes;
+                this.filterByInput({'parameter': 'weldtypes', 'value': selected_weldtypes});
+            },
             selectGtu: function(item) {
                 // console.log('selected', item, item.selected);
                 for (var el of this.accred_fields.gtu) {
@@ -333,6 +354,8 @@ if (document.getElementById('app_reestr_centers')) {
                 this.selected.gtu = gtu_id_arr;
                 var searchingByGtu = {'parameter': 'gtus', 'value': gtu_id_arr};
                 this.filterByInput(searchingByGtu);
+            },
+            saveSearch: function() {
                 this.show_filtered(this.on_screen);
                 this.show_hidden_centers();
                 this.make_tables_unstriped();
