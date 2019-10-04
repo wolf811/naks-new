@@ -429,6 +429,7 @@ body {
 			border-left: 1px solid #1880e7;
 		}
 	}
+	th small {font-weight: normal;}
 }
 
 .right-main .bg-naks-active, .right-main-xs .bg-naks-active {
@@ -473,14 +474,14 @@ body {
 			text-align: center;
 			line-height: 1.2;
 			&:first-child {
-				border-left: inherit;
+				border-left: 1px solid #dee2e6;
 			}
 		}
 		td {
 			line-height: 1.2;
 			&:first-child {
 				text-align: center;
-				border-left: inherit;
+				border-left: 1px solid #dee2e6;
 			}
 		}
 	}

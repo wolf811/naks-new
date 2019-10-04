@@ -1,0 +1,91 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Совет по профессиональным квалификациям в области сварки (СПКС)</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Состав Совета</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/spks/mobil-right-menu-spks.html' %}
+            </div> 
+            <!-- End mobil right main -->
+
+            <div class="main-content mt-4">
+                <h5 class="text-primary my-4">Реестр квалификаций по профессиональным стандартам</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-docs mb-0">
+                        <tr>
+                            <th>
+                                <p class="mb-1">Сварщик</p>
+                                <small>(код 40.002, рег. № 14, приказ Минтруда России № 701н от 28.11.2013 г., зарегистрирован Минюстом России 13 февраля 2014г., рег. № 31301)</small>
+                            </th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <p class="mb-1">Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</p>
+                                <small>(код 40.109, рег.№ 664, Приказ Минтруда России № 916н от 01.12.2015 г., зарегистрирован Минюстом России 31 декабря 2015 г., рег. № 40426)</small>
+                            </th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <p class="mb-1">Резчик термической резки металлов</p>
+                                <small>(код 40.114, рег. № 676, Приказ Минтруда России № 989н от 03.12.2015 г., зарегистрирован в Минюсте России 30.12.2015 рег. № 40403)</small>
+                            </th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <p class="mb-1">Контролер сварочных работ</p>
+                                <small>(код 40.107, рег. № 657, приказ Минтруда России № 908н от 01.12.2015 г., зарегистрирован Минюстом России 31 декабря 2015 г., рег. № 40415)</small>
+                            </th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <p class="mb-1">Специалист сварочного производства</p>
+                                <small>(ккод 40.115, рег. № 677, Приказ Минтруда России № 975н от 03.12.2015 г., зарегистрирован в Минюсте России 31.12.2015 рег. № 40444)</small>
+                            </th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <p class="mb-1">Специалист по неразрушающему контролю</p>
+                                <small>(код 40.108, рег. № 658, Приказ Минтруда России № 976н от 03.12.2015г., зарегистрирован в Минюсте России 31.12.2015 рег. № 40443)</small>
+                            </th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <p class="mb-1">Специалист по механическим испытаниям сварных соединений и наплавленного металла</p>
+                                <small>(код 40.110, рег. № 665, приказ Минтруда России № 912н от 01.12.2015 г., зарегистрирован в Минюсте России 31.12.2015 рег. № 40459)</small>
+                            </th>
+                            <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/spks/right-menu-spks.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

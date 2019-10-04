@@ -361,6 +361,13 @@ def spks_docs(request):
     }
     return render(request, 'mainapp/spks_docs.html', content)
 
+def spks_coks(request):
+    title = 'СПКС - ЦОКи'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_coks.html', content)
+
 
 def spks_reestr_svid(request):
     title = 'СПКС - Реестр свидетельств'
@@ -424,6 +431,13 @@ def spks_task_examples(request):
         'title': title
     }
     return render(request, 'mainapp/spks_task_examples.html', content)
+
+def spks_reestr_qual(request):
+    title = 'СПКС - Квалификации'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_reestr_qual.html', content)
 # ============= end SPKS ===============
 
 

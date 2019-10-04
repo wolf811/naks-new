@@ -40,11 +40,11 @@
             </div>
             <div id="collapse_11" class="collapse" aria-labelledby="heading_01" data-parent="#accordion_spks">
                 <div class="card-body">
+                    <a href="{% url 'spks_reestr_qual' %}" class="dropdown-item">Реестр квалификаций</a>
+                    <div class="dropdown-divider"></div>
                     <a href="{% url 'spks_reestr_svid' %}" class="dropdown-item">Реестр Свидетельств о квалификации</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'reestr:centers' 'qualification' %}" class="dropdown-item">Реестр Центров оценки квалификаций</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Реестр квалификаций</a>
+                    <a href="{% url 'spks_coks' %}" class="dropdown-item">Реестр Центров оценки квалификаций</a>
                     <div class="dropdown-divider"></div>
                     <a href="{% url 'spks_docs' %}" class="dropdown-item">Образцы документов</a>
                     <div class="dropdown-divider"></div>

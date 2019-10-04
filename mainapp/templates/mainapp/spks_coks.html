@@ -1,0 +1,87 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+
+<div class="container">
+    <h4 class="text-dark mt-5">Совет по профессиональным квалификациям в области сварки (СПКС)</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'spks' %}">СПКС</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Центры оценки квалификаций</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/spks/mobil-right-menu-spks.html' %}
+            </div> 
+            <!-- End mobil right main -->
+            <h5 class="text-primary mt-2 mb-4">Центры оценки квалификаций на карте</h5>
+
+            <!-- Yandex Maps -->
+            <div id="map" class="w-100"></div>
+            <!-- End map -->
+
+            <hr class="mt-4">
+
+            <div id="app_reestr_coks" v-cloak>
+                <h5 class="text-primary my-4">Центры оценки квалификаций (ЦОКи)</h5>
+                <!-- Поиск ЦОК -->
+                <form class="mt-4 mb-3">
+
+                    <h6 class="font-weight-bold">Быстрый поиск центра</h6>
+                    <div class="form-row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-5">
+                            <label for="" class="pb-0 col-form-label-sm">Наименование организации</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-6 col-md-5">
+                            <label for="" class="pb-0 col-form-label-sm">Город</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="custom-control custom-checkbox col-form-label-sm">
+                            <input type="checkbox" class="custom-control-input" id="including-tn">
+                            <label class="custom-control-label" for="including-tn">- АЦ, осуществляющие аттестацию на объектах ПАО "АК "Транснефть"</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col-form-label-sm">
+                            <input type="checkbox" class="custom-control-input" id="including-gp">
+                            <label class="custom-control-label" for="including-gp">- АЦ, осуществляющие аттестацию на объектах ПАО "Газпром"</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                            <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                        </div>
+                    </div>
+                </form> <!-- конец поиска ЦОК -->
+
+                <hr class="mt-4">
+                
+                <div class="row">
+                    <div class="col-xs-12 col-xl-6">
+
+                    </div>
+                </div>
+                <hr class="mt-4">
+            </div>
+        </div>
+
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/spks/right-menu-spks.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}
