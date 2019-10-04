@@ -7,7 +7,7 @@
 		<tr v-for="(act, index) in accred_fields.activity">
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input @change="selectActivities(act)" type="checkbox" class="custom-control-input" :id="'act_'+index">
+					<input v-model="act.selected" @change="selectActivities(act)" type="checkbox" class="custom-control-input" :id="'act_'+index">
 					<label class="custom-control-label" :for="'act_'+index">[[ act.full_name ]]</label>
 				</div>
 			</td>

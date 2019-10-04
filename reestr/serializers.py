@@ -2,13 +2,22 @@ from rest_framework import serializers
 
 
 from .models import AccreditedCenter, Level, WeldType, GTU, Activity
+from .models import SM, SO, PS, PK
+
+def classes_creation(cls):
+    Meta = type('Meta', (type,), {'model': cls, 'fields': ('id', 'short_name', 'full_name')})
+    new_cls = type(cls.__name__+'Serializer', (serializers.ModelSerializer,), {
+        'Meta': Meta,
+    })
+    return new_cls
 
 
 class LevelSerializer(serializers.ModelSerializer):
+    # import pdb; pdb.set_trace()
     class Meta:
         model = Level
         fields = ('id', 'level',)
-
+# import pdb; pdb.set_trace()
 
 class WeldTypesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,6 +42,7 @@ class DirectoriesSerializer(serializers.Serializer):
     weldtypes = serializers.SerializerMethodField()
     gtus = serializers.SerializerMethodField()
     activities = serializers.SerializerMethodField()
+    sm = serializers.SerializerMethodField()
 
     class Meta:
         # model = Level
@@ -41,7 +51,13 @@ class DirectoriesSerializer(serializers.Serializer):
             'weldtypes',
             'gtus',
             'activities',
+            # 'sm',
         )
+
+    def get_sm(self, obj):
+        sm = SM.objects.all()
+        serialized_sm = classes_creation(SM)(sm, many=True)
+        return serialized_sm
 
     def get_weldtypes(self, obj):
         weldtypes = WeldType.objects.all()

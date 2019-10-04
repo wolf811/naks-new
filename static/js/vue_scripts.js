@@ -245,7 +245,7 @@ if (document.getElementById('app_reestr_centers')) {
                                 }
                             }
                         }
-                        if (parameter == 'weldtypes' || parameter == 'activities') {
+                        if (parameter in {'weldtypes': 1, 'activities': 1, 'levels': 1}) {
                             // console.log('searching activities', input_data);
                             for (var item of value) {
                                 if (!element[parameter].includes(item)) {
@@ -308,11 +308,11 @@ if (document.getElementById('app_reestr_centers')) {
                     this.selected[key] = [];
                 }
 
-                for (var el of this.accred_fields.gtu) {
-                    el.selected = false;
-                }
-
-                for (var el of this.accred_fields.weldtype) {
+                var selected_checkboxes_arr = this.accred_fields.gtu
+                    .concat(this.accred_fields.weldtype)
+                    .concat(this.accred_fields.level)
+                    .concat(this.accred_fields.activity)
+                for (var el of selected_checkboxes_arr) {
                     el.selected = false;
                 }
             },
@@ -337,14 +337,17 @@ if (document.getElementById('app_reestr_centers')) {
                     .post(`/reestr/centers/${this.direction}`, data)
                     .then(response=> {console.log('server_response', response.data)})
             },
+            selectLevel: function(item) {
+                var selected_levels = Array.from(this.accred_fields.level.filter(lv => lv.selected == true), function(item) {
+                    return item.id;
+                });
+                this.selected.level = selected_levels;
+                this.filterByInput({'parameter': 'levels', 'value': selected_levels});
+            },
             selectActivities: function (item) {
-                // console.log('act', item);
-
                 var selected_activities = Array.from(this.accred_fields.activity.filter(act => act.selected == true), function(item){
                     return item.id;
                 });
-                console.log(selected_activities);
-
                 this.selected.activity = selected_activities;
                 this.filterByInput({'parameter': 'activities', 'value': selected_activities});
             },
@@ -356,7 +359,6 @@ if (document.getElementById('app_reestr_centers')) {
                 this.filterByInput({'parameter': 'weldtypes', 'value': selected_weldtypes});
             },
             selectGtu: function(item) {
-                // console.log('selected', item, item.selected);
                 for (var el of this.accred_fields.gtu) {
                     if (el === item) {
                         continue;
@@ -371,19 +373,19 @@ if (document.getElementById('app_reestr_centers')) {
                 this.filterByInput({'parameter': 'gtus', 'value': gtu_id_arr});
             },
             saveSearch: function() {
-                this.show_filtered(this.on_screen);
-                this.show_hidden_centers();
-                this.make_tables_unstriped();
+                if (this.on_screen.length > 0) {
+                    this.show_filtered(this.on_screen);
+                    this.show_hidden_centers();
+                    this.make_tables_unstriped();
+                }
             },
-            change_input: function(input) {
+            change_input_deprecated: function(input) {
                 input.selected = !input.selected;
                 this.selected[input.type] = this.filter_selected_inputs(this.accred_fields[input.type]);
-                // console.log('change input', this, 'input', input);
             },
             filter_selected_inputs: function(input_arr) {
                 if (input_arr.length > 0) {
                     var filtered = input_arr.filter(element => element.selected == true);
-                    // console.log('counting inputs', filtered, filtered.length);
                     return filtered;
                 } else {
                     return [];

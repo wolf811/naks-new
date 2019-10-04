@@ -7,7 +7,7 @@
 		<tr>
 			<td v-for="lv in accred_fields.level">
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input @change="change_input(lv)" type="checkbox" class="custom-control-input" :id="'lv_'+lv.level">
+					<input v-model="lv.selected" @change="selectLevel(lv)" type="checkbox" class="custom-control-input" :id="'lv_'+lv.level">
 					<label class="custom-control-label" :for="'lv_'+ lv.level">[[ lv.level ]]</label>
 				</div>
 			</td>
