@@ -93,4 +93,8 @@ class CenterSerializer(serializers.ModelSerializer):
         )
 
     def get_city(self, obj):
-        return obj.sro_member.city.title
+        try:
+            return obj.sro_member.city.title
+        except Exception as e:
+            print('CITY ERROR', obj, e)
+            return ''

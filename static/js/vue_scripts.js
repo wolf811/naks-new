@@ -245,8 +245,8 @@ if (document.getElementById('app_reestr_centers')) {
                                 }
                             }
                         }
-                        if (parameter == 'weldtypes') {
-                            // console.log('searching weldtypes', input_data);
+                        if (parameter == 'weldtypes' || parameter == 'activities') {
+                            // console.log('searching activities', input_data);
                             for (var item of value) {
                                 if (!element[parameter].includes(item)) {
                                     passing = false;
@@ -307,7 +307,12 @@ if (document.getElementById('app_reestr_centers')) {
                 for (var key of Object.keys(this.selected)) {
                     this.selected[key] = [];
                 }
+
                 for (var el of this.accred_fields.gtu) {
+                    el.selected = false;
+                }
+
+                for (var el of this.accred_fields.weldtype) {
                     el.selected = false;
                 }
             },
@@ -332,6 +337,17 @@ if (document.getElementById('app_reestr_centers')) {
                     .post(`/reestr/centers/${this.direction}`, data)
                     .then(response=> {console.log('server_response', response.data)})
             },
+            selectActivities: function (item) {
+                // console.log('act', item);
+
+                var selected_activities = Array.from(this.accred_fields.activity.filter(act => act.selected == true), function(item){
+                    return item.id;
+                });
+                console.log(selected_activities);
+
+                this.selected.activity = selected_activities;
+                this.filterByInput({'parameter': 'activities', 'value': selected_activities});
+            },
             selectWeldtype: function(item) {
                 var selected_weldtypes = Array.from(this.accred_fields.weldtype.filter(wt => wt.selected == true), function(item){
                     return item.id;
@@ -352,8 +368,7 @@ if (document.getElementById('app_reestr_centers')) {
                     return {'id': item.id, 'parent': item.parent}
                 });
                 this.selected.gtu = gtu_id_arr;
-                var searchingByGtu = {'parameter': 'gtus', 'value': gtu_id_arr};
-                this.filterByInput(searchingByGtu);
+                this.filterByInput({'parameter': 'gtus', 'value': gtu_id_arr});
             },
             saveSearch: function() {
                 this.show_filtered(this.on_screen);
