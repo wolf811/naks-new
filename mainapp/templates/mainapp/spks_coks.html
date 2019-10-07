@@ -32,31 +32,38 @@
 
             <hr class="mt-4">
 
-            <div id="app_reestr_coks" v-cloak>
-                <h5 class="text-primary my-4">Центры оценки квалификаций (ЦОКи)</h5>
+            <div id="app_reestr_coks"> <!-- v-cloak -->
+                <h5 class="text-primary my-4">Реестр центров оценки квалификаций</h5>
                 <!-- Поиск ЦОК -->
                 <form class="mt-4 mb-3">
-
                     <h6 class="font-weight-bold">Быстрый поиск центра</h6>
                     <div class="form-row">
-                        <div class="form-group col-xs-12 col-sm-6 col-md-5">
-                            <label for="" class="pb-0 col-form-label-sm">Наименование организации</label>
+                        <div class="form-group col-lg-6">
+                            <label for="" class="pb-0 col-form-label-sm">Название<i class="fa fa-info-circle text-secondary ml-2" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Можно указать номер центра, наименование организации, в т.ч. частично"></i></label>
                             <input type="text" class="form-control form-control-sm">
                         </div>
-                        <div class="form-group col-xs-12 col-sm-6 col-md-5">
+                        <div class="form-group col-6 col-lg-3">
                             <label for="" class="pb-0 col-form-label-sm">Город</label>
                             <input type="text" class="form-control form-control-sm">
                         </div>
+                        <div class="form-group col-6 col-lg-3">
+                            <label for="" class="pb-0 col-form-label-sm">№ ЦОК</label>
+                            <select class="form-control form-control-sm">
+                                <option></option>
+                                <option>ЦОК-001 (77.014)</option>
+                                <option>ЦОК-002 (35.001)</option>
+                                <option>ЦОК-003 (61.002)</option>
+                                <option>ЦОК-004 (78.012)</option>
+                                <option>ЦОК-005 (74.003)</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <div class="custom-control custom-checkbox col-form-label-sm">
-                            <input type="checkbox" class="custom-control-input" id="including-tn">
-                            <label class="custom-control-label" for="including-tn">- АЦ, осуществляющие аттестацию на объектах ПАО "АК "Транснефть"</label>
+                    <div class="bg-light p-2 mb-3">
+                        <div id="selectedOptions" style="display: none;">
+                            <span class="text-secondary mr-2">Выбрано параметров: <strong class="text-dark">2</strong></span>
+                            <a href="#" class="text-secondary text-sm" data-toggle="modal" data-target="#modalFilterReestrAc"><i class="fa fa-edit mr-1"></i>Изменить</a>
                         </div>
-                        <div class="custom-control custom-checkbox col-form-label-sm">
-                            <input type="checkbox" class="custom-control-input" id="including-gp">
-                            <label class="custom-control-label" for="including-gp">- АЦ, осуществляющие аттестацию на объектах ПАО "Газпром"</label>
-                        </div>
+                        <a href="#" id="btnFilterAc" data-toggle="modal" data-target="#modalFilterReestrAc">Поиск по области деятельности<i class="fa fa-angle-right ml-1"></i></a>
                     </div>
                     <div class="row">
                         <div class="col-auto">
@@ -67,13 +74,99 @@
                 </form> <!-- конец поиска ЦОК -->
 
                 <hr class="mt-4">
-                
-                <div class="row">
-                    <div class="col-xs-12 col-xl-6">
 
+                <div class="data-list">
+                    <!-- <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">№ ЦОК<br>(№ в реестре НОК)</div>
+                            <div class="col-lg">Наименование организации</div>
+                            <div class="col-lg-2">Город</div>
+                            <div class="col-lg-3">Срок действия аттестата соответствия</div>
+                        </div>
+                    </div> -->
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-001 (77.014)</div>
+                            <div class="col-lg"><a href="#">ООО "ГАЦ МР НАКС"</a></div>
+                            <div class="col-lg-2">Москва</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
+                    </div>
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-002 (35.001)</div>
+                            <div class="col-lg"><a href="#">АНО "ВРАЦ"</a></div>
+                            <div class="col-lg-2">Вологда</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
+                    </div>
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-005 (74.003)</div>
+                            <div class="col-lg"><a href="#">ООО "ЦПС "Сварка и Контроль"</a></div>
+                            <div class="col-lg-2">Вологда</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
+                    </div>
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-006 (86.002)</div>
+                            <div class="col-lg"><a href="#">ООО АЦ "НАКС - Западная Сибирь"</a></div>
+                            <div class="col-lg-2">Сургут</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
+                    </div>
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-015 (35.001)</div>
+                            <div class="col-lg"><a href="#">ООО "ГАЦ ВВР"</a></div>
+                            <div class="col-lg-2">Нижний Новгород</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
+                    </div>
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-001 (77.014)</div>
+                            <div class="col-lg"><a href="#">ООО "ГАЦ МР НАКС"</a></div>
+                            <div class="col-lg-2">Москва</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
+                    </div>
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-002 (35.001)</div>
+                            <div class="col-lg"><a href="#">АНО "ВРАЦ"</a></div>
+                            <div class="col-lg-2">Вологда</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
+                    </div>
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-005 (74.003)</div>
+                            <div class="col-lg"><a href="#">ООО "ЦПС "Сварка и Контроль"</a></div>
+                            <div class="col-lg-2">Вологда</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
+                    </div>
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-006 (86.002)</div>
+                            <div class="col-lg"><a href="#">ООО АЦ "НАКС - Западная Сибирь"</a></div>
+                            <div class="col-lg-2">Сургут</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
+                    </div>
+                    <div class="data-list-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">ЦОК-015 (35.001)</div>
+                            <div class="col-lg"><a href="#">ООО "ГАЦ ВВР"</a></div>
+                            <div class="col-lg-2">Нижний Новгород</div>
+                            <div class="col-lg-3">с&nbsp;16.02.2018 по&nbsp;16.02.2021</div>
+                        </div>
                     </div>
                 </div>
-                <hr class="mt-4">
+
+
             </div>
         </div>
 

@@ -1,0 +1,18 @@
+.data-list {
+	border-left: 1px solid #007bff;
+	font-size: 0.875rem;
+	color: #6c757d;
+	.data-list-item {
+		padding: 1rem;
+		border-bottom: 1px solid #dee2e6;
+		// &:first-child {
+		// 	background-color: #d6d8db!important;
+		// 	font-weight: bold;
+		// }
+		&:nth-of-type(odd) {background-color: rgba(0,0,0,.05);}
+		&:hover {
+			background-color: rgba(0,0,0,.075);
+			transition: 0.2s;
+		}
+	}
+}
