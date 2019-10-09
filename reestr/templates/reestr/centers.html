@@ -1,11 +1,9 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 {% block content %}
-
 <!-- Header-page -->
 {% include 'mainapp/includes/header-page.html' %}
 <!-- End Header-page -->
-
 <div class="container">
     <h4 class="text-dark mt-5">{{ direction.registry_name }}</h4>
     <nav aria-label="breadcrumb" role="navigation">
@@ -18,21 +16,16 @@
     <hr>
     <div class="row">
         <div class="col-xs-12 col-md-8 col-xl-9">
-
             <!-- Mobil right main -->
             <div class="d-block d-md-none mt-3 mb-4">
                 {% include 'mainapp/includes/sasv/mobil-right-menu-sasv.html' %}
             </div>
             <!-- End mobil right main -->
-
             <h5 class="text-primary mt-2 mb-4">{{ direction.centers_plural }} на карте</h5>
-
             <!-- Yandex Maps -->
             <div id="map" class="w-100"></div>
             <!-- End map -->
-
             <hr class="mt-4">
-
             <div id="app_reestr_centers" v-cloak>
                 <div ref="direction" data-direction="{{ direction.title }}"></div>
                 <h5 class="text-primary my-4">{{ direction.registry_name }}</h5>
@@ -67,14 +60,13 @@
                         </div>
                         <a v-else href="#" id="btnFilterAc" data-toggle="modal" data-target="#modalFilterReestrAc">Поиск по области деятельности<i class="fa fa-angle-right ml-1"></i></a>
                     </div>
-
-                    <button v-on:click.prevent="server_search" class="btn btn-outline-primary btn-sm"><i class="fa fa-search mr-1"></i>Найти</button>
-                    <button v-on:click.prevent="reset_filters" type="button" class="btn btn-link btn-sm">Сбросить</button>
-                    <span class="badge badge-light" v-if="on_screen.length > 0">Найдено: [[ on_screen.length ]]</span>
+                    <!-- <button v-on:click.prevent="server_search" class="btn btn-outline-primary btn-sm"><i class="fa fa-search mr-1"></i>Найти</button> -->
+                    <div class="search-result bg-light p-2" v-if="on_screen.length > 0">
+                        <span class="text-secondary mr-2">Найдено: <strong class="text-dark">[[ on_screen.length ]]</strong></span>
+                        <button v-on:click.prevent="reset_filters" type="button" class="btn btn-link btn-sm">Сбросить</button>
+                    </div>
                 </form> <!-- конец поиска АЦ -->
-
                 <hr class="mt-4">
-
                 <div class="row">
                     <div class="col-xs-12 col-xl-6">
                         <div class="table-responsive">
@@ -85,7 +77,6 @@
                             </table>
                         </div>
                     </div>
-
                     <div class="col-xs-12 col-xl-6">
                         <div class="table-responsive">
                             <table class="table table-hover table-striped table-all-ac mb-0" id="tableActingAc_02">
@@ -97,7 +88,6 @@
                     </div>
                 </div>
                 <hr class="mt-4">
-
                 <h5 class="text-primary my-4">Деятельность центров временно приостановлена</h5>
                 <div class="row">
                     <div class="col-xs-12 col-xl-6">
@@ -108,7 +98,6 @@
                                 {% endfor %}
                             </table>
                         </div>
-
                     </div>
                     <div class="col-xs-12 col-xl-6">
                         <div class="table-responsive">
@@ -121,7 +110,6 @@
                     </div>
                 </div>
                 <hr class="mt-4">
-
                 <h5 class="text-primary my-4">Аттестационные центры, прекратившие деятельность</h5>
                 <div class="row">
                     <div class="col-xs-12 col-xl-6">
@@ -132,7 +120,6 @@
                                 {% endfor %}
                             </table>
                         </div>
-
                     </div>
                     <div class="col-xs-12 col-xl-6">
                         <div class="table-responsive">
@@ -148,16 +135,11 @@
                 {% include 'mainapp/includes/modal/modal-filter-reestr-ac.html' %}
             </div>
         </div>
-
         <div class="d-none d-md-block col-md-4 col-xl-3">
             <!-- Content Right menu -->
             {% include 'mainapp/includes/sasv/right-menu-sasv.html' %}
             <!-- End Content Right menu -->
         </div>
     </div>
-
 </div>
-
-
-
 {% endblock %}
