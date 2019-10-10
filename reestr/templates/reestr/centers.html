@@ -53,17 +53,17 @@
                         </div>
                         {% comment %} <div class="alert alert-info">TN [[ special_tn ]], GP [[ special_gp ]]</div> {% endcomment %}
                     </div>
-                    <div class="bg-light p-2 mb-3">
+                    <div class="alert alert-active shadow-sm text-sm rounded-0 mb-3 py-2">
                         <div v-if="selected_lengths_sum() > 0" id="selectedOptions">
-                            <span class="text-secondary mr-2">Выбрано параметров: <strong class="text-dark">[[ selected_lengths_sum() ]]</strong></span>
-                            <a href="#" class="text-secondary text-sm" data-toggle="modal" data-target="#modalFilterReestrAc"><i class="fa fa-edit mr-1"></i>Изменить</a>
+                            <span class="text-secondary mr-3">Выбрано параметров: <strong class="text-dark">[[ selected_lengths_sum() ]]</strong></span>
+                            <a href="#" class="text-sm" data-toggle="modal" data-target="#modalFilterReestrAc"><i class="fa fa-edit">&nbsp;</i>Изменить</a>
                         </div>
                         <a v-else href="#" id="btnFilterAc" data-toggle="modal" data-target="#modalFilterReestrAc">Поиск по области деятельности<i class="fa fa-angle-right ml-1"></i></a>
                     </div>
                     <!-- <button v-on:click.prevent="server_search" class="btn btn-outline-primary btn-sm"><i class="fa fa-search mr-1"></i>Найти</button> -->
-                    <div class="search-result bg-light p-2" v-if="on_screen.length > 0">
-                        <span class="text-secondary mr-2">Найдено: <strong class="text-dark">[[ on_screen.length ]]</strong></span>
-                        <button v-on:click.prevent="reset_filters" type="button" class="btn btn-link btn-sm">Сбросить</button>
+                    <div class="text-sm" v-if="on_screen.length > 0">
+                        <button v-on:click.prevent="reset_filters" type="button" class="btn btn-outline-primary btn-sm">Сбросить</button>
+                        <span class="text-secondary ml-2">Найдено: <strong class="text-dark">[[ on_screen.length ]]</strong></span>
                     </div>
                 </form> <!-- конец поиска АЦ -->
                 <hr class="mt-4">

@@ -682,6 +682,12 @@ body {
     display: none;
 }
 
+.alert-active {
+    color: #383d41;
+    background-color: rgba(0, 0, 0, .075);
+    border-color: #dee2e6;
+}
+
 .search-result {
     font-size: 0.875rem;
 }
