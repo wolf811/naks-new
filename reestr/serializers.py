@@ -1,11 +1,13 @@
 from rest_framework import serializers
+from .useful import serializer_factory
 
 
 from .models import AccreditedCenter, Level, WeldType, GTU, Activity
 from .models import SM, SO, PS, PK
 
-def classes_creation(cls):
-    Meta = type('Meta', (type,), {'model': cls, 'fields': ('id', 'short_name', 'full_name')})
+
+def create_serializer_class(cls, fields=None):
+    Meta = type('Meta', (type,), {'model': cls, 'fields': fields})
     new_cls = type(cls.__name__+'Serializer', (serializers.ModelSerializer,), {
         'Meta': Meta,
     })
@@ -18,6 +20,7 @@ class LevelSerializer(serializers.ModelSerializer):
         model = Level
         fields = ('id', 'level',)
 # import pdb; pdb.set_trace()
+
 
 class WeldTypesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,6 +46,7 @@ class DirectoriesSerializer(serializers.Serializer):
     gtus = serializers.SerializerMethodField()
     activities = serializers.SerializerMethodField()
     sm = serializers.SerializerMethodField()
+    so = serializers.SerializerMethodField()
 
     class Meta:
         # model = Level
@@ -51,17 +55,26 @@ class DirectoriesSerializer(serializers.Serializer):
             'weldtypes',
             'gtus',
             'activities',
-            # 'sm',
+            'sm',
+            'so',
         )
 
+    def get_so(self, obj):
+        all_so_types = SO.objects.all()
+        so_serializer = create_serializer_class(SO, ('id', 'short_name', 'full_name', 'parent'))
+        serialized_so = so_serializer(all_so_types, many=True)
+        return serialized_so.data
+
     def get_sm(self, obj):
-        sm = SM.objects.all()
-        serialized_sm = classes_creation(SM)(sm, many=True)
-        return serialized_sm
+        all_sm_types = SM.objects.all()
+        sm_serializer = serializer_factory(SM, ['id', 'short_name', 'full_name', 'parent'])
+        serialized_sm = sm_serializer(all_sm_types, many=True)
+        return serialized_sm.data
 
     def get_weldtypes(self, obj):
         weldtypes = WeldType.objects.all()
         serialized_weldtypes = WeldTypesSerializer(weldtypes, many=True)
+        # import pdb; pdb.set_trace()
         return serialized_weldtypes.data
 
     def get_levels(self, obj):

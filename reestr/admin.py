@@ -24,11 +24,19 @@ class SroStatusFilter(SimpleListFilter):
 
 
 def get_accred_centers(obj):
-    return ", ".join(
-        [center.short_code for center in AccreditedCenter.objects.filter(sro_member=obj)])
+    try:
+        if AccreditedCenter.objects.filter(sro_member=obj).count() > 0:
+            return ", ".join(
+                [center.short_code for center in AccreditedCenter.objects.filter(sro_member=obj)])
+        else:
+            return ['no centers']
+    except Exception as e:
+        return ['nope: {}'.format(e)]
+
 
 def get_city(obj):
     return obj.sro_member.city
+
 
 class AccreditedCenterInline(admin.StackedInline):
     model = AccreditedCenter

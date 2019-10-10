@@ -84,7 +84,7 @@ if (document.getElementById('app_reestr_centers')) {
                     activity: [],
                     gtu: [],
                     material: [],
-                    equipment: [],
+                    so: [],
                 },
             };
         },
@@ -98,6 +98,8 @@ if (document.getElementById('app_reestr_centers')) {
                             {'name': 'weldtype', 'plural': 'weldtypes'},
                             {'name': 'level', 'plural': 'levels'},
                             {'name': 'gtu', 'plural': 'gtus'},
+                            {'name': 'so_types', 'plural': 'so'},
+                            {'name': 'sm', 'plural': 'sm'}
                         ];
                         for (var dir of dirs) {
                             var reactive_arr = [];
@@ -233,9 +235,10 @@ if (document.getElementById('app_reestr_centers')) {
                                 }
                             }
                         }
-                        if (parameter in {"gtus": 1}) {
+                        if (parameter in {"gtus": 1, "so": 1}) {
                             // {'parameter': 'gtus', 'value': gtu_id_arr};
                             // each of value: {'id': item.id, 'parent': item.parent}
+                            // console.log('element', element, element[parameter])
                             for (var item of value) {
                                 var searching = null;
                                 item.parent == null ? searching = item.id : searching = item.parent;
@@ -258,6 +261,7 @@ if (document.getElementById('app_reestr_centers')) {
                         result_array.push(element);
                     }
                 }
+                console.log('parameter', parameter, value)
                 console.log('result_array', result_array.filter(el=> el.direction == this.direction));
                 // console.log('result_array', result_array.filter(el => el.direction == this.direction));
                 this.on_screen = result_array.filter(el => el.direction == this.direction);
@@ -371,6 +375,20 @@ if (document.getElementById('app_reestr_centers')) {
                 });
                 this.selected.gtu = gtu_id_arr;
                 this.filterByInput({'parameter': 'gtus', 'value': gtu_id_arr});
+            },
+            selectEquipment: function(item) {
+                for (var el of this.accred_fields.so_types) {
+                    if (el === item ) {
+                        continue;
+                    } else {
+                        el.parent === item.id ? el.selected = item.selected: null;
+                    }
+                }
+                var so_id_arr = Array.from(this.accred_fields.so_types.filter(el => el.selected == true), function(item) {
+                    return {'id': item.id, 'parent': item.parent}
+                });
+                this.selected.so = so_id_arr;
+                this.filterByInput({'parameter': 'so_types', 'value': so_id_arr})
             },
             saveSearch: function() {
                 if (this.on_screen.length > 0) {

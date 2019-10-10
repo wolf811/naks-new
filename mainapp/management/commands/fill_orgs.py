@@ -79,6 +79,8 @@ attso_types = [
     ('C', 'Газы защитные'),
     ('D', 'Оборудование для контактной сварки'),
     ('E', 'Оборудование для высокочастотной и индукционной сварки (наплавки)'),
+    ('F', 'Оборудование для высокочастотной и индукционной сварки (наплавки)'),
+    ('G', 'Оборудование для высокочастотной и индукционной сварки (наплавки)'),
 ]
 
 levels = ['I', 'II', 'III', 'IV']
@@ -112,6 +114,10 @@ activities = [
     ('РиТК', 'Руководство и технический контроль за проведением сварочных работ'),
     ('ПиА', 'Участие в работе органов по подготовке и аттестации')
 ]
+
+# qualifications = []
+
+# profstandards = []
 
 
 class Command(BaseCommand):
@@ -172,11 +178,18 @@ class Command(BaseCommand):
                 )
         if SO.objects.count() == 0:
             for so in attso_types:
-                mixer.blend(
+                so_ = mixer.blend(
                     SO,
                     short_name=so[0],
                     full_name=so[1]
                 )
+                for so_subtype in attso_types[:random.randint(0, len(attso_types))]:
+                    mixer.blend(
+                        SO,
+                        short_name="{}{}".format(so[0], attso_types.index(so_subtype)+1),
+                        full_name=so_subtype[1],
+                        parent=so_
+                    )
         if Activity.objects.count() == 0:
             for act in activities:
                 mixer.blend(

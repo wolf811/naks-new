@@ -1,16 +1,16 @@
 {% load static %}
 <table class="table table-sm table-hover">
 	<tbody>
-		<tr class="table-active font-weight-bold">
+		<tr v-for="(so, index) in accred_fields.so_types" :class="{'table-active font-weight-bold': so.parent === null }">
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input type="checkbox" class="custom-control-input" id="a">
-					<label class="custom-control-label" for="a">A</label>
+					<input v-model="so.selected" @change="selectEquipment(so)" type="checkbox" class="custom-control-input" :id="'so_'+index">
+					<label class="custom-control-label" :for="'so_'+index">[[ so.short_name ]]</label>
 				</div>
 			</td>
-			<td>Оборудование для дуговой сварки (наплавки)</td>
+			<td>[[ so.full_name ]]</td>
 		</tr>
-		<tr>
+		{% comment %} <tr>
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
 					<input type="checkbox" class="custom-control-input" id="a1">
@@ -45,6 +45,6 @@
 				</div>
 			</td>
 			<td>Оборудование для газовой сварки с использованием газов-заменителей</td>
-		</tr>
+		</tr> {% endcomment %}
 	</tbody>
 </table>
