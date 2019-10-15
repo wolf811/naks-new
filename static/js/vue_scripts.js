@@ -85,6 +85,7 @@ if (document.getElementById('app_reestr_centers')) {
                     gtu: [],
                     material: [],
                     so: [],
+                    sm: [],
                 },
             };
         },
@@ -99,7 +100,7 @@ if (document.getElementById('app_reestr_centers')) {
                             {'name': 'level', 'plural': 'levels'},
                             {'name': 'gtu', 'plural': 'gtus'},
                             {'name': 'so_types', 'plural': 'so'},
-                            {'name': 'sm', 'plural': 'sm'}
+                            {'name': 'sm_types', 'plural': 'sm'}
                         ];
                         for (var dir of dirs) {
                             var reactive_arr = [];
@@ -214,6 +215,7 @@ if (document.getElementById('app_reestr_centers')) {
                 var result_array = [];
 
 
+
                 for (var element of this.reestrCenters) {
                     var passing = true;
                     for (var p of this.parametersAccumulator) {
@@ -235,7 +237,7 @@ if (document.getElementById('app_reestr_centers')) {
                                 }
                             }
                         }
-                        if (parameter in {"gtus": 1, "so": 1}) {
+                        if (parameter in {"gtus": 1, "so_types": 1}) {
                             // {'parameter': 'gtus', 'value': gtu_id_arr};
                             // each of value: {'id': item.id, 'parent': item.parent}
                             // console.log('element', element, element[parameter])
@@ -248,7 +250,7 @@ if (document.getElementById('app_reestr_centers')) {
                                 }
                             }
                         }
-                        if (parameter in {'weldtypes': 1, 'activities': 1, 'levels': 1}) {
+                        if (parameter in {'weldtypes': 1, 'activities': 1, 'levels': 1, 'sm_types': 1}) {
                             // console.log('searching activities', input_data);
                             for (var item of value) {
                                 if (!element[parameter].includes(item)) {
@@ -262,9 +264,8 @@ if (document.getElementById('app_reestr_centers')) {
                     }
                 }
                 console.log('parameter', parameter, value)
-                console.log('result_array', result_array.filter(el=> el.direction == this.direction));
-                // console.log('result_array', result_array.filter(el => el.direction == this.direction));
                 this.on_screen = result_array.filter(el => el.direction == this.direction);
+                console.log('result', this.on_screen, this.on_screen.length)
             },
             show_filtered: function(arr) {
                 // console.log('to show', arr);
@@ -288,10 +289,13 @@ if (document.getElementById('app_reestr_centers')) {
                 }
             },
             reset_filters: function() {
+                this.parametersAccumulator = [];
+                this.on_screen = [];
+                this.special_tn = false;
+                this.special_gp = false;
                 if (this.city_input.length != 0 || this.title_input.length !=0) {
                     this.city_input = '';
                     this.title_input = '';
-                    this.parametersAccumulator = [];
                 }
                 for (var ref in this.$refs) {
                     var ref_ = this.$refs[ref];
@@ -305,9 +309,6 @@ if (document.getElementById('app_reestr_centers')) {
                     }
                 }
                 }
-                this.on_screen = [];
-                this.special_tn = false;
-                this.special_gp = false;
                 for (var key of Object.keys(this.selected)) {
                     this.selected[key] = [];
                 }
@@ -316,6 +317,8 @@ if (document.getElementById('app_reestr_centers')) {
                     .concat(this.accred_fields.weldtype)
                     .concat(this.accred_fields.level)
                     .concat(this.accred_fields.activity)
+                    .concat(this.accred_fields.sm_types)
+                    .concat(this.accred_fields.so_types)
                 for (var el of selected_checkboxes_arr) {
                     el.selected = false;
                 }
@@ -389,6 +392,13 @@ if (document.getElementById('app_reestr_centers')) {
                 });
                 this.selected.so = so_id_arr;
                 this.filterByInput({'parameter': 'so_types', 'value': so_id_arr})
+            },
+            selectMaterial: function(item) {
+                let sm_id_arr = Array.from(this.accred_fields.sm_types.filter(el => el.selected == true), function(item){
+                    return item.id
+                })
+                this.selected.sm = sm_id_arr;
+                this.filterByInput({'parameter': 'sm_types', 'value': sm_id_arr})
             },
             saveSearch: function() {
                 if (this.on_screen.length > 0) {

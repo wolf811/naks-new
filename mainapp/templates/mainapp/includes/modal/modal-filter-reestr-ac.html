@@ -102,6 +102,9 @@
                                     data-target="#collapseAccordFilterAc_04" aria-expanded="true"
                                     aria-controls="collapseAccordFilterAc_04">Виды сварочного оборудования&nbsp;<i
                                         class="fa fa-angle-down mr-1"></i></a>
+                                <span v-if="selected.so.length > 0" class="float-sm-right text-secondary">
+                                <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ selected.so.length ]]</span>
+                                </span>
                             </div>
                             <div id="collapseAccordFilterAc_04" class="collapse"
                                 aria-labelledby="headingAccordFilterAc_04" data-parent="#accordionFilterAc">
@@ -120,6 +123,9 @@
                                     data-target="#collapseAccordFilterAc_05" aria-expanded="false"
                                     aria-controls="collapseAccordFilterAc_05">Виды сварочных материалов&nbsp;<i
                                         class="fa fa-angle-down mr-1"></i></a>
+                            <span v-if="selected.sm.length > 0" class="float-sm-right text-secondary">
+                            <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ selected.sm.length ]]</span>
+                            </span>
                             </div>
                             <div id="collapseAccordFilterAc_05" class="collapse"
                                 aria-labelledby="headingAccordFilterAc_05" data-parent="#accordionFilterAc">

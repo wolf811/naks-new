@@ -263,12 +263,12 @@ class AccreditedCenter(Center):
         )
     sm_types = models.ManyToManyField(
         SM,
-        verbose_name="Шифры СО",
+        verbose_name="Шифры СМ",
         blank=True
         )
     so_types = models.ManyToManyField(
         SO,
-        verbose_name="Шифры СМ",
+        verbose_name="Шифры СО",
         blank=True
         )
     profstandards = models.ManyToManyField(

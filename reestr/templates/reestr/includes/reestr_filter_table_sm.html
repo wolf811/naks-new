@@ -1,16 +1,16 @@
 {% load static %}
 <table class="table table-striped table-sm table-hover">
 	<tbody>
-		<tr>
+		<tr v-for="(sm, index) in accred_fields.sm_types">
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input type="checkbox" class="custom-control-input" id="gg">
-					<label class="custom-control-label" for="gg">Гг</label>
+					<input v-model="sm.selected" @change="selectMaterial(sm)" type="checkbox" class="custom-control-input" :id="'sm_'+index">
+					<label class="custom-control-label" :for="'sm_'+index">[[ sm.short_name ]]</label>
 				</div>
 			</td>
-			<td>Газы горючие</td>
+			<td>[[ sm.full_name ]]</td>
 		</tr>
-		<tr>
+		{% comment %} <tr>
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
 					<input type="checkbox" class="custom-control-input" id="gz">
@@ -90,6 +90,6 @@
 				</div>
 			</td>
 			<td>Электроды плавящиеся для дуговой сварки</td>
-		</tr>
+		</tr> {% endcomment %}
 	</tbody>
 </table>
