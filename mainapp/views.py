@@ -438,6 +438,13 @@ def spks_reestr_qual(request):
         'title': title
     }
     return render(request, 'mainapp/spks_reestr_qual.html', content)
+
+def spks_cok018(request):
+    title = 'СПКС - ЦОК-018'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_cok018.html', content)
 # ============= end SPKS ===============
 
 
