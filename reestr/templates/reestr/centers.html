@@ -30,7 +30,9 @@
             <div id="map" class="w-100"></div>
             <!-- End map -->
             <hr class="mt-4">
-            <div id="app_reestr_coks">
+            <div id="app_reestr_cok">
+                <div ref="direction" data-direction="{{ direction.title }}"></div>
+
                 <!-- v-cloak -->
                 <h5 class="text-primary my-4">Реестр центров оценки квалификаций</h5>
                 <!-- Поиск ЦОК -->
@@ -79,13 +81,13 @@
                             <div class="col-lg-3">Срок действия аттестата соответствия</div>
                         </div>
                     </div> -->
-                    <div class="data-list-item">
+                    <div v-for="(cok, index) in reestrCenters" class="data-list-item">
                         <div class="row align-items-center">
                             <div class="col-lg-3">
-                                <div class="d-inline-block d-lg-block text-bold mr-2">ЦОК-001 (77.014)</div>
+                                <div class="d-inline-block d-lg-block text-bold mr-2">[[ cok.short_code ]] (77.014)</div>
                                 <small>16.02.2018&nbsp;-&nbsp;16.02.2021</small>
                             </div>
-                            <div class="col-lg"><a href="#">ООО "ГАЦ МР НАКС"</a></div>
+                            <div class="col-lg"><a href="#">[[ cok.company ]]</a></div>
                             <div class="col-lg-2">Москва</div>
                             <div class="col-lg-3 text-lg-center">
                                 <a href="#" data-toggle="modal" data-target="#modal-authorization" class="btn btn-outline-primary btn-xs mt-1 mt-lg-0">Подать заявку</a>

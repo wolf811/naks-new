@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import datetime, timedelta
 # Create your models here.
 
 
@@ -180,6 +181,7 @@ class Center(models.Model):
         abstract = True
 
 
+
 class AccreditedCenter(Center):
     materials = 'attsm'
     equipment = 'attso'
@@ -273,6 +275,8 @@ class AccreditedCenter(Center):
     def save(self, *args, **kwargs):
         if self.sro_member.status == 'na':
             self.active = False
+        if self.active_since is not None:
+            self.active_until = self.active_since+timedelta(days=365*3+1)
         super(AccreditedCenter, self).save(*args, **kwargs)
 
 

@@ -15,11 +15,9 @@ def create_serializer_class(cls, fields=None):
 
 
 class LevelSerializer(serializers.ModelSerializer):
-    # import pdb; pdb.set_trace()
     class Meta:
         model = Level
         fields = ('id', 'level',)
-# import pdb; pdb.set_trace()
 
 
 class WeldTypesSerializer(serializers.ModelSerializer):
@@ -59,6 +57,7 @@ class DirectoriesSerializer(serializers.Serializer):
             'so',
             'qualifications'
         )
+
 
     def get_qualifications(self, obj):
         all_qualifications = Qualification.objects.all()
@@ -102,12 +101,14 @@ class DirectoriesSerializer(serializers.Serializer):
 
 class CenterSerializer(serializers.ModelSerializer):
     city = serializers.SerializerMethodField()
+    company = serializers.SerializerMethodField()
 
     class Meta:
         model = AccreditedCenter
         fields = (
             'id',
             'city',
+            'company',
             'active',
             'active_since',
             'active_until',
@@ -126,6 +127,13 @@ class CenterSerializer(serializers.ModelSerializer):
             'so_types',
             'qualifications',
         )
+
+    def get_company(self, obj):
+        try:
+            return obj.sro_member.short_name
+        except Exception as e:
+            print('TITLE ERROR', obj, e)
+            return ''
 
     def get_city(self, obj):
         try:

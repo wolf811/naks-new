@@ -315,7 +315,7 @@ class Command(BaseCommand):
         for accred_center in AccreditedCenter.objects.filter(
                 active=True, temporary_suspend_date__isnull=True):
             print('fillig obl_d: {}'.format(accred_center.short_code))
-            if not accred_center.direction == 'qualification':
+            if accred_center.direction != 'qualifications':
                 accred_center.gtus.add(*all_gtu)
             if accred_center.direction == 'attsm':
                 accred_center.sm_types.add(*all_sm_types)
@@ -333,7 +333,7 @@ class Command(BaseCommand):
             another_dice = random.randint(0, 100)
             if another_dice > 80:
                 accred_center.special_gp = True
-            if accred_center.direction == 'qualification':
+            if accred_center.direction == 'qualifications':
                 accred_center.qualifications.add(*[qual for qual in Qualification.objects.all()])
 
             accred_center.save()
