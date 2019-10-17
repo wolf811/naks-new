@@ -3,7 +3,7 @@ from .useful import serializer_factory
 
 
 from .models import AccreditedCenter, Level, WeldType, GTU, Activity
-from .models import SM, SO, PS, PK
+from .models import SM, SO, Qualification
 
 
 def create_serializer_class(cls, fields=None):
@@ -47,9 +47,9 @@ class DirectoriesSerializer(serializers.Serializer):
     activities = serializers.SerializerMethodField()
     sm = serializers.SerializerMethodField()
     so = serializers.SerializerMethodField()
+    qualifications = serializers.SerializerMethodField()
 
     class Meta:
-        # model = Level
         fields = (
             'levels',
             'weldtypes',
@@ -57,7 +57,14 @@ class DirectoriesSerializer(serializers.Serializer):
             'activities',
             'sm',
             'so',
+            'qualifications'
         )
+
+    def get_qualifications(self, obj):
+        all_qualifications = Qualification.objects.all()
+        qualification_serializer = create_serializer_class(Qualification, ('id', 'short_name', 'full_name', 'parent'))
+        serialized_qualifications = qualification_serializer(all_qualifications, many=True)
+        return serialized_qualifications.data
 
     def get_so(self, obj):
         all_so_types = SO.objects.all()
@@ -117,8 +124,7 @@ class CenterSerializer(serializers.ModelSerializer):
             'activities',
             'sm_types',
             'so_types',
-            'profstandards',
-            'profqualifications',
+            'qualifications',
         )
 
     def get_city(self, obj):

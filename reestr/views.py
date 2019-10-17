@@ -35,31 +35,36 @@ def centers(request, direction):
     content = {
         "direction": directions[direction],
     }
-    content.update({
-        "active_centers": middle_with_round_array(active_centers)
+    if direction == 'qualification':
+        content.update({
+            "active_centers": AccreditedCenter.objects.filter(
+                direction=direction, active=True)
         })
-    inactive_by_sro_membership = Q(sro_member__status='na')
-    inactive_by_status_of_ac = Q(active=False)
-    by_direction = Q(direction=direction)
-    by_temporary_suspend_date = Q(temporary_suspend_date__isnull=False)
-    inactive_centers = AccreditedCenter.objects.filter(
-        inactive_by_sro_membership | inactive_by_status_of_ac
-    ).filter(by_direction).order_by('short_code')
-    suspended_centers = AccreditedCenter.objects.filter(
-        by_temporary_suspend_date
-    ).filter(by_direction).filter(active=True).order_by('short_code')
-    content.update({
-        "inactive_centers": middle_with_round_array(inactive_centers),
-        "suspended_centers": middle_with_round_array(suspended_centers)
-    })
+    else:
+        content.update({
+            "active_centers": middle_with_round_array(active_centers)
+            })
+        inactive_by_sro_membership = Q(sro_member__status='na')
+        inactive_by_status_of_ac = Q(active=False)
+        by_direction = Q(direction=direction)
+        by_temporary_suspend_date = Q(temporary_suspend_date__isnull=False)
+        inactive_centers = AccreditedCenter.objects.filter(
+            inactive_by_sro_membership | inactive_by_status_of_ac
+        ).filter(by_direction).order_by('short_code')
+        suspended_centers = AccreditedCenter.objects.filter(
+            by_temporary_suspend_date
+        ).filter(by_direction).filter(active=True).order_by('short_code')
+        content.update({
+            "inactive_centers": middle_with_round_array(inactive_centers),
+            "suspended_centers": middle_with_round_array(suspended_centers)
+        })
 
     gtu_spr = GTU.objects.all()
     weld_types_spr = WeldType.objects.all()
     levels_spr = Level.objects.all()
     sm_types_spr = SM.objects.all()
     so_types_spr = SO.objects.all()
-    profstandard_types_spr = PS.objects.all()
-    qualification_types_spr = PK.objects.all()
+    qualification_types_spr = Qualification.objects.all()
 
     content.update({
         'gtus': gtu_spr,
@@ -67,7 +72,6 @@ def centers(request, direction):
         'levels': levels_spr,
         'sm_types': sm_types_spr,
         'so_types': so_types_spr,
-        'profstandards': profstandard_types_spr,
         'qualifications': qualification_types_spr,
     })
     # import pdb; pdb.set_trace()

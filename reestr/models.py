@@ -82,21 +82,7 @@ class SM(Spr):
         return self.short_name
 
 
-class PS(Spr):
-    ps_code = models.CharField(u'Код профстандарта', max_length=10)
-
-    class Meta:
-        verbose_name = 'Профстандарт'
-        verbose_name_plural = 'Профстандарты'
-
-    def __str__(self):
-        return self.short_name
-
-
-class PK(Spr):
-    pk_code = models.CharField(u'Код квалификации', max_length=20)
-    ps = models.ForeignKey(PS, on_delete=models.CASCADE)
-
+class Qualification(Spr):
     class Meta:
         verbose_name = 'Квалификация'
         verbose_name_plural = 'Квалификации'
@@ -271,13 +257,8 @@ class AccreditedCenter(Center):
         verbose_name="Шифры СО",
         blank=True
         )
-    profstandards = models.ManyToManyField(
-        PS,
-        verbose_name="Профстандарты",
-        blank=True
-        )
-    profqualifications = models.ManyToManyField(
-        PK,
+    qualifications = models.ManyToManyField(
+        Qualification,
         verbose_name="Профквалификации",
         blank=True
         )

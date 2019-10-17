@@ -115,9 +115,41 @@ activities = [
     ('ПиА', 'Участие в работе органов по подготовке и аттестации')
 ]
 
-# qualifications = []
 
-# profstandards = []
+qual_list = [
+    {
+        'full_name': 'Сварщик',
+        'short_name': '40.002',
+        'qualifications': [
+            'Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)',
+            'Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)',
+            'Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)',
+            'Сварщик дуговой сварки самозащитной проволокой (2 уровень квалификации)',
+            'Сварщик дуговой сварки самозащитной проволокой (3 уровень квалификации)',
+            'Сварщик дуговой сварки самозащитной проволокой (4 уровень квалификации)',
+            'Сварщик дуговой сварки плавящимся электродом в защитном газе (2 уровень квалификации)',
+        ]
+    },
+    {
+        'full_name': 'Резчик термической резки металлов',
+        'short_name': '40.109',
+        'qualifications': [
+            'Резчик ручной кислородной резки (2 уровень квалификации)',
+            'Резчик ручной кислородной резки (3 уровень квалификации)',
+        ]
+    },
+    {
+        'full_name': 'Контролер сварочных работ',
+        'short_name': '40.114',
+        'qualifications': [
+            'Контролер подготовительных и сборочных работ в сварочном производстве (4 уровень квалификации)',
+            'Контролер сварочных работ (4 уровень квалификации)',
+            'Контролер технического контроля сварочного производства (5 уровень квалификации)',
+            'Контролер технического контроля сварных конструкций (5 уровень квалификации)',
+        ]
+    },
+]
+
 
 
 class Command(BaseCommand):
@@ -125,6 +157,7 @@ class Command(BaseCommand):
         SROMember.objects.all().delete()
         SO.objects.all().delete()
         GTU.objects.all().delete()
+        Qualification.objects.all().delete()
         WeldType.objects.all().delete()
         Activity.objects.all().delete()
         Level.objects.all().delete()
@@ -197,6 +230,16 @@ class Command(BaseCommand):
                     short_name=act[0],
                     full_name=act[1]
                 )
+
+        for el in qual_list:
+            ps = mixer.blend(Qualification, short_name=el['short_name'], full_name=el['full_name'], parent=None)
+            for qual in el['qualifications']:
+                pk = mixer.blend(
+                    Qualification,
+                    short_name='{}_{}'.format(ps.short_name, el['qualifications'].index(qual)+1),
+                    full_name=qual,
+                    parent=ps)
+
         print('all spr set ready')
         center_count = 0
         for member in SROMember.objects.all():
@@ -244,6 +287,14 @@ class Command(BaseCommand):
                     temporary_suspend_date=mixer.RANDOM if random.randint(0, 100) > 95 else None,
                     direction='attst'
                 )
+            if random.randint(0, 100) < 50:
+                cok = mixer.blend(
+                    AccreditedCenter,
+                    sro_member=member,
+                    short_code=lambda: 'ЦОК-0{}'.format(center_count),
+                    active=True,
+                    direction='qualifications'
+                )
             center_count += 1
 
 
@@ -264,13 +315,16 @@ class Command(BaseCommand):
         for accred_center in AccreditedCenter.objects.filter(
                 active=True, temporary_suspend_date__isnull=True):
             print('fillig obl_d: {}'.format(accred_center.short_code))
-            accred_center.gtus.add(*all_gtu)
+            if not accred_center.direction == 'qualification':
+                accred_center.gtus.add(*all_gtu)
             if accred_center.direction == 'attsm':
                 accred_center.sm_types.add(*all_sm_types)
             if accred_center.direction in ['personal', 'attst']:
                 accred_center.weldtypes.add(*all_weldtypes)
-            if accred_center.direction == 'personal':
+            if accred_center.direction in ['personal', 'specpod']:
                 accred_center.levels.add(*all_levels)
+                if random.randint(0, 100) > 80:
+                    accred_center.activities.add(*[act for act in Activity.objects.all()])
             if accred_center.direction == 'attso':
                 accred_center.so_types.add(*all_so_types)
             dice = random.randint(0, 100)
@@ -279,8 +333,8 @@ class Command(BaseCommand):
             another_dice = random.randint(0, 100)
             if another_dice > 80:
                 accred_center.special_gp = True
-            if random.randint(0, 100) > 80:
-                accred_center.activities.add(*[act for act in Activity.objects.all()])
+            if accred_center.direction == 'qualification':
+                accred_center.qualifications.add(*[qual for qual in Qualification.objects.all()])
 
             accred_center.save()
 
