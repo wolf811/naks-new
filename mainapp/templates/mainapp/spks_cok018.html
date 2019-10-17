@@ -1,0 +1,304 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+<div class="container">
+    <h4 class="text-dark mt-5">Совет по профессиональным квалификациям в области сварки (СПКС)</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'spks_coks' %}">Центры оценки квалификаций</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ЦОК-018</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/spks/mobil-right-menu-spks.html' %}
+            </div>
+            <!-- End mobil right main -->
+            <!-- Radiobuttons -->
+            <div class="show-units">
+                <ul class="row nav nav-fill mt-4 mb-3" id="pills-tab" role="tablist">
+                    <li class="col-auto col-lg-6 nav-item mb-4">
+                        <a class="btn btn-outline-danger btn-block active" id="pills-cok-tab" data-toggle="pill" href="#pills-cok" role="tab" aria-controls="pills-cok" aria-selected="true">ЦОК-018 (02.007)</a>
+                    </li>
+                    <li class="col-auto col-lg-6 nav-item mb-4">
+                        <a class="btn btn-outline-danger btn-block" id="pills-mtb-tab" data-toggle="pill" href="#pills-mtb" role="tab" aria-controls="pills-mtb" aria-selected="false">МТБ ЦОК-018</a>
+                    </li>
+                    <li class="col-auto col-lg-6 nav-item mb-4">
+                        <a class="btn btn-outline-danger btn-block" id="pills-ec-tab" data-toggle="pill" href="#pills-ec" role="tab" aria-controls="pills-ec" aria-selected="false">ЭЦ в составе ЦОК-018</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- End Radiobuttons -->
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-cok" role="tabpanel" aria-labelledby="pills-cok-tab">
+                    <h5 class="text-primary my-4">ООО "ГАЦ РБ"</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-ac mb-0">
+                            <tr class="table-secondary">
+                                <th>Шифр центра оценки квалификации:</th>
+                                <th>
+                                    <span class="mr-2">ЦОК-018 (02.007)</span>
+                                </th>
+                            </tr>
+                            <!-- <tr>
+                                <th>Полное наименование организации:</th>
+                                <td>Общество с ограниченной ответственностью "Головной аттестационно - сертификационный центр Республики Башкортостан"</td>
+                            </tr> -->
+                            <tr>
+                                <th>Место нахождения:</th>
+                                <td>Уфа</td>
+                            </tr>
+                            <tr>
+                                <th>Юридический адрес организации:</th>
+                                <td>450092, Республика Башкортостан, город Уфа, улица Батырская, дом 4/2</td>
+                            </tr>
+                            <tr>
+                                <th>Почтовый адрес организации:</th>
+                                <td>450092, Республика Башкортостан, город Уфа, улица Батырская, дом 4/2</td>
+                            </tr>
+                            <tr>
+                                <th>Фактический адрес организации:</th>
+                                <td>450092, Республика Башкортостан, город Уфа, улица Батырская, дом 4/2</td>
+                            </tr>
+                            <tr>
+                                <th>Руководитель организации:</th>
+                                <td>Атрощенко Валерий Владимирович</td>
+                            </tr>
+                            <tr>
+                                <th>Руководитель ЦОК:</th>
+                                <td>Сафархузина Полина Валерьевна</td>
+                            </tr>
+                            <tr>
+                                <th>Телефон:</th>
+                                <td>(347) 216-42-33, 246-87-26</td>
+                            </tr>
+                            <tr>
+                                <th>Факс:</th>
+                                <td>(347) 256-39-03</td>
+                            </tr>
+                            <tr>
+                                <th>E-mail:</th>
+                                <td>gac_rb@ufamail.ru</td>
+                            </tr>
+                            <tr>
+                                <th>Сайт:</th>
+                                <td><a href="http://ufanaks.ru/">http://ufanaks.ru/</a></td>
+                            </tr>
+                            <tr>
+                                <th>Срок действия Аттестата соответствия:</th>
+                                <td>c 23.06.2017 по 23.06.2020</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="2" class="text-uppercase">Область деятельности</th>
+                            </tr>
+                            <tr class="table-light">
+                                <th>Профессиональный стандарт</th>
+                                <th>Присваиваемые квалификации (уровни)</th>
+                            </tr>
+                            <tr>
+                                <th>Сварщик</th>
+                                <td>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</th>
+                                <td>
+                                    <p class="mb-1">Оператор автоматической сварки плавлением металлических материалов (3 уровень квалификации)</p>
+                                    <p class="mb-1">Оператор автоматической сварки полимерных материалов (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик-оператор автоматической сварки плавлением металлических материалов (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик-оператор автоматической сварки полимерных материалов (4 уровень квалификации)</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center"><a href="#" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-authorization">Подать заявку</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-mtb" role="tabpanel" aria-labelledby="pills-mtb-tab">
+                    <h5 class="text-primary my-4">Материально-технические базы в составе ЦОК-018</h5>
+                    <div class="data-list">
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg">
+                                    <div class="text-bold text-uppercase text-dark">Материально-техническая база ЦОК-018 (02.007.02.01)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Фактический адрес организации:</div>
+                                </div>
+                                <div class="col-lg">450112, Республика Башкортостан, г. Уфа, ул. Спартака, д. 13</div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Профессиональный стандарт</div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class="text-bold">Присваиваемые квалификации (уровни)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Сварщик</div>
+                                </div>
+                                <div class="col-lg">
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</div>
+                                </div>
+                                <div class="col-lg">
+                                    <p class="mb-1">Оператор автоматической сварки плавлением металлических материалов (3 уровень квалификации)</p>
+                                    <p class="mb-1">Оператор автоматической сварки полимерных материалов (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик-оператор автоматической сварки плавлением металлических материалов (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик-оператор автоматической сварки полимерных материалов (4 уровень квалификации)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg">
+                                    <div class="text-bold text-uppercase text-dark">Материально-техническая база ЦОК-018 (02.007.02.02)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Фактический адрес организации:</div>
+                                </div>
+                                <div class="col-lg">450092, РБ, г. Уфа, ул. Батырская, д. 4/2</div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Профессиональный стандарт</div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class="text-bold">Присваиваемые квалификации (уровни)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Сварщик</div>
+                                </div>
+                                <div class="col-lg">
+                                    <p class="mb-1">Оператор автоматической сварки плавлением металлических материалов (3 уровень квалификации)</p>
+                                    <p class="mb-1">Оператор автоматической сварки полимерных материалов (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик-оператор автоматической сварки плавлением металлических материалов (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик-оператор автоматической сварки полимерных материалов (4 уровень квалификации)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-ec" role="tabpanel" aria-labelledby="pills-ec-tab">
+                    <h5 class="text-primary my-4">Экзаменационные центры в составе ЦОК-018</h5>
+                    <div class="data-list">
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg">
+                                    <div class="text-bold text-uppercase text-dark">М460048, г. Оренбург, пр. Автоматики, д. 12 (56.001.56.01)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Фактический адрес организации:</div>
+                                </div>
+                                <div class="col-lg">460048, г. Оренбург, пр. Автоматики, д. 5/1</div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Профессиональный стандарт</div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class="text-bold">Присваиваемые квалификации (уровни)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Сварщик</div>
+                                </div>
+                                <div class="col-lg">
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-list-item">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="text-bold">Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</div>
+                                </div>
+                                <div class="col-lg">
+                                    <p class="mb-1">Оператор автоматической сварки плавлением металлических материалов (3 уровень квалификации)</p>
+                                    <p class="mb-1">Оператор автоматической сварки полимерных материалов (3 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик-оператор автоматической сварки плавлением металлических материалов (4 уровень квалификации)</p>
+                                    <p class="mb-1">Сварщик-оператор автоматической сварки полимерных материалов (4 уровень квалификации)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="map" class="w-100 mt-4"></div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/spks/right-menu-spks.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}
