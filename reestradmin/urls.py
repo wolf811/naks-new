@@ -3,5 +3,6 @@ import reestradmin.views as reestradmin
 app_name = 'reestr'
 
 urlpatterns = [
-    path('', reestradmin.hello, name='hello'),
+    path('base/', reestradmin.base, name='base'),
 ]
+

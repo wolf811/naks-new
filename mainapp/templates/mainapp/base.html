@@ -1,115 +1,101 @@
 {% load static %}{% load sass_tags %}
 <!doctype html>
 <html lang="ru">
-	<head>
-		<title>{{ title }}</title>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		{% block css %}
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-		<link rel="stylesheet" href="{% static 'css/bootstrap-datetimepicker.css' %}">
+<head>
+    <title>{{ title }}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block css %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datetimepicker.css' %}">
+    <!-- My styles -->
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% sass_src 'scss/mystyle.scss' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle_ie.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}" />
+    {% endblock %}
+    {% if request.resolver_match.url_name == 'index' or request.resolver_match.url_name == 'sasv' %}
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru" type="text/javascript"></script>
+    {% endif %}
+    <!-- <script src="https://yastatic.net/share2/share.js" async="async"></script> -->
+    <style>
+    [v-cloak] {
+        display: none;
+    }
+    </style>
+</head>
 
-		<!-- My styles -->
-		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-		<link rel="stylesheet" href="{% sass_src 'scss/mystyle.scss' %}">
-		<link rel="stylesheet" href="{% static 'css/media.css' %}">
-		<link rel="stylesheet" href="{% static 'css/mystyle_ie.css' %}">
-		<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
-		{% endblock %}
+<body>
+    {% include 'mainapp/includes/header-menu.html' %}
+    {% block content%}
+    {% endblock %}
+    {% include 'mainapp/includes/footer.html' %}
+    {% include 'mainapp/includes/modal/modal-questions.html' %}
+    {% include 'mainapp/includes/modal/modal-sending-link.html' %}
+    {% include 'mainapp/includes/modal/modal-login-account.html' %}
+    {% include 'mainapp/includes/modal/modal-feedback.html' %}
+    {% include 'mainapp/includes/modal/modal-letter.html' %}
+    {% comment %} {% include 'mainapp/includes/modal/modal-technical-devices.html' %} {% endcomment %}
+    {% comment %} {% include 'mainapp/includes/modal/modal-type-activity.html' %} {% endcomment %}
+    {% include 'mainapp/includes/modal/modal-certificate-detail.html' %}
+    {% comment %} {% include 'mainapp/includes/modal/modal-welding-method.html' %} {% endcomment %}
+    {% comment %} {% include 'mainapp/includes/modal/modal-chifer-sm.html' %} {% endcomment %}
+    {% comment %} {% include 'mainapp/includes/modal/modal-chifer-so.html' %} {% endcomment %}
+    {% include 'mainapp/includes/modal/modal-reestr-section.html' %}
+    {% include 'mainapp/includes/modal/modal-range-detail.html' %}
+    {% include 'mainapp/includes/modal/modal-membership-detail.html' %}
+    {% include 'mainapp/includes/cookie-warning.html' %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/PageScroll2id.min.js' %}"></script>
+    <script src="{% static 'js/moment-with-locales.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
+    <!-- VUE JS 2 and AXIOS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="{% static 'js/vue-cookies.js' %}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- VUE JS 2 and AXIOS CDN -->
+    <!-- My scripts -->
+    {% if request.resolver_match.url_name == 'index' or request.resolver_match.url_name == 'sasv' %}
+    <script src="{% static 'js/map-script.js' %}"></script>
+    {% endif %}
+    <script src="{% static 'js/myscript.js' %}"></script>
+    <script src="{% static 'js/vue_scripts.js' %}"></script>
+    <script src="{% static 'js/vue_reestr_cok.js' %}"></script>
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script>
+    $(function() {
+        // Проверяем запись в куках о посещении
+        // Если запись есть - ничего не происходит
+        var cookie_warning = Cookies.get('hideModal');
+        if (!cookie_warning) {
+            // если cookie не установлено появится окно
+            // с задержкой 5 секунд
+            var delay_popup = 1000;
+            setTimeout("document.querySelector('.cookie-warning').style.display='inline-block'", delay_popup);
+        }
+    });
 
-		{% if request.resolver_match.url_name == 'index' or request.resolver_match.url_name == 'sasv' %}
-		<script src="https://api-maps.yandex.ru/2.1/?lang=ru" type="text/javascript"></script>
-		{% endif %}
-		<!-- <script src="https://yastatic.net/share2/share.js" async="async"></script> -->
-		<style>
-			[v-cloak] {
-  				display: none;
-			}
-		</style>
-	</head>
-	<body>
-		{% include 'mainapp/includes/header-menu.html' %}
+    // Закрытие полосы cookie и установка куки с параметрами 30 дней
+    $('.ok').click(function() {
+        var cookie_warning = Cookies.set('hideModal', true, {
+            // Время хранения cookie в днях
+            expires: 30,
+            path: '/'
+        });
+        $('.cookie-warning').fadeOut();
+        console.log("COOKIE", cookie_warning);
+    });
+    </script>
+</body>
 
-		{% block content%}
-
-		{% endblock %}
-
-		{% include 'mainapp/includes/footer.html' %}
-
-		{% include 'mainapp/includes/modal/modal-questions.html' %}
-		{% include 'mainapp/includes/modal/modal-sending-link.html' %}
-		{% include 'mainapp/includes/modal/modal-login-account.html' %}
-
-		{% include 'mainapp/includes/modal/modal-feedback.html' %}
-		{% include 'mainapp/includes/modal/modal-letter.html' %}
-		{% comment %} {% include 'mainapp/includes/modal/modal-technical-devices.html' %} {% endcomment %}
-		{% comment %} {% include 'mainapp/includes/modal/modal-type-activity.html' %} {% endcomment %}
-		{% include 'mainapp/includes/modal/modal-certificate-detail.html' %}
-		{% comment %} {% include 'mainapp/includes/modal/modal-welding-method.html' %} {% endcomment %}
-		{% comment %} {% include 'mainapp/includes/modal/modal-chifer-sm.html' %} {% endcomment %}
-		{% comment %} {% include 'mainapp/includes/modal/modal-chifer-so.html' %} {% endcomment %}
-		{% include 'mainapp/includes/modal/modal-reestr-section.html' %}
-		{% include 'mainapp/includes/modal/modal-range-detail.html' %}
-		{% include 'mainapp/includes/modal/modal-membership-detail.html' %}
-
-		{% include 'mainapp/includes/cookie-warning.html' %}
-
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-		<script src="{% static 'js/jquery-ui.min.js' %}"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-		<script src="{% static 'js/bootstrap.min.js' %}"></script>
-		<script src="{% static 'js/PageScroll2id.min.js' %}"></script>
-		<script src="{% static 'js/moment-with-locales.min.js' %}"></script>
-		<script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
-
-		<!-- VUE JS 2 and AXIOS CDN -->
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<script src="{% static 'js/vue-cookies.js' %}"></script>
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<!-- VUE JS 2 and AXIOS CDN -->
-
-
-
-		<!-- My scripts -->
-		{% if request.resolver_match.url_name == 'index' or request.resolver_match.url_name == 'sasv' %}
-			<script src="{% static 'js/map-script.js' %}"></script>
-		{% endif %}
-
-		<script src="{% static 'js/myscript.js' %}"></script>
-		<script src="{% static 'js/vue_scripts.js' %}"></script>
-		<script src="{% static 'js/vue_reestr_cok.js' %}"></script>
-
-		<script src="{% static 'js/jquery.cookie.js' %}"></script>
-		<script>
-			$(function() {
-			  // Проверяем запись в куках о посещении
-			  // Если запись есть - ничего не происходит
-			  var cookie_warning = Cookies.get('hideModal');
-				if (!cookie_warning) {
-			  // если cookie не установлено появится окно
-			  // с задержкой 5 секунд
-			    	var delay_popup = 1000;
-			    	setTimeout("document.querySelector('.cookie-warning').style.display='inline-block'", delay_popup);
-			     }
-			});
-
-			// Закрытие полосы cookie и установка куки с параметрами 30 дней
-			$('.ok').click(function(){
-				var cookie_warning = Cookies.set('hideModal', true, {
-			   // Время хранения cookie в днях
-			    expires: 30,
-			    path: '/'
-				});
-			    $('.cookie-warning').fadeOut();
-				console.log("COOKIE", cookie_warning);
-			});
-		</script>
-
-	</body>
 </html>
