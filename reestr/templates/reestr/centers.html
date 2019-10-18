@@ -84,17 +84,17 @@
                     <div v-for="(cok, index) in reestrCenters" class="data-list-item">
                         <div class="row align-items-center">
                             <div class="col-lg-3">
-                                <div class="d-inline-block d-lg-block text-bold mr-2">[[ cok.short_code ]] (77.014)</div>
-                                <small>16.02.2018&nbsp;-&nbsp;16.02.2021</small>
+                                <div class="d-inline-block d-lg-block text-bold mr-2">[[ cok.short_code ]] ([[ cok.cok_nark_code ]])</div>
+                                <small>[[ cok.active_since ]]&nbsp;-&nbsp;[[ cok.active_until ]]</small>
                             </div>
                             <div class="col-lg"><a href="#">[[ cok.company ]]</a></div>
-                            <div class="col-lg-2">Москва</div>
+                            <div class="col-lg-2">[[ cok.city ]]</div>
                             <div class="col-lg-3 text-lg-center">
                                 <a href="#" data-toggle="modal" data-target="#modal-authorization" class="btn btn-outline-primary btn-xs mt-1 mt-lg-0">Подать заявку</a>
                             </div>
                         </div>
                     </div>
-                    <div class="data-list-item">
+                    {% comment %} <div class="data-list-item">
                         <div class="row align-items-center">
                             <div class="col-lg-3">
                                 <div class="d-inline-block d-lg-block text-bold mr-2">ЦОК-002 (35.001)</div>
@@ -210,7 +210,7 @@
                                 <a href="#" data-toggle="modal" data-target="#modal-authorization" class="btn btn-outline-primary btn-xs mt-1 mt-lg-0">Подать заявку</a>
                             </div>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>

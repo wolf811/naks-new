@@ -189,7 +189,7 @@ class AccreditedCenter(Center):
     personal = 'personal'
     csp = 'specpod'
     qualification = 'qualifications'
-    certification = 'cert'
+    certification = 'certification'
     DIRECTIONS = (
         (personal, 'Аттестация персонала'),
         (csp, 'Специальная подготовка'),
@@ -262,6 +262,12 @@ class AccreditedCenter(Center):
     qualifications = models.ManyToManyField(
         Qualification,
         verbose_name="Профквалификации",
+        blank=True
+        )
+    cok_nark_code = models.CharField(
+        u'Код ЦОКа в НАРК',
+        max_length=20,
+        null=True,
         blank=True
         )
 

@@ -35,29 +35,23 @@ def centers(request, direction):
     content = {
         "direction": directions[direction],
     }
-    if direction == 'qualification':
-        content.update({
-            "active_centers": AccreditedCenter.objects.filter(
-                direction=direction, active=True)
+    content.update({
+        "active_centers": middle_with_round_array(active_centers)
         })
-    else:
-        content.update({
-            "active_centers": middle_with_round_array(active_centers)
-            })
-        inactive_by_sro_membership = Q(sro_member__status='na')
-        inactive_by_status_of_ac = Q(active=False)
-        by_direction = Q(direction=direction)
-        by_temporary_suspend_date = Q(temporary_suspend_date__isnull=False)
-        inactive_centers = AccreditedCenter.objects.filter(
-            inactive_by_sro_membership | inactive_by_status_of_ac
-        ).filter(by_direction).order_by('short_code')
-        suspended_centers = AccreditedCenter.objects.filter(
-            by_temporary_suspend_date
-        ).filter(by_direction).filter(active=True).order_by('short_code')
-        content.update({
-            "inactive_centers": middle_with_round_array(inactive_centers),
-            "suspended_centers": middle_with_round_array(suspended_centers)
-        })
+    inactive_by_sro_membership = Q(sro_member__status='na')
+    inactive_by_status_of_ac = Q(active=False)
+    by_direction = Q(direction=direction)
+    by_temporary_suspend_date = Q(temporary_suspend_date__isnull=False)
+    inactive_centers = AccreditedCenter.objects.filter(
+        inactive_by_sro_membership | inactive_by_status_of_ac
+    ).filter(by_direction).order_by('short_code')
+    suspended_centers = AccreditedCenter.objects.filter(
+        by_temporary_suspend_date
+    ).filter(by_direction).filter(active=True).order_by('short_code')
+    content.update({
+        "inactive_centers": middle_with_round_array(inactive_centers),
+        "suspended_centers": middle_with_round_array(suspended_centers)
+    })
 
     gtu_spr = GTU.objects.all()
     weld_types_spr = WeldType.objects.all()

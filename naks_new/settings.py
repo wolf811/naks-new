@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp',
     'reestr',
+    'reestradmin',
     'ckeditor',
     'ckeditor_uploader',
     'django.contrib.sitemaps',

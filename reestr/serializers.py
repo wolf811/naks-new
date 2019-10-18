@@ -102,6 +102,8 @@ class DirectoriesSerializer(serializers.Serializer):
 class CenterSerializer(serializers.ModelSerializer):
     city = serializers.SerializerMethodField()
     company = serializers.SerializerMethodField()
+    active_since = serializers.DateField(format='%d.%m.%Y')
+    active_until = serializers.DateField(format='%d.%m.%Y')
 
     class Meta:
         model = AccreditedCenter
@@ -126,6 +128,7 @@ class CenterSerializer(serializers.ModelSerializer):
             'sm_types',
             'so_types',
             'qualifications',
+            'cok_nark_code'
         )
 
     def get_company(self, obj):

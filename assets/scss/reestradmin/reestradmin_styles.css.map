@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "reestradmin_styles.css",
+	"sources": [
+		"reestradmin_styles.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,EAAE,CAAC;EACC,KAAK,EAAE,GAAG,GACb"
+}

@@ -293,7 +293,8 @@ class Command(BaseCommand):
                     sro_member=member,
                     short_code=lambda: 'ЦОК-0{}'.format(center_count),
                     active=True,
-                    direction='qualifications'
+                    direction='qualifications',
+                    cok_nark_code="77.0{}".format(center_count)
                 )
             center_count += 1
 
