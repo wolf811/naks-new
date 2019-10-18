@@ -76,6 +76,7 @@
                             </div>
                         </div>
                         {% endif %}
+                        {% if 'qualification' not in request.path %}
                         <div class="card">
                             <div class="card-header" id="headingAccordFilterAc_03">
                                 <a href="#" class="collapsed" data-toggle="collapse"
@@ -95,6 +96,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                         {% if 'attso' in request.path %}
                         <div class="card">
                             <div class="card-header" id="headingAccordFilterAc_04">
@@ -145,7 +147,7 @@
                                     aria-controls="collapseAccordFilterAc_06">Профессиональные стандарты,
                                     квалификации&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
                             </div>
-                            <div id="collapseAccordFilterAc_06" class="collapse"
+                            <div id="collapseAccordFilterAc_06" class="collapse show"
                                 aria-labelledby="headingAccordFilterAc_06" data-parent="#accordionFilterAc">
                                 <div class="card-body scrollspy-modal-accordeon">
                                     <!-- qualifications -->
