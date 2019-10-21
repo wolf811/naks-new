@@ -15,8 +15,8 @@
     <!-- My styles -->
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% sass_src 'scss/reestradmin/reestradmin_styles.scss' %}">
-    <link rel="stylesheet" href="{% static 'css/media.css' %}">
-    <link rel="stylesheet" href="{% static 'css/mystyle_ie.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle_ie.css' %}"> -->
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}" />
     {% endblock %}
     <style>
@@ -27,30 +27,31 @@
 </head>
 
 <body>
-    <h2>Hello, EDO!!!</h2>
-    {% block content%}
-    {% endblock %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-technical-devices.html' %} {% endcomment %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-type-activity.html' %} {% endcomment %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-welding-method.html' %} {% endcomment %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-chifer-sm.html' %} {% endcomment %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-chifer-so.html' %} {% endcomment %}
+    <div class="wrapper">
+        {% include 'reestradmin/includes/header.html' %}
+        {% include 'reestradmin/includes/name-page.html' %}
+        {% include 'reestradmin/includes/top-menu.html' %}
+        {% include 'reestradmin/includes/breadcrumb.html' %}
+        {% block content%}
+        {% endblock %}
+        {% include 'reestradmin/includes/footer.html' %}
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/PageScroll2id.min.js' %}"></script>
+    <!-- <script src="{% static 'js/PageScroll2id.min.js' %}"></script>
     <script src="{% static 'js/moment-with-locales.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script> -->
     <!-- VUE JS 2 and AXIOS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="{% static 'js/vue-cookies.js' %}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- VUE JS 2 and AXIOS CDN -->
     <!-- My scripts -->
-    <script src="{% static 'js/myscript.js' %}"></script>
+    <script src="{% static 'js/reestradmin-script.js' %}"></script>
     <script src="{% static 'js/vue_scripts.js' %}"></script>
     <script src="{% static 'js/vue_reestr_cok.js' %}"></script>
 </body>

@@ -8,3 +8,10 @@ def base(request):
         'title': title
     }
     return render(request, 'reestradmin/base.html', content)
+
+def centers_list(request):
+    title = 'ЭДО - Центры'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/centers_list.html', content)

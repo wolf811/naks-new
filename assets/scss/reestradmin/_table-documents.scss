@@ -1,0 +1,40 @@
+.table-documents {
+	font-size: 0.875rem;
+	td {
+		text-align: center;
+		&:last-child, 
+		&:nth-child(4), 
+		&:nth-child(5),
+		&:nth-child(8),
+		&:nth-child(9),
+		&:nth-child(10) {
+			text-align: left;
+		}
+		a {white-space: nowrap;}
+
+		.badge-info {width: 70px;}
+		
+		.fa-bars {font-size: 1rem;}
+
+		.dropdown-toggle::after {display: none;}
+		.dropdown-menu {
+			.dropdown-item {
+				font-size: 0.875rem;
+				padding-left: 1rem;
+				padding-right: 1rem;
+			}
+		}
+	}
+	td.experts {
+		white-space: nowrap;
+		font-size: 0.75rem;
+		p {
+			margin-bottom: 0.25rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		p.chairman {font-weight: bold;}
+	}
+}

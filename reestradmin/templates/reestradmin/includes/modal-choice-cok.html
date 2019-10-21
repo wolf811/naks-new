@@ -1,0 +1,120 @@
+{% load static %}
+<div class="modal fade" id="modalChoiceCok" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Центры оценки квалификаций</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form role="form">
+                <div class="modal-body">
+                    <div class="table-modal-scroll">
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead>
+                                <tr class="active">
+                                    <th>Шифр центра</th>
+                                    <th>Наименование организации</th>
+                                    <th>Город</th>
+                                    <th>Телефон</th>
+                                    <th>Сайт</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="chooseCok" id="choiceCok01">
+                                            <label class="form-check-label" for="choiceCok01">ЦОК-001 (77.014)</label>
+                                        </div>
+                                    </td>
+                                    <td>ООО "ГАЦ МР НАКС"</td>
+                                    <td>Москва</td>
+                                    <td>(499) 674-70-78</td>
+                                    <td><a target="_blank" href="http://www.gacmrnaks.com">www.gacmrnaks.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="chooseCok" id="choiceCok02" checked>
+                                            <label class="form-check-label" for="choiceCok02">ЦОК-002 (35.001)</label>
+                                        </div>
+                                    </td>
+                                    <td>АНО "ВРАЦ"</td>
+                                    <td>Вологда</td>
+                                    <td>(8172) 28-10-03, 27-23-03</td>
+                                    <td><a target="_blank" href="http://www.weld35.ru">www.weld35.ru</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="chooseCok" id="choiceCok03">
+                                            <label class="form-check-label" for="choiceCok03">ЦОК-003 (61.002)</label>
+                                        </div>
+                                    </td>
+                                    <td>ООО "ГОССп ЮР"</td>
+                                    <td>Ростов-на-Дону</td>
+                                    <td>(863) 333-01-23</td>
+                                    <td><a target="_blank" rel="nofollow" href="http://www.svarka-ug.ru">www.svarka-ug.ru</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="chooseCok" id="choiceCok04">
+                                            <label class="form-check-label" for="choiceCok04">ЦОК-004 (78.012)</label>
+                                        </div>
+                                    </td>
+                                    <td>ООО "РСЗ МАЦ"</td>
+                                    <td>Санкт-Петербург</td>
+                                    <td>(812) 542-64-10</td>
+                                    <td><a target="_blank" rel="nofollow" href="http://www.rszmas.ru ">www.rszmas.ru </a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="chooseCok" id="choiceCok05">
+                                            <label class="form-check-label" for="choiceCok05">ЦОК-005 (74.003)</label>
+                                        </div>
+                                    </td>
+                                    <td>ООО "ЦПС "Сварка и Контроль"</td>
+                                    <td>Челябинск</td>
+                                    <td>(351) 729-94-20</td>
+                                    <td><a target="_blank" rel="nofollow" href="http://www.svarka74.ru">www.svarka74.ru</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="chooseCok" id="choiceCok06">
+                                            <label class="form-check-label" for="choiceCok06">ЦОК-006 (86.002)</label>
+                                        </div>
+                                    </td>
+                                    <td>ООО АЦ "НАКС - Западная Сибирь"</td>
+                                    <td>Сургут</td>
+                                    <td>(3462) 95-08-03, 95-08-02, 98-08-03</td>
+                                    <td><a target="_blank" rel="nofollow" href="http://www.acnaks.ru">www.acnaks.ru</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="chooseCok" id="choiceCok07">
+                                            <label class="form-check-label" for="choiceCok07">ЦОК-007 (27.001)</label>
+                                        </div>
+                                    </td>
+                                    <td>ООО АЦ "НАКС-Хабаровск"</td>
+                                    <td>Хабаровск</td>
+                                    <td>(924) 217-13-05</td>
+                                    <td><a target="_blank" rel="nofollow" href="http://www.naks-habarovsk.ru">www.naks-habarovsk.ru</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" id="save4" data-dismiss="modal">Сохранить</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Закрыть</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<form class="form-doc-types" id="form_7">
+    <h6 class="title">Дата формирования</h6>
+    <div class="form-row">
+        <div class="form-group col-6 col-sm-4 col-lg-6">
+            <label for="" class="sr-only"></label>
+            <input type="date" class="form-control form-control-sm" id="" placeholder="дд.мм.гггг">
+        </div>
+    </div>
+    
+    <h6 class="title">Заявка</h6>
+    <div class="form-row">
+        <div class="form-group col-6 col-sm-4 col-lg-6">
+            <label for="" class="col-form-label-sm">Номер</label>
+            <input type="text" class="form-control form-control-sm">
+        </div>
+        <div class="form-group col-6 col-sm-4 col-lg-6">
+            <label for="" class="col-form-label-sm">от</label>
+            <input type="date" class="form-control form-control-sm" placeholder="дд.мм.гггг">
+        </div>
+    </div>
+
+    <h6 class="title">Дополнительное соглашение</h6>
+    <div class="form-row align-items-end">
+        <div class="form-group col-6 col-sm-4 col-lg-6 col-xl-3">
+            <label for="" class="col-form-label-sm">Номер</label>
+            <input type="text" class="form-control form-control-sm">
+        </div>
+        <div class="form-group col-6 col-sm-4 col-lg-6 col-xl-3">
+            <label for="" class="sr-only">Номер</label>
+            <input type="text" class="form-control form-control-sm" value="-РАП-0777" readonly>
+        </div>
+        <div class="form-group col-6 col-sm-4 col-lg-6">
+            <label for="" class="col-form-label-sm">от</label>
+            <input type="date" class="form-control form-control-sm" placeholder="дд.мм.гггг">
+        </div>
+    </div>
+
+    <h6 class="title">Аттестационный пункт</h6>
+    <div class="mb-3">
+        <div id="selected-ap" style="display: none;">
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col-10 col-md-9">
+                        <p class="text-info mb-0">на базе <strong>ООО "Организация"</strong></p>
+                        <small class="text-info d-block"><strong>Юридический адрес:</strong> г. Москва, ул. Братиславская, д. 6</small>
+                        <small class="text-info d-block"><strong>Фактический адрес:</strong> г. Москва, ул. Марьинский парк, д. 23</small>
+                    </div>
+                    <div class="col-2 col-md-3">
+                        <a href="#" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-choose-ap" role="button" title="изменить"><i class="fa fa-pencil"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <div class="selected-elements">
+                    <p class="mb-1">Группы ТУ ОПО:</p>
+                    <p class="text-info mb-1">КСМ, СК, МО, ГДО, ОХНВП, ГО, НГДО</p>
+                </div>
+                <a href="#" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-tuopo" role="button"><i class="fa fa-server mr-2"></i>Выбрать</a>
+            </div>
+            <div class="mb-3">
+                <div class="selected-elements">
+                    <p class="mb-1">Способы сварки (наплавки):</p>
+                    <p class="text-info mb-1">АФПН, КШС, МКС, МПИ, ПАК, РД, ЭЛ</p>
+                </div>
+                <a href="#" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-welding-methods" role="button"><i class="fa fa-server mr-2"></i>Выбрать</a>
+            </div>
+        </div>
+
+        <a href="#" id="btn-choose-ap" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-choose-ap" role="button"><i class="fa fa-server mr-2"></i>Выбрать</a>
+    </div>
+    
+    <h6 class="title">Эксперт НАКС</h6>
+    <div class="mb-3">
+        <div class="selected-elements">
+            <p class="text-info mb-1">Пономаренко Алексей Сергеевич</p>
+        </div>
+        <a href="#" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-experts-naks" role="button"><i class="fa fa-server mr-2"></i>Выбрать</a>
+    </div>
+
+    <h6 class="title">Эксперт (-ы) НЭДК</h6>
+    <div class="mb-3">
+        <div class="selected-elements">
+            <p class="text-info mb-1">Кузнецов Евгений Иванович</p>
+            <p class="text-info mb-1">Афиногенов Александр Вениаминович</p>
+            <p class="text-info mb-1">Иванов Иван Иванович</p>
+        </div>
+        <a href="#" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-experts-nedk" role="button"><i class="fa fa-server mr-2"></i>Выбрать</a>
+    </div>
+
+    <h6 class="title">Срок проведения работ</h6>
+    <div class="form-row">
+        <div class="form-group col-6 col-sm-4 col-lg-6">
+            <label for="" class="col-form-label-sm">В период с</label>
+            <input type="date" class="form-control form-control-sm" placeholder="дд.мм.гггг">
+        </div>
+        <div class="form-group col-6 col-sm-4 col-lg-6">
+            <label for="" class="col-form-label-sm">по</label>
+            <input type="date" class="form-control form-control-sm" placeholder="дд.мм.гггг">
+        </div>
+    </div>
+
+    <h6 class="title">Калькуляция</h6>
+    <div class="form-row">
+        <div class="form-group col-sm-4 col-lg-12 col-xl-6">
+            <label for="" class="col-form-label-sm">Доп. к п.1 аттестационных пунктов <br><small class="text-muted">*базовая: 1 пункт</small></label>
+            <input type="text" class="form-control form-control-sm">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-4 col-lg-12 col-xl-6">
+            <label for="" class="col-form-label-sm">Доп. к п.1 групп ТУ ОПО<br><small class="text-muted">*базовая: 1 группа ТУ ОПО</small></label>
+            <input type="text" class="form-control form-control-sm">
+        </div>
+        <div class="form-group col-sm-4 col-lg-12 col-xl-6">
+            <label for="" class="col-form-label-sm">Доп. к п.1 способов сварки<br><small class="text-muted">*базовая: 1 способ сварки</small></label>
+            <input type="text" class="form-control form-control-sm">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-sm">Сохранить</button>
+</form>

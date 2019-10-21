@@ -1,0 +1,53 @@
+.document-print {
+	font-family: times new roman, times, serif;
+	max-width: 665px; 
+	&-letter {max-width: 620px;}
+	font-size:16px;
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	margin-left: auto;
+	margin-right: auto;
+
+	.document-print-text {
+		text-align: justify;
+		.paragraph {
+			margin-left: 25px;
+			margin-bottom: 0;
+		}
+	}
+	.title-naks {
+		font-size: 18px;
+		font-weight: bold;
+		text-transform: uppercase;
+		color:#6677ff;
+		text-align: center;
+	}
+	.title-nedk {
+		font-size: 17px;
+		font-weight: bold;
+		text-transform: uppercase;
+		color:#6677ff;
+		text-align: center;
+	}
+	.title-doc {
+		font-size: 18px;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	.document-print-table {
+		thead tr {
+			background-color: #F8F8F8;
+			text-align: center;
+		}
+		tbody td {
+			font-size: 14px;
+			&:first-child, &:nth-child(3) {text-align: center;}
+			&:last-child {text-align: right;}
+		}
+		td {
+			vertical-align: middle;
+			line-height: 1.2;
+		}
+	}
+}

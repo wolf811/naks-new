@@ -1,0 +1,25 @@
+footer {
+    background-color: #20579B;
+    border-bottom: 11px solid #5CB85C;
+    padding: 1.5rem 0;
+
+    h5 {
+        color: #fff;
+        margin-bottom: 0;
+
+        small {
+            font-size: 0.875rem;
+        }
+    }
+
+    .footer-link {
+        @media screen and (max-width: 575px) {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: #fff;
+            margin-right: 0.5rem;
+        }
+    }
+}

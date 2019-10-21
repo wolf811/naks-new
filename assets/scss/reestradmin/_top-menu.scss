@@ -1,0 +1,70 @@
+.top-menu {
+	border-bottom: 2px solid #5CB85C;
+	.navbar-toggler {
+		color: $primary;
+		border-color: $primary;
+		background-color: transparent;
+	}
+	.navbar-toggler-focus {
+		color: #fff;
+		background-color: $primary;
+	}
+	.navbar-collapse {
+		max-width: 1980px;
+		overflow: auto;
+	}
+	.navbar-nav {
+		.nav-item {
+			.nav-link {
+				position: relative;
+				color: $primary; /*задаём цвет ссылки*/
+				text-decoration: none; /*убираем подчёркивание*/
+
+				&:after {
+					display: block;
+					position: absolute;
+					left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+					width: 0;/*задаём длинну линии до наведения курсора*/
+					height: 1px; /*задаём ширину линии*/
+					background-color: $primary; /*задаём цвет линии*/
+					content: "";
+					transition: width 0.3s ease-out; /*задаём время анимации*/
+				}
+				&:hover:after,
+				&:focus:after {
+					width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+				}
+			}
+		}
+		.nav-item.active {
+			.nav-link {
+				&:after {
+					margin-left: 5%;
+					width: 90%;
+					height: 2px;
+					background-color: $primary;
+					transition: none;
+					@media screen and (max-width: 992px) {
+						margin-left: 0;
+						width: 100%;
+					}
+				}
+
+			}
+		}
+		.nav-item.active>.nav-link {
+			font-weight: bold;
+			color: $primary;
+		}
+	}
+
+	.dropdown-menu {
+		top: auto;
+	    left: auto;
+
+	    .dropdown-item {
+	    	color: $primary;
+	    	font-size: 0.875rem;
+	    }
+	}
+}

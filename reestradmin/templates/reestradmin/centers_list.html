@@ -1,0 +1,91 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-acsm-tab" data-toggle="pill" href="#v-pills-acsm" role="tab" aria-controls="v-pills-acsm" aria-selected="true">АЦСМ<span class="badge badge-light float-right">4</span></a>
+                    <a class="nav-link" id="v-pills-acso-tab" data-toggle="pill" href="#v-pills-acso" role="tab" aria-controls="v-pills-acso" aria-selected="false">АЦСО</a>
+                    <a class="nav-link" id="v-pills-acst-tab" data-toggle="pill" href="#v-pills-acst" role="tab" aria-controls="v-pills-acst" aria-selected="false">АЦСТ</a>
+                    <a class="nav-link" id="v-pills-ac-tab" data-toggle="pill" href="#v-pills-ac" role="tab" aria-controls="v-pills-ac" aria-selected="false">АЦ</a>
+                    <a class="nav-link" id="v-pills-csp-tab" data-toggle="pill" href="#v-pills-csp" role="tab" aria-controls="v-pills-csp" aria-selected="false">ЦСП</a>
+                    <a class="nav-link" id="v-pills-osp-tab" data-toggle="pill" href="#v-pills-osp" role="tab" aria-controls="v-pills-osp" aria-selected="false">ОСП</a>
+                    <a class="nav-link" id="v-pills-cok-tab" data-toggle="pill" href="#v-pills-cok" role="tab" aria-controls="v-pills-cok" aria-selected="false">ЦОК</a>
+                </div>
+            </div>
+            <div class="col-sm-11">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-acsm" role="tabpanel" aria-labelledby="v-pills-acsm-tab">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <ul class="list-group list-group-flush bg-light shadow-sm">
+                                    <li class="list-group-item"><a href="#">АЦСМ-1</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-2</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-3</a><span class="float-right">Ростов-на-Дону</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-4</a><span class="float-right">Уфа</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-5</a><span class="float-right">Москва</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-6</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-7</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-8</a><span class="float-right">Ростов-на-Дону</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-9</a><span class="float-right">Уфа</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-10</a><span class="float-right">Москва</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <ul class="list-group list-group-flush bg-light shadow-sm">
+                                    <li class="list-group-item"><a href="#">АЦСМ-1</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-2</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-3</a><span class="float-right">Ростов-на-Дону</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-4</a><span class="float-right">Уфа</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-5</a><span class="float-right">Москва</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-6</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-7</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-8</a><span class="float-right">Ростов-на-Дону</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-9</a><span class="float-right">Уфа</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-10</a><span class="float-right">Москва</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <ul class="list-group list-group-flush bg-light shadow-sm">
+                                    <li class="list-group-item"><a href="#">АЦСМ-1</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-2</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-3</a><span class="float-right">Ростов-на-Дону</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-4</a><span class="float-right">Уфа</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-5</a><span class="float-right">Москва</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-6</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-7</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-8</a><span class="float-right">Ростов-на-Дону</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-9</a><span class="float-right">Уфа</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-10</a><span class="float-right">Москва</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <ul class="list-group list-group-flush bg-light shadow-sm">
+                                    <li class="list-group-item"><a href="#">АЦСМ-1</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-2</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-3</a><span class="float-right">Ростов-на-Дону</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-4</a><span class="float-right">Уфа</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-5</a><span class="float-right">Москва</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-6</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-7</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-8</a><span class="float-right">Ростов-на-Дону</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-9</a><span class="float-right">Уфа</span></li>
+                                    <li class="list-group-item"><a href="#">АЦСМ-10</a><span class="float-right">Москва</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-acso" role="tabpanel" aria-labelledby="v-pills-acso-tab">АЦСО</div>
+                    <div class="tab-pane fade" id="v-pills-acst" role="tabpanel" aria-labelledby="v-pills-acst-tab">АЦСТ</div>
+                    <div class="tab-pane fade" id="v-pills-ac" role="tabpanel" aria-labelledby="v-pills-ac-tab">АЦ</div>
+                    <div class="tab-pane fade" id="v-pills-csp" role="tabpanel" aria-labelledby="v-pills-csp-tab">ЦСП</div>
+                    <div class="tab-pane fade" id="v-pills-osp" role="tabpanel" aria-labelledby="v-pills-osp-tab">ОСП</div>
+                    <div class="tab-pane fade" id="v-pills-cok" role="tabpanel" aria-labelledby="v-pills-cok-tab">ЦОКи</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

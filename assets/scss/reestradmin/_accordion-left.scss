@@ -1,0 +1,32 @@
+.accordion-left {
+	.card {
+		border-color: $primary;
+
+		.card-header {
+			background-color: #7A9CC5;
+			border-bottom-color: $primary;
+
+			.btn-link {color: #fff;}
+		}
+
+		.list-group-item {
+			padding: 0.25rem 0.5rem;
+			font-size: 0.8rem;
+
+			&.active {
+				background-color: transparent;
+				font-weight: bold;
+				border-color: transparent;
+			}
+			.btn-group {
+				.btn {
+					padding: 0rem 0.2rem;
+					font-size: 0.8rem;
+				}
+			}
+			.badge {width: 25px;}
+			// .dropdown-toggle::after {display: none;}
+
+		}
+	}
+}

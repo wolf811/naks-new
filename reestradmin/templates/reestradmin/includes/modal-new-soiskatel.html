@@ -1,0 +1,188 @@
+{% load static %}
+<div class="modal fade" id="modalNewSoiskatel" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Сведения о соискателе</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form role="form">
+                <div class="modal-body modal-scroll">
+                    <h5>Общие сведения</h5>
+                    <div class="shadow-sm border bg-light rounded p-3 mb-4">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Фамилия Имя Отчество<span class="text-danger">*</span>:</label>
+                                    <input type="text" class="form-control form-control-sm" required="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Дата рождения<span class="text-danger">*</span>:</label>
+                                    <input type="date" class="form-control form-control-sm" placeholder="дд.мм.гггг" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Документ, удостоверяющий личность<span class="text-danger">*</span>:</label>
+                                    <select class="form-control form-control-sm">
+                                        <option>Паспорт</option>
+                                        <option>Военный билет</option>
+                                        <option>СНИЛС</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Серия, №, кем и когда выдан<span class="text-danger">*</span>:</label>
+                                    <input type="text" class="form-control form-control-sm" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-form-label-sm mb-0">Адрес регистрации по месту жительства<span class="text-danger">*</span>:</label>
+                            <input type="text" class="form-control form-control-sm" required="">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Контактный телефон<span class="text-danger">*</span>:</label>
+                                    <input type="text" class="form-control form-control-sm" required="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">E-mail<span class="text-danger">*</span>:</label>
+                                    <input type="text" class="form-control form-control-sm" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5>Сведения о месте работы</h5>
+                    <div class="shadow-sm border bg-light rounded p-3 mb-4">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Наименование организации:</label>
+                                    <input type="text" class="form-control form-control-sm" value='ООО "Сварка трубопроводов"' disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Должность:</label>
+                                    <input type="text" class="form-control form-control-sm" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Местонахождение организации:</label>
+                                    <input type="text" class="form-control form-control-sm" value='160014, город Москва, улица Саммера, дом 43' disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Телефон организации:</label>
+                                    <input type="text" class="form-control form-control-sm" value="+7 (495) 127-23-03, 128-10-03" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5>Сведения об образовании</h5>
+                    <div class="shadow-sm border bg-light rounded p-3 mb-4">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Уровень образования<span class="text-danger">*</span>:</label>
+                                    <select class="form-control form-control-sm">
+                                        <option>-</option>
+                                        <option>Общее</option>
+                                        <option>Среднее</option>
+                                        <option>Высшее</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-form-label-sm mb-0">Квалификация, профессия, специальность по образованию/обучению<span class="text-danger">*</span>:</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="при наличии">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-form-label-sm mb-0">Кем выдан документ об образовании/обучении<span class="text-danger">*</span>:</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="при наличии">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">№ документа<span class="text-danger">*</span>:</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="при наличии">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group has-feedback">
+                                    <label for="" class="col-form-label-sm mb-0">Дата выдачи<span class="text-danger">*</span>:</label>
+                                    <input type="date" class="form-control form-control-sm" placeholder="дд.мм.гггг">
+                                    <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5>Сведения о квалификации</h5>
+                    <div class="shadow-sm border bg-light rounded p-3 mb-4">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Стаж работы по квалификации<span class="text-danger">*</span>:</label>
+                                    <input type="text" class="form-control form-control-sm" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Уровень квалификации по национальной рамке квалификаций:</label>
+                                    <select class="form-control form-control-sm">
+                                        <option>-</option>
+                                        <option>2 уровень</option>
+                                        <option>3 уровень</option>
+                                        <option>4 уровень</option>
+                                        <option>5 уровень</option>
+                                        <option>6 уровень</option>
+                                        <option>7 уровень</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label-sm mb-0">Разряд:</label>
+                                    <select class="form-control form-control-sm">
+                                        <option>-</option>
+                                        <option>1 разряд</option>
+                                        <option>2 разряд</option>
+                                        <option>3 разряд</option>
+                                        <option>4 разряд</option>
+                                        <option>5 разряд</option>
+                                        <option>6 разряд</option>
+                                        <option>7 разряд</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" data-dismiss="modal">Сохранить</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Закрыть</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

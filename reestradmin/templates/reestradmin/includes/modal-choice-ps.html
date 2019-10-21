@@ -1,0 +1,94 @@
+{% load static %}
+<div class="modal fade" id="modalСhoicePs" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Профессиональные стандарты</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form role="form">
+                <div class="modal-body">
+                    <table class="table table-bordered table-hover table-sm">
+                        <thead>
+                            <tr class="active">
+                                <th>Код ПС</th>
+                                <th>Наименование</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="choosePS" id="choicePs01" checked>
+                                        <label class="form-check-label" for="choicePs01">40.002</label>
+                                    </div>
+                                </td>
+                                <td>Сварщик</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="choosePS" id="choicePs02">
+                                        <label class="form-check-label" for="choicePs02">40.109</label>
+                                    </div>
+                                </td>
+                                <td>Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="choosePS" id="choicePs03">
+                                        <label class="form-check-label" for="choicePs03">40.114</label>
+                                    </div>
+                                </td>
+                                <td>Резчик термической резки металлов</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="choosePS" id="choicePs04">
+                                        <label class="form-check-label" for="choicePs04">40.107</label>
+                                    </div>
+                                </td>
+                                <td>Контролер сварочных работ</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="choosePS" id="choicePs05">
+                                        <label class="form-check-label" for="choicePs05">40.115</label>
+                                    </div>
+                                </td>
+                                <td>Специалист сварочного производства</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="choosePS" id="choicePs06">
+                                        <label class="form-check-label" for="choicePs06">40.108</label>
+                                    </div>
+                                </td>
+                                <td>Специалист по неразрушающему контролю</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="choosePS" id="choicePs07">
+                                        <label class="form-check-label" for="choicePs07">40.110</label>
+                                    </div>
+                                </td>
+                                <td>Специалист по механическим испытаниям сварных соединений и наплавленного металла</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" id="save4" data-dismiss="modal">Сохранить</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Закрыть</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

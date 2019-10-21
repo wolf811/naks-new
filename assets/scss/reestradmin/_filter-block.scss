@@ -1,0 +1,28 @@
+.filter-block {
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+	.line-filter {
+		background: #7A9CC5;
+		color: #fff;
+		border: 1px solid #7A9CC5;
+
+		.input-group-append {
+			.btn-outline-primary {
+				border-color: #fff !important;
+				color: #fff !important;
+			}
+		}
+		.dropdown-item {
+			font-size: 0.875rem;
+		}
+	}
+
+	.filter {
+		background-color: #F1F1F1;
+		.label-sm {
+			font-size: 0.875rem;
+			margin-bottom: 0;
+		}
+	}
+	
+}
+

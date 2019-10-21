@@ -1,0 +1,28 @@
+.name-page {
+    border-bottom: 2px solid #5CB85C;
+    background-image: url(../../images/bg-top.gif);
+    color: #fff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    h6 {
+        text-transform: uppercase;
+        margin-bottom: 0;
+
+        @media screen and (max-width: 575px) {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .name-page-right {
+        span {
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 0.875rem;
+        }
+
+        a {
+            color: #fff;
+        }
+    }
+}
