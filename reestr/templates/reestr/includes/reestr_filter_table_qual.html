@@ -1,16 +1,17 @@
 {% load static %}
 <table class="table table-sm table-hover" id="table-qualifications">
 	<tbody>
-		<tr class="table-active font-weight-bold">
+		<tr v-for="qual in qualification_checkboxes" :class="{'table-active font-weight-bold': qual.parent === null}">
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
-					<input type="checkbox" class="custom-control-input" id="400.02">
-					<label class="custom-control-label" for="400.02">40.002</label>
+					<input v-model="qual.selected" @change="selectQual(qual)" type="checkbox" class="custom-control-input" :id="'qual_'+qual.id">
+					<label class="custom-control-label" :for="'qual_'+qual.id">[[ qual.short_name ]]</label>
 				</div>
 			</td>
-			<td>Сварщик</td>
+			<td>[[ qual.full_name ]]</td>
 		</tr>
-		<tr>
+
+		{% comment %} <tr>
 			<td>
 				<div class="custom-control custom-checkbox col-form-label-sm">
 					<input type="checkbox" class="custom-control-input" id="40.00200.01">
@@ -54,6 +55,7 @@
 				</div>
 			</td>
 			<td>Контролер сварочных работ (4 уровень квалификации)</td>
-		</tr>
+		</tr> {% endcomment %}
+
 	</tbody>
 </table>
