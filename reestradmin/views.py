@@ -1,8 +1,10 @@
 from django.shortcuts import render
 
 # Create your views here.
-def hello(request):
+
+def base(request):
+    title = 'ЭДО - НАКС'
     content = {
-        'title': 'reestr admin page'
+        'title': title
     }
     return render(request, 'reestradmin/base.html', content)
