@@ -30,7 +30,7 @@
             <div id="map" class="w-100"></div>
             <!-- End map -->
             <hr class="mt-4">
-            <div id="app_reestr_cok">
+            <div id="app_reestr_cok" v-cloak>
                 <div ref="direction" data-direction="{{ direction.title }}"></div>
 
                 <!-- v-cloak -->
@@ -55,9 +55,9 @@
                         </div>
                         <a href="#" id="btnFilterAc" data-toggle="modal" data-target="#modalFilterReestrAc">Поиск по области деятельности<i class="fa fa-angle-right ml-1"></i></a>
                     </div>
-                    <div class="text-sm">
-                        <button type="button" class="btn btn-outline-primary btn-sm">Сбросить</button>
-                        <span class="text-secondary ml-2">Найдено: <strong class="text-dark">10</strong></span>
+                    <div v-if="filteredCenters.length < reestrCenters.length" class="text-sm">
+                        <button type="button" @click="resetSearch()" class="btn btn-outline-primary btn-sm">Сбросить</button>
+                        <span class="text-secondary ml-2">Найдено: <strong class="text-dark">[[ filteredCenters.length ]]</strong></span>
                     </div>
                 </form> <!-- конец поиска ЦОК -->
                 <hr class="mt-4">
