@@ -1,7 +1,23 @@
 from django.db import models
 from django.utils import timezone
 from datetime import datetime, timedelta
+import requests
+from django.conf import settings
+import os
+import json
+from xml.dom import minidom
 # Create your models here.
+
+def get_maps_api_key():
+    try:
+        if (os.path.join(settings.BASE_DIR, 'secret.json')):
+            secret_file = os.path.join(settings.BASE_DIR, 'secret.json')
+            with open(secret_file, 'r') as secret_file_:
+                secret_data = json.load(secret_file_)
+                api_key = secret_data['maps_api_key']
+        return api_key
+    except Exception as e:
+        print('API ERROR', e)
 
 
 class Spr(models.Model):
@@ -128,6 +144,7 @@ class SROMember(models.Model):
         u'Фактический адрес', null=True, blank=True, max_length=200)
     city = models.ForeignKey(
         City, null=True, blank=True, on_delete=models.SET_NULL)
+    coordinates = models.CharField(u'Координаты для карт', blank=True, null=True, max_length=50)
     chief = models.CharField(u'ФИО руководителя организации', max_length=100)
     phone = models.CharField(u'Телефон(ы)', max_length=100)
     fax = models.CharField(u'Факс', max_length=50)
@@ -143,6 +160,25 @@ class SROMember(models.Model):
 
     def __str__(self):
         return self.short_name
+
+    def save(self, *args, **kwargs):
+        # import pdb; pdb.set_trace()
+        super().save(*args, **kwargs)
+
+    def load_point_coordinates(self, *args, **kwargs):
+        #https://geocode-maps.yandex.ru/1.x/?apikey=ваш API-ключ&geocode=Москва,+Тверская+улица,+дом+7
+        addr_string = self.actual_address.replace(" ", "+")
+        maps_api_url = 'https://geocode-maps.yandex.ru/1.x/?apikey={api_key}&geocode={addr_string}'.format(
+            api_key=get_maps_api_key(),
+            addr_string=addr_string
+        )
+        response = requests.get(maps_api_url)
+        xmldoc = minidom.parseString(response.content.decode('utf8'))
+        coordinateslst = xmldoc.getElementsByTagName('pos')
+        coordinates = coordinateslst[0].firstChild.data
+        self.coordinates = coordinates
+        self.save()
+        print('coordinates:', self.coordinates)
 
 
 class CheckProtocol(models.Model):

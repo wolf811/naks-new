@@ -45,7 +45,7 @@ class AccreditedCenterInline(admin.StackedInline):
 
 @admin.register(SROMember)
 class SROMemberAdmin(admin.ModelAdmin):
-    list_display = ['short_name', 'status', get_accred_centers]
+    list_display = ['short_name', 'full_name', 'status', get_accred_centers]
     inlines = [AccreditedCenterInline]
 
 def get_sro_member(obj):

@@ -7,8 +7,8 @@ if (document.getElementById('app_reestr_cok')) {
                 title: 'app_reestr_cok',
                 direction: null,
                 reestrCenters: [],
-                title_input: '',
-                city_input: '',
+                // title_input: '',
+                // city_input: '',
                 qualification_checkboxes: null,
                 search_parameters: {
                     title: '',

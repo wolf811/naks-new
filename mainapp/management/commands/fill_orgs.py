@@ -150,10 +150,33 @@ qual_list = [
     },
 ]
 
+# /home/popov/Рабочий стол/centers_names_and_addresses.csv
+def load_geo_points():
+    print ('current path', os.getcwd())
+    org_names_and_addresses = []
+    address_file_name = 'centers_names_and_addresses.csv'
+    if (os.path.join(os.getcwd(), address_file_name)):
+        print('file is here', os.path.join(os.getcwd(), address_file_name))
+        address_file = os.path.join(os.getcwd(), address_file_name)
+        with open(address_file, 'rb') as f:
+            lines = f.readlines()
+            for line in lines:
+                address_line = line.decode('utf8').rstrip().split(';')
+                org_name = address_line[0]
+                org_address = address_line[1]
+                org_names_and_addresses.append((org_name, org_address))
+        # print('---->>>> org_names_and_addresses loaded')
+        return org_names_and_addresses
+    else:
+        return []
 
 
 class Command(BaseCommand):
+    geo_points = load_geo_points()
+
     def handle(self, *args, **options):
+        # load geo points
+        load_geo_points()
         SROMember.objects.all().delete()
         SO.objects.all().delete()
         GTU.objects.all().delete()
@@ -168,7 +191,21 @@ class Command(BaseCommand):
             for i in range(30):
                 City.objects.create(title=random.choice(city_titles))
 
-        if SROMember.objects.count() == 0:
+        if len(self.geo_points) > 0:
+            for i in range(len(self.geo_points)):
+                sro_member = mixer.blend(
+                    SROMember,
+                    chief=random.choice(org_chiefs),
+                    short_name='ООО "ОРГ_{}"'.format(i+1),
+                    status=lambda: 'a' if random.randint(0, 100) < 90 else 'na',
+                    full_name=self.geo_points[i][0],
+                    actual_address=self.geo_points[i][1],
+                    ur_address=self.geo_points[i][1],
+                    post_address=self.geo_points[i][1],
+                )
+                sro_member.load_point_coordinates()
+            print('sro orgs loaded from csv file')
+        else:
             for i in range(100):
                 mixer.blend(
                     SROMember,
@@ -176,7 +213,7 @@ class Command(BaseCommand):
                     short_name=random.choice(org_short_titles),
                     status=lambda: 'a' if random.randint(0, 100) < 80 else 'na'
                 )
-        print('sro orgs created')
+            print('sro orgs created')
         for member in SROMember.objects.all():
             member.city = City.objects.order_by("?").first()
             member.save()

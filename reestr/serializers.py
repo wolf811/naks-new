@@ -104,6 +104,9 @@ class CenterSerializer(serializers.ModelSerializer):
     company = serializers.SerializerMethodField()
     active_since = serializers.DateField(format='%d.%m.%Y')
     active_until = serializers.DateField(format='%d.%m.%Y')
+    actual_address = serializers.SerializerMethodField()
+    coordinates = serializers.SerializerMethodField()
+    company_full_name = serializers.SerializerMethodField()
 
     class Meta:
         model = AccreditedCenter
@@ -111,7 +114,10 @@ class CenterSerializer(serializers.ModelSerializer):
             'id',
             'city',
             'company',
+            'company_full_name',
             'active',
+            'actual_address',
+            'coordinates',
             'active_since',
             'active_until',
             'temporary_suspend_date',
@@ -130,6 +136,15 @@ class CenterSerializer(serializers.ModelSerializer):
             'qualifications',
             'cok_nark_code'
         )
+
+    def get_company_full_name(self, obj):
+        return obj.sro_member.full_name
+
+    def get_actual_address(self, obj):
+        return obj.sro_member.actual_address
+
+    def get_coordinates(self, obj):
+        return map(lambda x: float(x), obj.sro_member.coordinates.split(" "))
 
     def get_company(self, obj):
         try:

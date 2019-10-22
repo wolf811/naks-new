@@ -146,6 +146,9 @@
                                     data-target="#collapseAccordFilterAc_06" aria-expanded="false"
                                     aria-controls="collapseAccordFilterAc_06">Профессиональные стандарты,
                                     квалификации&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                            <span v-if="search_parameters.qualifications.length > 0" class="float-sm-right text-secondary">
+                            <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ search_parameters.qualifications.length ]]</span>
+                            </span>
                             </div>
                             <div id="collapseAccordFilterAc_06" class="collapse show"
                                 aria-labelledby="headingAccordFilterAc_06" data-parent="#accordionFilterAc">
