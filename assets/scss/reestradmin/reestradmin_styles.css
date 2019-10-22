@@ -53,7 +53,7 @@ header {
     border-color: #134e8d !important;
     background-color: transparent; }
   .top-menu .navbar-toggler-focus {
-    color: #fff;
+    color: #fff !important;
     background-color: #134e8d !important; }
   .top-menu .navbar-collapse {
     max-width: 1980px;
@@ -262,6 +262,57 @@ footer {
       font-size: 0.8rem; }
     .accordion-left .card .list-group-item .badge {
       width: 25px; }
+
+.centers-list .nav {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem; }
+  .centers-list .nav:hover {
+    border-color: #5CB85C;
+    transition: 0.3s; }
+  .centers-list .nav .nav-link.active {
+    background-color: #6c757d;
+    color: #fff; }
+    .centers-list .nav .nav-link.active:hover {
+      background-color: #6c757d;
+      color: #fff; }
+  .centers-list .nav .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #6c757d;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
+    .centers-list .nav .nav-link:first-child {
+      border-top-left-radius: .25rem;
+      border-top-right-radius: .25rem; }
+    .centers-list .nav .nav-link:last-child {
+      border-bottom-left-radius: .25rem;
+      border-bottom-right-radius: .25rem;
+      border-bottom: none; }
+    .centers-list .nav .nav-link:hover {
+      color: #343a40;
+      background-color: #fff; }
+
+.centers-list .list-group {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem; }
+  @media screen and (max-width: 1199px) {
+    .centers-list .list-group {
+      border-radius: 0;
+      border-bottom: 0; } }
+  .centers-list .list-group:hover {
+    border-color: #5CB85C;
+    transition: 0.3s; }
+  .centers-list .list-group .list-group-item {
+    font-size: 0.875rem;
+    padding: .5rem 1rem; }
+    .centers-list .list-group .list-group-item:first-child {
+      border-top-left-radius: .25rem;
+      border-top-right-radius: .25rem; }
+    .centers-list .list-group .list-group-item:last-child {
+      border-bottom-left-radius: .25rem;
+      border-bottom-right-radius: .25rem;
+      border-bottom: none; }
 
 html,
 body {
