@@ -23,7 +23,7 @@ if (document.getElementById('app_reestr_cok')) {
                 .then(response=>{
                     let reactive_arr = [];
                     let qualifications = response.data[0].qualifications;
-                    console.log('qualifications from api', qualifications);
+                    // console.log('qualifications from api', qualifications);
                     for (var qual of qualifications) {
                         let qual_obj = qual;
                         qual_obj.selected = false;
@@ -73,8 +73,8 @@ if (document.getElementById('app_reestr_cok')) {
                 })
                 this.search_parameters.qualifications = qual_selected_arr;
 
-                console.log('selected quals', this.qualification_checkboxes);
-                console.log('parameters', this.search_parameters);
+                // console.log('selected quals', this.qualification_checkboxes);
+                // console.log('parameters', this.search_parameters);
             },
             saveSearch: function() {
                 console.log('saved search');
@@ -88,7 +88,6 @@ if (document.getElementById('app_reestr_cok')) {
                 for (el of this.qualification_checkboxes) {
                     el.selected = false;
                 }
-                console.log('search reset!');
             }
         },
         computed: {
@@ -96,7 +95,6 @@ if (document.getElementById('app_reestr_cok')) {
                 let search_parameters = this.search_parameters;
                 // console.log('filtering...', search_parameters);
                 let centers = this.reestrCenters;
-                let search_title_string = this.title_input.trim().toLowerCase();
 
                 let show_full_reestr = true;
                 for (var key of Object.keys(this.search_parameters)) {
@@ -122,17 +120,7 @@ if (document.getElementById('app_reestr_cok')) {
                                 return true
                             }();
                 })
-
-                // console.log('centers', centers.length, centers);
                 return centers
-
-                // centers = centers.filter(function(item) {
-                //     if (item.short_code.toLowerCase().indexOf(search_title_string) !== -1 ||
-                //     item.company.toLowerCase().indexOf(search_title_string) !== -1) {
-                //         return item;
-                //     }
-                // })
-                // return centers
             }
         }
     })
