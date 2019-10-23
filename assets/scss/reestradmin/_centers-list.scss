@@ -1,4 +1,14 @@
 .centers-list {
+    .left-main {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+
+        @media screen and (max-width: 575px) {
+            position: static;
+        }
+    }
+
     .nav {
         border: 1px solid rgba(0, 0, 0, .125);
         border-radius: 0.25rem;
@@ -9,7 +19,7 @@
         }
 
         .nav-link.active {
-            background-color: #6c757d;
+            background-color: $primary-light;
             // border-radius: 0;
             color: #fff;
 
@@ -37,8 +47,6 @@
                 border-bottom-left-radius: .25rem;
                 border-bottom-right-radius: .25rem;
                 border-bottom: none;
-
-
             }
 
             &:hover {
@@ -67,8 +75,8 @@
 
         .list-group-item {
             // display: flex;
-// align-items: center;
-// justify-content: space-between;
+            // align-items: center;
+            // justify-content: space-between;
             font-size: 0.875rem;
             padding: .5rem 1rem;
 

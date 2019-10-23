@@ -263,6 +263,14 @@ footer {
     .accordion-left .card .list-group-item .badge {
       width: 25px; }
 
+.centers-list .left-main {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px; }
+  @media screen and (max-width: 575px) {
+    .centers-list .left-main {
+      position: static; } }
+
 .centers-list .nav {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem; }
@@ -270,7 +278,7 @@ footer {
     border-color: #5CB85C;
     transition: 0.3s; }
   .centers-list .nav .nav-link.active {
-    background-color: #6c757d;
+    background-color: #337ab7 !important;
     color: #fff; }
     .centers-list .nav .nav-link.active:hover {
       background-color: #6c757d;

@@ -6,89 +6,43 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-xl-2">
-                    <div class="nav flex-column nav-pills shadow-sm mb-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-acsm-tab" data-toggle="pill" href="#v-pills-acsm" role="tab" aria-controls="v-pills-acsm" aria-selected="true"><span>АЦСМ</span><span class="badge badge-light">64</span></a>
-                        <a class="nav-link" id="v-pills-acso-tab" data-toggle="pill" href="#v-pills-acso" role="tab" aria-controls="v-pills-acso" aria-selected="false"><span>АЦСО</span><span class="badge badge-light">129</span></a>
-                        <a class="nav-link" id="v-pills-acst-tab" data-toggle="pill" href="#v-pills-acst" role="tab" aria-controls="v-pills-acst" aria-selected="false"><span>АЦСТ</span><span class="badge badge-light">148</span></a>
-                        <a class="nav-link" id="v-pills-ac-tab" data-toggle="pill" href="#v-pills-ac" role="tab" aria-controls="v-pills-ac" aria-selected="false"><span>АЦ</span><span class="badge badge-light">182</span></a>
-                        <a class="nav-link" id="v-pills-csp-tab" data-toggle="pill" href="#v-pills-csp" role="tab" aria-controls="v-pills-csp" aria-selected="false"><span>ЦСП</span><span class="badge badge-light">116</span></a>
-                        <a class="nav-link" id="v-pills-osp-tab" data-toggle="pill" href="#v-pills-osp" role="tab" aria-controls="v-pills-osp" aria-selected="false"><span>ОСП</span><span class="badge badge-light">27</span></a>
-                        <a class="nav-link" id="v-pills-cok-tab" data-toggle="pill" href="#v-pills-cok" role="tab" aria-controls="v-pills-cok" aria-selected="false"><span>ЦОК</span><span class="badge badge-light">62</span></a>
-                    </div>
-                    <form class="mb-3 mb-sm-0">
-                        <div class="input-group input-group-sm">
-                            <input type="text" class="form-control" placeholder="шифр, город" aria-describedby="button-addon2">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-search"></i></span>
-                            </div>
+                    <div class="left-main">
+                        <div class="nav flex-column nav-pills shadow-sm mb-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-acsm-tab" data-toggle="pill" href="#v-pills-acsm" role="tab" aria-controls="v-pills-acsm" aria-selected="true"><span><i class="fa fa-angle-right mr-2"></i>АЦСМ</span><span class="badge badge-light">64</span></a>
+                            <a class="nav-link" id="v-pills-acso-tab" data-toggle="pill" href="#v-pills-acso" role="tab" aria-controls="v-pills-acso" aria-selected="false"><span><i class="fa fa-angle-right mr-2"></i>АЦСО</span><span class="badge badge-light">129</span></a>
+                            <a class="nav-link" id="v-pills-acst-tab" data-toggle="pill" href="#v-pills-acst" role="tab" aria-controls="v-pills-acst" aria-selected="false"><span><i class="fa fa-angle-right mr-2"></i>АЦСТ</span><span class="badge badge-light">148</span></a>
+                            <a class="nav-link" id="v-pills-ac-tab" data-toggle="pill" href="#v-pills-ac" role="tab" aria-controls="v-pills-ac" aria-selected="false"><span><i class="fa fa-angle-right mr-2"></i>АЦ</span><span class="badge badge-light">182</span></a>
+                            <a class="nav-link" id="v-pills-csp-tab" data-toggle="pill" href="#v-pills-csp" role="tab" aria-controls="v-pills-csp" aria-selected="false"><span><i class="fa fa-angle-right mr-2"></i>ЦСП</span><span class="badge badge-light">116</span></a>
+                            <a class="nav-link" id="v-pills-osp-tab" data-toggle="pill" href="#v-pills-osp" role="tab" aria-controls="v-pills-osp" aria-selected="false"><span><i class="fa fa-angle-right mr-2"></i>ОСП</span><span class="badge badge-light">27</span></a>
+                            <a class="nav-link" id="v-pills-cok-tab" data-toggle="pill" href="#v-pills-cok" role="tab" aria-controls="v-pills-cok" aria-selected="false"><span><i class="fa fa-angle-right mr-2"></i>ЦОК</span><span class="badge badge-light">62</span></a>
                         </div>
-                    </form>
+                        <form class="mb-3 mb-sm-0">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" placeholder="шифр, город" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-sm-9 col-xl-10">
                     <div class="tab-content mb-3" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-acsm" role="tabpanel" aria-labelledby="v-pills-acsm-tab">
-                            <div class="row">
-                                <div class="col-sm-6 col-xl-3">
-                                    <ul class="list-group list-group-flush shadow-sm">
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-1</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-2</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-3</a><span class="float-right">Ростов-на-Дону</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-4</a><span class="float-right">Уфа</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-5</a><span class="float-right">Москва</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-6</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-7</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-8</a><span class="float-right">Ростов-на-Дону</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-9</a><span class="float-right">Уфа</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-10</a><span class="float-right">Москва</span></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6 col-xl-3">
-                                    <ul class="list-group list-group-flush bg-light shadow-sm">
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-11</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-12</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-13</a><span class="float-right">Ростов-на-Дону</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-14</a><span class="float-right">Уфа</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-15</a><span class="float-right">Москва</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-16</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-17</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-18</a><span class="float-right">Ростов-на-Дону</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-19</a><span class="float-right">Уфа</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-20</a><span class="float-right">Москва</span></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6 col-xl-3">
-                                    <ul class="list-group list-group-flush bg-light shadow-sm">
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-21</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-22</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-23</a><span class="float-right">Ростов-на-Дону</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-24</a><span class="float-right">Уфа</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-25</a><span class="float-right">Москва</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-26</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-27</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-28</a><span class="float-right">Ростов-на-Дону</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-29</a><span class="float-right">Уфа</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-30</a><span class="float-right">Москва</span></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6 col-xl-3">
-                                    <ul class="list-group list-group-flush bg-light shadow-sm">
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-31</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-32</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-33</a><span class="float-right">Ростов-на-Дону</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-34</a><span class="float-right">Уфа</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-35</a><span class="float-right">Москва</span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-36</a><span class="float-right">Санкт-Петербург<span class="text-danger">*</span></span></li>
-                                        <li class="list-group-item list-group-item-action"><a href="#">АЦСМ-37</a><span class="float-right">Воронеж<span class="text-danger">*</span></span></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <!-- acsm list -->
+                            {% include 'reestradmin/includes/example-acsm-list.html' %}
+                            <!-- end acsm list -->
                         </div>
                         <div class="tab-pane fade" id="v-pills-acso" role="tabpanel" aria-labelledby="v-pills-acso-tab">АЦСО</div>
                         <div class="tab-pane fade" id="v-pills-acst" role="tabpanel" aria-labelledby="v-pills-acst-tab">АЦСТ</div>
                         <div class="tab-pane fade" id="v-pills-ac" role="tabpanel" aria-labelledby="v-pills-ac-tab">АЦ</div>
                         <div class="tab-pane fade" id="v-pills-csp" role="tabpanel" aria-labelledby="v-pills-csp-tab">ЦСП</div>
                         <div class="tab-pane fade" id="v-pills-osp" role="tabpanel" aria-labelledby="v-pills-osp-tab">ОСП</div>
-                        <div class="tab-pane fade" id="v-pills-cok" role="tabpanel" aria-labelledby="v-pills-cok-tab">ЦОКи</div>
+                        <div class="tab-pane fade" id="v-pills-cok" role="tabpanel" aria-labelledby="v-pills-cok-tab">
+                            <!-- coks list -->
+                            {% include 'reestradmin/includes/example-coks-list.html' %}
+                            <!-- end coks list -->
+                        </div>
                     </div>
                     <span class="text-danger">*<small> - исключен из реестра</small></span>
                 </div>
@@ -96,4 +50,25 @@
         </div>
     </div>
 </div>
+<!-- <script>
+if ($('.left-main').length > 0) {
+    $(function() {
+        var topPosLeft = $('.left-main').offset().top;
+        $(window).scroll(function() {
+
+            var top = $(document).scrollTop(),
+                pip = $('.footer').offset().top,
+                height = $('.left-main').outerHeight();
+
+            if (top > topPosLeft && top < pip - height) {
+                $('.left-main').addClass('fixed').removeAttr("style");
+            } else if (top > pip - height) {
+                $('.left-main').removeClass('fixed').css({ 'position': 'absolute', 'bottom': '0' });
+            } else {
+                $('.left-main').removeClass('fixed');
+            }
+        });
+    });
+}
+</script> -->
 {% endblock %}
