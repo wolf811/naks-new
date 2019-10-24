@@ -1,0 +1,87 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <!-- Include FILTER-BLOCK -->
+    {% include 'reestradmin/includes/filter-organization.html' %}
+    <!-- End Include FILTER-BLOCK -->
+    <div class="container-fluid">
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-main">
+                <thead>
+                    <tr class="active">
+                        <th colspan="2">Статус, действия</th>
+                        <th>Наименование организации</th>
+                        <th>Город</th>
+                        <th class="text-bold">АЦ</th>
+                        <th class="text-bold">ЦСП</th>
+                        <th class="text-bold">АЦСМ</th>
+                        <th class="text-bold">АЦСО</th>
+                        <th class="text-bold">АЦСТ</th>
+                        <th class="text-bold">ОСП</th>
+                        <th class="text-bold">ЦОК</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="30">
+                            <span class="badge badge-success">Член СРО</span>
+                            <!-- <i class="fa fa-check text-success" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Член СРО"></i> -->
+                        </td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-eye mr-1"></i>Просмотр</a>
+                                    <a class="dropdown-item" href="instructions.html"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-left">АНО ЦЭС "Техкранэнерго"</td>
+                        <td>Владимир</td>
+                        <td><a href="#" class="mr-2">ВВР-2ГАЦ</a><span>15.06.2021</span></td>
+                        <td><a href="#" class="mr-2">ВВР-3ЦСП</a><span>27.12.2020</span></td>
+                        <td></td>
+                        <td><a href="#" class="mr-2">АЦСО-46</a><span>14.04.2020</span></td>
+                        <td><a href="#" class="mr-2">АЦСТ-43</a><span>17.07.2022</span></td>
+                        <td></td>
+                        <td><a href="#" class="mr-2">ЦОК-055</a><span>16.05.2022</span></td>
+                    </tr>
+                    <tr>
+                        <td width="30">
+                            <span class="badge badge-light text-danger">исключен</span>
+                            <!-- <i class="fa fa-check text-muted" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="исключен"></i> -->
+                        </td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-eye mr-1"></i>Просмотр</a>
+                                    <a class="dropdown-item" href="instructions.html"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-left">Автономная некоммерческая организация "АТТЕСТАЦИОННЫЙ ЦЕНТР АТТЕСТАЦИИ СВАРЩИКОВ И СПЕЦИАЛИСТОВ СВАРОЧНОГО ПРОИЗВОДСТВА"</td>
+                        <td>Нижневартовск</td>
+                        <td><a href="#" class="mr-2">СУР-5АЦ</a><span class="text-danger">24.12.2010</span></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="#" class="mr-2">АЦСО-40</a><span class="text-danger">24.12.2010</span></td>
+                        <td><a href="#" class="mr-2">АЦСТ-51</a><span class="text-danger">24.12.2010</span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+    </div>
+</div>
+{% endblock %}

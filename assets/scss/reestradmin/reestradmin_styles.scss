@@ -1,6 +1,7 @@
 // Variables
 $primary: #134e8d !important;
 $primary-light: #337ab7 !important;
+$text-sm: 0.875rem;
 
 // $bg-naks: #337ab7 !important;
 // $bg-naks-hover: #134e8d !important;
@@ -36,7 +37,7 @@ $primary-light: #337ab7 !important;
 // ========== END Document-print styles =========
 
 // ========== Document-print styles =========
-@import "table-documents";
+@import "tables";
 // ========== END Document-print styles =========
 
 // ========== accordion-left styles =========
@@ -226,67 +227,6 @@ body {
     border-bottom-width: 1px;
 }
 
-.table-main {
-    td {
-        text-align: center;
-    }
-
-    a {
-        white-space: nowrap;
-    }
-
-    // .fa {font-size: 1rem;}
-
-    .checkbox label {
-        margin-bottom: 0;
-        margin-top: 5px;
-    }
-
-    .numb-records {
-        font-style: italic;
-        color: #6c757d;
-
-        p {
-            margin-bottom: 0;
-            color: #333;
-        }
-
-        span {
-            font-style: normal;
-            font-weight: bold;
-        }
-
-        button {
-            font-size: 0.8rem;
-            font-style: normal;
-
-            .badge {
-                font-size: 0.8rem;
-            }
-        }
-    }
-
-    td.record-profile {
-        text-align: left;
-        border-top: 2px solid #28a745 !important;
-        background-color: #fff;
-
-        .table-sm {
-            th {
-                color: #6c757d;
-                text-transform: uppercase;
-                font-size: 0.6rem;
-            }
-
-            td {
-                text-align: center;
-                background-color: #fff;
-            }
-        }
-    }
-}
-
-
 a.page-link {
     color: $primary;
 }
@@ -342,6 +282,10 @@ a {
 
 .text-primary {
     color: $primary;
+}
+
+.text-bold {
+    font-weight: bold !important;
 }
 
 .badge-default {

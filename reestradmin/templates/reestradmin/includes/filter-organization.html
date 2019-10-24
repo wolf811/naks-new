@@ -1,0 +1,161 @@
+<div class="filter-block mb-4">
+    <div class="line-filter py-2">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-md mb-2 mb-md-0">
+                    <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-plus mr-2"></i>Добавить организацию</a>
+                </div>
+                <div class="col-md col-lg-5 col-xl-4 float-sm-right">
+                    <form>
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" placeholder="Поиск..." aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit" id="button-addon2" title="Найти"><i class="fa fa-search"></i></button>
+                                <button type="button" class="btn btn-primary" data-toggle="collapse" href="#collapse-filter" role="button" aria-expanded="false" aria-controls="collapse-filter">Фильтр <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="collapse filter py-3" id="collapse-filter">
+        <!-- Расширенный фильтр -->
+        <div class="container-fluid">
+            <form role="form">
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-xl-1">
+                        <div class="form-group">
+                            <label class="label-sm" for="">АЦ / ЦОК</label>
+                            <select class="form-control form-control-sm" id="">
+                                <option>все</option>
+                                <option>АЦ</option>
+                                <option>АЦСМ</option>
+                                <option>АЦСО</option>
+                                <option>АЦСТ</option>
+                                <option>ЦСП</option>
+                                <option>ЦОК</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-1">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Номер</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Город</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-xl-4">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Наименование организации</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Вид документа</label>
+                            <select class="form-control form-control-sm" id="">
+                                <option>все</option>
+                                <option>Продление</option>
+                                <option>Расширение состава комиссии</option>
+                                <option>Создание, окончание</option>
+                                <option>Инспекционная проверка</option>
+                                <option>Расширение области деятельности</option>
+                                <option>Дополнительный АП</option>
+                                <option>Расширение области деятельности АП</option>
+                                <option>Аккредитация</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Дата форм-ния от</label>
+                            <input type="date" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">до</label>
+                            <input type="date" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">№ заявки</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Дата заявки от</label>
+                            <input type="date" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">до</label>
+                            <input type="date" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Эксперт</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label label-sm" for="inlineCheckbox1">НАКС</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label label-sm" for="inlineCheckbox2">НЭДК</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                            <label class="form-check-label label-sm" for="inlineCheckbox3">Рабочая группа</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Статус</label>
+                            <select class="form-control form-control-sm" id="">
+                                <option>все</option>
+                                <option>Новые</option>
+                                <option>Готовые</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Срок пров. работ от</label>
+                            <input type="date" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">до</label>
+                            <input type="date" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search mr-2"></i>Найти</button>
+                <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+            </form>
+        </div>
+    </div>
+</div>

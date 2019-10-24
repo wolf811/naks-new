@@ -132,13 +132,13 @@ $('#to-recovery').click(function() {
 
 // Авторизация/Регистрация - для заявок
 // $('#for-registration').click(function() {
-// 	$('#registration-appl').fadeIn('slow');
-// 	$('#login-page').hide();
+//  $('#registration-appl').fadeIn('slow');
+//  $('#login-page').hide();
 // });
 
 // $('#to-authorization').click(function() {
-// 	$('#login-page').fadeIn('slow');
-// 	$('#registration-page').hide();
+//  $('#login-page').fadeIn('slow');
+//  $('#registration-page').hide();
 // });
 
 $('#save-reg-appl').click(function() {
@@ -158,12 +158,12 @@ $('#to-recovery').click(function() {
 });
 
 // jQuery(document).ready(function($) {
-// 	var url=document.location.href;
-// 	$.each($("#menu a"),function(){
-// 		if(this.href==url){
-// 			$(this).addClass('active');
-// 		}
-// 	});
+//  var url=document.location.href;
+//  $.each($("#menu a"),function(){
+//      if(this.href==url){
+//          $(this).addClass('active');
+//      }
+//  });
 // });
 
 // Изменение текста при меньшем разрешении экрана
@@ -191,23 +191,23 @@ $(document).ready(function() {
 
 
 //     var data = {
-//     	'modal-title': 'Форум «Территория NDT»',
-//     	'modal-text': 'Ежегодный Форум «Территория NDT» является ведущей профессиональной \
-//     	площадкой для конструктивного диалога заинтересованных сторон и демонстрации новейших \
-//     	достижений и разработок. Крупнейшая специализированная выставка оборудования и технологий \
-//     	неразрушающего контроля и технической диагностики ежегодно объединяет более 100 компаний – \
-//     	разработчиков и поставщиков российских и зарубежных брендов, сервисные учебные и сертификационные \
-//     	центры, ВУЗы, НИИ, специализированные издания.',
-//     	'modal-photos': ['/static/images/NDT-0617.jpg', '/static/images/NDT-0427.jpg', '/static/images/IMG_7428.JPG']
+//      'modal-title': 'Форум «Территория NDT»',
+//      'modal-text': 'Ежегодный Форум «Территория NDT» является ведущей профессиональной \
+//      площадкой для конструктивного диалога заинтересованных сторон и демонстрации новейших \
+//      достижений и разработок. Крупнейшая специализированная выставка оборудования и технологий \
+//      неразрушающего контроля и технической диагностики ежегодно объединяет более 100 компаний – \
+//      разработчиков и поставщиков российских и зарубежных брендов, сервисные учебные и сертификационные \
+//      центры, ВУЗы, НИИ, специализированные издания.',
+//      'modal-photos': ['/static/images/NDT-0617.jpg', '/static/images/NDT-0427.jpg', '/static/images/IMG_7428.JPG']
 
 //     };
 
 // function insertToModal (data) {
-// 	$('.modal-title').html(data['modal-title']);
-// 	$('.modal-text').html(data['modal-text']);
-// 	for(var element of data['modal-photos']) {
-// 		$($('.carousel-inner > .carousel-item')[data['modal-photos'].indexOf(element)]).attr('src', element);
-// 	}
+//  $('.modal-title').html(data['modal-title']);
+//  $('.modal-text').html(data['modal-text']);
+//  for(var element of data['modal-photos']) {
+//      $($('.carousel-inner > .carousel-item')[data['modal-photos'].indexOf(element)]).attr('src', element);
+//  }
 // }
 
 // insertToModal(data);
@@ -297,3 +297,23 @@ $('#btnSubscription').click(function() {
     }, 1500);
     return false;
 })
+
+
+// $(function() {
+
+            //     let pathname_url = window.location.pathname;
+            //     let href_url = window.location.href;
+
+            //     $(".navbar-nav .nav-item").each(function() {
+
+            //         let link = $(this).find(".nav-link").attr("href");
+
+            //         if (pathname_url == link || href_url == link) {
+
+            //             $(this).addClass("active");
+
+            //         }
+
+            //     });
+
+            // });

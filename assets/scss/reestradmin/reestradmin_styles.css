@@ -215,6 +215,43 @@ footer {
     vertical-align: middle;
     line-height: 1.2; }
 
+.table-main td {
+  text-align: center; }
+
+.table-main a {
+  white-space: nowrap; }
+
+.table-main .checkbox label {
+  margin-bottom: 0;
+  margin-top: 5px; }
+
+.table-main .numb-records {
+  font-style: italic;
+  color: #6c757d; }
+  .table-main .numb-records p {
+    margin-bottom: 0;
+    color: #333; }
+  .table-main .numb-records span {
+    font-style: normal;
+    font-weight: bold; }
+  .table-main .numb-records button {
+    font-size: 0.8rem;
+    font-style: normal; }
+    .table-main .numb-records button .badge {
+      font-size: 0.8rem; }
+
+.table-main td.record-profile {
+  text-align: left;
+  border-top: 2px solid #28a745 !important;
+  background-color: #fff; }
+  .table-main td.record-profile .table-sm th {
+    color: #6c757d;
+    text-transform: uppercase;
+    font-size: 0.6rem; }
+  .table-main td.record-profile .table-sm td {
+    text-align: center;
+    background-color: #fff; }
+
 .table-documents {
   font-size: 0.875rem; }
   .table-documents td {
@@ -464,43 +501,6 @@ body {
 .table-bordered > thead > tr > th {
   border-bottom-width: 1px; }
 
-.table-main td {
-  text-align: center; }
-
-.table-main a {
-  white-space: nowrap; }
-
-.table-main .checkbox label {
-  margin-bottom: 0;
-  margin-top: 5px; }
-
-.table-main .numb-records {
-  font-style: italic;
-  color: #6c757d; }
-  .table-main .numb-records p {
-    margin-bottom: 0;
-    color: #333; }
-  .table-main .numb-records span {
-    font-style: normal;
-    font-weight: bold; }
-  .table-main .numb-records button {
-    font-size: 0.8rem;
-    font-style: normal; }
-    .table-main .numb-records button .badge {
-      font-size: 0.8rem; }
-
-.table-main td.record-profile {
-  text-align: left;
-  border-top: 2px solid #28a745 !important;
-  background-color: #fff; }
-  .table-main td.record-profile .table-sm th {
-    color: #6c757d;
-    text-transform: uppercase;
-    font-size: 0.6rem; }
-  .table-main td.record-profile .table-sm td {
-    text-align: center;
-    background-color: #fff; }
-
 a.page-link {
   color: #134e8d !important; }
 
@@ -544,6 +544,9 @@ a {
 
 .text-primary {
   color: #134e8d !important; }
+
+.text-bold {
+  font-weight: bold !important; }
 
 .badge-default {
   color: #fff;

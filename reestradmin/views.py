@@ -15,3 +15,10 @@ def centers_list(request):
         'title': title
     }
     return render(request, 'reestradmin/centers_list.html', content)
+
+def organization_list(request):
+    title = 'ЭДО - Организации'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/organization_list.html', content)
