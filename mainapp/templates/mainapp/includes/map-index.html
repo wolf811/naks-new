@@ -5,24 +5,27 @@
         <div class="nav-docs">
             <div class="row mt-5 mb-4">
                 <div class="col-sm-6 col-lg-3 mb-4">
-                    <button type="button" class="btn btn-outline-danger btn-block active">Члены СРО Ассоциация
+                    <button @click="buttonPress('sroMembers')" type="button" :class="[show_map=='sroMembers' ? 'btn btn-outline-danger btn-block active' : 'btn btn-outline-danger btn-block']">Члены СРО Ассоциация
                         НАКС</button>
                 </div>
                 <div class="col-sm-6 col-lg-3 mb-4">
-                    <button type="button" class="btn btn-outline-danger btn-block">Аттестационные центры</button>
+                    <button @click="buttonPress('allCenters')" type="button" :class="[show_map=='allCenters' ? 'btn btn-outline-danger btn-block active' : 'btn btn-outline-danger btn-block']">Аттестационные центры</button>
                 </div>
                 <div class="col-sm-6 col-lg-3 mb-4">
-                    <button type="button" class="btn btn-outline-danger btn-block">Центры оценки квалификаций</button>
+                    <button @click="buttonPress('allCoks')" type="button" :class="[show_map=='allCoks' ? 'btn btn-outline-danger btn-block active' : 'btn btn-outline-danger btn-block']">Центры оценки квалификаций</button>
                 </div>
                 <div class="col-sm-6 col-lg-3 mb-4">
-                    <button type="button" class="btn btn-outline-danger btn-block">Органы по сертификации</button>
+                    <button @click="buttonPress('allCertCenters')" type="button" :class="[show_map=='allCertCenters' ? 'btn btn-outline-danger btn-block active' : 'btn btn-outline-danger btn-block']">Органы по сертификации</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Yandex Maps -->
-    <div id="map" class="map-block w-100">
+    <div v-if="reestrCenters.length == 0" class="text-center"  style="height: 375px;">
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw text-primary"></i>
+    </div>
+    <div v-else id="map" class="map-block w-100">
         <div class="container">
             <button id="btnFilterIndex" class="btn btn-light btn-sm shadow" data-toggle="modal"
                 data-target="#modalFilterIndexMap"><i class="fa fa-search mr-1"></i>Поиск по области

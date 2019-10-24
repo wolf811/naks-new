@@ -4,24 +4,30 @@ var vm_map = new Vue({
     el: '#app_map_points',
     data() {
         return {
-            title: 'app_reestr_cok',
-            direction: null,
+            title: 'app_reestr_map',
+            show_map: 'sroMembers',
             reestrCenters: [],
-            search_parameters: {
-                title: '',
-                city: '',
-            },
             accred_fields: {},
-            qualification_checkboxes: []
+            qualification_checkboxes: [],
+            search_parameters: {
+                direction: '',
+                levels: [],
+                activities: [],
+                weldtypes: [],
+                gtus: [],
+                sm_types: [],
+                so_types: [],
+                qualifications: []
+            }
         }
     },
     beforeMount() {
-        console.log('1');
+        console.log('beforeMount');
         this.check_local_storage_and_cookie();
         this.update_dirs();
     },
     mounted() {
-        console.log('2');
+        console.log('Mounted');
     },
     methods: {
         update_dirs: function() {
@@ -96,10 +102,19 @@ var vm_map = new Vue({
                 });
         },
         map_render: function() {
+            $('ymaps').remove();
             ymaps.ready(this.map_init);
         },
         map_init: function() {
-            let points = Array.from(this.reestrCenters.filter(element => element.active == true), function (item) {
+            let unique_companies = Array.from(new Set(Array.from(this.reestrCenters.filter(el=> el.active == true), item=>item.company_full_name)));
+
+            let select_objects = {
+                'sroMembers': false,
+                'allCenters': this.reestrCenters.filter(el=> el.active == true),
+                'allCoks': this.reestrCenters.filter(el=> el.direction == 'qualifications'),
+                'allCertCenters': this.reestrCenters.filter(el=> el.direction == 'certification')
+            };
+            let points = Array.from(select_objects[this.show_map], function (item) {
                 var org_obj = {
                     'coordinates': [item.coordinates[1], item.coordinates[0]],
                     'title': item.company,
@@ -107,10 +122,13 @@ var vm_map = new Vue({
                     'address': item.actual_address,
                     'direction': item.direction,
                     'short_code': item.short_code,
-                    'id': item.id
+                    'id': item.id,
+                    'company': item.company,
+                    'city': item.city,
                 }
                 return org_obj
             });
+
             var myMap = new ymaps.Map('map', {
                     center: [61.698653, 99.505405],
                     zoom: 3,
@@ -137,6 +155,7 @@ var vm_map = new Vue({
                     'qualifications': 'brown',
                     'specpod': 'darkcyan'
                 };
+
                 let objectManager = new ymaps.ObjectManager({
                     // Чтобы метки начали кластеризоваться, выставляем опцию.
                     clusterize: true,
@@ -144,22 +163,68 @@ var vm_map = new Vue({
                     gridSize: 32,
                     clusterDisableClickZoom: true
                 });
+
                 let currentId = 0;
-                var objects = [];
+                let objects = [];
                 for (var point of points) {
-                  objects.push({
-                        type:'Feature',
-                        id: currentId++,
-                        geometry: {
-                            type: 'Point',
-                            coordinates: point.coordinates
+                    let point_templates = {
+                        'sroMembers': {
+                            type:'Feature',
+                            id: currentId++,
+                            geometry: {
+                                type: 'Point',
+                                coordinates: point.coordinates
+                            },
+                            properties: {
+                                clusterCaption: point.city,
+                                hintContent: point.company,
+                                balloonContent: point.company_full_name,
+                            }
                         },
-                        properties: {
-                            clusterCaption: point.short_code,
-                            hintContent: point.title,
-                            balloonContent: point.company_full_name,
-                        }
-                    })
+                        'allCenters': {
+                                type:'Feature',
+                                id: currentId++,
+                                geometry: {
+                                    type: 'Point',
+                                    coordinates: point.coordinates
+                                },
+                                properties: {
+                                    clusterCaption: point.short_code,
+                                    hintContent: point.title,
+                                    balloonContent: point.company_full_name,
+                                }
+                            },
+                        'allCoks': {
+                                type:'Feature',
+                                id: currentId++,
+                                geometry: {
+                                    type: 'Point',
+                                    coordinates: point.coordinates
+                                },
+                                properties: {
+                                    clusterCaption: point.short_code,
+                                    hintContent: point.title,
+                                    balloonContent: point.company_full_name,
+                                },
+                                options: {
+                                    fillColor: "0066ff99"
+                                }
+                            },
+                        'allCertCenters': {
+                                type:'Feature',
+                                id: currentId++,
+                                geometry: {
+                                    type: 'Point',
+                                    coordinates: point.coordinates
+                                },
+                                properties: {
+                                    clusterCaption: point.short_code,
+                                    hintContent: point.title,
+                                    balloonContent: point.company_full_name,
+                                }
+                            },
+                    }
+                  objects.push(point_templates[this.show_map])
                 }
                 objectManager.add(objects);
                 myMap.geoObjects.add(objectManager);
@@ -173,6 +238,27 @@ var vm_map = new Vue({
 
             //МОЁ - чтобы при скролле странице, карта не масштабировалась
             myMap.behaviors.disable('scrollZoom');
+        },
+        buttonPress: function(parameter) {
+            this.show_map = parameter
+            switch (parameter) {
+                case 'sroMembers':
+                    console.log(parameter);
+                    break;
+                case 'allCenters':
+                    console.log(parameter);
+                    break;
+                case 'allCoks':
+                    console.log(parameter);
+                    break;
+                case 'allCertCenters':
+                    console.log(parameter);
+                    break;
+                default:
+                    break;
+            }
+            this.map_render();
+            console.log('this show map', this.show_map);
         }
     }
 })
