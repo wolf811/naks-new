@@ -3,7 +3,7 @@ from .useful import serializer_factory
 
 
 from .models import AccreditedCenter, Level, WeldType, GTU, Activity
-from .models import SM, SO, Qualification
+from .models import SM, SO, Qualification, SROMember
 
 
 def create_serializer_class(cls, fields=None):
@@ -159,3 +159,27 @@ class CenterSerializer(serializers.ModelSerializer):
         except Exception as e:
             print('CITY ERROR', obj, e)
             return ''
+
+
+class SROMemberSerializer(serializers.ModelSerializer):
+    centers = serializers.SerializerMethodField()
+    coordinates = serializers.SerializerMethodField()
+    class Meta:
+        model = SROMember
+        fields = (
+            'id',
+            'short_name',
+            'full_name',
+            'actual_address',
+            'phone',
+            'email',
+            'svid_number',
+            'centers',
+            'coordinates'
+            )
+
+    def get_coordinates(self, obj):
+        return obj.coordinates.split(" ")
+
+    def get_centers(self, obj):
+        return " ".join([c.short_code for c in AccreditedCenter.objects.filter(active=True, sro_member=obj)])

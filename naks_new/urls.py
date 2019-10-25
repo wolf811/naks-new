@@ -35,6 +35,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'posts', mainapp.PostViewSet)
 router.register(r'centers', reestr.CentersViewSet)
+router.register(r'sro-members', reestr.SROMembersViewSet)
 router.register(r'dirs', reestr.DirectoriesViewSet, basename='directories')
 
 sitemaps = {

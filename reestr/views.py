@@ -88,3 +88,8 @@ class CentersViewSet(viewsets.ModelViewSet):
     serializer_class = CenterSerializer
 
 
+class SROMembersViewSet(viewsets.ModelViewSet):
+    queryset = SROMember.objects.filter(status='a')
+    serializer_class = SROMemberSerializer
+
+

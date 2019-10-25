@@ -6,6 +6,7 @@ var vm_map = new Vue({
         return {
             title: 'app_reestr_map',
             show_map: 'sroMembers',
+            sroMembers: [],
             reestrCenters: [],
             accred_fields: {},
             qualification_checkboxes: [],
@@ -23,6 +24,7 @@ var vm_map = new Vue({
     },
     beforeMount() {
         console.log('beforeMount');
+        this.getOrUpdateSroMembers();
         this.check_local_storage_and_cookie();
         this.update_dirs();
     },
@@ -30,6 +32,24 @@ var vm_map = new Vue({
         console.log('Mounted');
     },
     methods: {
+        getOrUpdateSroMembers: function() {
+            let sroMembersUpdatedFlag = this.$cookies.get("sro_members_updated");
+            if (localStorage.reestrSroMembers && sroMembersUpdatedFlag) {
+                this.sroMembers = JSON.parse(localStorage.reestrSroMembers);
+            } else {
+                axios
+                    .get('/naks_api/sro-members/')
+                    .then(response=> {
+                        localStorage.reestrSroMembers = JSON.stringify(response.data);
+                        var loaded_arr = JSON.parse(localStorage.reestrSroMembers);
+                        this.sroMembers = loaded_arr;
+                    })
+                    .finally(()=>{
+                        this.$cookies.set("sro_members_updated", "1", "1h");
+                        console.log('finally sro_members updated');
+                    })
+            }
+        },
         update_dirs: function() {
             axios
             .get('/naks_api/dirs/')
@@ -109,25 +129,44 @@ var vm_map = new Vue({
             let unique_companies = Array.from(new Set(Array.from(this.reestrCenters.filter(el=> el.active == true), item=>item.company_full_name)));
 
             let select_objects = {
-                'sroMembers': false,
-                'allCenters': this.reestrCenters.filter(el=> el.active == true),
+                'sroMembers': this.sroMembers,
+                'allCenters': this.reestrCenters.filter(el=> el.active == true && el.direction != 'qualifications'),
                 'allCoks': this.reestrCenters.filter(el=> el.direction == 'qualifications'),
                 'allCertCenters': this.reestrCenters.filter(el=> el.direction == 'certification')
             };
-            let points = Array.from(select_objects[this.show_map], function (item) {
-                var org_obj = {
-                    'coordinates': [item.coordinates[1], item.coordinates[0]],
-                    'title': item.company,
-                    'company_full_name': item.company_full_name,
-                    'address': item.actual_address,
-                    'direction': item.direction,
-                    'short_code': item.short_code,
-                    'id': item.id,
-                    'company': item.company,
-                    'city': item.city,
+            let points = [];
+            if (this.show_map !== 'sroMembers') {
+                points = Array.from(select_objects[this.show_map], function (item) {
+                    var org_obj = {
+                        'coordinates': [item.coordinates[1], item.coordinates[0]],
+                        'title': item.company,
+                        'company_full_name': item.company_full_name,
+                        'address': item.actual_address,
+                        'direction': item.direction,
+                        'short_code': item.short_code,
+                        'id': item.id,
+                        'company': item.company,
+                        'city': item.city,
+                    }
+                    return org_obj
+                })} else {
+                    points = Array.from(
+                        select_objects[this.show_map], function (item) {
+                            var org_obj = {
+                                'coordinates': [item.coordinates[1], item.coordinates[0]],
+                                'short_name': item.short_name,
+                                'full_name': item.full_name,
+                                'company_full_name': item.company_full_name,
+                                'address': item.actual_address,
+                                'id': item.id,
+                                'centers': item.centers,
+                                'phone': item.phone,
+                                'email': item.email
+                            }
+                            return org_obj
+                        }
+                    )
                 }
-                return org_obj
-            });
 
             var myMap = new ymaps.Map('map', {
                     center: [61.698653, 99.505405],
@@ -176,9 +215,16 @@ var vm_map = new Vue({
                                 coordinates: point.coordinates
                             },
                             properties: {
-                                clusterCaption: point.city,
-                                hintContent: point.company,
-                                balloonContent: point.company_full_name,
+                                clusterCaption: point.short_name,
+                                hintContent: point.short_name,
+                                balloonContent:
+                                `
+                                    ${point.full_name}<br>
+                                    Адрес: ${point.address}<br>
+                                    Телефон: ${point.phone}<br>
+                                    E-mail: ${point.email}<br>
+                                    Центры организации: ${point.centers}
+                                `
                             }
                         },
                         'allCenters': {
@@ -241,24 +287,7 @@ var vm_map = new Vue({
         },
         buttonPress: function(parameter) {
             this.show_map = parameter
-            switch (parameter) {
-                case 'sroMembers':
-                    console.log(parameter);
-                    break;
-                case 'allCenters':
-                    console.log(parameter);
-                    break;
-                case 'allCoks':
-                    console.log(parameter);
-                    break;
-                case 'allCertCenters':
-                    console.log(parameter);
-                    break;
-                default:
-                    break;
-            }
             this.map_render();
-            console.log('this show map', this.show_map);
         }
     }
 })
