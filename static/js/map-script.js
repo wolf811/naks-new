@@ -1,4 +1,13 @@
 // загружаем координаты точек для яндекса
+$(document).ready(function(){
+    console.log('jq ready');
+    $('a.map-btn-test').on('click',
+        function() {
+            console.log('test', this);
+        }
+    )
+})
+
 var vm_map = new Vue({
     delimiters: ['[[', ']]'],
     el: '#app_map_points',
@@ -23,7 +32,6 @@ var vm_map = new Vue({
         }
     },
     beforeMount() {
-        console.log('beforeMount');
         this.getOrUpdateSroMembers();
         this.check_local_storage_and_cookie();
         this.update_dirs();
@@ -125,19 +133,22 @@ var vm_map = new Vue({
             $('ymaps').remove();
             ymaps.ready(this.map_init);
         },
+        test_console: function(e) {
+            e.preventDefault();
+            console.log(this, 'click console');
+        },
         map_init: function() {
-            let unique_companies = Array.from(new Set(Array.from(this.reestrCenters.filter(el=> el.active == true), item=>item.company_full_name)));
-
             let select_objects = {
                 'sroMembers': this.sroMembers,
                 'allCenters': this.reestrCenters.filter(el=> el.active == true && el.direction != 'qualifications'),
-                'allCoks': this.reestrCenters.filter(el=> el.direction == 'qualifications'),
-                'allCertCenters': this.reestrCenters.filter(el=> el.direction == 'certification')
+                'allCoks': this.reestrCenters.filter(el=> el.active == true && el.direction == 'qualifications'),
+                'allCertCenters': this.reestrCenters.filter(el => el.active == true && el.direction == 'certification')
             };
             let points = [];
             if (this.show_map !== 'sroMembers') {
-                points = Array.from(select_objects[this.show_map], function (item) {
-                    var org_obj = {
+                points = Array.from(
+                    select_objects[this.show_map], function (item) {
+                    var point_obj = {
                         'coordinates': [item.coordinates[1], item.coordinates[0]],
                         'title': item.company,
                         'company_full_name': item.company_full_name,
@@ -148,11 +159,11 @@ var vm_map = new Vue({
                         'company': item.company,
                         'city': item.city,
                     }
-                    return org_obj
+                    return point_obj
                 })} else {
                     points = Array.from(
                         select_objects[this.show_map], function (item) {
-                            var org_obj = {
+                            var point_obj = {
                                 'coordinates': [item.coordinates[1], item.coordinates[0]],
                                 'short_name': item.short_name,
                                 'full_name': item.full_name,
@@ -163,7 +174,7 @@ var vm_map = new Vue({
                                 'phone': item.phone,
                                 'email': item.email
                             }
-                            return org_obj
+                            return point_obj
                         }
                     )
                 }
@@ -205,6 +216,14 @@ var vm_map = new Vue({
 
                 let currentId = 0;
                 let objects = [];
+                let point_directions = {
+                    'personal': 'Аттестация персонала сварочного производства',
+                    'attsm': 'Аттестация сварочных материалов',
+                    'attso': 'Аттестация сварочного оборудования',
+                    'attst': 'Атестация сварочных технологий',
+                    'qualifications': 'Оценка квалификации в области сварки и контроля',
+                    'specpod': 'Специальная подготовка персонала сварочного производства'
+                }
                 for (var point of points) {
                     let point_templates = {
                         'sroMembers': {
@@ -237,8 +256,15 @@ var vm_map = new Vue({
                                 properties: {
                                     clusterCaption: point.short_code,
                                     hintContent: point.title,
-                                    balloonContent: point.company_full_name,
+                                    balloonContent:
+                                    `
+                                    Центр на базе: ${point.company_full_name}<br>
+                                    Направление деятельности: ${point_directions[point.direction]}<br>
+                                    <a href="#" class="map-btn-test btn btn-primary btn-xs mt-2">Подробнее</a>
+                                    `,
                                 }
+                                // пример событий балуна и кластера
+                                // https://tech.yandex.ru/maps/jsbox/2.1/event_rollover
                             },
                         'allCoks': {
                                 type:'Feature',
