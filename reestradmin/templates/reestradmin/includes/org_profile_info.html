@@ -1,0 +1,188 @@
+{% load static %}
+<div class="container">
+    <div class="static-text">
+        <div id="infoEdit">
+            <h5>АНО "Вологодский региональный аттестационный центр"<br><small class="text-secondary"><span class="mr-2">Страхование деятельности до:</span><span>14.11.2019</span></small></h5>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Полное наименование:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>Автономная некоммерческая организация "Вологодский региональный аттестационный центр"</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">ИНН:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>3525094420</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Город:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>Вологда</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Юридический адрес:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>160014, город Вологда, улица Саммера, дом 43</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Фактический адрес:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>160014, город Вологда, улица Саммера, дом 43</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Почтовый адрес:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>160014, город Вологда, улица Саммера, дом 43</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Руководитель организации:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>Викулов Вадим Александрович</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Телефон:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>+7 (8172) 27-23-03, 28-10-03</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Факс:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>+7 (8172) 27-23-03, 28-10-03</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">E-mail:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>vikulov@vologda.ru</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Web-сайт:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div><a href="http://weld35.ru/" target="_blank">www.weld35.ru</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <!-- <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAccessDocs">Изменить</button> -->
+                <button id="btnEditInfo" class="btn btn-outline-primary btn-sm" type="button">Изменить</button>
+            </div>
+        </div>
+        <form id="orgInfoEdit" class="editing-form" style="display: none;">
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label">Сокращенное наименование<span class="text-danger">*</span></label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label">Полное наименование</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label">Идентификационный признак<span class="text-danger">*</span></label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="ИНН/VAT/USt-ld и т.д." required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label">Страна / Город<span class="text-danger">*</span></label>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <select class="form-control">
+                        <option>-</option>
+                        <option>Россия</option>
+                        <option>КНР</option>
+                        <option>Казахстан</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Город" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label">Юридический адрес<span class="text-danger">*</span></label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label">Руководитель организации</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label">Сайт / E-mail<span class="text-danger">*</span></label>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="e-mail" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label">Телефон<span class="text-danger">*</span> / Факс</label>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <input type="text" class="form-control" placeholder="телефон" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
+            <button id="cancelInfoEdit" class="btn btn-outline-primary btn-sm" type="button">Отмена</button>
+        </form>
+    </div>
+</div>

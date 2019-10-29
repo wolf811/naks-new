@@ -61,13 +61,13 @@ $(document).ready(() => {
 
     // Сроки проведения аттестации
     // $('.popper').popover({
-    // 	container: 'body',
-    // 	placement: 'top',
-    // 	trigger: 'hover',
-    // 	html: true,
-    // 	content: function() {
-    // 		return $(this).next('.popper-content').html();
-    // 	}
+    //  container: 'body',
+    //  placement: 'top',
+    //  trigger: 'hover',
+    //  html: true,
+    //  content: function() {
+    //      return $(this).next('.popper-content').html();
+    //  }
     // });
 
     // Сведения об организации
@@ -85,9 +85,9 @@ $(document).ready(() => {
     });
 
     // $(document).on('click', '.static-text-sublevel a[data-toggle="collapse"]', function (event) {
-    // 	event.preventDefault();
-    // 	$('.static-text-sublevel a[data-toggle="collapse"]').removeClass('active');
-    // 	$(this).addClass('active');
+    //  event.preventDefault();
+    //  $('.static-text-sublevel a[data-toggle="collapse"]').removeClass('active');
+    //  $(this).addClass('active');
     // });
 
     // Просмотр по людям/записям
@@ -137,3 +137,12 @@ $(document).ready(() => {
 //         $('.left-main').removeClass('fixed-left-main');
 //     }
 // })
+
+$('#btnEditInfo').click(function() {
+    $('#orgInfoEdit').show('fade');
+    $('#infoEdit').hide();
+});
+$('#cancelInfoEdit').click(function() {
+    $('#orgInfoEdit').hide();
+    $('#infoEdit').show('fade');
+});

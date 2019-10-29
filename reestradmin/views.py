@@ -22,3 +22,17 @@ def organization_list(request):
         'title': title
     }
     return render(request, 'reestradmin/organization_list.html', content)
+
+def organization_profile(request):
+    title = 'ЭДО - Профиль организации'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/organization_profile.html', content)
+
+def organization_edit(request):
+    title = 'ЭДО - Профиль организации'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/organization_edit.html', content)

@@ -383,15 +383,17 @@ body {
       margin-bottom: 0; }
   .panel .panel-body {
     padding-bottom: 1.25rem; }
-  .panel .static-text .row-main {
-    background-color: #f8f9fa;
-    padding: 0.5rem 1rem;
-    border-bottom: 1px solid #dee2e6; }
-    .panel .static-text .row-main:first-child {
-      border-top: 1px solid #dee2e6; }
-    .panel .static-text .row-main:hover {
-      background-color: transparent;
-      transition: 0.2s; }
+  .panel .static-text {
+    box-shadow: 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+    .panel .static-text .row-main {
+      background-color: #f8f9fa;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid #dee2e6; }
+      .panel .static-text .row-main:first-child {
+        border-top: 1px solid #dee2e6; }
+      .panel .static-text .row-main:hover {
+        background-color: transparent;
+        transition: 0.2s; }
   .panel .static-text-sublevel {
     margin-bottom: 0.5rem; }
     .panel .static-text-sublevel p {
@@ -604,15 +606,17 @@ a {
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
 
-.accordion-main .static-text .row-main {
-  background-color: #f8f9fa;
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid #dee2e6; }
-  .accordion-main .static-text .row-main:first-child {
-    border-top: 1px solid #dee2e6; }
-  .accordion-main .static-text .row-main:hover {
-    background-color: transparent;
-    transition: 0.2s; }
+.accordion-main .static-text {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+  .accordion-main .static-text .row-main {
+    background-color: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #dee2e6; }
+    .accordion-main .static-text .row-main:first-child {
+      border-top: 1px solid #dee2e6; }
+    .accordion-main .static-text .row-main:hover {
+      background-color: transparent;
+      transition: 0.2s; }
 
 .accordion-main .static-text-sublevel {
   margin-bottom: 0.5rem; }
@@ -621,5 +625,9 @@ a {
     margin-bottom: 0.5rem; }
     .accordion-main .static-text-sublevel p:last-child {
       margin-bottom: 0; }
+
+.accordion-main .editing-form {
+  background-color: #f8f9fa;
+  padding: 0.5rem 1rem; }
 
 /*# sourceMappingURL=reestradmin_styles.css.map */

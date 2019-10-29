@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row ">
                 <div class="col-md mb-2 mb-md-0">
-                    <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-plus mr-2"></i>Добавить организацию</a>
+                    <a href="{% url 'reestradmin:organization_edit' %}" class="btn btn-sm btn-primary"><i class="fa fa-plus mr-2"></i>Добавить организацию</a>
                 </div>
                 <div class="col-md col-lg-5 col-xl-4 float-sm-right">
                     <form>
@@ -23,80 +23,78 @@
         <!-- Расширенный фильтр -->
         <div class="container-fluid">
             <form role="form">
-                <div class="row">
-                    <div class="col-6 col-sm-4 col-xl-1">
-                        <div class="form-group">
-                            <label class="label-sm" for="">АЦ / ЦОК</label>
-                            <select class="form-control form-control-sm" id="">
-                                <option>все</option>
-                                <option>АЦ</option>
-                                <option>АЦСМ</option>
-                                <option>АЦСО</option>
-                                <option>АЦСТ</option>
-                                <option>ЦСП</option>
-                                <option>ЦОК</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-4 col-xl-1">
-                        <div class="form-group">
-                            <label class="label-sm" for="">Номер</label>
-                            <input type="text" class="form-control form-control-sm" id="">
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xl-2">
-                        <div class="form-group">
-                            <label class="label-sm" for="">Город</label>
-                            <input type="text" class="form-control form-control-sm" id="">
-                        </div>
-                    </div>
+                <div class="row align-items-center">
                     <div class="col-sm-8 col-xl-4">
                         <div class="form-group">
                             <label class="label-sm" for="">Наименование организации</label>
                             <input type="text" class="form-control form-control-sm" id="">
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 col-xl-2">
-                        <div class="form-group">
-                            <label class="label-sm" for="">Вид документа</label>
-                            <select class="form-control form-control-sm" id="">
-                                <option>все</option>
-                                <option>Продление</option>
-                                <option>Расширение состава комиссии</option>
-                                <option>Создание, окончание</option>
-                                <option>Инспекционная проверка</option>
-                                <option>Расширение области деятельности</option>
-                                <option>Дополнительный АП</option>
-                                <option>Расширение области деятельности АП</option>
-                                <option>Аккредитация</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="col-6 col-sm-4 col-xl-2">
                         <div class="form-group">
-                            <label class="label-sm" for="">Дата форм-ния от</label>
-                            <input type="date" class="form-control form-control-sm" id="">
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-4 col-xl-2">
-                        <div class="form-group">
-                            <label class="label-sm" for="">до</label>
-                            <input type="date" class="form-control form-control-sm" id="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 col-xl-2">
-                        <div class="form-group">
-                            <label class="label-sm" for="">№ заявки</label>
+                            <label class="label-sm" for="">ИНН</label>
                             <input type="text" class="form-control form-control-sm" id="">
                         </div>
                     </div>
                     <div class="col-6 col-sm-4 col-xl-2">
                         <div class="form-group">
-                            <label class="label-sm" for="">Дата заявки от</label>
+                            <label class="label-sm" for="">Город</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Членство в СРО</label>
+                            <select class="form-control form-control-sm" id="">
+                                <option>все</option>
+                                <option>Член СРО</option>
+                                <option>Исключен</option>
+                                <option>ЦСП</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label label-sm" for="inlineCheckbox1">с фото</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-6 col-sm-4 col-lg-2 col-xl-1">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Деятельность</label>
+                            <select class="form-control form-control-sm" id="">
+                                <option>все</option>
+                                <option>АЦ</option>
+                                <option>ЦСП</option>
+                                <option>АЦСМ</option>
+                                <option>АЦСО</option>
+                                <option>АЦСТ</option>
+                                <option>ОСП</option>
+                                <option>ЦОК</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-2 col-xl-1">
+                        <div class="form-group">
+                            <label class="label-sm" for="">№</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Статус</label>
+                            <select class="form-control form-control-sm" id="">
+                                <option>все</option>
+                                <option>Действующие</option>
+                                <option>Исключенные</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Срок действия, от</label>
                             <input type="date" class="form-control form-control-sm" id="">
                         </div>
                     </div>
@@ -108,53 +106,26 @@
                     </div>
                 </div>
                 <div class="row align-items-center">
-                    <div class="col-sm-6 col-xl-4">
+                    <div class="col-6 col-sm-4 col-xl-2">
                         <div class="form-group">
-                            <label class="label-sm" for="">Эксперт</label>
-                            <input type="text" class="form-control form-control-sm" id="">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-4">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label label-sm" for="inlineCheckbox1">НАКС</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label label-sm" for="inlineCheckbox2">НЭДК</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                            <label class="form-check-label label-sm" for="inlineCheckbox3">Рабочая группа</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 col-xl-2">
-                        <div class="form-group">
-                            <label class="label-sm" for="">Статус</label>
+                            <label class="label-sm" for="">Наличие заявок</label>
                             <select class="form-control form-control-sm" id="">
                                 <option>все</option>
-                                <option>Новые</option>
-                                <option>Готовые</option>
+                                <option>С заявками</option>
+                                <option>Без заявок</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-6 col-sm-4 col-xl-2">
-                        <div class="form-group">
-                            <label class="label-sm" for="">Срок пров. работ от</label>
-                            <input type="date" class="form-control form-control-sm" id="">
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-4 col-xl-2">
-                        <div class="form-group">
-                            <label class="label-sm" for="">до</label>
-                            <input type="date" class="form-control form-control-sm" id="">
+                    <div class="col-6 col-xl-4">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label label-sm" for="inlineCheckbox1">в работе</label>
                         </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search mr-2"></i>Найти</button>
-                <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                <button type="submit" class="btn btn-outline-primary btn-sm">Сбросить</button>
+                <button type="button" class="btn btn-link btn-sm" data-toggle="collapse" href="#collapse-filter" role="button" aria-expanded="false" aria-controls="collapse-filter">Закрыть</button>
             </form>
         </div>
     </div>
