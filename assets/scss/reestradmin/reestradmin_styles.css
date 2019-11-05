@@ -618,6 +618,10 @@ a {
       background-color: transparent;
       transition: 0.2s; }
 
+.accordion-main .static-text-sm,
+.accordion-main .form-check-sm {
+  font-size: 0.875rem; }
+
 .accordion-main .static-text-sublevel {
   margin-bottom: 0.5rem; }
   .accordion-main .static-text-sublevel p {

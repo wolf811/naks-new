@@ -1,6 +1,6 @@
 {% load static %}
 <div class="container">
-    <div class="static-text">
+    <div class="static-text static-text-sm">
         <div id="infoEdit">
             <h5>АНО "Вологодский региональный аттестационный центр"</h5>
             <div class="row-main">
@@ -248,169 +248,179 @@
                 <button id="btnEditInfo" class="btn btn-outline-primary btn-sm" type="button">Изменить</button>
             </div>
         </div>
-        <form id="orgInfoEdit" class="editing-form" style="display: none;">
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Сокращенное наименование<span class="text-danger">*</span></label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Полное наименование</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Наименование в реестре</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Членство в СРО</label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <select class="form-control">
-                        <option></option>
-                        <option>Да</option>
-                        <option>Исключен</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Свидетельство о членстве №</label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Решение о включении</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Протокол</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Страхование деятельности до</label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="date" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Исключен из членов СРО</label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="date" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Решение президиума об исключении №</label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Город</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Юридический адрес<span class="text-danger">*</span></label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Фактический адрес<span class="text-danger">*</span></label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Почтовый адрес<span class="text-danger">*</span></label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Телефон<span class="text-danger">*</span> / Факс</label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="text" class="form-control" placeholder="телефон" required>
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Сайт / E-mail<span class="text-danger">*</span></label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="e-mail" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Дата государственной регистрации</label>
-                <div class="col-md-8">
-                    <input type="date" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">ОГРН / ИНН<span class="text-danger">*</span></label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="text" class="form-control" placeholder="ОГРН">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="ИНН" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Должность руководителя<span class="text-danger">*</span></label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Руководитель</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Банковские реквизиты</label>
-                <div class="col-md-8">
-                    <textarea class="form-control"></textarea>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">ФИО бухгалтера</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Телефоны бухгалтерии</label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="text" class="form-control" placeholder="Рабочий">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Мобильный">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Анкет (для опросов)<span class="text-danger">*</span></label>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
-            <button id="cancelInfoEdit" class="btn btn-outline-primary btn-sm" type="button">Отмена</button>
-        </form>
     </div>
+    <form id="orgInfoEdit" class="editing-form" style="display: none;">
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Сокращенное наименование<span class="text-danger">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="form-control form-control-sm" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Полное наименование</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Наименование в реестре</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <hr>
+        <div class="form-group row align-items-center">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Членство в СРО</label>
+            <div class="col-md-2">
+                <div class="form-check form-check-sm">
+                    <input class="form-check-input" type="checkbox" id="membershipSelection">
+                    <label class="form-check-label" for="membershipSelection">ДА</label>
+                </div>
+                <!-- <select class="form-control form-control-sm" id="membershipSelection">
+                    <option value="one"></option>
+                    <option value="two">Да</option>
+                    <option value="three" class="text-danger">Исключен</option>
+                </select> -->
+            </div>
+        </div>
+        <div id="membershipYes" style="display: none;">
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label col-form-label-sm">Свидетельство о членстве</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control form-control-sm" placeholder="№">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label col-form-label-sm">Основание для включения / Протокол (№, дата)</label>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <input type="text" class="form-control form-control-sm">
+                </div>
+                <div class="col-md-2 mb-3 mb-md-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="№">
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control form-control-sm">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label col-form-label-sm">Страхование деятельности до</label>
+                <div class="col-md-2">
+                    <input type="date" class="form-control form-control-sm">
+                </div>
+            </div>
+        </div>
+        <div id="membershipNo" style="display: none;">
+            <div class="form-group row">
+                <label for="" class="col-md-3 col-form-label col-form-label-sm text-danger">Исключен из членов СРО / Решение президиума об исключении</label>
+                <div class="col-md-2 mb-3 mb-md-0">
+                    <input type="date" class="form-control form-control-sm">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control form-control-sm" placeholder="№">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Город</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Юридический адрес<span class="text-danger">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="form-control form-control-sm" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Фактический адрес<span class="text-danger">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="form-control form-control-sm" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Почтовый адрес<span class="text-danger">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="form-control form-control-sm" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Телефон<span class="text-danger">*</span> / Факс</label>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="телефон" required>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm" placeholder="факс">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Сайт / E-mail<span class="text-danger">*</span></label>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="адрес сайта">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm" placeholder="e-mail" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Дата государственной регистрации</label>
+            <div class="col-md-2">
+                <input type="date" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">ОГРН / ИНН<span class="text-danger">*</span></label>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="ОГРН">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm" placeholder="ИНН" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Руководитель ФИО / Должность<span class="text-danger">*</span></label>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="ФИО">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm" placeholder="должность">
+            </div>
+        </div>
+        <!-- <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Руководитель</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div> -->
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Банковские реквизиты</label>
+            <div class="col-md-8">
+                <textarea class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Бухгалтер</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm" placeholder="ФИО">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Телефоны бухгалтерии</label>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="Рабочий">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm" placeholder="Мобильный">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-3 col-form-label col-form-label-sm">Анкет (для опросов)<span class="text-danger">*</span></label>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
+        <button id="cancelInfoEdit" class="btn btn-outline-primary btn-sm" type="button">Отмена</button>
+    </form>
 </div>

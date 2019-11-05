@@ -138,6 +138,7 @@ $(document).ready(() => {
 //     }
 // })
 
+//
 $('#btnEditInfo').click(function() {
     $('#orgInfoEdit').show('fade');
     $('#infoEdit').hide();
@@ -146,3 +147,24 @@ $('#cancelInfoEdit').click(function() {
     $('#orgInfoEdit').hide();
     $('#infoEdit').show('fade');
 });
+
+// $('#membershipSelection').change(function() {
+//     if ($(this).val() == 'one') {
+//         $('#membershipYes').hide();
+//         $('#membershipNo').hide();
+//     } else if ($(this).val() == 'two') {
+//         $('#membershipYes').show();
+//         $('#membershipNo').hide();
+//     } else {
+//         $('#membershipYes').show();
+//         $('#membershipNo').show();
+//     }
+// })
+
+$('#membershipSelection').change(function() {
+    if ($(this).prop('checked')) {
+        $('#membershipYes').toggle();
+    } else {
+        $('#membershipYes').hide();
+    }
+})
