@@ -128,17 +128,7 @@ $(document).ready(() => {
 
 });
 
-// left menu in centers-list
-// $(window).scroll(function() {
-//     let topPosLeft = $(document).scrollTop();
-//     if (topPosLeft > 0) {
-//         $('.left-main').addClass('fixed-left-main');
-//     } else {
-//         $('.left-main').removeClass('fixed-left-main');
-//     }
-// })
-
-//
+//Edit Organization Info
 $('#btnEditInfo').click(function() {
     $('#orgInfoEdit').show('fade');
     $('#infoEdit').hide();
@@ -148,23 +138,29 @@ $('#cancelInfoEdit').click(function() {
     $('#infoEdit').show('fade');
 });
 
-// $('#membershipSelection').change(function() {
-//     if ($(this).val() == 'one') {
-//         $('#membershipYes').hide();
-//         $('#membershipNo').hide();
-//     } else if ($(this).val() == 'two') {
-//         $('#membershipYes').show();
-//         $('#membershipNo').hide();
-//     } else {
-//         $('#membershipYes').show();
-//         $('#membershipNo').show();
-//     }
-// })
-
+//membership
 $('#membershipSelection').change(function() {
     if ($(this).prop('checked')) {
-        $('#membershipYes').toggle();
+        $('#membershipYes').show();
     } else {
         $('#membershipYes').hide();
     }
+});
+
+$('#membershipExpulsion').change(function() {
+    if ($(this).prop('checked')) {
+        $('#membershipNo').show();
+    } else {
+        $('#membershipNo').hide();
+    }
 })
+
+// let input = $("#smkFile");
+
+// input.on('change', function() {
+//     console.log(this.value);
+// });
+
+// $('#btn-reset').on('click', function(e) {
+//     input.replaceWith(input.val('').clone(true));
+// });
