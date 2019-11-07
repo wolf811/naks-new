@@ -7,10 +7,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Главная</a>
                 </li>
-                <li class="nav-item {% if 'organization_list' in request.path or 'organization_profile' in request.path or 'organization_edit' in request.path %}active{% endif %}">
+                <li class="nav-item {% if 'organization_list' in request.path or 'organization_edit' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'reestradmin:organization_list' %}">Организации</a>
                 </li>
-                <li class="nav-item {% if 'centers_list' in request.path %}active{% endif %}">
+                <li class="nav-item {% if 'centers_list' in request.path or 'center_acsm_edit' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'reestradmin:centers_list' %}">Центры</a>
                 </li>
                 <li class="nav-item">

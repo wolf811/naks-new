@@ -16,6 +16,13 @@ def centers_list(request):
     }
     return render(request, 'reestradmin/centers_list.html', content)
 
+def center_acsm_edit(request):
+    title = 'ЭДО - Профиль центра'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/center_acsm_edit.html', content)
+    
 def organization_list(request):
     title = 'ЭДО - Организации'
     content = {
@@ -23,12 +30,6 @@ def organization_list(request):
     }
     return render(request, 'reestradmin/organization_list.html', content)
 
-def organization_profile(request):
-    title = 'ЭДО - Профиль организации'
-    content = {
-        'title': title
-    }
-    return render(request, 'reestradmin/organization_profile.html', content)
 
 def organization_edit(request):
     title = 'ЭДО - Профиль организации'
