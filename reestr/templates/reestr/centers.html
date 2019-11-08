@@ -27,7 +27,10 @@
             <!-- End mobil right main -->
             <h5 class="text-primary mt-2 mb-4">Центры оценки квалификаций на карте</h5>
             <!-- Yandex Maps -->
-            <div id="map" class="w-100"></div>
+            <div id="app_map_points">
+                <div ref="direction" data-direction="allCoks"></div>
+                <div id="map" class="w-100"></div>
+            </div>
             <!-- End map -->
             <hr class="mt-4">
             <div id="app_reestr_cok" v-cloak>
@@ -230,7 +233,10 @@
             <!-- End mobil right main -->
             <h5 class="text-primary mt-2 mb-4">{{ direction.centers_plural }} на карте</h5>
             <!-- Yandex Maps -->
-            <div id="map" class="w-100"></div>
+            <div id="app_map_points">
+                <div ref="direction" data-direction="{{ direction.title }}"></div>
+                <div id="map" class="w-100"></div>
+            </div>
             <!-- End map -->
             <hr class="mt-4">
             <div id="app_reestr_centers" v-cloak>

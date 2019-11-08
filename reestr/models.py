@@ -178,7 +178,7 @@ class SROMember(models.Model):
         coordinates = coordinateslst[0].firstChild.data
         self.coordinates = coordinates
         self.save()
-        print('coordinates:', self.coordinates)
+        # print('coordinates:', self.coordinates)
 
 
 class CheckProtocol(models.Model):

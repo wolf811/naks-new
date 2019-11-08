@@ -23,7 +23,7 @@
                 {% include 'mainapp/includes/sasv/mobil-right-menu-sasv.html' %}
             </div>
             <!-- End mobil right main -->
-            
+
             <p class="text-secondary">
                 Деятельность системы аттестации сварочного производства регламентирована нормативными документами
                 ПБ 03-273-9 «Правила аттестации сварщиков и специалистов сварочного производства»,
@@ -38,23 +38,25 @@
             <hr>
             <h5 class="text-primary mt-2 mb-4">Аттестационные центры на карте</h5>
             <!-- Big Radiobuttons -->
+            <div id="app_map_points">
             <div class="show-units" id="btn-card-units">
                 <div class="d-block">
                     <div class="row mb-3">
                         <div class="col mb-4">
-                            <a href="#" class="btn btn-outline-danger btn-block btn-sm active" role="button">Аттестация персонала</a>
+                        {% comment %} <button @click="buttonPress('allCenters')" type="button" :class="[show_map=='allCenters' ? 'btn btn-outline-danger btn-block active' : 'btn btn-outline-danger btn-block']">Аттестационные центры</button> {% endcomment %}
+                        <a href="#" @click.prevent="buttonPress('personal')" :class="[show_map=='personal' ? 'btn btn-outline-danger btn-block btn-sm active' : 'btn btn-outline-danger btn-block btn-sm']" role="button">Аттестация персонала</a>
                         </div>
                         <div class="col mb-4">
-                            <a href="#" class="btn btn-outline-danger btn-block btn-sm" role="button">Аттестация сварочных материалов</a>
+                        <a href="#" @click.prevent="buttonPress('attsm')" :class="[show_map=='attsm' ? 'btn btn-outline-danger btn-block btn-sm active' : 'btn btn-outline-danger btn-block btn-sm']" role="button">Аттестация сварочных материалов</a>
                         </div>
                         <div class="col mb-4">
-                            <a href="#" class="btn btn-outline-danger btn-block btn-sm" role="button">Аттестация сварочного оборудования</a>
+                        <a href="#" @click.prevent="buttonPress('attso')" :class="[show_map=='attso' ? 'btn btn-outline-danger btn-block btn-sm active' : 'btn btn-outline-danger btn-block btn-sm']" role="button">Аттестация сварочного оборудования</a>
                         </div>
                         <div class="col mb-4">
-                            <a href="#" class="btn btn-outline-danger btn-block btn-sm" role="button">Аттестация сварочных технологий</a>
+                        <a href="#" @click.prevent="buttonPress('attst')" :class="[show_map=='attst' ? 'btn btn-outline-danger btn-block btn-sm active' : 'btn btn-outline-danger btn-block btn-sm']" role="button">Аттестация сварочных технологий</a>
                         </div>
                         <div class="col align-self-center mb-4">
-                            <a href="{% url 'reestr:centers' 'specpod' %}" class="btn btn-outline-danger btn-block btn-sm" role="button">Центры специальной подготовки</a>
+                        <a href="#" @click.prevent="buttonPress('specpod')" :class="[show_map=='specpod' ? 'btn btn-outline-danger btn-block btn-sm active' : 'btn btn-outline-danger btn-block btn-sm']" role="button">Центры специальной подготовки</a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +64,9 @@
             <!-- End Big Radiobuttons -->
 
             <!-- Yandex Maps -->
-            <div id="map" class="w-100">
+                <div ref="direction" data-direction="personal"></div>
+                <div id="map" class="w-100">
+            </div>
 
             </div>
             <!-- End map -->

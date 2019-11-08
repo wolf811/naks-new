@@ -1,13 +1,4 @@
 // загружаем координаты точек для яндекса
-$(document).ready(function(){
-    console.log('jq ready');
-    $('a.map-btn-test').on('click',
-        function() {
-            console.log('test', this);
-        }
-    )
-})
-
 var vm_map = new Vue({
     delimiters: ['[[', ']]'],
     el: '#app_map_points',
@@ -37,7 +28,12 @@ var vm_map = new Vue({
         this.update_dirs();
     },
     mounted() {
-        console.log('Mounted');
+        console.log('Vue mounted');
+        if (this.$refs.direction) {
+            this.show_map = this.$refs.direction.dataset.direction;
+            console.log('this show map', this.show_map);
+        }
+
     },
     methods: {
         getOrUpdateSroMembers: function() {
@@ -101,7 +97,7 @@ var vm_map = new Vue({
                 }
             })
             .finally(() => {
-                console.log('ready');
+                console.log('dirs updated by api');
             })
         },
         check_local_storage_and_cookie: function() {
@@ -142,7 +138,12 @@ var vm_map = new Vue({
                 'sroMembers': this.sroMembers,
                 'allCenters': this.reestrCenters.filter(el=> el.active == true && el.direction != 'qualifications'),
                 'allCoks': this.reestrCenters.filter(el=> el.active == true && el.direction == 'qualifications'),
-                'allCertCenters': this.reestrCenters.filter(el => el.active == true && el.direction == 'certification')
+                'allCertCenters': this.reestrCenters.filter(el => el.active == true && el.direction == 'certification'),
+                'personal': this.reestrCenters.filter(el=>el.active == true && el.direction == 'personal'),
+                'attsm': this.reestrCenters.filter(el=>el.active == true && el.direction == 'attsm'),
+                'attso': this.reestrCenters.filter(el=>el.active == true && el.direction == 'attso'),
+                'attst': this.reestrCenters.filter(el=>el.active == true && el.direction == 'attst'),
+                'specpod': this.reestrCenters.filter(el=>el.active == true && el.direction == 'specpod'),
             };
             let points = [];
             if (this.show_map !== 'sroMembers') {
@@ -225,6 +226,19 @@ var vm_map = new Vue({
                     'specpod': 'Специальная подготовка персонала сварочного производства'
                 }
                 for (var point of points) {
+                    let center_point_template = {
+                        type:'Feature',
+                        id: currentId++,
+                        geometry: {
+                            type: 'Point',
+                            coordinates: point.coordinates,
+                        },
+                        properties: {
+                            clusterCaption: point.short_code,
+                            hintContent: point.title,
+                            balloonContent: point.company_full_name,
+                        }
+                    };
                     let point_templates = {
                         'sroMembers': {
                             type:'Feature',
@@ -295,10 +309,33 @@ var vm_map = new Vue({
                                     balloonContent: point.company_full_name,
                                 }
                             },
+                        'personal': center_point_template,
+                        'attsm': center_point_template,
+                        'attso': center_point_template,
+                        'attst': center_point_template,
+                        'specpod': center_point_template,
                     }
                   objects.push(point_templates[this.show_map])
                 }
                 objectManager.add(objects);
+                if (this.show_map in {"allCenters":1, "allCoks": 1}) {
+                    objectManager.objects.options.set({
+                        preset: "islands#redIcon"
+                        // Опции.
+                           // Необходимо указать данный тип макета.
+                        //    iconLayout: 'default#image',
+                           // Своё изображение иконки метки.
+                        //    iconImageHref: 'http://www.jonedmiston.com/wp-content/uploads/2012/09/octocat.png',
+                           // Размеры метки.
+                        //    iconImageSize: [30, 42],
+                           // Смещение левого верхнего угла иконки относительно
+                           // её "ножки" (точки привязки).
+                        //    iconImageOffset: [-3, -42]
+                   });
+                   objectManager.clusters.options.set({
+                        preset: 'islands#redClusterIcons'
+                    });
+                }
                 myMap.geoObjects.add(objectManager);
 
             // .add(new ymaps.Placemark([60.063119, 30.360002], {
