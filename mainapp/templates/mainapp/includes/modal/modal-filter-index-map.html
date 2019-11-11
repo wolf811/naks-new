@@ -14,72 +14,27 @@
 
                     <div class="accordion" id="accordionFilterAc">
                         <div class="card">
-                            <div class="card-header" id="headingAccordFilterAc_centrs">
-                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_centrs" aria-expanded="true" aria-controls="collapseAccordFilterAc_centrs">Центры по направлениям деятельности&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
-                            </div>
-                            <div id="collapseAccordFilterAc_centrs" class="collapse show" aria-labelledby="headingAccordFilterAc_centrs" data-parent="#accordionFilterAc">
-                                <div class="card-body">
-                                    <div class="row mb-3">
-                                        <div class="col-sm-6">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_01" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_01">Центры по аттестации персонала (АЦ)</label>
-                                            </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_02" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_02">Центры специальной подготовки (ЦСП)</label>
-                                            </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_03" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_03">Центры по аттестации сварочных материалов (АЦСМ)</label>
-                                            </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_04" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_04">Центры по аттестации сварочного оборудования (АЦСО)</label>
-                                            </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_05" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_05">Центры по аттестации сварочных технологий (АЦСТ)</label>
-                                            </div>
-                                            <div class="dropdown-divider d-xs-block d-sm-none"></div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_06" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_06">Центры оценки квалификаций (ЦОКи)</label>
-                                            </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_07" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_07">Органы по сертификации персонала</label>
-                                            </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_08" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_08">Органы по сертификации сварочных материалов</label>
-                                            </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_09" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_09">Органы по сертификации сварочного оборудования</label>
-                                            </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" id="centr_10" class="custom-control-input">
-                                                <label class="custom-control-label" for="centr_10">Органы по сертификации технологических процессов</label>
-                                            </div>
+                                <div class="card-header" id="headingAccordFilterAc_centrs">
+                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_centrs" aria-expanded="true" aria-controls="collapseAccordFilterAc_centrs">Направления деятельности&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                                </div>
+                                <div id="collapseAccordFilterAc_centrs" class="collapse show" aria-labelledby="headingAccordFilterAc_centrs" data-parent="#accordionFilterAc">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                                <div v-for="(direction, index) in directions" class="col-sm-6">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input v-model="direction.selected" @change="selectDirection()" type="checkbox" :id="'direction_'+[[ index ]]" class="custom-control-input">
+                                                        <label class="custom-control-label" :for="'direction_'+[[ index ]]">[[ direction.title ]]</label>
+                                                    </div>
+                                                    <div class="dropdown-divider"></div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
+                        <div v-if="search_parameters.directions.includes('personal') || search_parameters.directions.includes('specpod')" class="card">
                             <div class="card-header" id="headingAccordFilterAc_00">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_00" aria-expanded="true" aria-controls="collapseAccordFilterAc_00">Уровни профессиональной подготовки&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                                <span v-if="search_parameters.directions.includes('personal')" class="badge badge-info ml-2">АЦ</span><span v-if="search_parameters.directions.includes('specpod')" class="badge badge-info ml-2">ЦСП</span>
                                 <span class="float-sm-right text-secondary">
                                     <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">1</span>
                                 </span>
@@ -92,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div v-if="search_parameters.directions.includes('personal') || search_parameters.directions.includes('specpod')" class="card">
                             <div class="card-header" id="headingAccordFilterAc_01">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_01" aria-expanded="true" aria-controls="collapseAccordFilterAc_01">Вид производственной деятельности&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
                             </div>
@@ -104,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div v-if="search_parameters.directions.includes('personal') || search_parameters.directions.includes('specpod') || search_parameters.directions.includes('attst')" class="card">
                             <div class="card-header" id="headingAccordFilterAc_02">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_02" aria-expanded="false" aria-controls="collapseAccordFilterAc_02">Способы сварки (наплавки)&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
                                 <span class="float-sm-right text-secondary">
@@ -119,7 +74,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div v-if="search_parameters.directions.includes('specpod')" class="card">
                             <div class="card-header" id="headingAccordFilterAc_03">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_03" aria-expanded="false" aria-controls="collapseAccordFilterAc_03">Группы технических устройств&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
                             </div>
