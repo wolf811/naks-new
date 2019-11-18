@@ -11,37 +11,37 @@ if ($('#app_map_points').length != 0) {
                 directions: [
                     {
                         code: 'personal',
-                        title: 'Центры по аттестации персонала (АЦ)',
+                        title: '<span class="badge badge-info">АЦСП</span> Центры по аттестации персонала',
                         selected: false
                     },
                     {
                         code: 'specpod',
-                        title: 'Центры специальной подготовки (ЦСП)',
+                        title: '<span class="badge badge-info">ЦСП</span> Центры специальной подготовки',
                         selected: false
                     },
                     {
                         code: 'attsm',
-                        title: 'Центры по аттестации сварочных материалов (АЦСМ)',
+                        title: '<span class="badge badge-info">АЦСМ</span> Центры по аттестации сварочных материалов',
                         selected: false
                     },
                     {
                         code: 'attso',
-                        title: 'Центры по аттестации сварочного оборудования (АЦСО)',
+                        title: '<span class="badge badge-info">АЦСО</span> Центры по аттестации сварочного оборудования',
                         selected: false
                     },
                     {
                         code: 'attst',
-                        title: 'Центры по аттестации сварочных технологий (АЦСТ)',
+                        title: '<span class="badge badge-info">АЦСТ</span> Центры по аттестации сварочных технологий',
                         selected: false
                     },
                     {
                         code: 'qualifications',
-                        title: 'Центры оценки квалификаций (ЦОК)',
+                        title: '<span class="badge badge-info">ЦОК</span> Центры оценки квалификаций',
                         selected: false
                     },
                     {
                         code: 'certification',
-                        title: 'Органы сертификации сварочного производства (ОСП)',
+                        title: '<span class="badge badge-info">ОСП</span> Органы сертификации сварочного производства',
                         selected: false
                     }
                 ],
