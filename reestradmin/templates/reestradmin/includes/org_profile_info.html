@@ -369,6 +369,65 @@
                 <textarea class="form-control form-control-sm"></textarea>
             </div>
         </div>
+        <hr>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm text-bold">Техническое оснащение (фото)</label>
+            <div class="col-sm-4 mb-3 mb-md-0">
+                <select class="form-control form-control-sm">
+                    <option>-</option>
+                    <option>Офисные помещения</option>
+                    <option>Учебный класс</option>
+                    <option>Компьютерный класс</option>
+                    <option>Оборудование для сварки</option>
+                    <option>Оборудование для контроля и испытаний</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <input type="file" class="form-control-file form-control-sm" id="techEquip">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="sr-only">Описание</label>
+            <div class="col-10 col-sm-7 offset-sm-3">
+                <textarea class="form-control form-control-sm"></textarea>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-outline-secondary btn-xs" id="btn-reset" title="удалить фото"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <!-- <div id="photosBlock"></div> -->
+        <!-- <div class="upload-photo" style='display: none;'>
+            <hr>
+            <div class="form-group row">
+                <div class="col-sm-4 offset-sm-3 mb-3 mb-md-0">
+                    <select class="form-control form-control-sm">
+                        <option>-</option>
+                        <option>Офисные помещения</option>
+                        <option>Учебный класс</option>
+                        <option>Компьютерный класс</option>
+                        <option>Оборудование для сварки</option>
+                        <option>Оборудование для контроля и испытаний</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <input type="file" class="form-control-file form-control-sm" id="techEquip">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="sr-only">Описание</label>
+                <div class="col-10 col-sm-7 offset-sm-3">
+                    <textarea class="form-control form-control-sm" title="описание"></textarea>
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-outline-secondary btn-xs" id="btnReset" title="удалить фото"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+        </div> -->
+        <div class="form-group row" id="addPhotoBlock">
+            <div class="col-sm-7 offset-sm-3">
+                <button type="button" class="btn btn-outline-secondary btn-xs">Добавить фото</button>
+            </div>
+        </div>
         <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
         <button id="cancelInfoEdit" class="btn btn-outline-primary btn-sm" type="button">Отмена</button>
     </form>

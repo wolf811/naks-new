@@ -137,6 +137,14 @@ $('#cancelInfoEdit').click(function() {
     $('#orgInfoEdit').hide();
     $('#infoEdit').show('fade');
 });
+$('#btnEditActivity').click(function() {
+    $('#orgActivityEdit').show('fade');
+    $('#activityEdit').hide();
+});
+$('#cancelActivityEdit').click(function() {
+    $('#orgActivityEdit').hide();
+    $('#activityEdit').show('fade');
+});
 
 //membership
 $('#membershipSelection').change(function() {
@@ -155,12 +163,38 @@ $('#membershipExpulsion').change(function() {
     }
 })
 
-// let input = $("#smkFile");
+// Добавление/удаление фото
+$('#addPhotoBlock').click(function() {
+    $(this).before('<div class="upload-photo">\
+            <hr>\
+            <div class="form-group row">\
+                <div class="col-sm-4 offset-sm-3 mb-3 mb-md-0">\
+                    <select class="form-control form-control-sm">\
+                        <option>-</option>\
+                        <option>Офисные помещения</option>\
+                        <option>Учебный класс</option>\
+                        <option>Компьютерный класс</option>\
+                        <option>Оборудование для сварки</option>\
+                        <option>Оборудование для контроля и испытаний</option>\
+                    </select>\
+                </div>\
+                <div class="col-sm-4">\
+                    <input type="file" class="form-control-file form-control-sm" id="techEquip">\
+                </div>\
+            </div>\
+            <div class="form-group row">\
+                <label for="" class="sr-only">Описание</label>\
+                <div class="col-10 col-sm-7 offset-sm-3">\
+                    <textarea class="form-control form-control-sm" title="описание"></textarea>\
+                </div>\
+                <div class="col-1">\
+                    <button type="button" class="btn btn-outline-secondary btn-xs btn-reset" title="удалить фото"><i class="fa fa-times"></i></button>\
+                </div>\
+            </div>\
+        </div>');
 
-// input.on('change', function() {
-//     console.log(this.value);
-// });
+    $('.btn-reset').click(function() {
+        $(this).closest('.upload-photo').remove();
+    })
 
-// $('#btn-reset').on('click', function(e) {
-//     input.replaceWith(input.val('').clone(true));
-// });
+})
