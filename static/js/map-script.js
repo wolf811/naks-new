@@ -39,11 +39,11 @@ if ($('#app_map_points').length != 0) {
                         title: '<span class="badge badge-info">ЦОК</span> Центры оценки квалификаций',
                         selected: false
                     },
-                    {
-                        code: 'certification',
-                        title: '<span class="badge badge-info">ОСП</span> Органы сертификации сварочного производства',
-                        selected: false
-                    }
+                    // {
+                    //     code: 'certification',
+                    //     title: '<span class="badge badge-info">ОСП</span> Органы сертификации сварочного производства',
+                    //     selected: false
+                    // }
                 ],
                 reestrCenters: [],
                 accred_fields: {},
@@ -187,10 +187,6 @@ if ($('#app_map_points').length != 0) {
                 $('ymaps').remove();
                 ymaps.ready(this.map_init);
             },
-            test_console: function (e) {
-                e.preventDefault();
-                console.log(this, 'click console');
-            },
             map_init: function () {
                 let select_objects = {
                     'sroMembers': this.sroMembers,
@@ -202,6 +198,7 @@ if ($('#app_map_points').length != 0) {
                     'attso': this.reestrCenters.filter(el => el.active == true && el.direction == 'attso'),
                     'attst': this.reestrCenters.filter(el => el.active == true && el.direction == 'attst'),
                     'specpod': this.reestrCenters.filter(el => el.active == true && el.direction == 'specpod'),
+                    'filtered': this.filtered()
                 };
                 let points = [];
                 if (this.show_map !== 'sroMembers') {
@@ -419,25 +416,78 @@ if ($('#app_map_points').length != 0) {
                 });
             },
             selectLevel: function (item) {
-                console.log('level selected', item);
+                console.log('selected levels', item);
+                this.search_parameters.levels = this.accred_fields.level.filter(element => element.selected === true);
             },
             selectActivities: function (item) {
+                this.search_parameters.activities= this.accred_fields.activity.filter(element => element.selected === true);
                 console.log('activity selected', item);
             },
             selectWeldtype: function (item) {
-                console.log('weldtype selected', item);
+                this.search_parameters.weldtypes = this.accred_fields.weldtype.filter(element => element.selected === true);
             },
             selectGtu: function (item) {
+                this.search_parameters.gtus= this.accred_fields.gtu.filter(element => element.selected === true);
                 console.log('gtu selected', item);
             },
             selectEquipment: function (item) {
+                this.search_parameters.so_types = this.accred_fields.so_types.filter(element => element.selected === true);
                 console.log('equipment selected', item);
             },
             selectMaterial: function (item) {
+                this.search_parameters.sm_types = this.accred_fields.sm_types.filter(element => element.selected === true);
                 console.log('materials selected', item);
             },
             selectQual: function (item) {
+                this.search_parameters.qualifications = this.qualification_checkboxes.filter(element => element.selected === true);
                 console.log('qualification selected', item);
+            },
+            saveMapSearch: function() {
+                this.show_map = 'filtered';
+                this.map_render();
+                // filter_results
+                console.log('save search pressed');
+            },
+            resetMapSearch: function() {
+                for (var key of Object.keys(this.search_parameters)) {
+                    this.search_parameters[key] = [];
+                }
+                for (var direction of this.directions) {
+                    direction.selected = false;
+                }
+                for (var field of Object.keys(this.accred_fields)) {
+                    for (var el of this.accred_fields[field]) {
+                        el.selected = false;
+                    }
+                }
+                $('#collapseAccordFilterAc_centrs').addClass('show');
+            },
+            filtered: function() {
+                let centers = this.reestrCenters;
+                let show_full_reestr = true;
+                for (var key of Object.keys(this.search_parameters)) {
+                    if (this.search_parameters[key].length > 0) {
+                        show_full_reestr = false;
+                    }
+                }
+
+                if (show_full_reestr) {
+                    return centers;
+                }
+
+                centers = centers.filter(function(item) {
+                    return item;
+                })
+                return centers
+            }
+        },
+        computed: {
+            search_parameters_length: function() {
+                let sum = 0;
+                for (var key of Object.keys(this.search_parameters)) {
+                    sum+=this.search_parameters[key].length;
+                }
+                return sum
             }
         },
     })

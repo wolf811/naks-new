@@ -281,10 +281,10 @@ $('#btnSaveFilterAc').click(function() {
     $('#selectedOptions').show();
 })
 
-$('#btnSaveFilterIndex').click(function() {
-    $('#btnFilterIndex').hide();
-    $('#btnFilterResultIndex').show();
-})
+// $('#btnSaveFilterIndex').click(function() {
+//     $('#btnFilterIndex').hide();
+//     $('#btnFilterResultIndex').show();
+// })
 
 $('#btnSubscription').click(function() {
     $('.subscription').hide();

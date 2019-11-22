@@ -16,6 +16,9 @@
                         <div class="card">
                                 <div class="card-header" id="headingAccordFilterAc_centrs">
                                     <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_centrs" aria-expanded="true" aria-controls="collapseAccordFilterAc_centrs">Направления деятельности&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                                    <span v-if="search_parameters.directions.length > 0" class="float-sm-right text-secondary">
+                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ search_parameters.directions.length ]]</span>
+                                    </span>
                                 </div>
                                 <div id="collapseAccordFilterAc_centrs" class="collapse show" aria-labelledby="headingAccordFilterAc_centrs" data-parent="#accordionFilterAc">
                                     <div class="card-body">
@@ -36,8 +39,8 @@
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_00" aria-expanded="true" aria-controls="collapseAccordFilterAc_00">Уровни профессиональной подготовки&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
                                 <span v-if="search_parameters.directions.includes('personal')" class="badge badge-info ml-2">АЦСП</span>
                                 <span v-if="search_parameters.directions.includes('specpod')" class="badge badge-info ml-2">ЦСП</span>
-                                <span class="float-sm-right text-secondary">
-                                    <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">1</span>
+                                <span v-if="search_parameters.levels.length > 0" class="float-sm-right text-secondary">
+                                    <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ search_parameters.levels.length ]]</span>
                                 </span>
                             </div>
                             <div id="collapseAccordFilterAc_00" class="collapse" aria-labelledby="headingAccordFilterAc_00" data-parent="#accordionFilterAc">
@@ -52,7 +55,9 @@
                             <div class="card-header" id="headingAccordFilterAc_01">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_01" aria-expanded="true" aria-controls="collapseAccordFilterAc_01">Вид производственной деятельности&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
                                 <span v-if="search_parameters.directions.includes('personal')" class="badge badge-info ml-2">АЦСП</span>
-
+                                <span v-if="search_parameters.activities.length > 0" class="float-sm-right text-secondary">
+                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ search_parameters.activities.length ]]</span>
+                                </span>
                             </div>
                             <div id="collapseAccordFilterAc_01" class="collapse" aria-labelledby="headingAccordFilterAc_01" data-parent="#accordionFilterAc">
                                 <div class="card-body">
@@ -68,8 +73,8 @@
                                     <span v-if="search_parameters.directions.includes('personal')" class="badge badge-info ml-2">АЦСП</span>
                                     <span v-if="search_parameters.directions.includes('specpod')" class="badge badge-info ml-2">ЦСП</span>
                                     <span v-if="search_parameters.directions.includes('attst')" class="badge badge-info ml-2">АЦСТ</span>
-                                    <span class="float-sm-right text-secondary">
-                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">2</span>
+                                    <span v-if="search_parameters.weldtypes.length > 0" class="float-sm-right text-secondary">
+                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ search_parameters.weldtypes.length ]]</span>
                                     </span>
 
                             </div>
@@ -90,6 +95,9 @@
                                 <span v-if="search_parameters.directions.includes('attsm')" class="badge badge-info ml-2">АЦСМ</span>
                                 <span v-if="search_parameters.directions.includes('attso')" class="badge badge-info ml-2">АЦСО</span>
                                 <span v-if="search_parameters.directions.includes('attst')" class="badge badge-info ml-2">АЦСТ</span>
+                                <span v-if="search_parameters.gtus.length > 0" class="float-sm-right text-secondary">
+                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ search_parameters.gtus.length ]]</span>
+                                </span>
                             </div>
                             <div id="collapseAccordFilterAc_03" class="collapse" aria-labelledby="headingAccordFilterAc_03" data-parent="#accordionFilterAc">
                                 <div class="card-body scrollspy-modal-accordeon">
@@ -103,6 +111,9 @@
                             <div class="card-header" id="headingAccordFilterAc_04">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_04" aria-expanded="true" aria-controls="collapseAccordFilterAc_04">Виды сварочного оборудования&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
                                 <span v-if="search_parameters.directions.includes('attso')" class="badge badge-info ml-2">АЦСО</span>
+                                <span v-if="search_parameters.so_types.length > 0" class="float-sm-right text-secondary">
+                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ search_parameters.so_types.length ]]</span>
+                                </span>
                             </div>
                             <div id="collapseAccordFilterAc_04" class="collapse" aria-labelledby="headingAccordFilterAc_04" data-parent="#accordionFilterAc">
                                 <div class="card-body scrollspy-modal-accordeon">
@@ -116,6 +127,9 @@
                             <div class="card-header" id="headingAccordFilterAc_05">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_05" aria-expanded="false" aria-controls="collapseAccordFilterAc_05">Виды сварочных материалов&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
                                 <span v-if="search_parameters.directions.includes('attsm')" class="badge badge-info ml-2">АЦСМ</span>
+                                <span v-if="search_parameters.sm_types.length > 0" class="float-sm-right text-secondary">
+                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ search_parameters.sm_types.length ]]</span>
+                                </span>
 
                             </div>
                             <div id="collapseAccordFilterAc_05" class="collapse" aria-labelledby="headingAccordFilterAc_05" data-parent="#accordionFilterAc">
@@ -130,6 +144,9 @@
                             <div class="card-header" id="headingAccordFilterAc_06">
                                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_06" aria-expanded="false" aria-controls="collapseAccordFilterAc_06">Профессиональные стандарты, квалификации&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
                                 <span v-if="search_parameters.directions.includes('qualifications')" class="badge badge-info ml-2">ЦОК</span>
+                                <span v-if="search_parameters.qualifications.length > 0" class="float-sm-right text-secondary">
+                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">[[ search_parameters.qualifications.length ]]</span>
+                                </span>
 
                             </div>
                             <div id="collapseAccordFilterAc_06" class="collapse" aria-labelledby="headingAccordFilterAc_06" data-parent="#accordionFilterAc">
@@ -143,7 +160,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="btnSaveFilterIndex" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Сохранить</button>
+                    <button @click="saveMapSearch()" type="button" id="btnSaveFilterIndex" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Сохранить</button>
                     <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">Закрыть</button>
                 </div>
             </form>
