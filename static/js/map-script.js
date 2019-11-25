@@ -8,6 +8,7 @@ if ($('#app_map_points').length != 0) {
                 title: 'app_reestr_map',
                 show_map: 'sroMembers',
                 sroMembers: [],
+                filteredCenters: [],
                 directions: [
                     {
                         code: 'personal',
@@ -190,6 +191,7 @@ if ($('#app_map_points').length != 0) {
             map_init: function () {
                 let select_objects = {
                     'sroMembers': this.sroMembers,
+                    'filtered': this.filteredCenters,
                     'allCenters': this.reestrCenters.filter(el => el.active == true && el.direction != 'qualifications'),
                     'allCoks': this.reestrCenters.filter(el => el.active == true && el.direction == 'qualifications'),
                     'allCertCenters': this.reestrCenters.filter(el => el.active == true && el.direction == 'certification'),
@@ -198,7 +200,6 @@ if ($('#app_map_points').length != 0) {
                     'attso': this.reestrCenters.filter(el => el.active == true && el.direction == 'attso'),
                     'attst': this.reestrCenters.filter(el => el.active == true && el.direction == 'attst'),
                     'specpod': this.reestrCenters.filter(el => el.active == true && el.direction == 'specpod'),
-                    'filtered': this.filtered()
                 };
                 let points = [];
                 if (this.show_map !== 'sroMembers') {
@@ -237,7 +238,6 @@ if ($('#app_map_points').length != 0) {
                         }
                     )
                 }
-
                 var myMap = new ymaps.Map('map', {
                     center: [61.698653, 99.505405],
                     zoom: 3,
@@ -246,13 +246,6 @@ if ($('#app_map_points').length != 0) {
                 }, {
                     searchControlProvider: 'yandex#search'
                 })
-                // materials = 'attsm'
-                // equipment = 'attso'
-                // technologies = 'attst'
-                // personal = 'personal'
-                // csp = 'specpod'
-                // qualification = 'qualifications'
-                // certification = 'certification'
                 let colors = {
                     'members': 'red',
                     'personal': 'red',
@@ -279,7 +272,7 @@ if ($('#app_map_points').length != 0) {
                     'attso': 'Аттестация сварочного оборудования',
                     'attst': 'Атестация сварочных технологий',
                     'qualifications': 'Оценка квалификации в области сварки и контроля',
-                    'specpod': 'Специальная подготовка персонала сварочного производства'
+                    'specpod': 'Специальная подготовка персонала сварочного производства',
                 }
                 for (var point of points) {
                     let center_point_template = {
@@ -368,6 +361,7 @@ if ($('#app_map_points').length != 0) {
                         'attso': center_point_template,
                         'attst': center_point_template,
                         'specpod': center_point_template,
+                        'filtered': center_point_template,
                     }
                     objects.push(point_templates[this.show_map])
                 }
@@ -442,12 +436,6 @@ if ($('#app_map_points').length != 0) {
                 this.search_parameters.qualifications = this.qualification_checkboxes.filter(element => element.selected === true);
                 console.log('qualification selected', item);
             },
-            saveMapSearch: function() {
-                this.show_map = 'filtered';
-                this.map_render();
-                // filter_results
-                console.log('save search pressed');
-            },
             resetMapSearch: function() {
                 for (var key of Object.keys(this.search_parameters)) {
                     this.search_parameters[key] = [];
@@ -461,25 +449,60 @@ if ($('#app_map_points').length != 0) {
                     }
                 }
                 $('#collapseAccordFilterAc_centrs').addClass('show');
+                this.show_map = 'sroMembers';
+                this.map_render();
             },
-            filtered: function() {
+            saveMapSearch: function() {
+                console.log('save search pressed');
+                this.show_map = 'filtered';
+                this.filterCenters();
+                this.map_render();
+                // filter_results
+            },
+            filterCenters: function() {
                 let centers = this.reestrCenters;
+                let search_parameters = this.search_parameters;
                 let show_full_reestr = true;
-                for (var key of Object.keys(this.search_parameters)) {
-                    if (this.search_parameters[key].length > 0) {
+                for (var key of Object.keys(search_parameters)) {
+                    if (search_parameters[key].length > 0) {
                         show_full_reestr = false;
                     }
                 }
-
                 if (show_full_reestr) {
-                    return centers;
-                }
+                    this.filteredCenters = centers;
+                    console.log('showing full reestr', this.filteredCenters);
+                } else {
+                    var fieldset = {
+                        'personal': ['levels', 'activities', 'gtus', 'weldtypes'],
+                        'attsm': ['sm_types', 'gtus'],
+                        'attso': ['gtus', 'so_types'],
+                        'attst': ['gtus', 'weldtypes'],
+                        'qualifications': ['qualifications'],
+                        'specpod': ['levels', 'weldtypes', 'gtus'],
+                    };
+                    centers = centers.filter(center => {
+                        var fields = fieldset[center.direction];
+                        return search_parameters.directions.includes(center.direction) &&
+                            function() {
+                                var passing = false;
+                                for (var field of fields) {
+                                    if (search_parameters[field].length > 0 && search_parameters[field].every(el=>center[field].includes(el.id))) {
+                                        // console.log('match', center.short_code, center, field, center[field]);
+                                        passing = true;
+                                    } else {
+                                        // console.log('not match', center.short_code, center, field, center[field]);
+                                        continue;
+                                    }
+                                }
+                                return passing;
+                            }();
+                    });
+                    console.log('filtered centers', centers);
 
-                centers = centers.filter(function(item) {
-                    return item;
-                })
-                return centers
-            }
+                    this.filteredCenters = centers;
+                }
+            },
+
         },
         computed: {
             search_parameters_length: function() {
