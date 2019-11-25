@@ -1,441 +1,163 @@
 {% load static %}
 <div class="container">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <div class="mb-2"><strong>Внимание!!!</strong> В ближайшее время область деятельности будет ограничена.</div>
-        <ol class="mb-0">
-            <li>СЗР-1АЦ - Группы технических устройств</li>
-            <li>ЦОК-002 - Профессиональные стандарты, квалификации</li>
-        </ol>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <h5>Аттестация персонала сварочного производства</h5>
-    <div class="static-text static-text-sm mb-3">
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Шифр центра:</div>
-                </div>
-                <div class="col-md-9">
-                    <div><strong>СЗР-1АЦ</strong></div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Срок действия <a href="#" target="_blank">Аттестата соответствия</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>c 13.04.2018 по 13.04.2021</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary"><a href="#" target="_blank">Условия действия аттестата</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>от 26.12.2018</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary"><a href="#" target="_blank">Свидетельство о допуске</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>от 13.04.2018</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Руководитель АЦ:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>Церникель Марина Валерьевна</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Группы технических устройств:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>ГО, КО, МО, НГДО, ОХНВП, ПТО, СК [7]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Способы сварки (наплавки):</div>
-                </div>
-                <div class="col-md-9">
-                    <div><span class="text-danger dot-danger" data-container="body" data-toggle="popover" data-placement="top" data-trigger='hover' data-content="до 10.10.2019">АФ, Г, ЗН</span>, МАДП, МП, МПГ, МПС, НИ, РАД, РАДН, РД, РДН [12]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Уровни профессиональной подготовки:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>I, II, III [3]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Подразделения организации:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">Аттестационные пункты <span class="badge badge-light border">2</span></a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">Материально-технические базы <span class="badge badge-light border">1</span></a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">Лаборатории <span class="badge badge-light border">1</span></a>
+    <div class="static-text static-text-sm">
+        <div id="activityEdit">
+            <h5>АЦСМ-49</h5>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Группы технических устройств:</div>
+                    </div>
+                    <div class="col-md-9">
+                        ГДО, ГО, КО, КСМ, МО, НГДО, ОТОГ, ОХНВП, ПТО, СК [10]
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row-main">
-            <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAccessDocs">Изменить</button>
-        </div>
-    </div>
-    <h5>Центр специальной подготовки</h5>
-    <div class="static-text static-text-sm mb-3">
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Шифр центра:</div>
-                </div>
-                <div class="col-md-9">
-                    <div><strong>СЗР-12ЦСП</strong></div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Срок действия <a href="#" target="_blank">Аттестата соответствия</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>c 13.04.2018 по 13.04.2021</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Руководитель ЦСП:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>Вепрев Алексей Николаевич</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Группы технических устройств:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>ГО, КО, МО, НГДО, ОХНВП, ПТО, СК [7]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Способы сварки (наплавки):</div>
-                </div>
-                <div class="col-md-9">
-                    <div>АФ, Г, ЗН, МАДП, МП, МПГ, МПС, НИ, РАД, РАДН, РД, РДН [12]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Уровни профессиональной подготовки:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>I, II, III [3]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAccessDocs">Изменить</button>
-        </div>
-    </div>
-    <h5>Аттестация сварочного оборудования</h5>
-    <div class="static-text static-text-sm mb-3">
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Шифр центра:</div>
-                </div>
-                <div class="col-md-9">
-                    <div><strong>АЦСО-60</strong></div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Срок действия <a href="#" target="_blank">Аттестата соответствия</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>c 13.04.2018 по 13.04.2021</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary"><a href="#" target="_blank">Условия действия аттестата</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>от 21.12.2018</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary"><a href="#" target="_blank">Свидетельство о допуске</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>от 13.04.2018</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Руководитель АЦ:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>Гагарин Юрий Владимирович</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Виды СО:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>A, B, D [3]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Группы технических устройств:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>ГО, КО, МО, НГДО, ОХНВП, ПТО, СК [7]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAccessDocs">Изменить</button>
-        </div>
-    </div>
-    <h5>Аттестация сварочных технологий</h5>
-    <div class="static-text static-text-sm mb-3">
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Шифр центра:</div>
-                </div>
-                <div class="col-md-9">
-                    <div><strong>АЦСТ-20</strong></div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Срок действия <a href="#" target="_blank">Аттестата соответствия</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>c 26.04.2019 по 26.04.2022</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary"><a href="#" target="_blank">Условия действия аттестата</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>от 26.04.2019</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary"><a href="#" target="_blank">Свидетельство о допуске</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>от 26.04.2019</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Руководитель АЦ:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>Гагарин Юрий Владимирович</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Виды аттестации технологий:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>Производственная [1]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Группы технических устройств:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>ГО, КО, МО, НГДО, ОХНВП, ПТО, СК [7]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Способы сварки (наплавки):</div>
-                </div>
-                <div class="col-md-9">
-                    <div>ААД, ААДП, АФ, Г, ЗН, МАДП, МП, МПГ, МПИ, МПС, НИ, РАД, РАДН, РД, РДН [15]</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAccessDocs">Изменить</button>
-        </div>
-    </div>
-    <h5>Оценка квалификаций</h5>
-    <div class="static-text static-text-sm mb-3">
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Шифр центра:</div>
-                </div>
-                <div class="col-md-9">
-                    <div><strong>ЦОК-002 (35.001)</strong></div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Срок действия <a href="#" target="_blank">Аттестата соответствия</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>c 16.02.2018 по 16.02.2021</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary"><a href="#" target="_blank">Условия действия аттестата</a>:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>от 19.12.2018</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Руководитель ЦОК:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>Церникель Марина Валерьевна</div>
-                </div>
-            </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Профессиональные стандарты, квалификации:</div>
-                </div>
-                <div class="col-md-9">
-                    <div class="static-text-sublevel">
-                        <a href="#collapse-ps01" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse-ps01">40.002 Сварщик</a>
-                        <div class="collapse" id="collapse-ps01">
-                            <div class="card card-body">
-                                <p>40.00200.01 Сварщик дуговой сварки плавящимся покрытым электродом (2 уровень квалификации)</p>
-                                <p>40.00200.02 Сварщик дуговой сварки плавящимся покрытым электродом (3 уровень квалификации)</p>
-                                <p>40.00200.01 Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</p>
-                            </div>
-                        </div>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Виды сварочных материалов:</div>
                     </div>
-                    <div class="static-text-sublevel">
-                        <a href="#collapse-ps02" class="active" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse-ps02">40.109 Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</a>
-                        <div class="collapse show" id="collapse-ps02">
-                            <div class="card card-body">
-                                <p>40.10900.01 Оператор автоматической сварки плавлением металлических материалов (3 уровень квалификации)</p>
-                                <p>40.10900.03 Оператор автоматической сварки полимерных материалов (3 уровень квалификации)</p>
-                                <p class="text-danger dot-danger" data-container="body" data-toggle="popover" data-placement="top" data-trigger='hover' data-content="до 10.10.2019">40.10900.06 Сварщик-оператор автоматической сварки плавлением металлических материалов (4 уровень квалификации)</p>
-                                <p class="text-danger dot-danger" data-container="body" data-toggle="popover" data-placement="top" data-trigger='hover' data-content="до 10.10.2019">40.10900.08 Сварщик-оператор автоматической сварки полимерных материалов (4 уровень квалификации)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="static-text-sublevel">
-                        <a href="#collapse-ps03" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse-ps03">40.107 Контролер сварочных работ</a>
-                        <div class="collapse" id="collapse-ps03">
-                            <div class="card card-body">
-                                <p>40.10900.01 Оператор автоматической сварки плавлением металлических материалов (3 уровень квалификации)</p>
-                                <p>40.10900.03 Оператор автоматической сварки полимерных материалов (3 уровень квалификации)</p>
-                                <p>40.10900.06 Сварщик-оператор автоматической сварки плавлением металлических материалов (4 уровень квалификации)</p>
-                                <p>40.10900.08 Сварщик-оператор автоматической сварки полимерных материалов (4 уровень квалификации)</p>
-                            </div>
-                        </div>
+                    <div class="col-md-9">
+                        Гг, Гз, Пм, Пп, Пр, Пс, Тм, Ф, Эн, Эп [10]
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row-main">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="text-secondary">Подразделения организации:</div>
-                </div>
-                <div class="col-md-9">
-                    <div>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">Материально-технические базы <span class="badge badge-light border">2</span></a>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Аттестация с учетом дополнительных требований ПАО "АК "Транснефть":</div>
+                    </div>
+                    <div class="col-md-9">
+                        ДА
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row-main">
-            <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAccessDocs">Изменить</button>
+            <div class="row-main">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-secondary">Экспертное заключение:</div>
+                    </div>
+                    <div class="col-md-9">
+                        <div>от 19.07.2019</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-main">
+                <button type="submit" class="btn btn-primary btn-sm">Выгрузить на сайт<i class="fa fa-angle-right ml-1"></i></button>
+                <button id="btnEditActivity" class="btn btn-outline-primary btn-sm" type="button">Изменить</button>
+            </div>
         </div>
     </div>
-    <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAccessDocs"><i class="fa fa-plus mr-1"></i>Добавить направление</button>
+    <div id="orgActivityEdit" style="display: none;">
+        <form class="editing-form shadow-sm">
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Группы технических устройств</label>
+                <div class="col-sm-8">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">ГДО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">ГО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">КО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">КСМ</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">МО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">НГДО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">ОТОГ</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">ОХНВП</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">ПТО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">СК [10]</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Виды сварочных материалов</label>
+                <div class="col-sm-8">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">Гг</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">Гз</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Пм</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Пп</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Пр</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Пс</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Тм</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Ф</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Эн</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Эп [10]</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Экспертное заключение от</label>
+                <div class="col-sm-4 col-lg-2">
+                    <input type="date" class="form-control form-control-sm">
+                </div>
+            </div>
+            <div class="form-group row align-items-center mb-3">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm"></label>
+                <div class="col-sm-9">
+                    <div class="form-check form-check-sm">
+                        <input class="form-check-input" type="checkbox" id="tn_acsm">
+                        с <label class="form-check-label" for="tn_acsm">Аттестация с учетом дополнительных требований ПАО "АК "Транснефть"</label>
+                    </div>
+                </div>
+            </div>
+            <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
+            <button id="cancelActivityEdit" class="btn btn-outline-primary btn-sm" type="button">Отмена</button>
+        </form>
+    </div>
 </div>
