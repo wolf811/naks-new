@@ -166,7 +166,6 @@ $('#membershipExpulsion').change(function() {
 // Добавление/удаление фото
 $('#addPhotoBlock').click(function() {
     $(this).before('<div class="upload-photo">\
-            <hr>\
             <div class="form-group row">\
                 <div class="col-sm-4 offset-sm-3 mb-3 mb-md-0">\
                     <select class="form-control form-control-sm">\
@@ -191,10 +190,10 @@ $('#addPhotoBlock').click(function() {
                     <button type="button" class="btn btn-outline-secondary btn-xs btn-reset" title="удалить фото"><i class="fa fa-times"></i></button>\
                 </div>\
             </div>\
+            <hr>\
         </div>');
 
     $('.btn-reset').click(function() {
         $(this).closest('.upload-photo').remove();
     })
-
 })

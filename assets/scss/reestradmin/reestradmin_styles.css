@@ -619,6 +619,7 @@ a {
       background-color: transparent;
       transition: 0.2s; }
 
+.accordion-main .text-sm,
 .accordion-main .static-text-sm,
 .accordion-main .form-check-sm {
   font-size: 0.875rem; }
