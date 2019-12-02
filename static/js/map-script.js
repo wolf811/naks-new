@@ -529,18 +529,18 @@ if ($('#app_map_points').length != 0) {
                     }
                 }
                 if (show_full_reestr) {
-                    this.filteredCenters = centers;
+                    this.filteredCenters = centers.filter();
                     console.log('showing full reestr');
                     return
                 } else {
                     var fieldset = this.fieldSet;
                     centers = centers.filter(center => {
-                        if (search_parameters['directions'].length > 0 &&
-                            Object.keys(search_parameters)
-                            .filter(el=>el !== 'directions')
-                            .every(arr => search_parameters[arr].length == 0)) {
-                                return search_parameters['directions'].includes(center.direction) && center.active == true;
-                            }
+                        // if (search_parameters['directions'].length > 0 &&
+                        //     Object.keys(search_parameters)
+                        //     .filter(el=>el !== 'directions')
+                        //     .every(arr => search_parameters[arr].length == 0)) {
+                        //         return search_parameters['directions'].includes(center.direction) && center.active == true;
+                        //     }
                         var center_fields = fieldset[center.direction];
                         var search_fields = Object.keys(search_parameters).filter(el=>search_parameters[el].length > 0 && center_fields.includes(el));
                         return search_parameters.directions.includes(center.direction) && center.active == true &&
