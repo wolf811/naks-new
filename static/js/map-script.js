@@ -545,13 +545,12 @@ if ($('#app_map_points').length != 0) {
                         var search_fields = Object.keys(search_parameters).filter(el=>search_parameters[el].length > 0 && center_fields.includes(el));
                         return search_parameters.directions.includes(center.direction) && center.active == true &&
                             function() {
-                                var passing = false;
+                                var passing = true;
                                 for (var field of search_fields) {
                                     // if (search_parameters[field].length > 0 && search_parameters[field].every(el=>center[field].includes(el.id))) {
-                                    if (search_parameters[field].every(el=>center[field].includes(el.id))) {
-                                        passing = true;
-                                    } else {
-                                        // console.log('not match', center.short_code, center, field, center[field]);
+                                    if (!search_parameters[field].every(el=>center[field].includes(el.id))) {
+                                        passing = false;
+                                        // console.log('not match', center.company, field, center[field]);
                                         break;
                                     }
                                 }
@@ -559,7 +558,7 @@ if ($('#app_map_points').length != 0) {
                                 return passing;
                             }();
                     });
-                    console.log('filtered centers', centers);
+                    // console.log('filtered centers', centers);
 
                     this.filteredCenters = centers;
                 }
