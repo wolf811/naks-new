@@ -71,6 +71,7 @@ class Level(models.Model):
     # I-IV
     level = models.CharField(u'Уровень', max_length=2)
 
+
     class Meta:
         verbose_name = 'Уровень'
         verbose_name_plural = 'Уровни'

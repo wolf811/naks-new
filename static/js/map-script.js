@@ -48,6 +48,7 @@ if ($('#app_map_points').length != 0) {
                 ],
                 reestrCenters: [],
                 accred_fields: {},
+                obldObject: {},
                 qualification_checkboxes: [],
                 search_parameters: {
                     directions: [],
@@ -58,7 +59,15 @@ if ($('#app_map_points').length != 0) {
                     sm_types: [],
                     so_types: [],
                     qualifications: []
-                }
+                },
+                fieldSet: {
+                    'personal': ['levels', 'activities', 'gtus', 'weldtypes'],
+                    'attsm': ['sm_types', 'gtus'],
+                    'attso': ['gtus', 'so_types'],
+                    'attst': ['gtus', 'weldtypes'],
+                    'qualifications': ['qualifications'],
+                    'specpod': ['levels', 'weldtypes', 'gtus'],
+                },
             }
         },
         beforeMount() {
@@ -88,6 +97,15 @@ if ($('#app_map_points').length != 0) {
                 for (var center of this.reestrCenters) {
                     let direction = center.direction;
                     !(direction in this.directions) ? this.directions[direction] = direction_titles[direction]: null;
+                }
+            },
+            makeObldObject: function() {
+                for (var key of Object.keys(this.accred_fields)) {
+                    for (var value of this.accred_fields[key]) {
+                        key == 'level' ?
+                            this.obldObject[value.id] = {short_name: value.level, full_name: value.level+' уровень'} :
+                            this.obldObject[value.id] = {short_name: value.short_name, full_name: value.full_name}
+                    }
                 }
             },
             getOrUpdateSroMembers: function () {
@@ -157,6 +175,7 @@ if ($('#app_map_points').length != 0) {
                     .finally(() => {
                         console.log('dirs updated by api', this.accred_fields);
                         this.qualification_checkboxes = this.accred_fields.qualifications;
+                        this.makeObldObject();
                     })
             },
             check_local_storage_and_cookie: function () {
@@ -202,10 +221,43 @@ if ($('#app_map_points').length != 0) {
                     'specpod': this.reestrCenters.filter(el => el.active == true && el.direction == 'specpod'),
                 };
                 let points = [];
+                // function test(item) {
+                //     var string = '';
+                //     for (var key of this.fieldSet[item.direction]) {
+                //         string+=item[key];
+                //     }
+                //     return string;
+                // }
+                var search_parameters = this.search_parameters;
+                var fieldSet = this.fieldSet;
+                var obldObject = this.obldObject;
+                var resulting_arr = [];
+                for (var val of Object.values(search_parameters)) {
+                    if (val.length > 0 && typeof val[0] === 'object') {
+                        for (var el of val) {
+                            resulting_arr.push(el.id);
+                        }
+                    }
+                }
+                // console.log('resulting arr', resulting_arr);
                 if (this.show_map !== 'sroMembers') {
                     points = Array.from(
                         select_objects[this.show_map],
                         function (item) {
+                            function get_obl(point) {
+                                var string = '';
+                                for (var key of fieldSet[point.direction]) {
+                                    for (var id of point[key]) {
+                                        // Object.keys(search_parameters).reduce(function(res, v) {
+                                        //     return res.concat(search_parameters[v]);
+                                        // }, []).includes(id)
+                                        resulting_arr.includes(id) ?
+                                        string+=' <strong class="text-danger">'+obldObject[id].short_name + '</strong>':
+                                        string+=' '+obldObject[id].short_name
+                                    }
+                                }
+                                return string;
+                            }
                             var point_obj = {
                                 'coordinates': [item.coordinates[1], item.coordinates[0]],
                                 'title': item.company,
@@ -216,6 +268,8 @@ if ($('#app_map_points').length != 0) {
                                 'id': item.id,
                                 'company': item.company,
                                 'city': item.city,
+                                'oblD': get_obl(item),
+
                             }
                             return point_obj
                         })
@@ -232,7 +286,7 @@ if ($('#app_map_points').length != 0) {
                                 'id': item.id,
                                 'centers': item.centers,
                                 'phone': item.phone,
-                                'email': item.email
+                                'email': item.email,
                             }
                             return point_obj
                         }
@@ -285,7 +339,10 @@ if ($('#app_map_points').length != 0) {
                         properties: {
                             clusterCaption: point.short_code,
                             hintContent: point.title,
-                            balloonContent: point.company_full_name,
+                            balloonContent: `
+                            ${point.company_full_name}<br>
+                            Область деятельности: ${point.oblD}
+                            `,
                         }
                     };
                     let point_templates = {
@@ -402,6 +459,7 @@ if ($('#app_map_points').length != 0) {
             buttonPress: function (parameter) {
                 this.show_map = parameter
                 this.map_render();
+                this.resetMapSearch(render=false);
             },
             selectDirection: function () {
                 // console.log('direction selected', item);
@@ -436,7 +494,7 @@ if ($('#app_map_points').length != 0) {
                 this.search_parameters.qualifications = this.qualification_checkboxes.filter(element => element.selected === true);
                 console.log('qualification selected', item);
             },
-            resetMapSearch: function() {
+            resetMapSearch: function(render=true) {
                 for (var key of Object.keys(this.search_parameters)) {
                     this.search_parameters[key] = [];
                 }
@@ -449,8 +507,10 @@ if ($('#app_map_points').length != 0) {
                     }
                 }
                 $('#collapseAccordFilterAc_centrs').addClass('show');
-                this.show_map = 'sroMembers';
-                this.map_render();
+                if (render) {
+                    this.show_map = 'sroMembers';
+                    this.map_render();
+                }
             },
             saveMapSearch: function() {
                 console.log('save search pressed');
@@ -470,30 +530,32 @@ if ($('#app_map_points').length != 0) {
                 }
                 if (show_full_reestr) {
                     this.filteredCenters = centers;
-                    console.log('showing full reestr', this.filteredCenters);
+                    console.log('showing full reestr');
+                    return
                 } else {
-                    var fieldset = {
-                        'personal': ['levels', 'activities', 'gtus', 'weldtypes'],
-                        'attsm': ['sm_types', 'gtus'],
-                        'attso': ['gtus', 'so_types'],
-                        'attst': ['gtus', 'weldtypes'],
-                        'qualifications': ['qualifications'],
-                        'specpod': ['levels', 'weldtypes', 'gtus'],
-                    };
+                    var fieldset = this.fieldSet;
                     centers = centers.filter(center => {
-                        var fields = fieldset[center.direction];
-                        return search_parameters.directions.includes(center.direction) &&
+                        if (search_parameters['directions'].length > 0 &&
+                            Object.keys(search_parameters)
+                            .filter(el=>el !== 'directions')
+                            .every(arr => search_parameters[arr].length == 0)) {
+                                return search_parameters['directions'].includes(center.direction) && center.active == true;
+                            }
+                        var center_fields = fieldset[center.direction];
+                        var search_fields = Object.keys(search_parameters).filter(el=>search_parameters[el].length > 0 && center_fields.includes(el));
+                        return search_parameters.directions.includes(center.direction) && center.active == true &&
                             function() {
                                 var passing = false;
-                                for (var field of fields) {
-                                    if (search_parameters[field].length > 0 && search_parameters[field].every(el=>center[field].includes(el.id))) {
-                                        // console.log('match', center.short_code, center, field, center[field]);
+                                for (var field of search_fields) {
+                                    // if (search_parameters[field].length > 0 && search_parameters[field].every(el=>center[field].includes(el.id))) {
+                                    if (search_parameters[field].every(el=>center[field].includes(el.id))) {
                                         passing = true;
                                     } else {
                                         // console.log('not match', center.short_code, center, field, center[field]);
-                                        continue;
+                                        break;
                                     }
                                 }
+                                // console.log('match', center.short_code, center, field, center[field]);
                                 return passing;
                             }();
                     });
