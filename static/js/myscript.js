@@ -299,21 +299,11 @@ $('#btnSubscription').click(function() {
 })
 
 
-// $(function() {
-
-            //     let pathname_url = window.location.pathname;
-            //     let href_url = window.location.href;
-
-            //     $(".navbar-nav .nav-item").each(function() {
-
-            //         let link = $(this).find(".nav-link").attr("href");
-
-            //         if (pathname_url == link || href_url == link) {
-
-            //             $(this).addClass("active");
-
-            //         }
-
-            //     });
-
-            // });
+$('#loginBtn_02').click(function() {
+    $('#btnGroupEntered').show();
+    $('#loginBtn_01').hide();
+});
+$('#exitBtn').click(function() {
+    $('#btnGroupEntered').hide();
+    $('#loginBtn_01').show();
+});
