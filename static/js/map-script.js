@@ -520,7 +520,7 @@ if ($('#app_map_points').length != 0) {
                 // filter_results
             },
             filterCenters: function() {
-                let centers = this.reestrCenters;
+                let centers = this.reestrCenters.filter(el=>el.active == true);
                 let search_parameters = this.search_parameters;
                 let show_full_reestr = true;
                 for (var key of Object.keys(search_parameters)) {
@@ -529,7 +529,7 @@ if ($('#app_map_points').length != 0) {
                     }
                 }
                 if (show_full_reestr) {
-                    this.filteredCenters = centers.filter();
+                    this.filteredCenters = centers;
                     console.log('showing full reestr');
                     return
                 } else {
