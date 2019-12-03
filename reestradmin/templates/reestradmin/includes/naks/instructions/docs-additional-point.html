@@ -1,3 +1,4 @@
+{% load static %}
 <div class="list-group list-group-horizontal-sm" id="type-additional-point" role="tablist">
     <a class="list-group-item list-group-item-action list-group-item-light active" id="tab-additional-point-naks" data-toggle="list" href="#doc-additional-point-naks" role="tab" aria-controls="doc-additional-point-naks"><i class="fa fa-angle-down mr-2"></i>НАКС: Указ. эксперт. АП (ЭАП)</a>
     <a class="list-group-item list-group-item-action list-group-item-light" id="tab-additional-point-nedk" data-toggle="list" href="#doc-additional-point-nedk" role="tab" aria-controls="doc-additional-point-nedk"><i class="fa fa-angle-down mr-2"></i>НЭДК: Указ. тех. аудит АП (ЭАП)</a>
@@ -32,7 +33,7 @@
                             <span class="paragraph"><b>Президент НАКС</b></span>
                         </div>
                         <div class="col-5">
-                            <img class="img-fluid" data-cke-saved-src="static/images/aleshin.png" src="static/images/aleshin.png">
+                            <img class="img-fluid" data-cke-saved-src="{% static 'images/aleshin_signature.png' %}" src="{% static 'images/aleshin_signature.png' %}">
                         </div>
                         <div class="col text-right">
                             <b>Н.П.&nbsp;Алёшин</b>

@@ -37,3 +37,17 @@ def organization_edit(request):
         'title': title
     }
     return render(request, 'reestradmin/organization_edit.html', content)
+
+def list_instructions(request):
+    title = 'ЭДО - Указания'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/list_instructions.html', content)
+
+def instruction_detail(request):
+    title = 'ЭДО - Новое указание'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/instruction_detail.html', content)

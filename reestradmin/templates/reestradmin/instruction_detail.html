@@ -1,0 +1,123 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<!-- <div class="breadcrumb-block my-1">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-sm-10 col-xl-11">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="list-instructions.html">Указания</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Новое указание</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="d-none d-sm-block col-sm-2 col-xl-1"><a href="{% url 'reestradmin:list_instructions' %}" class="btn btn-outline-primary btn-block btn-xs" id="ago"><i class="fa fa-angle-left mr-1"></i>Назад</a></div>
+        </div>
+    </div>
+</div> -->
+<div class="content">
+    <div class="content-instructions">
+        <div class="container-fluid">
+            <div class="mb-4">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card bg-light mb-4 mb-lg-0">
+                            <div class="card-header">
+                                <h5 class="mb-0">Параметры документа</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="mb-2 text-secondary">Автономная некоммерческая организация "АТТЕСТАЦИОННЫЙ ЦЕНТР АТТЕСТАЦИИ СВАРЩИКОВ И СПЕЦИАЛИСТОВ СВАРОЧНОГО ПРОИЗВОДСТВА"<small class="ml-2">(СУР-5АЦ)</small></h6>
+                                <h6 class="title">Вид документа</h6>
+                                <div class="list-group shadow" id="document-types" role="tablist">
+                                    <a class="list-group-item list-group-item-action list-group-item-light" id="form-prolongation" data-toggle="list" href="#docs-prolongation" role="tab" aria-controls="prolongation" data-form-id='form_1'><i class="fa fa-angle-right mr-2"></i>Продление</a>
+                                    <a class="list-group-item list-group-item-action list-group-item-light" id="form-commis-expansion" data-toggle="list" href="#docs-commis-expansion" role="tab" aria-controls="commis-expansion" data-form-id='form_2'><i class="fa fa-angle-right mr-2"></i>Расширение состава комиссии</a>
+                                    <a class="list-group-item list-group-item-action list-group-item-light" id="form-creation-ending" data-toggle="list" href="#docs-creation-ending" role="tab" aria-controls="creation-ending" data-form-id='form_3'><i class="fa fa-angle-right mr-2"></i>Создание, окончание</a>
+                                    <a class="list-group-item list-group-item-action list-group-item-light" id="form-inspection-check" data-toggle="list" href="#docs-inspection-check" role="tab" aria-controls="inspection-check" data-form-id='form_4'><i class="fa fa-angle-right mr-2"></i>Инспекционная проверка</a>
+                                    <a class="list-group-item list-group-item-action list-group-item-light" id="form-area-extension" data-toggle="list" href="#docs-area-extension" role="tab" aria-controls="area-extension" data-form-id='form_5'><i class="fa fa-angle-right mr-2"></i>Расширение области деятельности</a>
+                                    <a class="list-group-item list-group-item-action list-group-item-light" id="form-additional-point" data-toggle="list" href="#docs-additional-point" role="tab" aria-controls="additional-point" data-form-id='form_6'><i class="fa fa-angle-right mr-2"></i>Дополнительный АП</a>
+                                    <a class="list-group-item list-group-item-action list-group-item-light" id="form-point-expansion" data-toggle="list" href="#docs-point-expansion" role="tab" aria-controls="point-expansion" data-form-id='form_7'><i class="fa fa-angle-right mr-2"></i>Расширение области деятельности АП</a>
+                                </div>
+                                <div class="block-change-form">
+                                    <!-- Include form-prolongation -->
+                                    {% include 'reestradmin/includes/naks/instructions/form-prolongation.html' %}
+                                    <!-- End Include form-prolongation -->
+                                    <!-- Include form-commis -->
+                                    {% include 'reestradmin/includes/naks/instructions/form-commis-expansion.html' %}
+                                    <!-- End Include form-commis -->
+                                    <!-- Include form-creation-ending -->
+                                    {% include 'reestradmin/includes/naks/instructions/form-creation-ending.html' %}
+                                    <!-- End Include form-creation-ending -->
+                                    <!-- Include form-inspection-check -->
+                                    {% include 'reestradmin/includes/naks/instructions/form-inspection-check.html' %}
+                                    <!-- End Include form-inspection-check -->
+                                    <!-- Include form-area-extension -->
+                                    {% include 'reestradmin/includes/naks/instructions/form-area-extension.html' %}
+                                    <!-- End Include form-area-extension -->
+                                    <!-- Include form-additional-point -->
+                                    {% include 'reestradmin/includes/naks/instructions/form-additional-point.html' %}
+                                    <!-- End Include form-additional-point -->
+                                    <!-- Include form-point-expansion -->
+                                    {% include 'reestradmin/includes/naks/instructions/form-point-expansion.html' %}
+                                    <!-- End Include form-point-expansion -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card bg-light">
+                            <div class="card-header">
+                                <h5 class="mb-0">Шаблон документа</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="block-change-docs">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" role="tabpanel">
+                                            <span class="text-info">Выберите <strong>вид документа</strong></span>
+                                        </div>
+                                        <div class="tab-pane fade" id="docs-prolongation" role="tabpanel" aria-labelledby="form-prolongation">
+                                            <!-- Include Docs-prolongation -->
+                                            {% include 'reestradmin/includes/naks/instructions/docs-prolongation.html' %}
+                                            <!-- End Include Docs-prolongation -->
+                                        </div>
+                                        <div class="tab-pane fade" id="docs-commis-expansion" role="tabpanel" aria-labelledby="form-commis-expansion">
+                                            <!-- Include Docs-commis -->
+                                            {% include 'reestradmin/includes/naks/instructions/docs-commis-expansion.html' %}
+                                            <!-- End Include Docs-commis -->
+                                        </div>
+                                        <div class="tab-pane fade" id="docs-creation-ending" role="tabpanel" aria-labelledby="form-creation-ending">
+                                            <!-- Include Docs-commis -->
+                                            {% include 'reestradmin/includes/naks/instructions/docs-creation-ending.html' %}
+                                            <!-- End Include Docs-commis -->
+                                        </div>
+                                        <div class="tab-pane fade" id="docs-inspection-check" role="tabpanel" aria-labelledby="form-inspection-check">
+                                            <!-- Include Docs-commis -->
+                                            {% include 'reestradmin/includes/naks/instructions/docs-inspection-check.html' %}
+                                            <!-- End Include Docs-commis -->
+                                        </div>
+                                        <div class="tab-pane fade" id="docs-area-extension" role="tabpanel" aria-labelledby="form-area-extension">
+                                            <!-- Include Docs-commis -->
+                                            {% include 'reestradmin/includes/naks/instructions/docs-area-extension.html' %}
+                                            <!-- End Include Docs-commis -->
+                                        </div>
+                                        <div class="tab-pane fade" id="docs-additional-point" role="tabpanel" aria-labelledby="form-additional-point">
+                                            <!-- Include Docs-commis -->
+                                            {% include 'reestradmin/includes/naks/instructions/docs-additional-point.html' %}
+                                            <!-- End Include Docs-commis -->
+                                        </div>
+                                        <div class="tab-pane fade" id="docs-point-expansion" role="tabpanel" aria-labelledby="form-point-expansion">
+                                            <!-- Include Docs-commis -->
+                                            {% include 'reestradmin/includes/naks/instructions/docs-point-expansion.html' %}
+                                            <!-- End Include Docs-commis -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

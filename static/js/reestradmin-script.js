@@ -197,3 +197,7 @@ $('#addPhotoBlock').click(function() {
         $(this).closest('.upload-photo').remove();
     })
 })
+
+$('#addInstructions').click(function() {
+    $('.btn-add-instruction').toggle();
+})

@@ -480,6 +480,9 @@ body {
 .content-instructions .card .block-change-docs .list-group-item-action {
   width: inherit; }
 
+.btn-add-instruction {
+  display: none; }
+
 .table {
   color: #333; }
   .table tr.active th {

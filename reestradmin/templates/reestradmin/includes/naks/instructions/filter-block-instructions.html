@@ -1,9 +1,10 @@
+{% load static %}
 <div class="filter-block mb-4">
     <div class="line-filter py-2">
         <div class="container-fluid">
             <div class="row ">
                 <div class="col-md mb-2 mb-md-0">
-                    <a href="instructions.html" class="btn btn-sm btn-primary"><i class="fa fa-plus mr-2"></i>Новое указание</a>
+                    <a href="{% url 'reestradmin:instruction_detail' %}" class="btn btn-sm btn-primary"><i class="fa fa-plus mr-2"></i>Новое указание</a>
                 </div>
                 <div class="col-md col-lg-5 col-xl-4 float-sm-right">
                     <form>
@@ -19,7 +20,8 @@
             </div>
         </div>
     </div>
-    <div class="collapse filter py-3" id="collapse-filter"> <!-- Расширенный фильтр -->
+    <div class="collapse filter py-3" id="collapse-filter">
+        <!-- Расширенный фильтр -->
         <div class="container-fluid">
             <form role="form">
                 <div class="row">
@@ -152,9 +154,9 @@
                         </div>
                     </div>
                 </div>
-
                 <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search mr-2"></i>Найти</button>
-                <button type="button" class="btn btn-link btn-sm">Сбросить</button> 
+                <button type="submit" class="btn btn-outline-primary btn-sm">Сбросить</button>
+                <button type="button" class="btn btn-link btn-sm" data-toggle="collapse" href="#collapse-filter" role="button" aria-expanded="true" aria-controls="collapse-filter">Закрыть</button>
             </form>
         </div>
     </div>

@@ -8,5 +8,7 @@ urlpatterns = [
     path('center_acsm_edit/', reestradmin.center_acsm_edit, name='center_acsm_edit'),
     path('organization_list/', reestradmin.organization_list, name='organization_list'),
     path('organization_edit/', reestradmin.organization_edit, name='organization_edit'),
+    path('list_instructions/', reestradmin.list_instructions, name='list_instructions'),
+    path('instruction_detail/', reestradmin.instruction_detail, name='instruction_detail'),
 ]
 

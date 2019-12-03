@@ -1,19 +1,14 @@
+{% load static %}
 <div class="list-group list-group-horizontal-sm" id="type-comiss-expansion" role="tablist">
-  <a class="list-group-item list-group-item-action list-group-item-light active" id="tab-comiss-naks" data-toggle="list" href="#doc-comiss-naks" role="tab" aria-controls="doc-comiss-naks"><i class="fa fa-angle-down mr-2"></i>НАКС: Указ. РК-АЦ</a>
-
-  <a class="list-group-item list-group-item-action list-group-item-light" id="tab-comiss-nedk" data-toggle="list" href="#doc-comiss-nedk" role="tab" aria-controls="doc-comiss-nedk"><i class="fa fa-angle-down mr-2"></i>НЭДК: Указ. тех. аудит РК-АЦ</a>
-
-  <a class="list-group-item list-group-item-action list-group-item-light" id="tab-comiss-calculation" data-toggle="list" href="#doc-comiss-calculation" role="tab" aria-controls="doc-comiss-calculation"><i class="fa fa-angle-down mr-2"></i>Калькуляция</a>
-
-  <a class="list-group-item list-group-item-action list-group-item-light" id="tab-comiss-template" data-toggle="list" href="#doc-comiss-template" role="tab" aria-controls="doc-comiss-template"><i class="fa fa-angle-down mr-2"></i>Шаблоны</a>
+    <a class="list-group-item list-group-item-action list-group-item-light active" id="tab-comiss-naks" data-toggle="list" href="#doc-comiss-naks" role="tab" aria-controls="doc-comiss-naks"><i class="fa fa-angle-down mr-2"></i>НАКС: Указ. РК-АЦ</a>
+    <a class="list-group-item list-group-item-action list-group-item-light" id="tab-comiss-nedk" data-toggle="list" href="#doc-comiss-nedk" role="tab" aria-controls="doc-comiss-nedk"><i class="fa fa-angle-down mr-2"></i>НЭДК: Указ. тех. аудит РК-АЦ</a>
+    <a class="list-group-item list-group-item-action list-group-item-light" id="tab-comiss-calculation" data-toggle="list" href="#doc-comiss-calculation" role="tab" aria-controls="doc-comiss-calculation"><i class="fa fa-angle-down mr-2"></i>Калькуляция</a>
+    <a class="list-group-item list-group-item-action list-group-item-light" id="tab-comiss-template" data-toggle="list" href="#doc-comiss-template" role="tab" aria-controls="doc-comiss-template"><i class="fa fa-angle-down mr-2"></i>Шаблоны</a>
 </div>
-
 <div class="tab-content">
     <div class="tab-pane fade show active" id="doc-comiss-naks" role="tabpanel" aria-labelledby="tab-comiss-naks">
         <div class="row justify-content-center">
-
             <div class="col-sm-10 col-xl-7 bg-white my-3">
-
                 <div class="document-print">
                     <div class="title-naks">Национальное Агентство Контроля Сварки</div><br><br><br>
                     <div class="title-doc">Указание</div>
@@ -25,7 +20,6 @@
                             <span>24&nbsp;апреля&nbsp;2019г.</span>
                         </div>
                     </div><br>
-
                     <div class="document-print-text">
                         <span class="paragraph">
                             На основании заявки № от г., с целью проведения проверки соответствия Аттестационного центра <b>Автономная некоммерческая организация «АТТЕСТАЦИОННЫЙ ЦЕНТР АТТЕСТАЦИИ СВАРЩИКОВ И СПЕЦИАЛИСТОВ СВАРОЧНОГО ПРОИЗВОДСТВА» </b> (626440, Ханты - Мансийский Автономный округ, город Нижневартовск, улица 2 "П", 2, Западная Промзона, директор <b>Марусик Михаил Михайлович</b>, тел. <nobr>(3466) 43-94-44, 63-41-80)</nobr> требованиям <b>ПБ&nbsp;03-273-99</b> «Правила аттестации сварщиков и специалистов сварочного производства», <b>РД&nbsp;03-495-02</b> «Технологический регламент проведения аттестации сварщиков и специалистов сварочного производства», руководящих и методических документов Системы аттестации сварщиков и специалистов сварочного производства, при подготовке Аттестационного центра к экспертному обследованию (проверке соответствия) НАКС <b>в части изменения состава аттестационной комиссии</b>, назначить эксперта САСв <b>____________________</b>
@@ -34,34 +28,25 @@
                             Срок проведения проверки в период <b>c ... по ...</b>.
                         </span>
                     </div><br><br>
-
                     <div class="row justify-content-between align-items-center document-print-text">
                         <div class="col">
                             <span class="paragraph"><b>Президент НАКС</b></span>
                         </div>
                         <div class="col-5">
-                            <img class="img-fluid" data-cke-saved-src="static/images/aleshin.png" src="static/images/aleshin.png">
+                            <img class="img-fluid" data-cke-saved-src="{% static 'images/aleshin_signature.png' %}" src="{% static 'images/aleshin_signature.png' %}">
                         </div>
                         <div class="col text-right">
                             <b>Н.П.&nbsp;Алёшин</b>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-        
         <a href="#" class="btn btn-outline-primary btn-sm" target="_blank"><i class="fa fa-print mr-2"></i>Распечатать</a>
-
     </div>
-
     <div class="tab-pane fade" id="doc-comiss-nedk" role="tabpanel" aria-labelledby="tab-comiss-nedk">
         <div class="row justify-content-center">
-
             <div class="col-sm-10 col-xl-7 bg-white my-3">
-
                 <div class="document-print">
                     <div class="title-nedk">Национальная Экспертно-Диагностическая Компания</div><br><br><br>
                     <div class="title-doc">Указание</div>
@@ -73,7 +58,6 @@
                             <span>24&nbsp;апреля&nbsp;2019г.</span>
                         </div>
                     </div><br>
-
                     <div class="document-print-text">
                         <span class="paragraph">
                             На основании заявки № от г. и дополнительного соглашения <nobr><b>№РК-0091</b></nobr> от <nobr>24&nbsp;апреля&nbsp;2019г.</nobr>, с целью проведения консультирования и технического аудита Аттестационного центра <b>Автономная некоммерческая организация «АТТЕСТАЦИОННЫЙ ЦЕНТР АТТЕСТАЦИИ СВАРЩИКОВ И СПЕЦИАЛИСТОВ СВАРОЧНОГО ПРОИЗВОДСТВА» </b> (626440, Ханты - Мансийский Автономный округ, город Нижневартовск, улица 2 "П", 2, Западная Промзона, директор <b>Марусик Михаил Михайлович</b>, тел. <nobr>(3466) 43-94-44, 63-41-80)</nobr> на соответствие требованиям <b>ПБ&nbsp;03-273-99</b> «Правила аттестации сварщиков и специалистов сварочного производства», <b>РД&nbsp;03-495-02</b> «Технологический регламент проведения аттестации сварщиков и специалистов сварочного производства», руководящих и методических документов Системы аттестации сварщиков и специалистов сварочного производства, при подготовке Аттестационного центра к экспертному обследованию (проверке соответствия) НАКС <b>в части изменения состава аттестационной комиссии</b>, назначить эксперта САСв <b>____________________</b>
@@ -90,17 +74,11 @@
                             <b>А.И.&nbsp;Прилуцкий</b>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
         <a href="#" class="btn btn-outline-primary btn-sm" target="_blank"><i class="fa fa-print mr-2"></i>Распечатать</a>
-
     </div>
-
     <div class="tab-pane fade" id="doc-comiss-calculation" role="tabpanel" aria-labelledby="tab-comiss-calculation">
         <div class="row justify-content-center">
             <div class="col-sm-10 col-xl-7 bg-white my-3">
@@ -110,13 +88,14 @@
                     </div><br>
                     <div class="text-center font-weight-bold">
                         <span class="text-uppercase">Калькуляция</span><br>
-                        <span><nobr>к дополнительному соглашению №РК-0091</nobr> от 20&nbsp;мая&nbsp;2019г.</span>
+                        <span>
+                            <nobr>к дополнительному соглашению №РК-0091</nobr> от 20&nbsp;мая&nbsp;2019г.
+                        </span>
                     </div><br>
                     <div class="text-center">
                         проведения консультирования и технического аудита<br>компетенции персонала <b>АЦСП</b> на соответствие требованиям<br><b>ПБ-03-273-99, РД 03-495-02, РД и МД САСв</b><br>при подготовке к экспертному обследованию (проверке соответствия) НАКС<br>с целью <b>изменения</b> области аттестационной деятельности<br>(<b>состава аттестационной комиссии</b>).
                     </div><br>
                     <div class="text-center mb-2">Срок выполнения работ в период <b>c ... по ...</b></div>
-
                     <div class="document-print-table">
                         <table class="table table-bordered table-sm">
                             <thead>
@@ -173,7 +152,6 @@
                             </tbody>
                         </table>
                     </div><br>
-
                     <div class="row justify-content-between align-items-center document-print-text">
                         <div class="col">
                             <span class="paragraph">Бухгалтер</span>
@@ -182,15 +160,11 @@
                             Т.Г.&nbsp;Голубева
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
         <a href="#" class="btn btn-outline-primary btn-sm" target="_blank"><i class="fa fa-print mr-2"></i>Распечатать</a>
-        
     </div>
-
     <div class="tab-pane fade" id="doc-comiss-template" role="tabpanel" aria-labelledby="tab-comiss-template">
         <h5 class="text-muted">Шаблоны писем</h5>
     </div>

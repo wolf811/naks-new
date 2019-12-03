@@ -1,0 +1,102 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <!-- Include FILTER-BLOCK -->
+    {% include 'reestradmin/includes/naks/instructions/filter-block-instructions.html' %}
+    <!-- End Include FILTER-BLOCK -->
+    <div class="container-fluid">
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-documents">
+                <thead>
+                    <tr class="active">
+                        <th colspan="2">Статус, действия</th>
+                        <th>Шифр организации, город</th>
+                        <th>Вид документа</th>
+                        <th>Документы</th>
+                        <th>Дата формирования<br><small>(исх. № письма)</small></th>
+                        <th>№ заявки, дата</th>
+                        <th>Эксперт НАКС</th>
+                        <th>Эксперты НЭДК</th>
+                        <th>Рабочая группа</th>
+                        <th>Срок проведения работ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="30"><i class="fa fa-file-o" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="новое"></i></td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="instructions.html"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-clone mr-1"></i>Копировать</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="badge badge-pill badge-info mb-1" data-toggle="popover" data-placement="right" data-trigger="hover" data-content='Автономная некоммерческая организация "АТТЕСТАЦИОННЫЙ ЦЕНТР АТТЕСТАЦИИ СВАРЩИКОВ И СПЕЦИАЛИСТОВ СВАРОЧНОГО ПРОИЗВОДСТВА'>СУР-5АЦ</div>
+                            <div>Нижневартовск</div>
+                        </td>
+                        <td>Расширение состава комиссии</td>
+                        <td>
+                            <a href="#" class="d-block" target="_blank">НАКС: Указ. РК-АЦ</a>
+                            <a href="#" class="d-block" target="_blank">НЭДК: Указ. тех. аудит РК-АЦ</a>
+                            <a href="#" class="d-block" target="_blank">Калькуляция</a>
+                        </td>
+                        <td>22.05.2019</td>
+                        <td>125 от 22.05.2019</td>
+                        <td class="experts">Пономаренко Алексей Сергеевич</td>
+                        <td class="experts">
+                            <p>Кузнецов Евгений Иванович</p>
+                            <p>Афиногенов Александр Вениаминович</p>
+                            <p>Иванов Иван Иванович</p>
+                        </td>
+                        <td class="experts">-</td>
+                        <td>27.05.2019-29.05.2019</td>
+                    </tr>
+                    <tr>
+                        <td width="30"><i class="fa fa-check text-success" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="готово"></i></td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-clone mr-1"></i>Копировать</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="badge badge-pill badge-info mb-1" data-toggle="popover" data-placement="right" data-trigger="hover" data-content='АНО "ВРАЦ"'>ЦОК-002</div>
+                            <div>Вологда</div>
+                        </td>
+                        <td>Инспекционная проверка</td>
+                        <td>
+                            <a href="#" class="d-block" target="_blank">НАКС: Указ. эксперт. АЦ инспекц. (ИАЦ)</a>
+                            <a href="#" class="d-block" target="_blank">НЭДК: Указ. тех. аудит АЦ инспекц. (ИАЦ)</a>
+                            <a href="#" class="d-block" target="_blank">Калькуляция</a>
+                        </td>
+                        <td>22.05.2019</td>
+                        <td>-</td>
+                        <td class="experts">Пономаренко Алексей Сергеевич</td>
+                        <td class="experts">-</td>
+                        <td class="experts">
+                            <p class="chairman">Кузнецов Евгений Иванович<span class="badge badge-pill badge-secondary ml-1" data-toggle="popover" data-placement="top" data-trigger="hover" data-content='Председатель'>ПР</span></p>
+                            <p>Афиногенов Александр Вениаминович</p>
+                            <p>Иванов Иван Иванович</p>
+                        </td>
+                        <td>27.05.2019-29.05.2019</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+    </div>
+</div>
+{% endblock %}
