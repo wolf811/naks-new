@@ -129,14 +129,21 @@
                 </ul>
                 {% comment %} {{ request.user }}
                 {{ request.user.is_authenticated }} {% endcomment %}
-                {% if not request.user.is_authenticated %}
-                    <a href="#" id="loginBtn_01" class="btn btn-primary btn-sign-in" data-toggle="modal" data-target="#modal-authorization"><i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Войти</a>
-                {% else %}
-                <div id="btnGroupEntered" class="btn-group" role="group" aria-label="Basic example">
-                    <a href="#" class="btn btn-primary text-truncate" title="Перейти в личный кабинет" style="max-width: 150px; font-size: 0.875rem;">{{ request.user }}</a>
-                    <a href="#" id="exitBtn" class="btn btn-outline-primary" title="Выйти"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                <div id="auth_app">
+                    {% if not request.user.is_authenticated %}
+                        <a href="#" class="btn btn-primary btn-sign-in" data-toggle="modal" data-target="#modal-authorization"><i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Войти</a>
+                    {% else %}
+                    <div v-cloak>
+                    <div v-if="logged_in == true" id="btnGroupEntered" class="btn-group" role="group" aria-label="Basic example">
+                        <a href="#" class="btn btn-primary text-truncate" title="Перейти в личный кабинет" style="max-width: 150px; font-size: 0.875rem;">{{ request.user }}</a>
+                        <a href="#" @click.prevent="logout_current_user()" class="btn btn-outline-primary" title="Выйти"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                    </div>
+                    <a v-else href="#" class="btn btn-primary btn-sign-in" data-toggle="modal" data-target="#modal-authorization"><i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Войти</a>
+
+                    {% endif %}
+                    </div>
+                    {% include 'mainapp/includes/modal/modal-login-account.html' %}
                 </div>
-                {% endif %}
             </div>
         </nav>
     </div>

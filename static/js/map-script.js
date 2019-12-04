@@ -103,8 +103,8 @@ if ($('#app_map_points').length != 0) {
                 for (var key of Object.keys(this.accred_fields)) {
                     for (var value of this.accred_fields[key]) {
                         key == 'level' ?
-                            this.obldObject[value.id] = {short_name: value.level, full_name: value.level+' уровень'} :
-                            this.obldObject[value.id] = {short_name: value.short_name, full_name: value.full_name}
+                            this.obldObject[value.type+'_'+value.id] = {short_name: value.level, full_name: value.level+' уровень'} :
+                            this.obldObject[value.type+'_'+value.id] = {short_name: value.short_name, full_name: value.full_name}
                     }
                 }
             },
