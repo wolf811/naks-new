@@ -7,11 +7,12 @@
             </div>
             <div id="collapse_10" class="collapse show" aria-labelledby="heading_00" data-parent="#accordion_spks">
                 <div class="card-body">
-                    <a href="{% url 'spks' %}" class="dropdown-item {% if 'spks' in request.path %}active{% endif %}">О Совете</a>
+                    <a href="{% url 'spks' %}" class="dropdown-item {% if '/spks/' == request.path %}active{% endif %}">О Совете</a>
+                    {% comment %} <p>{{ request.path }}</p> {% endcomment %}
                     <div class="dropdown-divider"></div>
                     <!-- <a href="#" class="dropdown-item">Положение о Совете</a>
                     <div class="dropdown-divider"></div> -->
-                    <a href="{% url 'spks_composition' %}" class="dropdown-item {% if 'spks_composition' in request.path %}active{% endif %}">Состав Совета</a>
+                    <a href="{% url 'spks_composition' %}" class="dropdown-item {% if '/spks_composition/' == request.path %}active{% endif %}">Состав Совета</a>
                     <div class="dropdown-divider"></div>
                     <a href="{% url 'spks_work_plan' %}" class="dropdown-item {% if 'spks_work_plan' in request.path %}active{% endif %}">План работы</a>
                     <div class="dropdown-divider"></div>

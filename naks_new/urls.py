@@ -103,6 +103,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('naks_api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('users/', include('users.urls', namespace='users')),
 ]
 if settings.DEBUG:
     urlpatterns += static(

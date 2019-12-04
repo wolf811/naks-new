@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'mainapp',
     'reestr',
     'reestradmin',
+    'users',
     'ckeditor',
     'ckeditor_uploader',
     'django.contrib.sitemaps',
     'rest_framework',
     'sass_processor',
+    'captcha',
     # 'drf_multiple_model',
 ]
 
@@ -110,6 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 
 # Internationalization

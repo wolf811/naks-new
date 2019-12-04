@@ -299,11 +299,12 @@ $('#btnSubscription').click(function() {
 })
 
 
-$('#loginBtn_02').click(function() {
-    $('#btnGroupEntered').show();
-    $('#loginBtn_01').hide();
-});
-$('#exitBtn').click(function() {
-    $('#btnGroupEntered').hide();
-    $('#loginBtn_01').show();
-});
+// $('#loginBtn_02').click(function() {
+//     $('#btnGroupEntered').show();
+//     $('#loginBtn_01').hide();
+// });
+// $('#exitBtn').click(function() {
+//     $('#btnGroupEntered').hide();
+//     $('#loginBtn_01').show();
+// });
+
