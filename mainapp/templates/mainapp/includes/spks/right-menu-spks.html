@@ -5,31 +5,24 @@
             <div class="card-header bg-naks" id="heading_00">
                 <a href="#" data-toggle="collapse" data-target="#collapse_10" aria-expanded="true" aria-controls="collapse_10">Совет по профессиональным квалификациям в области сварки (СПКС)</a>
             </div>
-            <div id="collapse_10" class="collapse show" aria-labelledby="heading_00" data-parent="#accordion_spks">
+            <div id="collapse_10" class="collapse {% if 'spks_about' in request.path %}show{% endif %}" aria-labelledby="heading_00" data-parent="#accordion_spks">
                 <div class="card-body">
-                    <a href="{% url 'spks' %}" class="dropdown-item {% if '/spks/' == request.path %}active{% endif %}">О Совете</a>
-                    {% comment %} <p>{{ request.path }}</p> {% endcomment %}
+                    <a href="{% url 'spks' %}" class="dropdown-item {% if '/spks_about/' in request.path %}active{% endif %}">О Совете</a>
                     <div class="dropdown-divider"></div>
-                    <!-- <a href="#" class="dropdown-item">Положение о Совете</a>
-                    <div class="dropdown-divider"></div> -->
-                    <a href="{% url 'spks_composition' %}" class="dropdown-item {% if '/spks_composition/' == request.path %}active{% endif %}">Состав Совета</a>
+                    <a href="{% url 'spks_composition' %}" class="dropdown-item {% if '/spks_about_composition/' in request.path %}active{% endif %}">Состав Совета</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_work_plan' %}" class="dropdown-item {% if 'spks_work_plan' in request.path %}active{% endif %}">План работы</a>
+                    <a href="{% url 'spks_work_plan' %}" class="dropdown-item {% if '/spks_about_work_plan/' in request.path %}active{% endif %}">План работы</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_comiss' %}" class="dropdown-item {% if 'spks_comiss' in request.path %}active{% endif %}">Комиссии</a>
+                    <a href="{% url 'spks_comiss' %}" class="dropdown-item {% if '/spks_about_comiss/' in request.path %}active{% endif %}">Комиссии</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_protocols' %}" class="dropdown-item {% if 'spks_protocols' in request.path %}active{% endif %}">Протоколы</a>
+                    <a href="{% url 'spks_protocols' %}" class="dropdown-item {% if '/spks_about_protocols/' in request.path %}active{% endif %}">Протоколы</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_docs' %}" class="dropdown-item {% if 'spks_docs' in request.path %}active{% endif %}">Документы</a>
+                    <a href="{% url 'spks_docs' %}" class="dropdown-item {% if '/spks_about_docs/' in request.path %}active{% endif %}">Документы</a>
                     <div class="dropdown-divider"></div>
-                    <!-- <a href="#" class="dropdown-item">Центральная аттестационная комиссия</a>
-                    <div class="dropdown-divider"></div> -->
-                    <a href="{% url 'spks_composition_region' %}" class="dropdown-item {% if 'spks_composition_region' in request.path %}active{% endif %}">Состав представителей Совета в субъектах РФ</a>
+                    <a href="{% url 'spks_composition_region' %}" class="dropdown-item {% if '/spks_about_composition_region/' in request.path %}active{% endif %}">Состав представителей Совета в субъектах РФ</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_composition_experts' %}" class="dropdown-item {% if 'spks_composition_experts' in request.path %}active{% endif %}">Эксперты Совета</a>
+                    <a href="{% url 'spks_composition_experts' %}" class="dropdown-item {% if '/spks_about_composition_experts/' in request.path %}active{% endif %}">Эксперты Совета</a>
                     <div class="dropdown-divider"></div>
-                    <!-- <a href="#" class="dropdown-item">Апелляционная комиссия</a>
-                    <div class="dropdown-divider"></div> -->
                     <a href="{% url 'contacts' %}" class="dropdown-item">Контакты СПКС</a>
                 </div>
             </div>
@@ -38,17 +31,17 @@
             <div class="card-header bg-naks" id="heading_01">
                 <a href="#" data-toggle="collapse" data-target="#collapse_11" aria-expanded="true" aria-controls="collapse_11">Оценка квалификаций</a>
             </div>
-            <div id="collapse_11" class="collapse" aria-labelledby="heading_01" data-parent="#accordion_spks">
+            <div id="collapse_11" class="collapse {% if 'spks_reestr' in request.path %}show{% endif %}" aria-labelledby="heading_01" data-parent="#accordion_spks">
                 <div class="card-body">
-                    <a href="{% url 'spks_reestr_qual' %}" class="dropdown-item">Реестр квалификаций</a>
+                    <a href="{% url 'spks_reestr_qual' %}" class="dropdown-item {% if '/spks_reestr_qual/' in request.path %}active{% endif %}">Реестр квалификаций</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_reestr_svid' %}" class="dropdown-item">Реестр Свидетельств о квалификации</a>
+                    <a href="{% url 'spks_reestr_svid' %}" class="dropdown-item {% if '/spks_reestr_svid/' in request.path %}active{% endif %}">Реестр Свидетельств о квалификации</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'reestr:centers' 'qualification' %}" class="dropdown-item">Реестр Центров оценки квалификаций</a>
+                    <a href="{% url 'reestr:centers' 'qualification' %}" class="dropdown-item {% if '/reestr/centers/qualification/' in request.path %}active{% endif %}">Реестр Центров оценки квалификаций</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_docs' %}" class="dropdown-item">Образцы документов</a>
+                    <a href="{% url 'spks_docs' %}" class="dropdown-item {% if '/spks_docs/' in request.path %}active{% endif %}">Образцы документов</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_task_examples' %}" class="dropdown-item">Примеры заданий</a>
+                    <a href="{% url 'spks_task_examples' %}" class="dropdown-item {% if '/spks_task_examples/' in request.path %}active{% endif %}">Примеры заданий</a>
                 </div>
             </div>
         </div>

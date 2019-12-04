@@ -1,11 +1,9 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 {% block content %}
-
 <!-- Header-page -->
 {% include 'mainapp/includes/header-page.html' %}
 <!-- End Header-page -->
-
 <div class="all-staff">
     <div class="container">
         <h4 class="text-dark mt-5">Реестр аттестованного персонала</h4>
@@ -23,18 +21,14 @@
                 <a href="{% url 'sasv' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
             </div>
         </div>
-        
         <hr>
-
         <form class="my-4">
             <h6 class="font-weight-bold mb-4">Поиск по параметрам</h6>
             <!-- Фильтр реестра персонала -->
             {% include 'mainapp/includes/sasv/filter-reestr-staff.html' %}
             <!-- End Фильтр реестра персонала -->
         </form>
-        
         <hr>
-
         <div id="reestr-staff" class="table-reestr mt-4">
             <h6>Найдено записей: <span class="font-weight-bold">9465</span></h6>
             <div class="row d-flex align-items-center">
@@ -61,7 +55,6 @@
                     </nav>
                 </div>
             </div>
-
             <table class="table table-responsive table-striped table-bordered table-hover text-center">
                 <thead>
                     <tr class="table-secondary">
@@ -237,7 +230,6 @@
                     </tr>
                 </tbody>
             </table>
-
             <div class="row d-flex align-items-center">
                 <div class="col-sm-5">
                     <p class="text-secondary">Элементы 1 - 10 из 9465</p>
@@ -263,8 +255,11 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-
+<!-- MODAL INCLUDES -->
+{% include 'mainapp/includes/modal/modal-type-activity.html' %}
+{% include 'mainapp/includes/modal/modal-technical-devices.html' %}
+{% include 'mainapp/includes/modal/modal-certificate-detail.html' %}
+<!-- END MODAL INCLUDES -->
 {% endblock %}

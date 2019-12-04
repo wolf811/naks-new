@@ -25,7 +25,10 @@
     [v-cloak] {
         display: none;
     }
-    [v-cloak]::before { content: "loading…" }
+
+    [v-cloak]::before {
+        content: "loading…"
+    }
     </style>
 </head>
 
@@ -37,17 +40,6 @@
     {% include 'mainapp/includes/modal/modal-questions.html' %}
     {% include 'mainapp/includes/modal/modal-sending-link.html' %}
     {% include 'mainapp/includes/modal/modal-login-account.html' %}
-    {% include 'mainapp/includes/modal/modal-feedback.html' %}
-    {% include 'mainapp/includes/modal/modal-letter.html' %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-technical-devices.html' %} {% endcomment %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-type-activity.html' %} {% endcomment %}
-    {% include 'mainapp/includes/modal/modal-certificate-detail.html' %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-welding-method.html' %} {% endcomment %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-chifer-sm.html' %} {% endcomment %}
-    {% comment %} {% include 'mainapp/includes/modal/modal-chifer-so.html' %} {% endcomment %}
-    {% include 'mainapp/includes/modal/modal-reestr-section.html' %}
-    {% include 'mainapp/includes/modal/modal-range-detail.html' %}
-    {% include 'mainapp/includes/modal/modal-membership-detail.html' %}
     {% include 'mainapp/includes/cookie-warning.html' %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -63,7 +55,6 @@
     <script src="{% static 'js/vue-cookies.js' %}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     {% comment %} <script src="https://unpkg.com/vue-yandex-maps@0.8.18/dist/vue-yandex-maps.umd.js"></script> {% endcomment %}
-
     <!-- VUE JS 2 and AXIOS CDN -->
     <!-- My scripts -->
     <script src="{% static 'js/map-script.js' %}"></script>

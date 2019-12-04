@@ -1,11 +1,9 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 {% block content %}
-
 <!-- Header-page -->
 {% include 'mainapp/includes/header-page.html' %}
 <!-- End Header-page -->
-
 <div class="all-staff">
     <div class="container">
         <h4 class="text-dark mt-5">Реестр аттестованных сварочных материалов</h4>
@@ -23,18 +21,14 @@
                 <a href="{% url 'sasv' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
             </div>
         </div>
-
         <hr>
-
         <form class="mt-4 mb-4">
             <h6 class="font-weight-bold mb-4">Поиск по параметрам</h6>
             <!-- Фильтр СМ -->
             {% include 'mainapp/includes/sasv/filter-reestr-sm.html' %}
             <!-- End Фильтр СМ -->
         </form>
-
         <hr>
-
         <div id="reestr-sm" class="table-reestr mt-4">
             <h6>Найдено записей: <span class="font-weight-bold">6</span></h6>
             <div class="row d-flex align-items-center">
@@ -61,7 +55,6 @@
                     </nav>
                 </div>
             </div>
-
             <table class="table table-responsive table-striped table-bordered table-hover text-center">
                 <thead>
                     <tr class="table-secondary">
@@ -198,8 +191,12 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-
+<!-- MODAL INCLUDES -->
+{% include 'mainapp/includes/modal/modal-technical-devices.html' %}
+{% include 'mainapp/includes/modal/modal-reestr-section.html' %}
+{% include 'mainapp/includes/modal/modal-welding-method.html' %}
+{% include 'mainapp/includes/modal/modal-chifer-sm.html' %}
+<!-- END MODAL INCLUDES -->
 {% endblock %}

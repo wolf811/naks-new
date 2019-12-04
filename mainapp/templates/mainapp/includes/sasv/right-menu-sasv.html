@@ -1,10 +1,9 @@
 {% load static %}
-
 <div id="wrap" class="w-100">
     <div id="accordion_00" class="right-main">
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_00">
-                <a href="#" {% if 'personal' not in request.path %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse_00" aria-expanded="true" aria-controls="collapse_00">Аттестация специалистов сварочного производства</a>
+                <a href="#" {% if 'personal' not in request.path %}class="collapsed" {% endif %} data-toggle="collapse" data-target="#collapse_00" aria-expanded="true" aria-controls="collapse_00">Аттестация специалистов сварочного производства</a>
             </div>
             <div id="collapse_00" class="collapse{% if 'personal' in request.path %} show{% endif %}" aria-labelledby="heading_00" data-parent="#accordion_00">
                 <div class="card-body">
@@ -18,10 +17,9 @@
                 </div>
             </div>
         </div>
-
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_02">
-                <a href="#" {% if 'attsm' not in request.path %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse_02" aria-expanded="false" aria-controls="collapse_02">Аттестация сварочных материалов</a>
+                <a href="#" {% if 'attsm' not in request.path %}class="collapsed" {% endif %} data-toggle="collapse" data-target="#collapse_02" aria-expanded="false" aria-controls="collapse_02">Аттестация сварочных материалов</a>
             </div>
             <div id="collapse_02" class="collapse{% if 'attsm' in request.path %} show{% endif %}" aria-labelledby="heading_02" data-parent="#accordion_00">
                 <div class="card-body">
@@ -37,7 +35,7 @@
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_03">
-                <a href="#" {% if 'attso' not in request.path %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse_03" aria-expanded="false" aria-controls="collapse_03">Аттестация сварочного оборудования</a>
+                <a href="#" {% if 'attso' not in request.path %}class="collapsed" {% endif %} data-toggle="collapse" data-target="#collapse_03" aria-expanded="false" aria-controls="collapse_03">Аттестация сварочного оборудования</a>
             </div>
             <!-- TODO: По клику на пункте меню к collapse добавляется .show, а к .dropdown-item добавляем .active -->
             <div id="collapse_03" class="collapse{% if 'attso' in request.path %} show{% endif %}" aria-labelledby="heading_03" data-parent="#accordion_00">
@@ -54,7 +52,7 @@
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_04">
-                <a href="#" {% if 'attst' not in request.path %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse_04" aria-expanded="false" aria-controls="collapse_04">Аттестация сварочных технологий</a>
+                <a href="#" {% if 'attst' not in request.path %}class="collapsed" {% endif %} data-toggle="collapse" data-target="#collapse_04" aria-expanded="false" aria-controls="collapse_04">Аттестация сварочных технологий</a>
             </div>
             <div id="collapse_04" class="collapse{% if 'attst' in request.path %} show{% endif %}" aria-labelledby="heading_04" data-parent="#accordion_00">
                 <div class="card-body">
@@ -70,7 +68,7 @@
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks" id="heading_01">
-                <a href="#" {% if 'specpod' not in request.path %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse_01" aria-expanded="false" aria-controls="collapse_01">Специальная подготовка</a>
+                <a href="#" {% if 'specpod' not in request.path %}class="collapsed" {% endif %} data-toggle="collapse" data-target="#collapse_01" aria-expanded="false" aria-controls="collapse_01">Специальная подготовка</a>
             </div>
             <div id="collapse_01" class="collapse{% if 'specpod' in request.path %} show{% endif %}" aria-labelledby="heading_01" data-parent="#accordion_00">
                 <div class="card-body">
