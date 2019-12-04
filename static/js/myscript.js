@@ -308,3 +308,41 @@ $('#btnSubscription').click(function() {
 //     $('#loginBtn_01').show();
 // });
 
+if ($('#auth_app').length > 0) {
+    var vm_auth = new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#auth_app',
+        data() {
+            return {
+                title: 'auth_app',
+                logged_in: true,
+            }
+        },
+        beforeMount() {
+            //null
+        },
+        methods: {
+            login_user: function() {
+
+            },
+            logout_current_user: function() {
+                // var data = {
+                //     logout_current_user: true,
+                // }
+                let formData = new FormData();
+                formData.append('logout_current_user', true);
+                axios
+                .post('/users/logout/', formData)
+                .then(response => {
+                    console.log('response', response.data);
+                    this.logged_in = false;
+                })
+                .finally(() => {
+                    // this.$cookies.set("sro_members_updated", "1", "1h");
+                    console.log('finally callback');
+                })
+            }
+        }
+    });
+}
+
