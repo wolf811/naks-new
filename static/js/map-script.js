@@ -132,7 +132,7 @@ if ($('#app_map_points').length != 0) {
                         })
                         .finally(() => {
                             this.$cookies.set("sro_members_updated", "1", "1h");
-                            console.log('finally sro_members updated');
+                            // console.log('finally sro_members updated');
                         })
                 }
             },
@@ -183,7 +183,7 @@ if ($('#app_map_points').length != 0) {
                         }
                     })
                     .finally(() => {
-                        console.log('dirs updated by api', this.accred_fields);
+                        // console.log('dirs updated by api', this.accred_fields);
                         this.qualification_checkboxes = this.accred_fields.qualifications;
                         this.makeObldObject();
                     })
@@ -204,12 +204,12 @@ if ($('#app_map_points').length != 0) {
                 axios
                     .get('/naks_api/centers/')
                     .then(response => {
-                        console.log('loading centers from api');
+                        // console.log('loading centers from api');
                         localStorage.reestrCenters = JSON.stringify(response.data);
                         this.reestrCenters = response.data;
                         this.$cookies.set("centers_storage_updated", "1", "1h");
                     }).finally(() => {
-                        console.log('rendering map...');
+                        // console.log('rendering map...');
                         this.map_render();
                     });
             },
@@ -259,14 +259,13 @@ if ($('#app_map_points').length != 0) {
                                 var string = '';
                                 for (var field of fieldSet[point.direction]) {
                                     for (var id of point[field]) {
-                                        // var id = el.split("_")[1];
-
                                         // Object.keys(search_parameters).reduce(function(res, v) {
                                         //     return res.concat(search_parameters[v]);
                                         // }, []).includes(id)
                                         resulting_arr.includes(field+'_'+id) ?
-                                        string+=' <strong class="text-danger">'+obldObject[field+'_'+id].short_name + '</strong>':
-                                        string+=' '+obldObject[field+'_'+id].short_name
+                                        // string+=` <strong class="search_result_hint text-danger" data-toggle="tooltip" data-placement="top" title="${obldObject[field+'_'+id].full_name}">`+obldObject[field+'_'+id].short_name + '</strong>':
+                                        string+=` <strong class="search_result_hint text-danger" title="${obldObject[field+'_'+id].full_name}">`+obldObject[field+'_'+id].short_name + '</strong>':
+                                        string+=` <span title="${obldObject[field+'_'+id].full_name}">`+obldObject[field+'_'+id].short_name+'</span>'
                                     }
                                 }
                                 return string;
@@ -436,6 +435,7 @@ if ($('#app_map_points').length != 0) {
                     objects.push(point_templates[this.show_map])
                 }
                 objectManager.add(objects);
+
                 if (this.show_map in {
                         "allCenters": 1,
                         "allCoks": 1
@@ -458,6 +458,21 @@ if ($('#app_map_points').length != 0) {
                     });
                 }
                 myMap.geoObjects.add(objectManager);
+                // adding events to balloons
+                // myMap.geoObjects.events.add(['balloonopen', 'hintopen'], function(e) {
+                //     e.preventDefault();
+                //     // console.log('opened balloon');
+                //     if ($('.search_result_hint').length > 0) {
+                //         $(function () {
+                //             $('[data-toggle="tooltip"]').tooltip()
+                //           })
+                //         $('.search_result_hint').on('mouseover', function(event){
+                //             // console.log('data', $(event.target));
+                //             $(event.target).tooltip();
+                //         })
+                //     }
+
+                // });
 
                 // .add(new ymaps.Placemark([60.063119, 30.360002], {
                 //     hintContent: 'ООО "РСЗ МАЦ"',
@@ -481,31 +496,31 @@ if ($('#app_map_points').length != 0) {
                 });
             },
             selectLevel: function (item) {
-                console.log('selected levels', item);
+                // console.log('selected levels', item);
                 this.search_parameters.levels = this.accred_fields.level.filter(element => element.selected === true);
             },
             selectActivities: function (item) {
                 this.search_parameters.activities= this.accred_fields.activity.filter(element => element.selected === true);
-                console.log('activity selected', item);
+                // console.log('activity selected', item);
             },
             selectWeldtype: function (item) {
                 this.search_parameters.weldtypes = this.accred_fields.weldtype.filter(element => element.selected === true);
             },
             selectGtu: function (item) {
                 this.search_parameters.gtus= this.accred_fields.gtu.filter(element => element.selected === true);
-                console.log('gtu selected', item);
+                // console.log('gtu selected', item);
             },
             selectEquipment: function (item) {
                 this.search_parameters.so_types = this.accred_fields.so_types.filter(element => element.selected === true);
-                console.log('equipment selected', item);
+                // console.log('equipment selected', item);
             },
             selectMaterial: function (item) {
                 this.search_parameters.sm_types = this.accred_fields.sm_types.filter(element => element.selected === true);
-                console.log('materials selected', item);
+                // console.log('materials selected', item);
             },
             selectQual: function (item) {
                 this.search_parameters.qualifications = this.qualification_checkboxes.filter(element => element.selected === true);
-                console.log('qualification selected', item);
+                // console.log('qualification selected', item);
             },
             resetMapSearch: function(render=true) {
                 for (var key of Object.keys(this.search_parameters)) {
@@ -526,10 +541,11 @@ if ($('#app_map_points').length != 0) {
                 }
             },
             saveMapSearch: function() {
-                console.log('save search pressed');
+                // console.log('save search pressed');
                 this.show_map = 'filtered';
                 this.filterCenters();
                 this.map_render();
+                // initiate_click();
                 // filter_results
             },
             filterCenters: function() {
@@ -543,7 +559,7 @@ if ($('#app_map_points').length != 0) {
                 }
                 if (show_full_reestr) {
                     this.filteredCenters = centers;
-                    console.log('showing full reestr');
+                    // console.log('showing full reestr');
                     return
                 } else {
                     var fieldset = this.fieldSet;
@@ -587,5 +603,12 @@ if ($('#app_map_points').length != 0) {
                 return sum
             }
         },
+    })
+}
+
+function initiate_click() {
+    console.log('initiated click');
+    $('.search_result_hint').on('click', function(event){
+        console.log('hi');
     })
 }

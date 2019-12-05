@@ -316,14 +316,41 @@ if ($('#auth_app').length > 0) {
             return {
                 title: 'auth_app',
                 logged_in: true,
+                isAuthenticated: false,
+                authUser: {},
+                username: '',
+                password: '',
+                jwt: '',
+                endpoints: {
+                    // path('api-token-auth/', obtain_jwt_token),
+                    // path('api-token-refresh/', refresh_jwt_token),
+                    // path('api-token-verify/', verify_jwt_token),
+                    obtainJWT: '/api-token-auth/',
+                    refreshJWT: '/api-token-refresh/',
+                    verifyJWT:  '/api-token-verify/'
+                }
             }
         },
         beforeMount() {
-            //null
+            this.jwt = localStorage.getItem('jwtToken')
+            // if ((this.jwt).length == 0) {
+            //     localStorage.setItem('token', newToken)
+            // }
         },
         methods: {
-            login_user: function() {
-
+            authenticate: function() {
+                const payload = {
+                    email: this.username,
+                    password: this.password
+                }
+                axios
+                    .post(this.endpoints.obtainJWT, payload)
+                    .then(response => {
+                        // localStorage.setItem('token', newToken);
+                        const newToken = response.data.token;
+                        localStorage.setItem('token', newToken);
+                    })
+                    .finally()
             },
             logout_current_user: function() {
                 // var data = {
@@ -339,7 +366,7 @@ if ($('#auth_app').length > 0) {
                 })
                 .finally(() => {
                     // this.$cookies.set("sro_members_updated", "1", "1h");
-                    console.log('finally callback');
+                    console.log('finally logout callback');
                 })
             }
         }

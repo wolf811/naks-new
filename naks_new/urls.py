@@ -25,6 +25,7 @@ from django.contrib import admin
 from django.urls import path, include
 import mainapp.views as mainapp
 import reestr.views as reestr
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -107,6 +108,9 @@ urlpatterns = [
     path('naks_api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('users/', include('users.urls', namespace='users')),
+    path('api-token-auth/', obtain_jwt_token),
+    path('api-token-refresh/', refresh_jwt_token),
+    path('api-token-verify/', verify_jwt_token),
 ]
 if settings.DEBUG:
     urlpatterns += static(
