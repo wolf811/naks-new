@@ -58,9 +58,12 @@ urlpatterns = [
     path('sasv_acst/', mainapp.sasv_acst, name='sasv_acst'),
     path('sasv_br1gac/', mainapp.sasv_br1gac, name='sasv_br1gac'),
     path('sasv_helpInfo/', mainapp.sasv_helpInfo, name='sasv_helpInfo'),
+
     path('sasv_nts/', mainapp.sasv_nts, name='sasv_nts'),
+
     path('sasv_openNaks/', mainapp.sasv_openNaks, name='sasv_openNaks'),
     path('sasv_docs/', mainapp.sasv_docs, name='sasv_docs'),
+    path('sasv_experts/', mainapp.sasv_experts, name='sasv_experts'),
     path('sasv_reestr_staff/', mainapp.sasv_reestr_staff, name='sasv_reestr_staff'),
     path('sasv_reestr_sm/', mainapp.sasv_reestr_sm, name='sasv_reestr_sm'),
     path('sasv_reestr_so/', mainapp.sasv_reestr_so, name='sasv_reestr_so'),
@@ -89,7 +92,8 @@ urlpatterns = [
     path('spks_about_composition_experts/', mainapp.spks_composition_experts, name='spks_composition_experts'),
 
     path('spks_help_info/', mainapp.spks_help_info, name='spks_help_info'),
-    path('spks_task_examples/', mainapp.spks_task_examples, name='spks_task_examples'),
+
+    path('spks_reestr_task_examples/', mainapp.spks_task_examples, name='spks_task_examples'),
     path('spks_reestr_qual/', mainapp.spks_reestr_qual, name='spks_reestr_qual'),
     path('spks_reestr_svid/', mainapp.spks_reestr_svid, name='spks_reestr_svid'),
     path('spks_coks/', mainapp.spks_coks, name='spks_coks'),

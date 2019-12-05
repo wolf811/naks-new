@@ -1,0 +1,173 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+<div class="all-docs">
+    <div class="container">
+        <h4 class="text-dark mt-5">Система аттестации сварочного производства (САСв)</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb mt-3 mb-2 p-0">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'sasv' %}">САСв</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Реестр экспертов</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <a href="{% url 'sasv' %}" class="btn btn-outline-primary btn-sm float-sm-right mt-2" role="button"><i class="fa fa-angle-left"></i> Назад</a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-xl-9">
+                <!-- Mobil right main -->
+                <div class="d-block d-md-none mt-3 mb-4">
+                    {% include 'mainapp/includes/sasv/mobil-right-menu-sasv.html' %}
+                </div>
+                <!-- End mobil right main -->
+                <div class="main-content">
+                    <h5 class="text-primary mt-2 mb-4">Реестр экспертов</h5>
+                    <p class="text-secondary">Состав экспертов САСв для проведения инспекционных проверок и проверок соответствия требованиям ПБ 03-273-99, РД 03-495-02, утвержден решением НТС НАКС <a href="#" target="_blank">Протокол №37 от 22.01.2018г.</a></p>
+                    <!-- Состав -->
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-nts mb-0" id="table-composition">
+                            <tbody>
+                                <tr>
+                                    <td>1.</td>
+                                    <th>Антохин Владимир Николаевич</th>
+                                    <td>г. Брянск</td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <th>Артемьев Вячеслав Николаевич</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <th>Атрощенко Валерий Владимирович</th>
+                                    <td>г. Уфа</td>
+                                </tr>
+                                <tr>
+                                    <td>4.</td>
+                                    <th>Беспалов Владимир Иванович</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>5.</td>
+                                    <th>Беспрозванных Борис Петрович</th>
+                                    <td>г. Иркутск</td>
+                                </tr>
+                                <tr>
+                                    <td>6.</td>
+                                    <th>Блехерова Наталия Григорьевна</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>7.</td>
+                                    <th>Бродягин Владимир Николаевич</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>8.</td>
+                                    <th>Будревич Дмитрий Геннадьевич</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>9.</td>
+                                    <th>Бычков Владимир Михайлович</th>
+                                    <td>г. Уфа</td>
+                                </tr>
+                                <tr>
+                                    <td>10.</td>
+                                    <th>Казаченок Сергей Сергеевич</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>11.</td>
+                                    <th>Котельников Владимир Семёнович</th>
+                                    <td>г. Владивосток</td>
+                                </tr>
+                                <tr>
+                                    <td>12.</td>
+                                    <th>Кочетов Михаил Вениаминович</th>
+                                    <td>г. Курск</td>
+                                </tr>
+                                <tr>
+                                    <td>13.</td>
+                                    <th>Антохин Владимир Николаевич</th>
+                                    <td>г. Брянск</td>
+                                </tr>
+                                <tr>
+                                    <td>14.</td>
+                                    <th>Артемьев Вячеслав Николаевич</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>15.</td>
+                                    <th>Атрощенко Валерий Владимирович</th>
+                                    <td>г. Уфа</td>
+                                </tr>
+                                <tr>
+                                    <td>16.</td>
+                                    <th>Беспалов Владимир Иванович</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>17.</td>
+                                    <th>Беспрозванных Борис Петрович</th>
+                                    <td>г. Иркутск</td>
+                                </tr>
+                                <tr>
+                                    <td>18.</td>
+                                    <th>Блехерова Наталия Григорьевна</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>19.</td>
+                                    <th>Бродягин Владимир Николаевич</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>20.</td>
+                                    <th>Будревич Дмитрий Геннадьевич</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>21.</td>
+                                    <th>Бычков Владимир Михайлович</th>
+                                    <td>г. Уфа</td>
+                                </tr>
+                                <tr>
+                                    <td>22.</td>
+                                    <th>Казаченок Сергей Сергеевич</th>
+                                    <td>г. Москва</td>
+                                </tr>
+                                <tr>
+                                    <td>23.</td>
+                                    <th>Котельников Владимир Семёнович</th>
+                                    <td>г. Владивосток</td>
+                                </tr>
+                                <tr>
+                                    <td>24.</td>
+                                    <th>Кочетов Михаил Вениаминович</th>
+                                    <td>г. Курск</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- End Состав -->
+                </div>
+            </div>
+            <div class="d-none d-md-block col-md-4 col-xl-3">
+                <!-- Content Right menu -->
+                {% include 'mainapp/includes/sasv/right-menu-sasv.html' %}
+                <!-- End Content Right menu -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

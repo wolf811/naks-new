@@ -278,6 +278,10 @@ body {
 .right-main {
     width: 255px;
     z-index: 2;
+
+    .dropdown-divider {
+        margin: 2px 0;
+    }
 }
 
 /* .right-main-xs */
@@ -335,14 +339,24 @@ body {
     text-align: center;
 }
 
+.main-content {
+    @media (min-width: 768px) {
+        min-height: 800px;
+    }
+
+    .card-body {
+        border-top: 1px solid rgba(0, 0, 0, 0.125);
+    }
+}
+
 .main-content .card.card-doc:hover {
     border: 1px solid #007bff;
     transition: 0.5s;
 }
 
-.main-content .card-body {
-    border-top: 1px solid rgba(0, 0, 0, 0.125);
-}
+// .main-content .card-body {
+//     border-top: 1px solid rgba(0, 0, 0, 0.125);
+// }
 
 .text-sm {
     font-size: 0.875rem;
