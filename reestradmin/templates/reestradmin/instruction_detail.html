@@ -29,7 +29,7 @@
                             <div class="card-body">
                                 <h6 class="mb-2 text-secondary">Автономная некоммерческая организация "АТТЕСТАЦИОННЫЙ ЦЕНТР АТТЕСТАЦИИ СВАРЩИКОВ И СПЕЦИАЛИСТОВ СВАРОЧНОГО ПРОИЗВОДСТВА"<small class="ml-2">(СУР-5АЦ)</small></h6>
                                 <h6 class="title">Вид документа</h6>
-                                <div class="list-group shadow" id="document-types" role="tablist">
+                                <div class="list-group shadow-sm" id="document-types" role="tablist">
                                     <a class="list-group-item list-group-item-action list-group-item-light" id="form-prolongation" data-toggle="list" href="#docs-prolongation" role="tab" aria-controls="prolongation" data-form-id='form_1'><i class="fa fa-angle-right mr-2"></i>Продление</a>
                                     <a class="list-group-item list-group-item-action list-group-item-light" id="form-commis-expansion" data-toggle="list" href="#docs-commis-expansion" role="tab" aria-controls="commis-expansion" data-form-id='form_2'><i class="fa fa-angle-right mr-2"></i>Расширение состава комиссии</a>
                                     <a class="list-group-item list-group-item-action list-group-item-light" id="form-creation-ending" data-toggle="list" href="#docs-creation-ending" role="tab" aria-controls="creation-ending" data-form-id='form_3'><i class="fa fa-angle-right mr-2"></i>Создание, окончание</a>
@@ -120,4 +120,13 @@
         </div>
     </div>
 </div>
+<!-- MODAL INCLUDES -->
+{% include 'reestradmin/includes/modal/modal-experts-naks.html' %}
+{% include 'reestradmin/includes/modal/modal-experts-nedk.html' %}
+{% include 'reestradmin/includes/modal/modal-working-group.html' %}
+{% include 'reestradmin/includes/modal/modal-welding-methods.html' %}
+{% include 'reestradmin/includes/modal/modal-tuopo.html' %}
+{% include 'reestradmin/includes/modal/modal-add-ap.html' %}
+{% include 'reestradmin/includes/modal/modal-choose-ap.html' %}
+<!-- END MODAL INCLUDES -->
 {% endblock %}

@@ -25,7 +25,10 @@
     [v-cloak] {
         display: none;
     }
-    [v-cloak]::before { content: "loading…" }
+
+    [v-cloak]::before {
+        content: "loading…"
+    }
     </style>
 </head>
 
@@ -62,7 +65,6 @@
     <script src="{% static 'js/vue-cookies.js' %}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     {% comment %} <script src="https://unpkg.com/vue-yandex-maps@0.8.18/dist/vue-yandex-maps.umd.js"></script> {% endcomment %}
-
     <!-- VUE JS 2 and AXIOS CDN -->
     <!-- My scripts -->
     <script src="{% static 'js/map-script.js' %}"></script>
