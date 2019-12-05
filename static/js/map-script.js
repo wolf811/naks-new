@@ -68,6 +68,15 @@ if ($('#app_map_points').length != 0) {
                     'qualifications': ['qualifications'],
                     'specpod': ['levels', 'weldtypes', 'gtus'],
                 },
+                spr_adapter: {
+                    "activity": "activities",
+                    "gtu": "gtus",
+                    "level": "levels",
+                    "qualifications": "qualifications",
+                    "sm_types": "sm_types",
+                    "so_types": "so_types",
+                    "weldtype": "weldtypes",
+                },
             }
         },
         beforeMount() {
@@ -100,11 +109,12 @@ if ($('#app_map_points').length != 0) {
                 }
             },
             makeObldObject: function() {
+                const spr_adapter = this.spr_adapter;
                 for (var key of Object.keys(this.accred_fields)) {
                     for (var value of this.accred_fields[key]) {
                         key == 'level' ?
-                            this.obldObject[value.type+'_'+value.id] = {short_name: value.level, full_name: value.level+' уровень'} :
-                            this.obldObject[value.type+'_'+value.id] = {short_name: value.short_name, full_name: value.full_name}
+                            this.obldObject[spr_adapter[value.type]+'_'+value.id] = {short_name: value.level, full_name: value.level+' уровень'} :
+                            this.obldObject[spr_adapter[value.type]+'_'+value.id] = {short_name: value.short_name, full_name: value.full_name}
                     }
                 }
             },
@@ -231,11 +241,12 @@ if ($('#app_map_points').length != 0) {
                 var search_parameters = this.search_parameters;
                 var fieldSet = this.fieldSet;
                 var obldObject = this.obldObject;
+                const spr_adapter = this.spr_adapter;
                 var resulting_arr = [];
                 for (var val of Object.values(search_parameters)) {
                     if (val.length > 0 && typeof val[0] === 'object') {
                         for (var el of val) {
-                            resulting_arr.push(el.id);
+                            resulting_arr.push(spr_adapter[el.type]+'_'+el.id);
                         }
                     }
                 }
@@ -246,14 +257,16 @@ if ($('#app_map_points').length != 0) {
                         function (item) {
                             function get_obl(point) {
                                 var string = '';
-                                for (var key of fieldSet[point.direction]) {
-                                    for (var id of point[key]) {
+                                for (var field of fieldSet[point.direction]) {
+                                    for (var id of point[field]) {
+                                        // var id = el.split("_")[1];
+
                                         // Object.keys(search_parameters).reduce(function(res, v) {
                                         //     return res.concat(search_parameters[v]);
                                         // }, []).includes(id)
-                                        resulting_arr.includes(id) ?
-                                        string+=' <strong class="text-danger">'+obldObject[id].short_name + '</strong>':
-                                        string+=' '+obldObject[id].short_name
+                                        resulting_arr.includes(field+'_'+id) ?
+                                        string+=' <strong class="text-danger">'+obldObject[field+'_'+id].short_name + '</strong>':
+                                        string+=' '+obldObject[field+'_'+id].short_name
                                     }
                                 }
                                 return string;
