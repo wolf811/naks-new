@@ -180,6 +180,12 @@ def sasv_docs(request):
     }
     return render(request, 'mainapp/sasv_docs.html', content)
 
+def sasv_experts(request):
+    title = 'НАКС - Эксперты САСв'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/sasv_experts.html', content)
 
 def sasv_nts(request):
     title = 'НАКС - НТС'

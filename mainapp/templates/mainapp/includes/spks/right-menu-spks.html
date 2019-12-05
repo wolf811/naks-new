@@ -37,11 +37,13 @@
                     <div class="dropdown-divider"></div>
                     <a href="{% url 'spks_reestr_svid' %}" class="dropdown-item {% if '/spks_reestr_svid/' in request.path %}active{% endif %}">Реестр Свидетельств о квалификации</a>
                     <div class="dropdown-divider"></div>
+                    <!-- TODO: исправить ссылки -->
                     <a href="{% url 'reestr:centers' 'qualification' %}" class="dropdown-item {% if '/reestr/centers/qualification/' in request.path %}active{% endif %}">Реестр Центров оценки квалификаций</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_docs' %}" class="dropdown-item {% if '/spks_docs/' in request.path %}active{% endif %}">Образцы документов</a>
+                    <a href="{% url 'spks_docs' %}" class="dropdown-item {% if '/spks_about_docs/' in request.path %}active{% endif %}">Образцы документов</a>
+                    <!-- TODO end -->
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'spks_task_examples' %}" class="dropdown-item {% if '/spks_task_examples/' in request.path %}active{% endif %}">Примеры заданий</a>
+                    <a href="{% url 'spks_task_examples' %}" class="dropdown-item {% if '/spks_reestr_task_examples/' in request.path %}active{% endif %}">Примеры заданий</a>
                 </div>
             </div>
         </div>
@@ -93,7 +95,7 @@
             </div>
         </div>
         <div class="card rounded-0">
-            <div class="card-header bg-naks" id="heading_07">
+            <div class="card-header bg-naks {% if 'spks_help_info' in request.path %}bg-naks-active{% endif %}" id="heading_07">
                 <a href="{% url 'spks_help_info' %}" class="collapsed">Справочно-техническая информация</a>
             </div>
         </div>
