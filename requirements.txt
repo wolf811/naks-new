@@ -8,4 +8,6 @@ mock==3.0.5
 # django rest-framework
 # fabric
 # requests
+# django-rest-auth-0.9.5
 # djangorestframework-jwt-1.11.0
+# !!! django-cors-headers

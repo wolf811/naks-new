@@ -26,6 +26,7 @@ from django.urls import path, include
 import mainapp.views as mainapp
 import reestr.views as reestr
 # from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
+from rest_framework.authtoken import views as rest_framework_views
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -113,6 +114,8 @@ urlpatterns = [
     # https://www.django-rest-framework.org/api-guide/permissions/
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('users/', include('users.urls', namespace='users')),
+    path('api-token-auth/', rest_framework_views.obtain_auth_token),
+    path('rest-auth/', include('rest_auth.urls')),
     # path('api-token-auth/', obtain_jwt_token),
     # path('api-token-refresh/', refresh_jwt_token),
     # path('api-token-verify/', verify_jwt_token),

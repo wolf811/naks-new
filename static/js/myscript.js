@@ -310,42 +310,6 @@ $('#btnSubscription').click(function() {
 
 // Vue.use(Vuex)
 
-const store = new Vuex.Store({
-    state: {
-        authUser: {},
-        isAuthenticated: false,
-        jwt: localStorage.getItem('token'),
-      endpoints: {
-        // obtainJWT: '/api-token-auth/',
-        // refreshJWT: '/api-token-refresh/',
-        // verifyJWT:  '/api-token-verify/'
-        obtainJWT: '/api-token-auth/',
-        refreshJWT: '/api-token-refresh/',
-        baseUrl: '/'
-      }
-    },
-    mutations: {
-        setAuthUser(state, {
-          authUser,
-          isAuthenticated
-        }) {
-          Vue.set(state, 'authUser', authUser)
-          Vue.set(state, 'isAuthenticated', isAuthenticated)
-        },
-        updateToken(state, newToken) {
-          // TODO: For security purposes, take localStorage out of the project.
-          localStorage.setItem('token', newToken);
-          state.jwt = newToken;
-        },
-        removeToken(state) {
-          // TODO: For security purposes, take localStorage out of the project.
-          localStorage.removeItem('token');
-          state.jwt = null;
-        }
-      }
-})
-
-
 if ($('#auth_app').length > 0) {
     var vm_auth = new Vue({
         delimiters: ['[[', ']]'],
@@ -360,14 +324,14 @@ if ($('#auth_app').length > 0) {
                     // path('api-token-auth/', obtain_jwt_token),
                     // path('api-token-refresh/', refresh_jwt_token),
                     // path('api-token-verify/', verify_jwt_token),
-                    obtainJWT: '/api-token-auth/',
-                    refreshJWT: '/api-token-refresh/',
-                    verifyJWT:  '/api-token-verify/'
+                    obtainToken: '/api-token-auth/',
+                    // refreshJWT: '/api-token-refresh/',
+                    // verifyJWT:  '/api-token-verify/'
                 }
             }
         },
         beforeMount() {
-            this.jwt = localStorage.getItem('jwtToken')
+            this.jwt = localStorage.getItem('Token')
             // if ((this.jwt).length == 0) {
             //     localStorage.setItem('token', newToken)
             // }
@@ -379,7 +343,7 @@ if ($('#auth_app').length > 0) {
                     password: this.password
                 }
                 const base = {
-                    baseURL: this.$store.state.endpoints.baseUrl,
+                    // baseURL: this.$store.state.endpoints.baseUrl,
                     headers: {
                     // Set your Authorization to 'JWT', not Bearer!!!
                       Authorization: `JWT ${this.$store.state.jwt}`,
@@ -390,12 +354,13 @@ if ($('#auth_app').length > 0) {
                     }
                 }
                 axios
-                    .post(this.$store.state.endpoints.obtainJWT, payload)
+                    // .post(this.$store.state.endpoints.obtainJWT, payload)
+                    .post(this.endpoints.obtainToken, payload)
                     .then(response => {
                         // localStorage.setItem('token', newToken);
-                        this.$store.commit('updateToken', response.data.token)
+                        const token = response.data.token;
                         // const newToken = response.data.token;
-                        localStorage.setItem('token', newToken);
+                        localStorage.setItem('Token', token);
                     })
                     .finally()
             },
