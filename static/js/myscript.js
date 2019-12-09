@@ -104,10 +104,10 @@ function stopVideo() {
 }
 
 // Авторизация/Регистрация
-$('#for-registration').click(function() {
-    $('#registration-page').fadeIn('slow');
-    $('#login-page').hide();
-});
+// $('#for-registration').click(function() {
+//     $('#registration-page').fadeIn('slow');
+//     $('#login-page').hide();
+// });
 
 $('#to-authorization').click(function() {
     $('#login-page').fadeIn('slow');
@@ -310,6 +310,9 @@ $('#btnSubscription').click(function() {
 
 // Vue.use(Vuex)
 
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
 if ($('#auth_app').length > 0) {
     var vm_auth = new Vue({
         delimiters: ['[[', ']]'],
@@ -317,52 +320,92 @@ if ($('#auth_app').length > 0) {
         data() {
             return {
                 title: 'auth_app',
-                logged_in: true,
+                logged_in: false,
                 username: '',
                 password: '',
+                token: '',
+                tokenCreatedDate: null,
+                urStatus: 'UL',
                 endpoints: {
                     // path('api-token-auth/', obtain_jwt_token),
                     // path('api-token-refresh/', refresh_jwt_token),
                     // path('api-token-verify/', verify_jwt_token),
+                    loginRequest: '/users/login/',
                     obtainToken: '/api-token-auth/',
+                    registerNew: '/users/register/'
                     // refreshJWT: '/api-token-refresh/',
                     // verifyJWT:  '/api-token-verify/'
                 }
             }
         },
+        created: function () {
+            axios.interceptors.response.use(undefined, function (err) {
+              return new Promise(function (resolve, reject) {
+                if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
+                // if you ever get an unauthorized, logout the user
+                //   this.$store.dispatch(AUTH_LOGOUT)
+                console.log(resolve, reject);
+                this.logged_in = false;
+                // you can also redirect to /login if needed !
+                }
+                throw err;
+              });
+            });
+          },
         beforeMount() {
-            this.jwt = localStorage.getItem('Token')
+            this.token = localStorage.getItem('token');
+            this.user = localStorage.getItem('user');
+            if (this.token) {
+                this.logged_in = true;
+                axios.defaults.headers.common['Authorization'] = `Token ${this.token}`;
+            }
             // if ((this.jwt).length == 0) {
             //     localStorage.setItem('token', newToken)
             // }
         },
         methods: {
+            test: function() {
+                console.log('callback');
+            },
             authenticate: function() {
+                console.log('pressed login');
                 const payload = {
                     email: this.username,
                     password: this.password
                 }
-                const base = {
-                    // baseURL: this.$store.state.endpoints.baseUrl,
-                    headers: {
-                    // Set your Authorization to 'JWT', not Bearer!!!
-                      Authorization: `JWT ${this.$store.state.jwt}`,
-                      'Content-Type': 'application/json'
-                    },
-                    xhrFields: {
-                        withCredentials: true
-                    }
-                }
                 axios
-                    // .post(this.$store.state.endpoints.obtainJWT, payload)
-                    .post(this.endpoints.obtainToken, payload)
+                    .post(this.endpoints.loginRequest, payload)
                     .then(response => {
                         // localStorage.setItem('token', newToken);
                         const token = response.data.token;
                         // const newToken = response.data.token;
-                        localStorage.setItem('Token', token);
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('user', this.username);
                     })
-                    .finally()
+                    .finally(()=>{
+                        console.log('authenticated finally');
+                        $('#modal-authorization').modal('hide');
+                        this.logged_in = true;
+                        this.user = this.username;
+                    })
+            },
+            toggle_register_pannel: function() {
+                $('#registration-page').fadeIn('slow');
+                $('#login-page').hide();
+            },
+            register_user: function() {
+                const payload = {
+                    'email': this.username,
+                    'password': this.password,
+                    'ur_status': this.urStatus
+                }
+                axios
+                    .post(this.endpoints.registerNew, payload)
+                    .then(response=>{
+                        console.log('register response', response.data);
+                    })
+                    .catch(error=>{console.log('catched', error)})
+                    .finally(console.log('finnaly register ok'))
             },
             logout_current_user: function() {
                 // var data = {
@@ -378,7 +421,11 @@ if ($('#auth_app').length > 0) {
                 })
                 .finally(() => {
                     // this.$cookies.set("sro_members_updated", "1", "1h");
-                    console.log('finally logout callback');
+                    // if (!this.$.get('rememberMe')) {
+                    // }
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    console.log('finally logout callback: token removed');
                 })
             }
         }

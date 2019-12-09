@@ -78,7 +78,7 @@ def center_details(request):
 
 class DirectoriesViewSet(viewsets.ModelViewSet):
     serializer_class = DirectoriesSerializer
-
+    # import pdb; pdb.set_trace()
     def get_queryset(self):
         return [1]
 

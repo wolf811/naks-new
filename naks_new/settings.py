@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
-import os
+import os, json
+from pathlib import Path
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -243,3 +245,19 @@ DJANGORESIZED_DEFAULT_KEEP_META = True
 DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
 DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg"}
 DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
+
+
+home = str(Path.home())
+# import pdb; pdb.set_trace()
+# with open(os.path.join('/', 'home', 'popov', 'send_mail_secret.json'), 'r') as f:
+with open(os.path.join(home, 'send_mail_secret.json'), 'r') as f:
+    json_email_settings = f.read()
+    email_settings = json.loads(json_email_settings)
+    EMAIL_HOST = email_settings['EMAIL_HOST']
+    EMAIL_PORT = email_settings['EMAIL_PORT']
+    EMAIL_HOST_USER = email_settings['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD = email_settings['EMAIL_HOST_PASSWORD']
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_SSL = True

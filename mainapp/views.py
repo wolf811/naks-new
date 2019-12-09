@@ -55,6 +55,7 @@ def index(request):
         'events': events,
         'documents': shuffled_documents[:4]
     }
+    # import pdb; pdb.set_trace()
     return render(request, 'mainapp/index.html', content)
 
 
