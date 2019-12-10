@@ -6,13 +6,31 @@ from .models import CustomUser
 
 
 class CustomLoginForm(AuthenticationForm):
-    pass
+
+    class Meta:
+        model = CustomUser
+        fields = ('email',)
+
+    def confirm_login_allowed(self, user):
+        pass
 
 class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
         fields = ('email',)
+
+    # def clean_password(self):
+    #     password = self.cleaned_data.get('password')
+    #     password_validation.validate_password(password, self.instance)
+    #     return password
+
+    # def save(self, commit=True):
+    #     user = super(RegisterForm, self).save(commit=False)
+    #     user.set_password(self.cleaned_data['password'])
+    #     if commit:
+    #         user.save()
+    #     return user
 
 
 class CustomUserChangeForm(UserChangeForm):

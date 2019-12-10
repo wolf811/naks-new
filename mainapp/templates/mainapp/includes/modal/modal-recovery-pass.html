@@ -27,10 +27,10 @@
                     <div class="col-sm-9 mx-auto">
                         <div class="row">
                             <div class="col pr-0">
-                                <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+                                <button @click.prevent="send_recovery_email()" type="submit" class="btn btn-primary btn-block">Отправить</button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-outline-secondary btn-block" data-dismiss="modal">Отмена</button>
+                                <button @click.prevent="toggle_login_panel()" type="button" class="btn btn-outline-secondary btn-block">Отмена</button>
                             </div>
                         </div>
                     </div>
