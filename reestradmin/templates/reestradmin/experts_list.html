@@ -1,0 +1,124 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <!-- Include FILTER-BLOCK -->
+    {% include 'reestradmin/includes/filter-experts.html' %}
+    <!-- End Include FILTER-BLOCK -->
+    <div class="container-fluid">
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-main">
+                <thead>
+                    <tr class="active">
+                        <th>ФИО</th>
+                        <th>Место работы, должность</th>
+                        <th>Места осуществления деятельности</th>
+                        <th>Удостоверения, срок действия, тип</th>
+                        <th>Область деятельности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4">
+                            <a href="#">Вепрев Алексей Николаевич</a>
+                            <div class="mt-1 text-secondary">IV уровень</div>
+                        </td>
+                        <td rowspan="4">
+                            <div>АНО "ВРАЦ"</div>
+                            <div>Руководитель АЦСП</div>
+                        </td>
+                        <td rowspan="4">
+                            <a href="#" class="d-block">АЦСО-60</a>
+                            <a href="#" class="d-block">СЗР-1АЦ</a>
+                            <a href="#" class="d-block">АЦСТ-20</a>
+                            <a href="#" class="d-block">ЦОК-002</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-danger"><a href="#">СЗР-1ГАЦ-IV-00129</a> до 13.10.2019</td>
+                        <td class="text-left">[7] ГО, КО, МО, НГДО, ОХНВП, ПТО, СК</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">0918-02-СП</a> до 27.09.2021</td>
+                        <td class="text-left">[24] ААД, ААДН, ААДП, АПГ, АПС, АФ, АФЛН, АФПН, Г, ЗН, МАДП, МДС, МП, МПГ, МПС, МСОД, МФ, НГ, НИ, РАД, РАДН, РД, РДН, Э</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div><a href="#">0218-10-ОК</a> до 19.02.2021</div>
+                            <div class="mt-1 text-secondary">эксперт</div>
+                        </td>
+                        <td class="text-left"><a href="#" class="btn btn-outline-secondary btn-xs">Открыть</a></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">
+                            <a href="#">Викулов Вадим Александрович</a>
+                            <div class="mt-1 text-secondary">IV уровень</div>
+                        </td>
+                        <td rowspan="4">
+                            <div>АНО "ВРАЦ"</div>
+                            <div>Директор</div>
+                        </td>
+                        <td rowspan="4">
+                            <a href="#" class="d-block">АЦСО-60</a>
+                            <a href="#" class="d-block">СЗР-1АЦ</a>
+                            <a href="#" class="d-block">АЦСТ-20</a>
+                            <a href="#" class="d-block">ЦОК-002</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">СЗР-1ГАЦ-IV-00465</a> до 12.04.2024</td>
+                        <td class="text-left">[7] ГО, КО, МО, НГДО, ОХНВП, ПТО, СК</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">0417-74-СП</a> до 20.04.2020</td>
+                        <td class="text-left">[23] ААД, ААДН, ААДП, АПГ, АПС, АФ, АФЛН, АФПН, Г, ЗН, МАДП, МП, МПГ, МПС, МСОД, МФ, НГ, НИ, РАД, РАДН, РД, РДН, Э</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div><a href="#">0218-11-ОК</a> до 19.02.2021</div>
+                            <div class="mt-1 text-secondary">эксперт / тех.эксперт</div>
+                        </td>
+                        <td class="text-left"><a href="#" class="btn btn-outline-secondary btn-xs">Открыть</a></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">
+                            <a href="#">Кузьмин Денис Эдуардович</a>
+                            <div class="mt-1 text-secondary">III уровень</div>
+                        </td>
+                        <td rowspan="4">
+                            <div>АНО "ВРАЦ"</div>
+                            <div>заместитель начальника лаборатории</div>
+                        </td>
+                        <td rowspan="4">
+                            <a href="#" class="d-block">СЗР-1АЦ</a>
+                            <a href="#" class="d-block">АЦСТ-20</a>
+                            <a href="#" class="d-block">ЦОК-002</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">СЗР-1ГАЦ-III-01843</a> до 06.07.2021</td>
+                        <td class="text-left">[7] ГО, КО, МО, НГДО, ОХНВП, ПТО, СК</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">1118-73-СП</a> до 27.11.2021</td>
+                        <td class="text-left">[24] ААД, ААДН, ААДП, АПГ, АПС, АФ, АФЛН, АФПН, Г, ЗН, МАДП, МДС, МП, МПГ, МПС, МСОД, МФ, НГ, НИ, РАД, РАДН, РД, РДН, Э</td>
+                    </tr>
+                    <tr>
+                        <td class="text-danger">
+                            <div><a href="#">1118-29-ОК</a> до 30.11.2019</div>
+                            <div class="mt-1 text-secondary">эксперт / тех.эксперт</div>
+                        </td>
+                        <td class="text-left"><a href="#" class="btn btn-outline-secondary btn-xs">Открыть</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+    </div>
+</div>
+{% endblock %}

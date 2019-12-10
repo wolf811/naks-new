@@ -16,8 +16,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Аттестационные&nbsp;пункты</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Члены&nbsp;комиссий</a>
+                <li class="nav-item {% if 'experts_list' in request.path or 'expert_profile' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'reestradmin:experts_list' %}">Эксперты&nbsp;НАКС</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Заявки</a>

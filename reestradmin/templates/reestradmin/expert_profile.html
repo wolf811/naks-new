@@ -1,0 +1,38 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="accordion accordion-main" id="accordionProfileAcsm">
+        <div class="card">
+            <a href="#" class="card-header active" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-angle-down mr-2"></i>Сведения об эксперте</a>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionProfileAcsm">
+                <div class="card-body">
+                    <!-- Include profile-info -->
+                    {% include 'reestradmin/includes/expert_info.html' %}
+                    <!-- End Include profile-info -->
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <a href="#" class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-angle-down mr-2"></i>Удостоверения</a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionProfileAcsm">
+                <div class="card-body">
+                    <!-- Include profile-activity -->
+                    {% include 'reestradmin/includes/expert_udostov.html' %}
+                    <!-- End Include profile-activity -->
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <a href="#" class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseTrhee" aria-expanded="true" aria-controls="collapseTrhee"><i class="fa fa-angle-down mr-2"></i>Результаты работы</a>
+            <div id="collapseTrhee" class="collapse" aria-labelledby="headingThree" data-parent="#accordionProfileAcsm">
+                <div class="card-body">
+                    <!-- Include profile-experts -->
+                    {% include 'reestradmin/includes/expert_result.html' %}
+                    <!-- End Include profile-experts -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
