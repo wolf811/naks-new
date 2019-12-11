@@ -10,5 +10,7 @@ urlpatterns = [
     path('organization_edit/', reestradmin.organization_edit, name='organization_edit'),
     path('list_instructions/', reestradmin.list_instructions, name='list_instructions'),
     path('instruction_detail/', reestradmin.instruction_detail, name='instruction_detail'),
+    path('experts_list/', reestradmin.experts_list, name='experts_list'),
+    path('expert_profile/', reestradmin.expert_profile, name='expert_profile'),
 ]
 

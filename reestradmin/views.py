@@ -51,3 +51,17 @@ def instruction_detail(request):
         'title': title
     }
     return render(request, 'reestradmin/instruction_detail.html', content)
+
+def experts_list(request):
+    title = 'ЭДО - Эксперты НАКС'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/experts_list.html', content)
+
+def expert_profile(request):
+    title = 'ЭДО - Эксперты НАКС'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/expert_profile.html', content)
