@@ -60,8 +60,9 @@ def register_request(request):
             'failure': 'input is incorrect'
         }, status=HTTP_400_BAD_REQUEST)
     if email is None or password is None or ur_status is None:
-        return Response({'error': 'Please provide all registration information'},
-        status=HTTP_400_BAD_REQUEST)
+        return Response(
+            {'error': 'Please provide all registration information'},
+            status=HTTP_400_BAD_REQUEST)
     form_data = {
         'email': email,
         'password1': password,
@@ -82,7 +83,6 @@ def register_request(request):
     else:
         errors = [(k, v[0]) for k, v in form.errors.items()]
         return Response({'form_error': errors})
-
 
 
 def logout_request(request):
