@@ -12,5 +12,6 @@ urlpatterns = [
     path('instruction_detail/', reestradmin.instruction_detail, name='instruction_detail'),
     path('experts_list/', reestradmin.experts_list, name='experts_list'),
     path('expert_profile/', reestradmin.expert_profile, name='expert_profile'),
+    path('certificates_list/', reestradmin.certificates_list, name='certificates_list'),
 ]
 

@@ -65,3 +65,10 @@ def expert_profile(request):
         'title': title
     }
     return render(request, 'reestradmin/expert_profile.html', content)
+
+def certificates_list(request):
+    title = 'ЭДО - Эксперты НАКС'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/certificates_list.html', content)
