@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth import logout, login
 from django.http import JsonResponse
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_text
+from django.urls import reverse
+from django.http import HttpResponseForbidden, HttpResponseNotAllowed
+from django.core.mail import send_mail
 from django.contrib.auth import authenticate
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
@@ -20,6 +26,56 @@ from rest_framework.status import (
 
 
 # Create your views here.
+
+def _get_absolute_url(request, relative_url):
+    return "{0}://{1}{2}".format(
+        request.scheme,
+        request.get_host(),
+        relative_url
+    )
+
+
+def validate_signed_token(uid, token, require_token=True):
+    """
+    Validates a signed token and uid and returns the user who owns it.
+    :param uid: The uid of the request
+    :param token: The signed token of the request if one exists
+    :param require_token: Whether or not there is a signed token, the token parameter is ignored if False
+    :return: The user who's token it is, if one exists, None otherwise
+    """
+    # user_model = get_user_model()
+    user_model = CustomUser
+    try:
+        uid = force_text(urlsafe_base64_decode(uid))
+        user = user_model.objects.get(pk=uid)
+        if require_token:
+            if user is not None and default_token_generator.check_token(user, token):
+                return user
+        else:
+            return user
+    except (TypeError, ValueError, OverflowError, user_model.DoesNotExist):
+        pass
+    return None
+
+
+def update_password(request, uid, token):
+    user = validate_signed_token(uid, token)
+    if not user:
+        return HttpResponseForbidden()  # Just straight up forbid this request, looking fishy already!
+    if request.method == 'POST':
+        form = SetPasswordForm(user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            Token.objects.filter(user_id__exact=user.pk).delete()
+            return redirect(reverse('mhacks-login') + '?username=' + user.email)
+    elif request.method == 'GET':
+        form = SetPasswordForm(user)
+    else:
+        return HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
+    form.fields['new_password2'].label = 'Confirm New Password'
+    form.fields['new_password2'].longest = True
+    return render(request, 'password_reset.html', {'form': form, 'type': 'reset', 'uid': uid, 'token': token})
+
 
 @csrf_exempt
 @api_view(["POST"])
@@ -93,3 +149,32 @@ def logout_request(request):
         return JsonResponse({'logout': True})
     else:
         return JsonResponse({'logout': 'Error'})
+
+@csrf_exempt
+@api_view(["POST"])
+@permission_classes((AllowAny,))
+def recover_password_request(request):
+    email = request.data.get('email')
+    form = PasswordResetForm({'email': email})
+    if form.is_valid():
+        try:
+            user = CustomUser.objects.get(email=form.cleaned_data['email'])
+            token = default_token_generator.make_token(user)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            update_password_url = reverse(
+                'update_password', kwargs={'uid': uid, 'token': token}
+            )
+            send_mail(
+                'Password reset',
+                'Password reset url: {}'.format(update_password_url),
+                'noreply@naks.ru',
+                [email],
+                fail_silently=False,
+            )
+            return Response({'password_recovery_email_sent': true})
+        except CustomUser.DoesNotExist:
+            return Response({'does_not_exist': email})
+
+    else:
+        errors = [(k, v[0]) for k, v in form.errors.items()]
+        return Response({'password_recovery_error': errors}, status=HTTP_200_OK)

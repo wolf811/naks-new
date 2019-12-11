@@ -331,7 +331,8 @@ if ($('#auth_app').length > 0) {
                     // path('api-token-verify/', verify_jwt_token),
                     loginRequest: '/users/login/',
                     obtainToken: '/api-token-auth/',
-                    registerNew: '/users/register/'
+                    registerNew: '/users/register/',
+                    recoverPassword: '/users/recover-password/'
                     // refreshJWT: '/api-token-refresh/',
                     // verifyJWT:  '/api-token-verify/'
                 },
@@ -491,8 +492,13 @@ if ($('#auth_app').length > 0) {
                     })
             },
             send_recovery_email: function () {
-                console.log('continue this functionality tomorrow');
-
+                console.log('ajax call email sending with link to change password');
+                data = {"email": this.username}
+                axios
+                    .post(this.endpoints.recoverPassword, data)
+                    .then(response=>console.log('response', response))
+                    .catch(err=>console.log('ERROR', err))
+                    .finally(()=>console.log('send request complete'))
             },
         }
     });

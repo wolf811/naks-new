@@ -10,6 +10,8 @@ urlpatterns = [
     path('login/', users.login_request, name='login'),
     path('logout/', users.logout_request, name='logout'),
     path('register/', users.register_request, name='register'),
+    path('recover-password/', users.recover_password_request, name='recover_password'),
+    path('update-password/', users.update_password, name='update_password'),
     # path('registration/', views.UserRegistrationView.as_view(), name='registration'),
     # path('profile_update/', views.UserUpdateView.as_view(), name='profile_update'),
     # path(
