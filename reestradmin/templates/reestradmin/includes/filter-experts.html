@@ -25,47 +25,54 @@
         <div class="container-fluid">
             <form role="form">
                 <div class="row align-items-center">
-                    <div class="col-sm-8 col-xl-4">
+                    <div class="col-sm-8 col-xl-3">
                         <div class="form-group">
-                            <label class="label-sm" for="">Наименование организации</label>
-                            <input type="text" class="form-control form-control-sm" id="">
+                            <label class="label-sm" for="">ФИО</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-xl-3">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Место работы</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="наименование организации">
                         </div>
                     </div>
                     <div class="col-6 col-sm-4 col-xl-2">
                         <div class="form-group">
-                            <label class="label-sm" for="">ИНН</label>
-                            <input type="text" class="form-control form-control-sm" id="">
+                            <label class="label-sm" for="">Должность</label>
+                            <input type="text" class="form-control form-control-sm">
                         </div>
                     </div>
-                    <div class="col-6 col-sm-4 col-xl-2">
+                    <!-- <div class="col-6 col-sm-4 col-xl-2">
                         <div class="form-group">
                             <label class="label-sm" for="">Город</label>
-                            <input type="text" class="form-control form-control-sm" id="">
+                            <input type="text" class="form-control form-control-sm">
                         </div>
-                    </div>
-                    <div class="col-6 col-sm-4 col-xl-2">
+                    </div> -->
+                    <div class="col-6 col-sm-4 col-xl-1">
                         <div class="form-group">
-                            <label class="label-sm" for="">Членство в СРО</label>
-                            <select class="form-control form-control-sm" id="">
+                            <label class="label-sm" for="">Уровень</label>
+                            <select class="form-control form-control-sm">
                                 <option>все</option>
-                                <option>Член СРО</option>
-                                <option>Исключен</option>
-                                <option>ЦСП</option>
+                                <option>I</option>
+                                <option>II</option>
+                                <option>III</option>
+                                <option>IV</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-6 col-sm-4 col-xl-2">
+                    <!-- <div class="col-6 col-sm-4 col-xl-2">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                             <label class="form-check-label label-sm" for="inlineCheckbox1">с фото</label>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row align-items-center">
                     <div class="col-6 col-sm-4 col-lg-2 col-xl-1">
                         <div class="form-group">
                             <label class="label-sm" for="">Деятельность</label>
-                            <select class="form-control form-control-sm" id="">
+                            <select class="form-control form-control-sm">
                                 <option>все</option>
                                 <option>АЦ</option>
                                 <option>ЦСП</option>
@@ -77,50 +84,179 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-6 col-sm-4 col-lg-2 col-xl-1">
-                        <div class="form-group">
-                            <label class="label-sm" for="">№</label>
-                            <input type="text" class="form-control form-control-sm" id="">
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xl-2">
-                        <div class="form-group">
-                            <label class="label-sm" for="">Статус</label>
-                            <select class="form-control form-control-sm" id="">
-                                <option>все</option>
-                                <option>Действующие</option>
-                                <option>Исключенные</option>
-                            </select>
-                        </div>
-                    </div>
+                    <!-- <div class="col-6 col-sm-4 col-lg-2 col-xl-1">
+    <div class="form-group">
+        <label class="label-sm" for="">№</label>
+        <input type="text" class="form-control form-control-sm">
+    </div>
+</div>
+<div class="col-sm-4 col-xl-2">
+    <div class="form-group">
+        <label class="label-sm" for="">Статус</label>
+        <select class="form-control form-control-sm">
+            <option>все</option>
+            <option>Действующие</option>
+            <option>Исключенные</option>
+        </select>
+    </div>
+</div> -->
                     <div class="col-6 col-sm-4 col-xl-2">
                         <div class="form-group">
                             <label class="label-sm" for="">Срок действия, от</label>
-                            <input type="date" class="form-control form-control-sm" id="">
+                            <input type="date" class="form-control form-control-sm">
                         </div>
                     </div>
                     <div class="col-6 col-sm-4 col-xl-2">
                         <div class="form-group">
                             <label class="label-sm" for="">до</label>
-                            <input type="date" class="form-control form-control-sm" id="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-6 col-sm-4 col-xl-2">
-                        <div class="form-group">
-                            <label class="label-sm" for="">Наличие заявок</label>
-                            <select class="form-control form-control-sm" id="">
-                                <option>все</option>
-                                <option>С заявками</option>
-                                <option>Без заявок</option>
-                            </select>
+                            <input type="date" class="form-control form-control-sm">
                         </div>
                     </div>
                     <div class="col-6 col-xl-4">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label label-sm" for="inlineCheckbox1">в работе</label>
+                            <label class="form-check-label label-sm" for="inlineCheckbox1">есть заявка</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <p class="label-sm mb-1" for="">Аттестация СО</p>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">A</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">B</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">C</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">D</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">E</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">F</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">G</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">H</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">K</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">L</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <p class="label-sm mb-1" for="">Аттестация ГТУ</p>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">ГДО</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">ГО</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">КО</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">КСМ</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">МО</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">НГДО</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">ОТОГ</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">ОХНВП</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">ПТО</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">СК</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <p class="label-sm mb-1" for="">Аттестация СМ</p>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Гг</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">Гз</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">Пм</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Пп</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">Пр</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">Пс</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">Пс</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Тм</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">Ф</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">Эн</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                <label class="form-check-label" for="inlineCheckbox3">Эп</label>
+                            </div>
                         </div>
                     </div>
                 </div>
