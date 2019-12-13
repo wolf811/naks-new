@@ -504,6 +504,19 @@ def sds_reestr_st(request):
     return render(request, 'mainapp/sds_reestr_st.html', content)
 # ============= end SDS ===============
 
+def password_recovery(request):
+    title = 'Восстановление пароля'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/password_recovery.html', content)
+
+def password_recovery_mail(request):
+    title = 'Восстановление пароля'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/password_recovery_mail.html', content)
 
 # ++++++++++++++DJANGO REST+++++++++++++++#
 

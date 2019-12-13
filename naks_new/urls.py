@@ -100,6 +100,9 @@ urlpatterns = [
     path('spks_coks/', mainapp.spks_coks, name='spks_coks'),
     path('spks_cok018/', mainapp.spks_cok018, name='spks_cok018'),
 
+    path('password_recovery/', mainapp.password_recovery, name='password_recovery'),
+    path('password_recovery_mail/', mainapp.password_recovery_mail, name='password_recovery_mail'),
+
     path('sds/', mainapp.sds, name='sds'),
     path('sds_docs/', mainapp.sds_docs, name='sds_docs'),
     path('sds_reestr_staff/', mainapp.sds_reestr_staff, name='sds_reestr_staff'),

@@ -1,33 +1,33 @@
 //Включение всплывающих подсказок
-$(function () {
+$(function() {
     $('[data-toggle="popover"]').popover();
 })
 
-$(function () {
+$(function() {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
 // Подчеркивание меню
-$('.navbar-nav a').on("click", function () {
+$('.navbar-nav a').on("click", function() {
     $('.nav-link.active').removeClass('active');
     $(this).addClass('active');
 });
 
-$('.dropdown-menu a').on("click", function () {
+$('.dropdown-menu a').on("click", function() {
     $('.dropdown-item.active').removeClass('active');
     $(this).addClass('active');
 });
 
 // Выделение кнопок показа подразделений
-$('.show-units button').on("click", function () {
+$('.show-units button').on("click", function() {
     $('.btn.active').removeClass('active');
     $(this).addClass('active');
 });
 
 // Кнопка - Наверх
-$(document).ready(function () {
+$(document).ready(function() {
     $('body').append('<button class="top-arrow">');
-    $('.top-arrow').click(function () {
+    $('.top-arrow').click(function() {
         $('body').animate({
             'scrollTop': 0
         }, 1000);
@@ -35,7 +35,7 @@ $(document).ready(function () {
             'scrollTop': 0
         }, 1000);
     });
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         if ($(window).scrollTop() > 300) {
             $(".top-arrow").addClass("top-arrow-active");
         } else {
@@ -45,7 +45,7 @@ $(document).ready(function () {
 });
 
 // Календарик
-$(function () {
+$(function() {
     $('div[name="datepicker"]').datetimepicker({
         locale: 'ru',
         format: 'DD.MM.YYYY',
@@ -70,9 +70,9 @@ $(function () {
 
 // Плавающее правое меню
 if ($('.right-main').length > 0) {
-    $(function () {
+    $(function() {
         var topPos = $('.right-main').offset().top;
-        $(window).scroll(function () {
+        $(window).scroll(function() {
 
             var top = $(document).scrollTop(),
                 pip = $('.footer').offset().top,
@@ -93,11 +93,11 @@ if ($('.right-main').length > 0) {
 }
 
 // Показать еще
-$('#btnNews_showMore').click(function () {
+$('#btnNews_showMore').click(function() {
     $('#blockNews_02').slideDown();
 });
 
-$('#btnAgreement_showMore').click(function () {
+$('#btnAgreement_showMore').click(function() {
     $('#blockPartners_02').slideDown();
 });
 
@@ -116,17 +116,17 @@ function stopVideo() {
 //     $('#login-page').hide();
 // });
 
-$('#to-authorization').click(function () {
+$('#to-authorization').click(function() {
     $('#login-page').fadeIn('slow');
     $('#registration-page').hide();
 });
 
-$('#save-reg').click(function () {
+$('#save-reg').click(function() {
     $('#reg-info').fadeIn('slow').delay(1000);
     $('#reg-fields').hide();
 });
 
-$('#close-reg-info').click(function () {
+$('#close-reg-info').click(function() {
     $('#login-page').fadeIn('slow');
     $('#registration-page').hide();
     return (false);
@@ -144,12 +144,12 @@ $('#close-reg-info').click(function () {
 //  $('#registration-page').hide();
 // });
 
-$('#save-reg-appl').click(function () {
+$('#save-reg-appl').click(function() {
     $('#reg-info-appl').fadeIn('slow').delay(1000);
     $('#reg-fields-appl').hide();
 });
 
-$('#close-reg-info').click(function () {
+$('#close-reg-info').click(function() {
     $('#login-page').fadeIn('slow');
     $('#registration-page').hide();
     return (false);
@@ -165,8 +165,8 @@ $('#close-reg-info').click(function () {
 // });
 
 // Изменение текста при меньшем разрешении экрана
-$(document).ready(function () {
-    $(window).resize(function () {
+$(document).ready(function() {
+    $(window).resize(function() {
         var windowWidth = $(window).width();
         if (windowWidth > 768) {
             $('.btn-outline-dark[name="btnOpenDoc"]').html('<i class="fa fa-file-pdf-o mr-2"></i>Открыть документ');
@@ -210,9 +210,9 @@ $(document).ready(function () {
 
 // insertToModal(data);
 
-$(document).ready(function () {
+$(document).ready(function() {
     // Фильтр квалификаций в зависимости от стандрта
-    $('#filter-ps').change(function () {
+    $('#filter-ps').change(function() {
         var val = $(this).val();
         if (val == 'ps-01') {
             $('#filter-kval option[data-name="welder"]').show();
@@ -244,7 +244,7 @@ $(document).ready(function () {
 });
 
 // Правка цвета таблиц реестра АЦ
-$(window).resize(function () {
+$(window).resize(function() {
     if ($(window).width() <= 1199) {
         let rowActingAc = $('#tableActingAc_01 tr').length;
         let rowPausedAc = $('#tablePausedAc_01 tr').length;
@@ -274,7 +274,7 @@ $(window).resize(function () {
 
 
 // Выбранные параметры поиска по реестру АЦ, на главной карте
-$('#btnSaveFilterAc').click(function () {
+$('#btnSaveFilterAc').click(function() {
     $('#btnFilterAc').hide();
     $('#selectedOptions').show();
 })
@@ -284,15 +284,22 @@ $('#btnSaveFilterAc').click(function () {
 //     $('#btnFilterResultIndex').show();
 // })
 
-$('#btnSubscription').click(function () {
+// Подтверждение подписки на рассылку
+$('#btnSubscription').click(function() {
     $('.subscription').hide();
-    setTimeout(function () {
+    setTimeout(function() {
         $('.subscription').show();
     }, 1500);
     $('.result-subscription').show();
-    setTimeout(function () {
+    setTimeout(function() {
         $('.result-subscription').hide();
     }, 1500);
+    return false;
+})
+
+// Подтверждение восстановления пароля
+$('#btnSavePassRecovery').click(function() {
+    $('.pass-is-valid').show('fade');
     return false;
 })
 
@@ -347,9 +354,9 @@ if ($('#auth_app').length > 0) {
                 stupidpot: null,
             }
         },
-        created: function () {
-            axios.interceptors.response.use(undefined, function (err) {
-                return new Promise(function (resolve, reject) {
+        created: function() {
+            axios.interceptors.response.use(undefined, function(err) {
+                return new Promise(function(resolve, reject) {
                     if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
                         // if you ever get an unauthorized, logout the user
                         //   this.$store.dispatch(AUTH_LOGOUT)
@@ -370,21 +377,21 @@ if ($('#auth_app').length > 0) {
             }
         },
         methods: {
-            test: function () {
+            test: function() {
                 console.log('callback');
             },
-            toggle_login_panel: function () {
+            toggle_login_panel: function() {
                 console.log('login toggle');
                 $("#registration-page").hide();
                 $("#pass-recovery").hide();
                 $("#login-page").fadeIn('slow');
             },
-            toggle_recovery_panel: function () {
+            toggle_recovery_panel: function() {
                 console.log('recovery callback');
                 $("#login-page").hide();
                 $("#pass-recovery").fadeIn('slow');
             },
-            authenticate: function () {
+            authenticate: function() {
                 console.log('pressed login');
                 const payload = {
                     email: this.username,
@@ -416,11 +423,11 @@ if ($('#auth_app').length > 0) {
                         console.log('authenticated finally callback');
                     })
             },
-            toggle_register_pannel: function () {
+            toggle_register_pannel: function() {
                 $('#registration-page').fadeIn('slow');
                 $('#login-page').hide();
             },
-            register_user: function () {
+            register_user: function() {
                 this.registered = false;
                 this.form_errors = {
                     email: {
@@ -466,7 +473,7 @@ if ($('#auth_app').length > 0) {
                     })
                     .finally(console.log('finnaly register ok'))
             },
-            logout_current_user: function () {
+            logout_current_user: function() {
                 // var data = {
                 //     logout_current_user: true,
                 // }
@@ -491,14 +498,14 @@ if ($('#auth_app').length > 0) {
                         this.registered = false;
                     })
             },
-            send_recovery_email: function () {
+            send_recovery_email: function() {
                 console.log('ajax call email sending with link to change password');
-                data = {"email": this.username}
+                data = { "email": this.username }
                 axios
                     .post(this.endpoints.recoverPassword, data)
-                    .then(response=>console.log('response', response))
-                    .catch(err=>console.log('ERROR', err))
-                    .finally(()=>console.log('send request complete'))
+                    .then(response => console.log('response', response))
+                    .catch(err => console.log('ERROR', err))
+                    .finally(() => console.log('send request complete'))
             },
         }
     });
