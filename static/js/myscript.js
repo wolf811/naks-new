@@ -298,10 +298,10 @@ $('#btnSubscription').click(function() {
 })
 
 // Подтверждение восстановления пароля
-$('#btnSavePassRecovery').click(function() {
-    $('.pass-is-valid').show('fade');
-    return false;
-})
+// $('#btnSavePassRecovery').click(function() {
+//     $('.pass-is-valid').show('fade');
+//     return false;
+// })
 
 
 // $('#loginBtn_02').click(function() {
@@ -339,7 +339,8 @@ if ($('#auth_app').length > 0) {
                     loginRequest: '/users/login/',
                     obtainToken: '/api-token-auth/',
                     registerNew: '/users/register/',
-                    recoverPassword: '/users/recover-password/'
+                    recoverPassword: '/users/recover-password/',
+                    saveNewPassword: '/users/update-password/'
                     // refreshJWT: '/api-token-refresh/',
                     // verifyJWT:  '/api-token-verify/'
                 },
@@ -503,10 +504,65 @@ if ($('#auth_app').length > 0) {
                 data = { "email": this.username }
                 axios
                     .post(this.endpoints.recoverPassword, data)
-                    .then(response => console.log('response', response))
-                    .catch(err => console.log('ERROR', err))
-                    .finally(() => console.log('send request complete'))
+                    .then(response => console.log('recover email response', response))
+                    .catch(err => console.log('recover email ERROR', err))
+                    .finally(() => console.log('send request complete finally callback'))
             },
         }
     });
+}
+
+if ($('#password_change_app').length > 0) {
+    var vm_password_change = new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#password_change_app',
+        data() {
+            return {
+                // uid: this.$refs.uid.dataset.uid,
+                // token: this.$refs.token.dataset.token,
+                newPassword: '',
+                newPasswordConfirm: '',
+                serverConfirm: false,
+                serverMessage: '',
+                formErrors: [],
+                endpoints: {
+                    saveNewPassword: '/users/update-password/'
+                },
+            }
+        },
+        mounted() {
+            this.uid = this.$refs.uid.dataset.uid;
+            this.token = this.$refs.token.dataset.token;
+        },
+        methods: {
+            saveNewPassword: function() {
+                console.log('save button pressed');
+                const newPassword1 = this.newPassword;
+                const newPassword2 = this.newPasswordConfirm;
+                const uid = this.uid;
+                const token = this.token;
+                let data = new FormData();
+                data.append('new_password1', newPassword1);
+                data.append('new_password2', newPassword2);
+                axios
+                    .post(`${this.endpoints.saveNewPassword}${uid}/${token}`, data)
+                    .then(response=>{
+                        console.log('RESPONSE', response.data, typeof response.data['form_errors']);
+                        if (response.data['password_updated']) {
+                            this.serverConfirm = true;
+                        }
+                        if (response.data['form_errors']) {
+                            this.formErrors = response.data['form_errors'];
+                        }
+                    })
+                    .catch(err=>{console.log('CHANGE PASSWORD ERROR')})
+                    .finally(()=>{console.log('server change finally callback')});
+            }
+        }
+        // computed: {
+        //     serverResponsedErrors: function() {
+        //         return this.form_errors
+        //     }
+        // }
+    })
 }

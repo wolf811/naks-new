@@ -35,48 +35,6 @@ def _get_absolute_url(request, relative_url):
     )
 
 
-def validate_signed_token(uid, token, require_token=True):
-    """
-    Validates a signed token and uid and returns the user who owns it.
-    :param uid: The uid of the request
-    :param token: The signed token of the request if one exists
-    :param require_token: Whether or not there is a signed token, the token parameter is ignored if False
-    :return: The user who's token it is, if one exists, None otherwise
-    """
-    # user_model = get_user_model()
-    user_model = CustomUser
-    try:
-        uid = force_text(urlsafe_base64_decode(uid))
-        user = user_model.objects.get(pk=uid)
-        if require_token:
-            if user is not None and default_token_generator.check_token(user, token):
-                return user
-        else:
-            return user
-    except (TypeError, ValueError, OverflowError, user_model.DoesNotExist):
-        pass
-    return None
-
-
-def update_password(request, uid, token):
-    user = validate_signed_token(uid, token)
-    if not user:
-        return HttpResponseForbidden()  # Just straight up forbid this request, looking fishy already!
-    if request.method == 'POST':
-        form = SetPasswordForm(user, data=request.POST)
-        if form.is_valid():
-            form.save()
-            Token.objects.filter(user_id__exact=user.pk).delete()
-            return redirect(reverse('mhacks-login') + '?username=' + user.email)
-    elif request.method == 'GET':
-        form = SetPasswordForm(user)
-    else:
-        return HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
-    form.fields['new_password2'].label = 'Confirm New Password'
-    form.fields['new_password2'].longest = True
-    return render(request, 'password_reset.html', {'form': form, 'type': 'reset', 'uid': uid, 'token': token})
-
-
 @csrf_exempt
 @api_view(["POST"])
 @permission_classes((AllowAny,))
@@ -159,22 +117,70 @@ def recover_password_request(request):
     if form.is_valid():
         try:
             user = CustomUser.objects.get(email=form.cleaned_data['email'])
+            # token for password reset
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
+            # import pdb; pdb.set_trace()
             update_password_url = reverse(
-                'update_password', kwargs={'uid': uid, 'token': token}
+                'users:update-password', kwargs={'uid': uid.decode(), 'token': token}
             )
             send_mail(
                 'Password reset',
-                'Password reset url: {}'.format(update_password_url),
+                'Password reset url: {}'.format(_get_absolute_url(request, update_password_url)),
                 'noreply@naks.ru',
                 [email],
                 fail_silently=False,
             )
-            return Response({'password_recovery_email_sent': true})
+            return Response({'password_recovery_email_sent': email})
         except CustomUser.DoesNotExist:
-            return Response({'does_not_exist': email})
+            return Response({'user_does_not_exist': email})
 
     else:
         errors = [(k, v[0]) for k, v in form.errors.items()]
         return Response({'password_recovery_error': errors}, status=HTTP_200_OK)
+
+def validate_signed_token(uid, token, require_token=True):
+    """
+    Validates a signed token and uid and returns the user who owns it.
+    :param uid: The uid of the request
+    :param token: The signed token of the request if one exists
+    :param require_token: Whether or not there is a signed token, the token parameter is ignored if False
+    :return: The user who's token it is, if one exists, None otherwise
+    """
+    # user_model = get_user_model()
+    user_model = CustomUser
+    try:
+        # import pdb; pdb.set_trace()
+        uid = force_text(urlsafe_base64_decode(uid))
+        user = user_model.objects.get(pk=uid)
+        if require_token:
+            if user is not None and default_token_generator.check_token(user, token):
+                return user
+        else:
+            return user
+    except (TypeError, ValueError, OverflowError, user_model.DoesNotExist) as e:
+        print('token not validated error', e)
+        pass
+    return None
+
+
+def update_password(request, uid, token):
+    user = validate_signed_token(uid, token)
+    if not user:
+        return HttpResponseForbidden()  # Just straight up forbid this request, looking fishy already!
+    if request.method == 'POST':
+        # import pdb; pdb.set_trace()
+        form = SetPasswordForm(user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            Token.objects.filter(user_id__exact=user.pk).delete()
+            # return redirect(reverse('mhacks-login') + '?username=' + user.email)
+            return JsonResponse({'password_updated': 'successfully'})
+        else:
+            errors = [v for k, v in form.errors.items()]
+            return JsonResponse({'form_errors': errors})
+    return render(request, 'users/password_change.html', {
+        'user': user,
+        'uid': uid,
+        'token': token,
+        })
