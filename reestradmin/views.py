@@ -60,14 +60,14 @@ def experts_list(request):
     return render(request, 'reestradmin/experts_list.html', content)
 
 def expert_profile(request):
-    title = 'ЭДО - Эксперты НАКС'
+    title = 'ЭДО - Профиль эксперта'
     content = {
         'title': title
     }
     return render(request, 'reestradmin/expert_profile.html', content)
 
 def certificates_list(request):
-    title = 'ЭДО - Эксперты НАКС'
+    title = 'ЭДО - Список удостоверений'
     content = {
         'title': title
     }
