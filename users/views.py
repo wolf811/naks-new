@@ -20,6 +20,8 @@ from smtplib import SMTPException
 from django.utils.translation import gettext as _
 from django.core.mail import send_mail
 from django.template.loader import get_template
+from django.shortcuts import redirect
+
 # from django.template import Context
 # from django.core.mail import EmailMultiAlternatives
 
@@ -113,7 +115,8 @@ def logout_request(request):
         logout(request)
         return JsonResponse({'logout': True})
     else:
-        return JsonResponse({'logout': 'Error'})
+        logout(request)
+        return redirect('index')
 
 @csrf_exempt
 @api_view(["POST"])

@@ -375,14 +375,21 @@ if ($('#auth_app').length > 0) {
         beforeMount() {
             this.token = localStorage.getItem('token');
             this.user = localStorage.getItem('user');
-            if (this.token) {
+            if (this.token && this.user) {
                 this.logged_in = true;
                 axios.defaults.headers.common['Authorization'] = `Token ${this.token}`;
             }
         },
         methods: {
+            //TODO: сделать визуализации сложности пароля:
+            //красная линия - пароль слишком простой и т.д.
             test: function() {
                 console.log('callback');
+            },
+            cleanLocalStorage: function() {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                this.logged_in = false;
             },
             resetForm: function() {
                 this.form_errors = {
@@ -470,16 +477,13 @@ if ($('#auth_app').length > 0) {
                                     this.form_errors.password.message = err[1];
                                 }
                             }
-                        }
-                        if (response.status == 200) {
+                        } else {
                             this.registered = true;
                             this.logged_in = true;
                             this.token = response.data.token;
                             this.user = this.username;
                             localStorage.setItem('token', this.token);
                             localStorage.setItem('user', this.username);
-                        } else {
-                            console.log('ERROR', response);
                         }
                     })
                     .catch(error => {
