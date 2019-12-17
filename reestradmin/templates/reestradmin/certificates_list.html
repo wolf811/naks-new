@@ -10,7 +10,7 @@
         {% include 'reestradmin/includes/pagination.html' %}
         <!-- end pagination -->
         <div class="table-responsive">
-            <table class="table table-bordered table-main">
+            <table class="table table-hover table-bordered table-main">
                 <thead>
                     <tr class="active">
                         <th colspan="2">№ удостоверения</th>
@@ -18,6 +18,8 @@
                         <th>Окончание активности</th>
                         <th>Тип удостоверения</th>
                         <th>Область деятельности</th>
+                        <th>Эксперт НАКС</th>
+                        <th>В центрах</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,23 +35,10 @@
                         <td>0218-10-ОК</td>
                         <td>19.02.2018</td>
                         <td>19.02.2021</td>
-                        <td></td>
-                        <td class="text-left"><a href="#" class="btn btn-outline-secondary btn-xs">Открыть</a></td>
-                    </tr>
-                    <tr>
-                        <td width="30">
-                            <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/reestradmin/organization_edit/"><i class="fa fa-eye mr-1"></i>Просмотр</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
-                            </div>
-                        </td>
-                        <td>1015-25-ОК</td>
-                        <td>23.10.2015</td>
-                        <td>23.10.2018</td>
                         <td>эксперт</td>
                         <td class="text-left"><a href="#" class="btn btn-outline-secondary btn-xs">Открыть</a></td>
+                        <td>Иванов Александр Васильевич</td>
+                        <td><a href="#" class="d-block">ЦОК-005</a></td>
                     </tr>
                     <tr>
                         <td width="30">
@@ -60,11 +49,17 @@
                                 <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
                             </div>
                         </td>
-                        <td>СЗР-1ГАЦ-IV-00129</td>
-                        <td>13.04.2012</td>
-                        <td>13.04.2022</td>
+                        <td>МР-1ГАЦ-IV-00385</td>
+                        <td>15.11.2019</td>
+                        <td>15.11.2024</td>
                         <td>ГТУ ПиА РиК</td>
-                        <td class="text-left">ГО, КО, МО, НГДО, ОХНВП, ПТО, СК</td>
+                        <td class="text-left">ГО, СК</td>
+                        <td>Зуев Михаил Александрович</td>
+                        <td>
+                            <a href="#" class="d-block">АЦСО-100</a>
+                            <a href="#" class="d-block">ЗСР-4АЦ</a>
+                            <a href="#" class="d-block">АЦСТ-115</a>
+                        </td>
                     </tr>
                     <tr>
                         <td width="30">
@@ -75,11 +70,34 @@
                                 <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
                             </div>
                         </td>
-                        <td>1118-21-СТ</td>
+                        <td>СВР-10АЦ-IV-00051</td>
+                        <td>19.07.2019</td>
+                        <td>19.07.2024</td>
+                        <td>ГТУ ПиА РиК</td>
+                        <td class="text-left">НГДО</td>
+                        <td>Казаков Роман Валерьевич</td>
+                        <td>
+                            <a href="#" class="d-block">МР-22АЦ</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30">
+                            <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/reestradmin/organization_edit/"><i class="fa fa-eye mr-1"></i>Просмотр</a>
+                                <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                            </div>
+                        </td>
+                        <td>СУР-2ГАЦ-III-28078</td>
                         <td>28.11.2018</td>
                         <td>28.11.2021</td>
-                        <td>СТ</td>
-                        <td class="text-left">ААД, ААДН, ААДП, ААДПН, АЛСН, АПГ, АПГН, АПИ, АПИН, АППГ, АППГН, АПС, АПСН, АФ, АФДС, АФЛН, АФПН, Г, ГН, ЗН, МАДП, МАДПН, МДС, МЛСН, МП, МПГ, МПГН, МПИ, МПИН, МПН, МПС, МПСН, МСОД, МФ, НГ, НИ, РАД, РАДН, РД, РДН, Э</td>
+                        <td>ГТУ ПиА</td>
+                        <td class="text-left">ГО, НГДО, СК</td>
+                        <td>Ефтонов Антон Николаевич</td>
+                        <td>
+                            <a href="#" class="d-block">БР-1ГАЦ</a>
+                        </td>
                     </tr>
                     <tr>
                         <td width="30">
@@ -90,101 +108,16 @@
                                 <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
                             </div>
                         </td>
-                        <td>1118-13-СО</td>
-                        <td>29.11.2018</td>
-                        <td>29.11.2021</td>
-                        <td>СО</td>
-                        <td class="text-left">A, B, D</td>
-                    </tr>
-                    <tr>
-                        <td width="30">
-                            <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/reestradmin/organization_edit/"><i class="fa fa-eye mr-1"></i>Просмотр</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
-                            </div>
-                        </td>
-                        <td>0918-02-СП</td>
-                        <td>27.09.2018</td>
-                        <td>27.09.2021</td>
-                        <td>ЧК</td>
-                        <td class="text-left">ААД, ААДН, ААДП, АПГ, АПС, АФ, АФЛН, АФПН, Г, ЗН, МАДП, МДС, МП, МПГ, МПС, МСОД, МФ, НГ, НИ, РАД, РАДН, РД, РДН, Э</td>
-                    </tr>
-                    <tr>
-                        <td width="30">
-                            <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/reestradmin/organization_edit/"><i class="fa fa-eye mr-1"></i>Просмотр</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
-                            </div>
-                        </td>
-                        <td>СЗР-1ГАЦ-IV-00129</td>
-                        <td>13.04.2012</td>
-                        <td>13.04.2019</td>
+                        <td>ЗСР-2АЦ-III-07728</td>
+                        <td>15.11.2019</td>
+                        <td>15.11.2024</td>
                         <td>ГТУ ПиА РиК</td>
-                        <td class="text-left">ГО, КО, МО, НГДО, ОХНВП, ПТО, СК</td>
-                    </tr>
-                    <tr>
-                        <td width="30">
-                            <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/reestradmin/organization_edit/"><i class="fa fa-eye mr-1"></i>Просмотр</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
-                            </div>
+                        <td class="text-left">ГДО, ГО, КО, МО, НГДО, ОХНВП, ПТО, СК</td>
+                        <td>Аверин Дмитрий Васильевич</td>
+                        <td>
+                            <a href="#" class="d-block">ЗСР-4АЦ</a>
+                            <a href="#" class="d-block">АЦСТ-115</a>
                         </td>
-                        <td>1015-02-СП</td>
-                        <td>27.09.2015</td>
-                        <td>27.09.2018</td>
-                        <td>ЧК</td>
-                        <td class="text-left">ААД, ААДН, ААДП, АПГ, АПС, АФ, АФЛН, АФПН, Г, ЗН, МАДП, МП, МПГ, МПС, МСОД, МФ, НГ, НИ, РАД, РАДН, РД, РДН, Э</td>
-                    </tr>
-                    <tr>
-                        <td width="30">
-                            <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/reestradmin/organization_edit/"><i class="fa fa-eye mr-1"></i>Просмотр</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
-                            </div>
-                        </td>
-                        <td>1012-03-СП</td>
-                        <td>27.09.2012</td>
-                        <td>27.09.2015</td>
-                        <td>ЧК</td>
-                        <td class="text-left">ААД, ААДН, ААДП, АПГ, АПС, АФ, АФЛН, АФПН, Г, ЗН, МАДП, МП, МПГ, МПС, МСОД, МФ, НГ, НИ, РАД, РАДН, РД, РДН, Э</td>
-                    </tr>
-                    <tr>
-                        <td width="30">
-                            <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/reestradmin/organization_edit/"><i class="fa fa-eye mr-1"></i>Просмотр</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
-                            </div>
-                        </td>
-                        <td>СЗР-1ГАЦ-IV-00129</td>
-                        <td>13.04.2012</td>
-                        <td>13.04.2017</td>
-                        <td>ГТУ ПиА РиК</td>
-                        <td class="text-left">ГО, КО, МО, НГДО, ОХНВП, ПТО, СК</td>
-                    </tr>
-                    <tr>
-                        <td width="30">
-                            <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/reestradmin/organization_edit/"><i class="fa fa-eye mr-1"></i>Просмотр</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
-                            </div>
-                        </td>
-                        <td>СЗР-ГАЦ-III-65754</td>
-                        <td>17.04.2009</td>
-                        <td>17.04.2012</td>
-                        <td>ГТУ ПиА РиК</td>
-                        <td class="text-left">ГО, КО, МО, НГДО, ОХНВП, ПТО, СК</td>
                     </tr>
                 </tbody>
             </table>
