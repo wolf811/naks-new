@@ -105,8 +105,8 @@ def register_request(request):
             return Response({'error': '{}'.format(e)})
     else:
         errors = [{'field': k, 'errors': v} for k, v in form.errors.items()]
-        import pdb; pdb.set_trace()
-        return Response({'form_error': errors})
+        # import pdb; pdb.set_trace()
+        return Response({'form_errors': errors})
 
 
 def logout_request(request):

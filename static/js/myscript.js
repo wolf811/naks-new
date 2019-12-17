@@ -451,11 +451,11 @@ if ($('#auth_app').length > 0) {
                 $('#login-page').hide();
             },
             register_user: function() {
-                if (this.logged_in) {
-                    return
-                }
+                // if (this.logged_in) {
+                //     return
+                // }
                 this.registered = false;
-                this.resetForm();
+                // this.resetForm();
                 let payload = {
                     'email': this.username,
                     'password': this.password,
@@ -467,14 +467,14 @@ if ($('#auth_app').length > 0) {
                 axios
                     .post(this.endpoints.registerNew, payload)
                     .then(response => {
-                        console.log('register response', response.data, response.status);
-                        if (response.data['form_error']) {
-                            for (var err of response.data['form_error']) {
-                                if (err[0].includes("email")) {
-                                    this.form_errors.email.message = err[1];
+                        console.log('register response', response);
+                        if (response.data['form_errors']) {
+                            for (var err of response.data['form_errors']) {
+                                if (err.field === "email") {
+                                    this.form_errors.email.message = err.errors.join("<br>");
                                 }
-                                if (err[0].includes("password")) {
-                                    this.form_errors.password.message = err[1];
+                                if (err.field.includes("password")) {
+                                    this.form_errors.password.message = err.errors.join("<br>");
                                 }
                             }
                         } else {
