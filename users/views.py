@@ -104,7 +104,8 @@ def register_request(request):
         except Exception as e:
             return Response({'error': '{}'.format(e)})
     else:
-        errors = [(k, v[0]) for k, v in form.errors.items()]
+        errors = [{'field': k, 'errors': v} for k, v in form.errors.items()]
+        import pdb; pdb.set_trace()
         return Response({'form_error': errors})
 
 
