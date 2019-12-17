@@ -7,7 +7,6 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_text
 from django.urls import reverse
 from django.http import HttpResponseForbidden, HttpResponseNotAllowed
-from django.core.mail import send_mail
 from django.contrib.auth import authenticate
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
@@ -17,6 +16,14 @@ from rest_framework.permissions import AllowAny
 from .models import CustomUser
 from .forms import CustomUserCreationForm
 import requests
+from smtplib import SMTPException
+from django.utils.translation import gettext as _
+from django.core.mail import send_mail
+from django.template.loader import get_template
+# from django.template import Context
+# from django.core.mail import EmailMultiAlternatives
+
+
 
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
@@ -124,20 +131,43 @@ def recover_password_request(request):
             update_password_url = reverse(
                 'users:update-password', kwargs={'uid': uid.decode(), 'token': token}
             )
-            send_mail(
-                'Password reset',
-                'Password reset url: {}'.format(_get_absolute_url(request, update_password_url)),
-                'noreply@naks.ru',
-                [email],
-                fail_silently=False,
-            )
-            return Response({'password_recovery_email_sent': email})
-        except CustomUser.DoesNotExist:
-            return Response({'user_does_not_exist': email})
+            plaintext_message = get_template('users/email_plain.txt')
+            html_message = get_template('users/email_template.html')
 
+            cntxt = {
+                'username': user,
+                'password_change_link': _get_absolute_url(request, update_password_url)
+                }
+
+            subject, from_email, to = 'НАКС: восстановление пароля учетной записи', 'noreply@naks.ru', email
+            text_content = plaintext_message.render(cntxt)
+            html_content = html_message.render(cntxt)
+            # Ссылка для восстановления пароля на сайте НАКС (naks.ru):
+            # _get_absolute_url(request, update_password_url)
+            send_mail(
+                subject,
+                text_content,
+                from_email,
+                [to],
+                fail_silently=False,
+                html_message=html_content
+            )
+            return Response({
+                'password_recovery_email_sent':
+                'На указанный адрес отправлено письмо со \
+                ссылкой для восстановления пароля'})
+        except CustomUser.DoesNotExist:
+            # import pdb; pdb.set_trace()
+            return Response(
+                {'password_recovery_error': ['Пользователь не найден']})
+        except SMTPException:
+            return Response(
+                {'password_recovery_error': 'Ошибка отправки, обратитесь к администратору сайта'}
+            )
     else:
-        errors = [(k, v[0]) for k, v in form.errors.items()]
-        return Response({'password_recovery_error': errors}, status=HTTP_200_OK)
+        errors = [v[0] for k, v in form.errors.items()]
+        return Response(
+            {'password_recovery_error': errors}, status=HTTP_200_OK)
 
 def validate_signed_token(uid, token, require_token=True):
     """
@@ -173,7 +203,7 @@ def update_password(request, uid, token):
         form = SetPasswordForm(user, data=request.POST)
         if form.is_valid():
             form.save()
-            Token.objects.filter(user_id__exact=user.pk).delete()
+            # Token.objects.filter(user_id__exact=user.pk).delete()
             # return redirect(reverse('mhacks-login') + '?username=' + user.email)
             return JsonResponse({'password_updated': 'successfully'})
         else:

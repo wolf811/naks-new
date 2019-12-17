@@ -15,10 +15,15 @@ class CustomLoginForm(AuthenticationForm):
         pass
 
 class CustomUserCreationForm(UserCreationForm):
-
     class Meta:
         model = CustomUser
         fields = ('email',)
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if CustomUser.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
+            raise forms.ValidationError(u'Пользователь "%s" был ранее зарегистрирован' % email)
+        return email
 
     # def clean_password(self):
     #     password = self.cleaned_data.get('password')

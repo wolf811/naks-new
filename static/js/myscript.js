@@ -352,7 +352,10 @@ if ($('#auth_app').length > 0) {
                         message: ''
                     }
                 },
+                recoverRequestMessageSuccess: null,
+                recoverRequestMessageFailure: null,
                 stupidpot: null,
+                showSpinner: false,
             }
         },
         created: function() {
@@ -381,14 +384,25 @@ if ($('#auth_app').length > 0) {
             test: function() {
                 console.log('callback');
             },
+            resetForm: function() {
+                this.form_errors = {
+                    email: {
+                        message: ''
+                    },
+                    password: {
+                        message: ''
+                    }
+                }
+            },
             toggle_login_panel: function() {
-                console.log('login toggle');
+                this.resetForm();
                 $("#registration-page").hide();
                 $("#pass-recovery").hide();
                 $("#login-page").fadeIn('slow');
             },
             toggle_recovery_panel: function() {
-                console.log('recovery callback');
+                this.recoverRequestMessageFailure = null;
+                this.recoverRequestMessageSuccess = null;
                 $("#login-page").hide();
                 $("#pass-recovery").fadeIn('slow');
             },
@@ -425,19 +439,16 @@ if ($('#auth_app').length > 0) {
                     })
             },
             toggle_register_pannel: function() {
+                this.resetForm();
                 $('#registration-page').fadeIn('slow');
                 $('#login-page').hide();
             },
             register_user: function() {
-                this.registered = false;
-                this.form_errors = {
-                    email: {
-                        message: ''
-                    },
-                    password: {
-                        message: ''
-                    }
+                if (this.logged_in) {
+                    return
                 }
+                this.registered = false;
+                this.resetForm();
                 let payload = {
                     'email': this.username,
                     'password': this.password,
@@ -467,10 +478,12 @@ if ($('#auth_app').length > 0) {
                             this.user = this.username;
                             localStorage.setItem('token', this.token);
                             localStorage.setItem('user', this.username);
+                        } else {
+                            console.log('ERROR', response);
                         }
                     })
                     .catch(error => {
-                        console.log('catched', error)
+                        console.log('CATCHED ERROR', error)
                     })
                     .finally(console.log('finnaly register ok'))
             },
@@ -501,12 +514,26 @@ if ($('#auth_app').length > 0) {
             },
             send_recovery_email: function() {
                 console.log('ajax call email sending with link to change password');
+                this.recoverRequestMessageSuccess = null;
+                this.recoverRequestMessageFailure = null;
+                this.showSpinner = true;
                 data = { "email": this.username }
                 axios
                     .post(this.endpoints.recoverPassword, data)
-                    .then(response => console.log('recover email response', response))
+                    .then(response => {
+                        console.log('RECOVER RESPONSE', response);
+                        if (response.data['password_recovery_email_sent']) {
+                            this.recoverRequestMessageSuccess = response.data['password_recovery_email_sent'];
+                        }
+                        if (response.data['password_recovery_error']) {
+                            this.recoverRequestMessageFailure = response.data['password_recovery_error'];
+                        }
+                    })
                     .catch(err => console.log('recover email ERROR', err))
-                    .finally(() => console.log('send request complete finally callback'))
+                    .finally(() => {
+                        this.showSpinner = false;
+                        console.log('send request complete finally callback');
+                    })
             },
         }
     });
@@ -524,10 +551,19 @@ if ($('#password_change_app').length > 0) {
                 newPasswordConfirm: '',
                 serverConfirm: false,
                 serverMessage: '',
-                formErrors: [],
+                formErrors: null,
                 endpoints: {
                     saveNewPassword: '/users/update-password/'
                 },
+            }
+        },
+        watch: {
+            // :newVal, oldVal
+            newPassword: function() {
+                this.formErrors = null;
+            },
+            newPasswordConfirm: function() {
+                this.formErrors = null;
             }
         },
         mounted() {
@@ -552,17 +588,12 @@ if ($('#password_change_app').length > 0) {
                             this.serverConfirm = true;
                         }
                         if (response.data['form_errors']) {
-                            this.formErrors = response.data['form_errors'];
+                            this.formErrors = response.data['form_errors'][0];
                         }
                     })
                     .catch(err=>{console.log('CHANGE PASSWORD ERROR')})
                     .finally(()=>{console.log('server change finally callback')});
             }
         }
-        // computed: {
-        //     serverResponsedErrors: function() {
-        //         return this.form_errors
-        //     }
-        // }
     })
 }

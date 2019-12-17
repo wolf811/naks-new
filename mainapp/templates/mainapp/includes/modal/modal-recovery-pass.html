@@ -12,13 +12,19 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-sm-9 mx-auto">
-                    <p class="text-sm text-secondary mb-4">Инструкция для смены пароля будут отправлены на указанный вами Email (логин).</p>
+                    <p class="text-sm text-secondary mb-4">Введите адрес электронной почты. Инструкция для смены пароля будут отправлены на указанный вами Email (логин).</p>
                     <div class="form-group justify-content-center">
                         <label for="" class="sr-only">E-mail<span class="text-danger">*</span>:</label>
                         <input v-model="username" type="email" class="form-control"  required placeholder="Email">
                     </div>
+                    <p v-if="recoverRequestMessageSuccess" class="text-success font-weight-bold"><i class="fa fa-check mr-2"></i>[[ recoverRequestMessageSuccess ]]</p>
+                    <div v-if="recoverRequestMessageFailure">
+                        <p v-for="err of recoverRequestMessageFailure" class="text-danger font-weight-bold"><i class="fa fa-times mr-2"></i>[[ err ]]</p>
+                    </div>
+                    <i v-if="showSpinner" class="fa fa-spinner fa-spin fa-2x fa-fw text-primary"></i>
                 </div>
             </div>
+
         </div>
 
         <div class="modal-footer">
