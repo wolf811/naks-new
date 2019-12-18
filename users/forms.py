@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 
-from .models import CustomUser
+from .models import CustomUser, EdoUser
 
 
 class CustomLoginForm(AuthenticationForm):
@@ -24,6 +24,18 @@ class CustomUserCreationForm(UserCreationForm):
         if CustomUser.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
             raise forms.ValidationError(u'Пользователь "%s" был ранее зарегистрирован' % email)
         return email
+
+class EdoUserCreationForm(UserCreationForm):
+
+    class Meta:
+        model = EdoUser
+        fields = ('identifier',)
+
+    def clean_identifier(self):
+        identifier = self.cleaned_data['identifier']
+        if EdoUser.objects.exclude(pk=self.instance.pk).filter(identifier=identifier).exists():
+            raise forms.ValidationError(u'Пользователь "%s" был ранее зарегистрирован' % identifier)
+        return identifier
 
     # def clean_password(self):
     #     password = self.cleaned_data.get('password')

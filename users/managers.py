@@ -32,3 +32,21 @@ class CustomUserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError(_('Superuser must have is_superuser=True.'))
         return self.create_user(email, password, **extra_fields)
+
+
+class EdoUserManager(BaseUserManager):
+    """
+    Custom user model manager where field identifier is the unique identifiers
+    """
+    def create_user(self, identifier, password, **extra_fields):
+        """
+        Create and save a User with the given username and password.
+        """
+        if not identifier:
+            raise ValueError(_('The username must be set'))
+        if not password:
+            raise ValueError(_('Password must be set'))
+        user = self.model(identifier=identifier, **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
