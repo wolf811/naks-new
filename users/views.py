@@ -20,6 +20,8 @@ from smtplib import SMTPException
 from django.utils.translation import gettext as _
 from django.core.mail import send_mail
 from django.template.loader import get_template
+from django.shortcuts import redirect
+
 # from django.template import Context
 # from django.core.mail import EmailMultiAlternatives
 
@@ -102,8 +104,9 @@ def register_request(request):
         except Exception as e:
             return Response({'error': '{}'.format(e)})
     else:
-        errors = [(k, v[0]) for k, v in form.errors.items()]
-        return Response({'form_error': errors})
+        errors = [{'field': k, 'errors': v} for k, v in form.errors.items()]
+        # import pdb; pdb.set_trace()
+        return Response({'form_errors': errors})
 
 
 def logout_request(request):
@@ -113,7 +116,8 @@ def logout_request(request):
         logout(request)
         return JsonResponse({'logout': True})
     else:
-        return JsonResponse({'logout': 'Error'})
+        logout(request)
+        return redirect('index')
 
 @csrf_exempt
 @api_view(["POST"])

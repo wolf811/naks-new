@@ -375,14 +375,21 @@ if ($('#auth_app').length > 0) {
         beforeMount() {
             this.token = localStorage.getItem('token');
             this.user = localStorage.getItem('user');
-            if (this.token) {
+            if (this.token && this.user) {
                 this.logged_in = true;
                 axios.defaults.headers.common['Authorization'] = `Token ${this.token}`;
             }
         },
         methods: {
+            //TODO: сделать визуализации сложности пароля:
+            //красная линия - пароль слишком простой и т.д.
             test: function() {
                 console.log('callback');
+            },
+            cleanLocalStorage: function() {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                this.logged_in = false;
             },
             resetForm: function() {
                 this.form_errors = {
@@ -444,11 +451,11 @@ if ($('#auth_app').length > 0) {
                 $('#login-page').hide();
             },
             register_user: function() {
-                if (this.logged_in) {
-                    return
-                }
+                // if (this.logged_in) {
+                //     return
+                // }
                 this.registered = false;
-                this.resetForm();
+                // this.resetForm();
                 let payload = {
                     'email': this.username,
                     'password': this.password,
@@ -460,26 +467,23 @@ if ($('#auth_app').length > 0) {
                 axios
                     .post(this.endpoints.registerNew, payload)
                     .then(response => {
-                        console.log('register response', response.data, response.status);
-                        if (response.data['form_error']) {
-                            for (var err of response.data['form_error']) {
-                                if (err[0].includes("email")) {
-                                    this.form_errors.email.message = err[1];
+                        console.log('register response', response);
+                        if (response.data['form_errors']) {
+                            for (var err of response.data['form_errors']) {
+                                if (err.field === "email") {
+                                    this.form_errors.email.message = err.errors.join("<br>");
                                 }
-                                if (err[0].includes("password")) {
-                                    this.form_errors.password.message = err[1];
+                                if (err.field.includes("password")) {
+                                    this.form_errors.password.message = err.errors.join("<br>");
                                 }
                             }
-                        }
-                        if (response.status == 200) {
+                        } else {
                             this.registered = true;
                             this.logged_in = true;
                             this.token = response.data.token;
                             this.user = this.username;
                             localStorage.setItem('token', this.token);
                             localStorage.setItem('user', this.username);
-                        } else {
-                            console.log('ERROR', response);
                         }
                     })
                     .catch(error => {
