@@ -13,14 +13,16 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
-from .models import CustomUser
-from .forms import CustomUserCreationForm
+from .models import CustomUser, EdoUser
+from .forms import CustomUserCreationForm, EdoUserCreationForm
 import requests
 from smtplib import SMTPException
 from django.utils.translation import gettext as _
 from django.core.mail import send_mail
 from django.template.loader import get_template
 from django.shortcuts import redirect
+from datetime import datetime, timedelta, timezone, tzinfo
+
 
 # from django.template import Context
 # from django.core.mail import EmailMultiAlternatives
@@ -51,14 +53,63 @@ def login_request(request):
     # import pdb; pdb.set_trace()
     email = request.data.get("email")
     password = request.data.get("password")
-    # edo_token_auth = 'https://ac.naks.ru/auth/external/auth.php?token=74336a72b6314a9dddbbafbcc8155dee51b1'
-    # edo_login_url = 'https://ac.naks.ru/auth/external/?LOGIN={}&PASSWORD={}&AUTH_ID=popov@naks.ru'.format(email, password)
-    # edo_token = requests.post(edo_login_url)
-    # import pdb; pdb.set_trace()
-    # print('EDO TOKEN', edo_token.content.decode('utf8'))
     if email is None or password is None:
         return Response({'error': 'Please provide both username and password'},
                         status=HTTP_400_BAD_REQUEST)
+    # edo_token_auth = 'https://ac.naks.ru/auth/external/auth.php?token='
+    if '@' not in email:
+        # import pdb; pdb.set_trace()
+        identifier = email
+
+        edo_login_data = {
+            'LOGIN': identifier,
+            'PASSWORD': password,
+            'AUTH_ID': 'popov@naks.ru' #TODO: must be in settings with token
+        }
+
+        try:
+            edo_user = EdoUser.objects.get(identifier=identifier)
+            edo_token = edo_user.userprofile.edo_token
+            refresh_token = edo_user.userprofile.edo_refresh_token
+            token_created = edo_user.userprofile.edo_token_created
+            print('TOKEN', token, 'REFRESH TOKEN', refresh_token, 'TOKEN CREATED', token_created)
+            #check token created timedelta < 1h
+            #refresh token if needed
+            #authenticate user and give him edo_token
+        except EdoUser.DoesNotExist:
+                print('EDO USER DOES NOT EXIST, creating edo user')
+                #check if edo has this user
+                edo_login_url = 'https://ac.naks.ru/auth/external/'
+                edo_token_string = requests.post(edo_login_url, data=edo_login_data)\
+                    .content.decode('utf8')
+                if len(edo_token_string) > 0:
+                    form_data = {
+                        'identifier': identifier,
+                        'password1': password,
+                        'password2': password
+                    }
+                    form = EdoUserCreationForm(form_data)
+                    import pdb; pdb.set_trace()
+                    if form.is_valid():
+                        edo_user = form.save()
+                        # GET url
+                        # edo_login_url = 'https://ac.naks.ru/auth/external/?LOGIN={}&PASSWORD={}&AUTH_ID=popov@naks.ru'.format(email, password)
+                        # edo_token_refresh_url = 'https://ac.naks.ru/auth/external/check.php?token=74336a72b6314a9dddbbafbcc8155dee51b1&refresh=9a47d78fe5979337'
+                        edo_refresh_token, edo_token = tuple(edo_token_string.split("."))
+                        edo_user.userprofile.edo_token = edo_token
+                        edo_user.userprofile.edo_refresh_token = edo_refresh_token
+                        edo_user.save()
+                        login(request, edo_user)
+                        token, _ = Token.objects.get_or_create(user=edo_user)
+                        return Response({'token': token.key, 'edo_token': edo_token})
+                    else:
+                        return Response({'errors': 'Ошибки заполнения формы'})
+                else:
+                    return Response({'errors', 'Данные для авторизации не верны'})
+
+
+
+
     user = authenticate(email=email, password=password)
     # import pdb; pdb.set_trace()
     if not user:
