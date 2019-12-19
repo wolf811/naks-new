@@ -37,6 +37,7 @@ class EdoUserCreationForm(UserCreationForm):
             raise forms.ValidationError(u'Пользователь "%s" был ранее зарегистрирован' % identifier)
         return identifier
 
+
     # def clean_password(self):
     #     password = self.cleaned_data.get('password')
     #     password_validation.validate_password(password, self.instance)

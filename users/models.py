@@ -52,16 +52,18 @@ class UserProfile(models.Model):
         verbose_name_plural = 'Профили пользователей'
 
     def save(self, *args, **kwargs):
-        if self.edo_token:
+        if self.edo_token and not self.edo_token_created:
             self.edo_token_created = timezone.now()
-        super(EdoUser, self).save(*args, **kwargs)
+        # super(EdoUser, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
+@receiver(post_save, sender=EdoUser)
 @receiver(post_save, sender=CustomUser)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
 
-
+@receiver(post_save, sender=EdoUser)
 @receiver(post_save, sender=CustomUser)
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()

@@ -428,9 +428,12 @@ if ($('#auth_app').length > 0) {
                             this.form_errors.email.message = '';
                             this.form_errors.password.message = '';
                             const token = response.data.token;
+                            const edo_token = response.data.edo_token;
+                            const edo_token_created = response.data.edo_token_created
                             // const newToken = response.data.token;
                             localStorage.setItem('token', token);
                             localStorage.setItem('user', this.username);
+                            localStorage.setItem('edo_token', JSON.stringify({'token': edo_token, 'created': edo_token_created}));
                             this.logged_in = true;
                             this.user = this.username;
                             $('#modal-authorization').modal('hide');

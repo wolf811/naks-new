@@ -15,19 +15,19 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from .models import CustomUser, EdoUser
 from .forms import CustomUserCreationForm, EdoUserCreationForm
-import requests
 from smtplib import SMTPException
 from django.utils.translation import gettext as _
 from django.core.mail import send_mail
 from django.template.loader import get_template
 from django.shortcuts import redirect
-from datetime import datetime, timedelta, timezone, tzinfo
+import datetime
+import requests
+from django.utils import timezone
+
 
 
 # from django.template import Context
 # from django.core.mail import EmailMultiAlternatives
-
-
 
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
@@ -35,8 +35,8 @@ from rest_framework.status import (
     HTTP_200_OK
 )
 
-
 # Create your views here.
+
 
 def _get_absolute_url(request, relative_url):
     return "{0}://{1}{2}".format(
@@ -71,44 +71,80 @@ def login_request(request):
             edo_user = EdoUser.objects.get(identifier=identifier)
             edo_token = edo_user.userprofile.edo_token
             refresh_token = edo_user.userprofile.edo_refresh_token
+            token, _ = Token.objects.get_or_create(user=edo_user)
             token_created = edo_user.userprofile.edo_token_created
-            print('TOKEN', token, 'REFRESH TOKEN', refresh_token, 'TOKEN CREATED', token_created)
-            #check token created timedelta < 1h
-            #refresh token if needed
-            #authenticate user and give him edo_token
+            one_hour_ago = (timezone.now() - datetime.timedelta(hours=1))
+            #TODO: дополнительная проверка можно ли сравнивать пустое поле с час назад
+            # import pdb; pdb.set_trace()
+            if token_created > one_hour_ago:
+                print('TOKEN IS FRESH, logging in...', edo_token, 'created', token_created, '1h ago:', one_hour_ago)
+                login(request, edo_user)
+                return Response({
+                    'token': token.key,
+                    'edo_token': edo_token,
+                    'edo_token_created': token_created.isoformat()
+                })
+            else:
+                print('REFRESHING TOKEN:', edo_token, 'created', token_created, '1h ago:', one_hour_ago)
+                refresh_token_url = 'https://ac.naks.ru/auth/external/check.php?token={}&refresh={}&AUTH_ID=popov@naks.ru'\
+                        .format(
+                            edo_token, refresh_token
+                        )
+                print('REFRESH URL:', refresh_token_url)
+                refresh_data = {
+                    'token': edo_token,
+                    'refresh': refresh_token,
+                    'AUTH_ID': 'popov@naks.ru' #TODO:
+                }
+                fresh_token = requests.post(refresh_token_url).content.decode('utf8')
+                new_edo_refresh_token, new_edo_token = tuple(fresh_token.split("."))
+                edo_user.userprofile.edo_token = new_edo_token
+                edo_user.userprofile.edo_refresh_token = new_edo_refresh_token
+                edo_user.userprofile.edo_token_created = timezone.now()
+
+                edo_user.save()
+                login(request, edo_user)
+                return Response({
+                    'edo_token': new_edo_token,
+                    'token': token.key,
+                    'edo_token_created': timezone.now().isoformat()
+                })
+            # print('TOKEN', edo_token, 'REFRESH TOKEN', refresh_token, 'TOKEN CREATED', token_created)
+            user = authenticate(email=identifier, password=password)
+            if not user:
+                return Response({'error': 'Данные для авторизации не верны'})
+            login(request, user)
+            return Response({'token': token.key, 'edo_token': edo_token})
+
         except EdoUser.DoesNotExist:
                 print('EDO USER DOES NOT EXIST, creating edo user')
                 #check if edo has this user
                 edo_login_url = 'https://ac.naks.ru/auth/external/'
                 edo_token_string = requests.post(edo_login_url, data=edo_login_data)\
                     .content.decode('utf8')
+                edo_refresh_token, edo_token = tuple(edo_token_string.split("."))
                 if len(edo_token_string) > 0:
-                    form_data = {
-                        'identifier': identifier,
-                        'password1': password,
-                        'password2': password
-                    }
-                    form = EdoUserCreationForm(form_data)
-                    import pdb; pdb.set_trace()
-                    if form.is_valid():
-                        edo_user = form.save()
-                        # GET url
-                        # edo_login_url = 'https://ac.naks.ru/auth/external/?LOGIN={}&PASSWORD={}&AUTH_ID=popov@naks.ru'.format(email, password)
-                        # edo_token_refresh_url = 'https://ac.naks.ru/auth/external/check.php?token=74336a72b6314a9dddbbafbcc8155dee51b1&refresh=9a47d78fe5979337'
-                        edo_refresh_token, edo_token = tuple(edo_token_string.split("."))
-                        edo_user.userprofile.edo_token = edo_token
-                        edo_user.userprofile.edo_refresh_token = edo_refresh_token
-                        edo_user.save()
-                        login(request, edo_user)
-                        token, _ = Token.objects.get_or_create(user=edo_user)
-                        return Response({'token': token.key, 'edo_token': edo_token})
-                    else:
-                        return Response({'errors': 'Ошибки заполнения формы'})
+                    edo_user = EdoUser.objects.create_user(
+                        email=identifier,
+                        identifier=identifier,
+                        password=password)
+                    # import pdb; pdb.set_trace()
+                    edo_user.userprofile.edo_token = edo_token
+                    edo_user.userprofile.edo_refresh_token = edo_refresh_token
+                    edo_user.save()
+                    token, _ = Token.objects.get_or_create(user=edo_user)
+                    print('EDO USER CREATED', edo_user)
+                    login(request, edo_user)
+                    return Response({
+                        'token': token.key,
+                        'edo_token': edo_token,
+                        'edo_token_created': timezone.now().isoformat()
+                        })
+                    # edo_login_url = 'https://ac.naks.ru/auth/external/?LOGIN={}&PASSWORD={}&AUTH_ID=popov@naks.ru'.format(email, password)
+                    # edo_token_refresh_url = 'https://ac.naks.ru/auth/external/check.php?token=74336a72b6314a9dddbbafbcc8155dee51b1&refresh=9a47d78fe5979337'
+                    # token, _ = Token.objects.get_or_create(user=edo_user)
                 else:
                     return Response({'errors', 'Данные для авторизации не верны'})
-
-
-
 
     user = authenticate(email=email, password=password)
     # import pdb; pdb.set_trace()
