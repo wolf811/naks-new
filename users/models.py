@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.utils import timezone
+import requests
 
 
 # Create your models here.
@@ -24,11 +25,38 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
+    def refresh_edo_token(self):
+        try:
+            # import pdb; pdb.set_trace()
+            userprofile = self.userprofile
+            # print('REFRESH URL:', refresh_token_url)
+            # refresh_data = {
+            #     'token': userprofile.edo_token,
+            #     'refresh': userprofile.edo_refresh_token,
+            #     'AUTH_ID': 'popov@naks.ru' #TODO: fix this
+            # }
+            refresh_token_url = 'https://ac.naks.ru/auth/external/check.php?token={}&refresh={}&AUTH_ID=popov@naks.ru'\
+                .format(
+                    userprofile.edo_token, userprofile.edo_refresh_token
+                )
+            fresh_token = requests.post(refresh_token_url).content.decode('utf8')
+            # import pdb; pdb.set_trace()
+            new_edo_refresh_token, new_edo_token = tuple(fresh_token.split("."))
+            userprofile.edo_token = new_edo_token
+            userprofile.edo_refresh_token = new_edo_refresh_token
+            userprofile.edo_token_created = timezone.now()
+            self.save()
+            print('USERPROFILE EDO TOKEN REFRESHED', self, self.userprofile)
+
+        except Exception as e:
+            print('REFRESHING TOKEN EXCEPTION', e)
+            pass
 
 class EdoUser(CustomUser):
     identifier = models.CharField(_('identifier'), max_length=20, unique=True)
     USERNAME_FIELD = 'identifier'
     objects = EdoUserManager()
+
 
 
 class UserProfile(models.Model):

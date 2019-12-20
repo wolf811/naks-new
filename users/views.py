@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import CustomUser, EdoUser
 from .forms import CustomUserCreationForm, EdoUserCreationForm
 from smtplib import SMTPException
@@ -306,6 +306,15 @@ def update_password(request, uid, token):
         'token': token,
         })
 
-
-def refresh_edo_token(request, drf_token):
-    pass
+@csrf_exempt
+@api_view(["POST"])
+@permission_classes((IsAuthenticated,))
+def refresh_edo_token(request):
+    user = request.user
+    # auth = unicode(request.auth)
+    user.refresh_edo_token()
+    # print('edo_token_refreshed')
+    return Response({
+        'edo_token': user.userprofile.edo_token,
+        'edo_token_created': user.userprofile.edo_token_created,
+        })

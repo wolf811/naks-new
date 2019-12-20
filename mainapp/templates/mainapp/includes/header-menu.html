@@ -140,7 +140,7 @@
                         <div id="btnGroupEntered" class="btn-group">
                             <button id="dropdownMenuButton" class="btn btn-outline-primary dropdown-toggle text-truncate" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="max-width: 150px;">{{ user }}<i class="fa fa-angle-down ml-2"></i></button>
                             <div class="dropdown-menu dropdown-menu-center shadow rounded-0" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Вход в ЭДО</a>
+                                <a @click.prevent="edo_login_by_token" class="dropdown-item" href="#">Вход в ЭДО</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{% url 'users:logout' %}" @click="cleanLocalStorage()">Выйти<i class="fa fa-sign-out ml-1" aria-hidden="true"></i></a>
                             </div>

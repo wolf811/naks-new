@@ -12,5 +12,5 @@ urlpatterns = [
     path('register/', users.register_request, name='register'),
     path('recover-password/', users.recover_password_request, name='recover-password'),
     path('update-password/<uid>/<token>', users.update_password, name='update-password'),
-    path('refresh-edo-token/<drf-token>', users.refresh_edo_token, name='refresh-edo-token'),
+    path('refresh-edo-token/', users.refresh_edo_token, name='refresh-edo-token'),
 ]
