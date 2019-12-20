@@ -137,14 +137,14 @@
                         {% if user.is_authenticated %}
 
                             <div id="btnGroupEntered" class="btn-group" role="group" aria-label="Basic example">
-                                <a href="#" class="btn btn-primary text-truncate" title="Перейти в личный кабинет" style="max-width: 150px; font-size: 0.875rem;">{{ user }}</a>
+                                <a @click.prevent="edo_login_by_token" href="#" class="btn btn-primary text-truncate" title="Перейти в личный кабинет" style="max-width: 150px; font-size: 0.875rem;">{{ user }}</a>
                                 <a href="{% url 'users:logout' %}" @click="cleanLocalStorage()" class="btn btn-outline-primary" title="Выйти"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                             </div>
 
                         {% else %}
 
                             <div v-if="logged_in == true" id="btnGroupEntered" class="btn-group" role="group" aria-label="Basic example">
-                                <a href="#" class="btn btn-primary text-truncate" title="Перейти в личный кабинет" style="max-width: 150px; font-size: 0.875rem;">[[ user ]]</a>
+                                <a @click.prevent="edo_login_by_token" href="#" class="btn btn-primary text-truncate" title="Перейти в личный кабинет" style="max-width: 150px; font-size: 0.875rem;">[[ user ]]</a>
                                 <a href="#" @click.prevent="logout_current_user()" class="btn btn-outline-primary" title="Выйти"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                             </div>
                             <a v-else href="#" class="btn btn-primary btn-sign-in" data-toggle="modal" data-target="#modal-authorization"><i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Войти</a>

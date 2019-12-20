@@ -12,17 +12,5 @@ urlpatterns = [
     path('register/', users.register_request, name='register'),
     path('recover-password/', users.recover_password_request, name='recover-password'),
     path('update-password/<uid>/<token>', users.update_password, name='update-password'),
-    # path('registration/', views.UserRegistrationView.as_view(), name='registration'),
-    # path('profile_update/', views.UserUpdateView.as_view(), name='profile_update'),
-    # path(
-    #     'password_change/',
-    #     auth_views.PasswordChangeView.as_view(template_name='users/password_change.html',
-    #                                           success_url=reverse_lazy('users:password_change_done')),
-    #     name='password_change'
-    # ),
-    # path(
-    #     'password_change_done/',
-    #     auth_views.PasswordChangeDoneView.as_view(template_name='users/password_change_done.html'),
-    #     name='password_change_done'
-    # ),
+    path('refresh-edo-token/<drf-token>', users.refresh_edo_token, name='refresh-edo-token'),
 ]
