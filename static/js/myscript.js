@@ -542,6 +542,10 @@ if ($('#auth_app').length > 0) {
                         console.log('send request complete finally callback');
                     })
             },
+            edo_login_by_token: function() {
+                console.log('login callback');
+
+            }
         }
     });
 }

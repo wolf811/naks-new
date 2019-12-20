@@ -305,3 +305,7 @@ def update_password(request, uid, token):
         'uid': uid,
         'token': token,
         })
+
+
+def refresh_edo_token(request, drf_token):
+    pass
