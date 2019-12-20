@@ -468,10 +468,9 @@ if ($('#auth_app').length > 0) {
                 $('#login-page').hide();
             },
             register_user: function() {
-                // if (this.logged_in) {
-                //     return
-                // }
                 this.registered = false;
+                this.showSpinner = true;
+                this.resetForm();
                 // this.resetForm();
                 let payload = {
                     'email': this.username,
@@ -486,6 +485,7 @@ if ($('#auth_app').length > 0) {
                     .then(response => {
                         console.log('register response', response);
                         if (response.data['form_errors']) {
+                            this.showSpinner = false;
                             for (var err of response.data['form_errors']) {
                                 if (err.field === "email") {
                                     this.form_errors.email.message = err.errors.join("<br>");
@@ -501,6 +501,7 @@ if ($('#auth_app').length > 0) {
                             this.user = this.username;
                             localStorage.setItem('token', this.token);
                             localStorage.setItem('user', this.username);
+                            this.showSpinner = false;
                         }
                     })
                     .catch(error => {

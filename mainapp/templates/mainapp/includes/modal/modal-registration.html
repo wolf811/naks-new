@@ -10,7 +10,10 @@
     <div id="reg-fields">
         <form>
             <div class="modal-body">
-                <div v-if="token && registered" id="reg-info">
+                <div v-if="showSpinner">
+                    <i class="fa fa-spinner fa-spin fa-3x fa-fw text-primary"></i>
+                </div>
+                <div v-else-if="token && registered" id="reg-info">
                     <div class="alert alert-info rounded-0 text-sm" role="alert">
                         <p class="mb-0">Пользователь зарегистрирован и авторизован.
                             Вам отправлено письмо со ссылкой-подтверждением.
