@@ -330,6 +330,8 @@ if ($('#auth_app').length > 0) {
                 username: '',
                 password: '',
                 token: '',
+                edo_token: '',
+                edo_token_created: null,
                 tokenCreatedDate: null,
                 urStatus: 'UL',
                 endpoints: {
@@ -379,6 +381,9 @@ if ($('#auth_app').length > 0) {
                 this.logged_in = true;
                 axios.defaults.headers.common['Authorization'] = `Token ${this.token}`;
             }
+            var edoToken = JSON.parse(localStorage.edo_token);
+            this.edo_token = edoToken.token;
+            this.edo_token_created = edoToken.created;
         },
         methods: {
             //TODO: сделать визуализации сложности пароля:
@@ -434,6 +439,8 @@ if ($('#auth_app').length > 0) {
                             localStorage.setItem('token', token);
                             localStorage.setItem('user', this.username);
                             localStorage.setItem('edo_token', JSON.stringify({'token': edo_token, 'created': edo_token_created}));
+                            this.edo_token = edo_token;
+                            this.edo_token_created = edo_token_created;
                             this.logged_in = true;
                             this.user = this.username;
                             $('#modal-authorization').modal('hide');
@@ -542,9 +549,21 @@ if ($('#auth_app').length > 0) {
                         console.log('send request complete finally callback');
                     })
             },
+            refresh_edo_token: function() {
+                return false;
+            },
             edo_login_by_token: function() {
-                console.log('login callback');
-
+                console.log('login edo callback, checking if expired edo_token', this.edo_token, this.edo_token_created);
+                var form = document.createElement('form');
+                var data = document.createElement('input');
+                data.type="hidden";
+                data.name="auth";
+                data.value=`${this.edo_token}`;
+                form.method = 'post';
+                form.action = 'https://ac.naks.ru/auth/'
+                form.appendChild(data);
+                document.body.appendChild(form);
+                form.submit();
             }
         }
     });
