@@ -1,9 +1,8 @@
 {% load static %}
-
 <!-- Регистрация -->
 <div id="registration-page" style="display: none;">
     <div class="modal-header">
-        <h5 class="modal-title" >Регистрация</h5>
+        <h5 class="modal-title">Регистрация</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -12,14 +11,13 @@
         <form>
             <div class="modal-body">
                 <div v-if="token && registered" id="reg-info">
-                        <div  class="alert alert-info rounded-0 text-sm" role="alert">
-                            <p class="mb-0">Пользователь зарегистрирован и авторизован.
+                    <div class="alert alert-info rounded-0 text-sm" role="alert">
+                        <p class="mb-0">Пользователь зарегистрирован и авторизован.
                             Вам отправлено письмо со ссылкой-подтверждением.
                             Для окончания регистрации пройдите по ссылке в письме.<br>
                             <strong>Окно можно закрыть.</strong>
-                            </p>
-                        </div>
-
+                        </p>
+                    </div>
                 </div>
                 <div v-else class="alert alert-warning alert-dismissible fade show rounded-0 text-sm" role="alert">
                     <p>Личный кабинет <strong>юридического лица</strong> позволяет заполнять заявки на аттестацию персонала сварочного производства, сварочных материалов (СМ), сварочного оборудования (СО) и сварочных технологий (СТ)</p>
@@ -48,7 +46,7 @@
                     <div class="col-sm-9 mx-auto">
                         <div class="form-group">
                             <label for="">E-mail (логин)</label>
-                            <input v-model="username" type="email" class="form-control" :class="{'is-invalid': form_errors.email.message.length > 0}"  aria-describedby="emailHelp">
+                            <input v-model="username" type="email" class="form-control" :class="{'is-invalid': form_errors.email.message.length > 0}" aria-describedby="emailHelp">
                             <div v-if="form_errors.email.message.length > 0" class="invalid-feedback">
                                 <div v-html="form_errors.email.message"></div>
                             </div>
@@ -62,14 +60,12 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-sm-9 mx-sm-auto">
                         <p class="mb-2">Регистрируясь, Вы принимаете <a href="#" target="_blank">пользовательское соглашение</a></p>
                     </div>
                 </div>
             </div>
-
             <div class="modal-footer">
                 <div class="container-fluid p-0">
                     <div class="row">
