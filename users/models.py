@@ -7,6 +7,8 @@ from django.dispatch import receiver
 from django.utils import timezone
 import requests
 
+from django.core.mail import send_mail
+
 
 # Create your models here.
 
@@ -27,20 +29,13 @@ class CustomUser(AbstractUser):
 
     def refresh_edo_token(self):
         try:
-            # import pdb; pdb.set_trace()
             userprofile = self.userprofile
-            # print('REFRESH URL:', refresh_token_url)
-            # refresh_data = {
-            #     'token': userprofile.edo_token,
-            #     'refresh': userprofile.edo_refresh_token,
             #     'AUTH_ID': 'popov@naks.ru' #TODO: fix this
-            # }
             refresh_token_url = 'https://ac.naks.ru/auth/external/check.php?token={}&refresh={}&AUTH_ID=popov@naks.ru'\
                 .format(
                     userprofile.edo_token, userprofile.edo_refresh_token
                 )
             fresh_token = requests.post(refresh_token_url).content.decode('utf8')
-            # import pdb; pdb.set_trace()
             new_edo_refresh_token, new_edo_token = tuple(fresh_token.split("."))
             userprofile.edo_token = new_edo_token
             userprofile.edo_refresh_token = new_edo_refresh_token
@@ -50,13 +45,19 @@ class CustomUser(AbstractUser):
 
         except Exception as e:
             print('REFRESHING TOKEN EXCEPTION', e)
+            send_mail(
+                "EDO refreshing token error",
+                "USER: {}, USER PK: {}, USER PROFILE: {}".format(self.user, self.user.pk, self.userprofile),
+                "noreply@naks.ru",
+                ['popov@naks.ru'],
+                fail_silently=True
+            )
             pass
 
 class EdoUser(CustomUser):
     identifier = models.CharField(_('identifier'), max_length=20, unique=True)
     USERNAME_FIELD = 'identifier'
     objects = EdoUserManager()
-
 
 
 class UserProfile(models.Model):
@@ -79,6 +80,9 @@ class UserProfile(models.Model):
         verbose_name = 'Профиль пользователя'
         verbose_name_plural = 'Профили пользователей'
 
+    def __str__(self):
+        return 'Profile of {}'.format(self.user)
+
     def save(self, *args, **kwargs):
         if self.edo_token and not self.edo_token_created:
             self.edo_token_created = timezone.now()
@@ -96,7 +100,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
 
-
-# @receiver(post_delete, sender=CustomUser)
-# def delete_user_profile(sender, instance, **kwargs):
-#     instance.userpofile.delete()

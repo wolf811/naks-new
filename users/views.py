@@ -25,10 +25,6 @@ import requests
 from django.utils import timezone
 
 
-
-# from django.template import Context
-# from django.core.mail import EmailMultiAlternatives
-
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND,
@@ -70,7 +66,6 @@ def login_request(request):
         try:
             edo_user = EdoUser.objects.get(identifier=identifier)
             edo_token = edo_user.userprofile.edo_token
-            refresh_token = edo_user.userprofile.edo_refresh_token
             token, _ = Token.objects.get_or_create(user=edo_user)
             token_created = edo_user.userprofile.edo_token_created
             one_hour_ago = (timezone.now() - datetime.timedelta(hours=1))
@@ -85,27 +80,10 @@ def login_request(request):
                     'edo_token_created': token_created.isoformat()
                 })
             else:
-                print('REFRESHING TOKEN:', edo_token, 'created', token_created, '1h ago:', one_hour_ago)
-                refresh_token_url = 'https://ac.naks.ru/auth/external/check.php?token={}&refresh={}&AUTH_ID=popov@naks.ru'\
-                        .format(
-                            edo_token, refresh_token
-                        )
-                print('REFRESH URL:', refresh_token_url)
-                refresh_data = {
-                    'token': edo_token,
-                    'refresh': refresh_token,
-                    'AUTH_ID': 'popov@naks.ru' #TODO:
-                }
-                fresh_token = requests.post(refresh_token_url).content.decode('utf8')
-                new_edo_refresh_token, new_edo_token = tuple(fresh_token.split("."))
-                edo_user.userprofile.edo_token = new_edo_token
-                edo_user.userprofile.edo_refresh_token = new_edo_refresh_token
-                edo_user.userprofile.edo_token_created = timezone.now()
-
-                edo_user.save()
+                edo_user.refresh_edo_token()
                 login(request, edo_user)
                 return Response({
-                    'edo_token': new_edo_token,
+                    'edo_token': edo_user.userprofile.edo_token,
                     'token': token.key,
                     'edo_token_created': timezone.now().isoformat()
                 })
@@ -114,7 +92,10 @@ def login_request(request):
             if not user:
                 return Response({'error': 'Данные для авторизации не верны'})
             login(request, user)
-            return Response({'token': token.key, 'edo_token': edo_token})
+            return Response({'token': token.key,
+                             'edo_token': edo_token,
+                             'edo_token_created': token_created
+                             })
 
         except EdoUser.DoesNotExist:
                 print('EDO USER DOES NOT EXIST, creating edo user')
@@ -152,8 +133,12 @@ def login_request(request):
         return Response({'errors': 'Данные для авторизации не верны'})
     login(request, user)
     token, _ = Token.objects.get_or_create(user=user)
-    return Response({'token': token.key},
-                    status=HTTP_200_OK)
+    profile = user.userprofile
+    edo_token, edo_token_created = profile.edo_token, profile.edo_token_created
+    return Response({
+        'token': token.key,
+        'edo_token': edo_token,
+        'edo_token_created': edo_token_created})
 
 
 @csrf_exempt
@@ -167,7 +152,7 @@ def register_request(request):
     print('REGISTER REQUEST', request.data)
     if honeypot:
         return Response({
-            'failure': 'input is incorrect'
+            'error': 'input is incorrect'
         }, status=HTTP_400_BAD_REQUEST)
     if email is None or password is None or ur_status is None:
         return Response(
@@ -182,12 +167,41 @@ def register_request(request):
     if form.is_valid():
         try:
             # user, created = CustomUser.objects.get_or_create(email=email, password=password)
-            user = form.save()
-            user.userprofile.status = ur_status
-            user.save()
-            login(request, user)
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key}, status=HTTP_200_OK)
+            edo_creation_user_url = 'https://ac.naks.ru/auth/external/reg.php'
+            edo_creation_data = {
+                'LOGIN': email,
+                'PASSWORD': password,
+                'AUTH_ID': 'popov@naks.ru'
+            }
+            edo_register_response = requests.post(
+                edo_creation_user_url,
+                edo_creation_data
+                ).content.decode('utf8')
+            if 'success' in edo_register_response:
+                user = form.save()
+                user.userprofile.status = ur_status
+                userprofile = user.userprofile
+                edo_login_url = 'https://ac.naks.ru/auth/external/'
+                edo_token_string = requests.post(edo_login_url, data=edo_creation_data)\
+                    .content.decode('utf8')
+                edo_refresh_token, edo_token = tuple(edo_token_string.split("."))
+                if len(edo_token_string) > 0:
+                    # import pdb; pdb.set_trace()
+                    userprofile.edo_token = edo_token
+                    userprofile.edo_refresh_token = edo_refresh_token
+                    user.save()
+                    login(request, user)
+                    token, _ = Token.objects.get_or_create(user=user)
+                    return Response({
+                        'token': token.key,
+                        'edo_token': edo_token,
+                        'edo_token_created': timezone.now()
+                        })
+                else:
+                    return Response({'error': 'Ошибка регистрации пользователя, обратитесь к администратору'})
+            else:
+                # if not 'success' in edo_response
+                return Response({'form_errors': [{'field': 'email', 'errors': [edo_register_response]}]})
         except Exception as e:
             return Response({'error': '{}'.format(e)})
     else:
@@ -201,7 +215,7 @@ def logout_request(request):
     if request.POST.get('logout_current_user'):
         # import pdb; pdb.set_trace()
         logout(request)
-        return JsonResponse({'logout': True})
+        return JsonResponse({'user_logged_out': True})
     else:
         logout(request)
         return redirect('index')
@@ -311,9 +325,7 @@ def update_password(request, uid, token):
 @permission_classes((IsAuthenticated,))
 def refresh_edo_token(request):
     user = request.user
-    # auth = unicode(request.auth)
     user.refresh_edo_token()
-    # print('edo_token_refreshed')
     return Response({
         'edo_token': user.userprofile.edo_token,
         'edo_token_created': user.userprofile.edo_token_created,

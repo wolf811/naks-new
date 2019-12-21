@@ -332,7 +332,6 @@ if ($('#auth_app').length > 0) {
                 token: '',
                 edo_token: '',
                 edo_token_created: null,
-                tokenCreatedDate: null,
                 urStatus: 'UL',
                 endpoints: {
                     // path('api-token-auth/', obtain_jwt_token),
@@ -384,9 +383,12 @@ if ($('#auth_app').length > 0) {
                 axios.defaults.headers.common['Authorization'] = `Token ${this.token}`;
             }
             try {
-                var edoToken = JSON.parse(localStorage.edo_token);
-                this.edo_token = edoToken.token;
-                this.edo_token_created = edoToken.created;
+                let edoToken = localStorage.getItem('edo_token');
+                if (edoToken) {
+                    edoToken = JSON.parse(edoToken);
+                    this.edo_token = edoToken.token;
+                    this.edo_token_created = edoToken.created;
+                }
             } catch (e) {
                 console.log(e);
                 //pass
@@ -425,8 +427,17 @@ if ($('#auth_app').length > 0) {
                 $("#login-page").hide();
                 $("#pass-recovery").fadeIn('slow');
             },
+            loginFormSend: function(e) {
+                if (e.keyCode === 13) {
+                    this.authenticate();
+                }
+            },
             authenticate: function() {
                 console.log('pressed login');
+                if (this.logged_in == true) {
+                    $('#modal-authorization').modal('hide');
+                    return
+                }
                 const payload = {
                     email: this.username,
                     password: this.password
@@ -440,14 +451,12 @@ if ($('#auth_app').length > 0) {
                             this.form_errors.email.message = '';
                             this.form_errors.password.message = '';
                             const token = response.data.token;
-                            const edo_token = response.data.edo_token;
-                            const edo_token_created = response.data.edo_token_created
-                            // const newToken = response.data.token;
                             localStorage.setItem('token', token);
                             localStorage.setItem('user', this.username);
-                            localStorage.setItem('edo_token', JSON.stringify({'token': edo_token, 'created': edo_token_created}));
-                            this.edo_token = edo_token;
-                            this.edo_token_created = edo_token_created;
+                            let edoToken = {'token': response.data.edo_token, 'created': response.data.edo_token_created};
+                            localStorage.edo_token = JSON.stringify(edoToken);
+                            this.edo_token = response.data.edo_token;
+                            this.edo_token_created = response.data.edo_token_created;
                             this.logged_in = true;
                             this.user = this.username;
                             $('#modal-authorization').modal('hide');
@@ -501,6 +510,10 @@ if ($('#auth_app').length > 0) {
                             this.user = this.username;
                             localStorage.setItem('token', this.token);
                             localStorage.setItem('user', this.username);
+                            let edoToken = {'token': response.data.edo_token, 'created': response.data.edo_token_created};
+                            localStorage.edo_token = JSON.stringify(edoToken);
+                            this.edo_token = edoToken.token;
+                            this.edo_token_created = edoToken.created;
                             this.showSpinner = false;
                         }
                     })
@@ -513,28 +526,27 @@ if ($('#auth_app').length > 0) {
                 // var data = {
                 //     logout_current_user: true,
                 // }
+                console.log('logging out...');
                 let formData = new FormData();
                 formData.append('logout_current_user', true);
                 axios
-                    .post('/users/logout/', formData)
-                    .then(response => {
-                        console.log('response', response.data);
+                .post('/users/logout/', formData)
+                .then(response => {
+                    console.log('response', response.data);
+                    if (response.data['user_logged_out']) {
                         this.logged_in = false;
+                    }
+                })
+                .finally(() => {
+                    this.username = '';
+                    this.password = '';
+                    this.user = '';
+                    this.logged_in = false;
+                    this.registered = false;
+                    localStorage.clear();
+                    // TODO: send REST request to logout on ac.naks.ru
                     })
-                    .finally(() => {
-                        // this.$cookies.set("sro_members_updated", "1", "1h");
-                        // if (!this.$.get('rememberMe')) {
-                        // }
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('user');
-                        localStorage.removeItem('edo_token');
-                        this.username = '';
-                        this.password = '';
-                        this.user = '';
-                        this.logged_in = false;
-                        this.registered = false;
-                    })
-            },
+                },
             send_recovery_email: function() {
                 console.log('ajax call email sending with link to change password');
                 this.recoverRequestMessageSuccess = null;
@@ -566,12 +578,8 @@ if ($('#auth_app').length > 0) {
                         this.edo_token = response.data.edo_token;
                         this.edo_token_created = response.data.edo_token_created;
                         // var existing = localStorage.getItem('edo_token');
-
-                        localStorage.setItem('edo_token', JSON.stringify(
-                            {
-                            'token': this.edo_token,
-                            'created': this.edo_token_created
-                        }));
+                        let edoToken = {'token': this.edo_token, 'created': this.edo_token_created};
+                        localStorage.edo_token = JSON.stringify(edoToken);
                     })
                     .catch(error=>{console.log('ERROR', error);})
                     .finally(()=>{console.log('REFRESHING TOKEN');})

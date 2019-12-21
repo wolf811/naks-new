@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label for="password_field">Пароль</label>
                         <div class="input-group mb-3">
-                            <input v-model="password" id="password_field" type="password" class="form-control border-right-0" :class="{'is-invalid': form_errors.password.message.length > 0}">
+                            <input v-model="password" v-on:keyup="loginFormSend" id="password_field" type="password" class="form-control border-right-0" :class="{'is-invalid': form_errors.password.message.length > 0}">
                             <div class="input-group-append">
                                 <button @click.prevent="toggle_recovery_panel()" type="button" class="btn btn-link border border-left-0" :class="[form_errors.password.message.length > 0 ? 'border-danger' : 'border-forgot-button-default']" id="to-recovery">Забыли?</button>
                             </div>
