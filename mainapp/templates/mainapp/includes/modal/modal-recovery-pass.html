@@ -17,6 +17,9 @@
                         <input v-model="username" type="email" class="form-control" required placeholder="Email">
                     </div>
                     <p v-if="recoverRequestMessageSuccess" class="text-success font-weight-bold text-sm"><i class="fa fa-check mr-2"></i>[[ recoverRequestMessageSuccess ]]</p>
+                    <p v-if="passwordRecoverUrl" class="text-info font-weight-bold text-sm">
+                        <i class="fa fa-exclamation-triangle mr-2"></i>Для восстановления пароля данной учетной записи необходимо пройти по <a :href="passwordRecoverUrl">ссылке</a>
+                    </p>
                     <div v-if="recoverRequestMessageFailure">
                         <p v-for="err of recoverRequestMessageFailure" class="text-danger font-weight-bold text-sm"><i class="fa fa-times mr-2"></i>[[ err ]]</p>
                     </div>

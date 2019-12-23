@@ -225,54 +225,66 @@ def logout_request(request):
 @permission_classes((AllowAny,))
 def recover_password_request(request):
     email = request.data.get('email')
-    form = PasswordResetForm({'email': email})
-    if form.is_valid():
-        try:
-            user = CustomUser.objects.get(email=form.cleaned_data['email'])
-            # token for password reset
-            token = default_token_generator.make_token(user)
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            # import pdb; pdb.set_trace()
-            update_password_url = reverse(
-                'users:update-password', kwargs={'uid': uid.decode(), 'token': token}
-            )
-            plaintext_message = get_template('users/email_plain.txt')
-            html_message = get_template('users/email_template.html')
-
-            cntxt = {
-                'username': user,
-                'password_change_link': _get_absolute_url(request, update_password_url)
-                }
-
-            subject, from_email, to = 'НАКС: восстановление пароля учетной записи', 'noreply@naks.ru', email
-            text_content = plaintext_message.render(cntxt)
-            html_content = html_message.render(cntxt)
-            # Ссылка для восстановления пароля на сайте НАКС (naks.ru):
-            # _get_absolute_url(request, update_password_url)
-            send_mail(
-                subject,
-                text_content,
-                from_email,
-                [to],
-                fail_silently=False,
-                html_message=html_content
-            )
-            return Response({
-                'password_recovery_email_sent':
-                'На указанный адрес отправлено письмо со \
-                ссылкой для восстановления пароля'})
-        except CustomUser.DoesNotExist:
-            # import pdb; pdb.set_trace()
-            return Response(
-                {'password_recovery_error': ['Пользователь не найден']})
-        except SMTPException:
-            return Response(
-                {'password_recovery_error': 'Ошибка отправки, обратитесь к администратору сайта'}
-            )
+    # check if user is edo-user
+    password_change_link = 'https://ac.naks.ru/auth/external/change.php'
+    check_user_exist_data = {
+        'LOGIN': email,
+        'IS_EXIST': 'Y',
+        'AUTH_ID': 'popov@naks.ru',
+    }
+    edo_check_response = requests.post(password_change_link, check_user_exist_data).content.decode('utf8')
+    if 'exist' in edo_check_response and not CustomUser.objects.filter(email=email).exists():
+        return Response({
+            'user_recover_link': 'https://ac.naks.ru/index.php?TYPE=SEND_PWD&USER_LOGIN={}&AUTH_FORM=Y'.format(email)})
     else:
-        errors = [v[0] for k, v in form.errors.items()]
-        return Response(
-            {'password_recovery_error': errors}, status=HTTP_200_OK)
+        form = PasswordResetForm({'email': email})
+        if form.is_valid():
+            try:
+                user = CustomUser.objects.get(email=form.cleaned_data['email'])
+                # token for password reset
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                # import pdb; pdb.set_trace()
+                update_password_url = reverse(
+                    'users:update-password', kwargs={'uid': uid.decode(), 'token': token}
+                )
+                plaintext_message = get_template('users/email_plain.txt')
+                html_message = get_template('users/email_template.html')
+
+                cntxt = {
+                    'username': user,
+                    'password_change_link': _get_absolute_url(request, update_password_url)
+                    }
+
+                subject, from_email, to = 'НАКС: восстановление пароля учетной записи', 'noreply@naks.ru', email
+                text_content = plaintext_message.render(cntxt)
+                html_content = html_message.render(cntxt)
+                # Ссылка для восстановления пароля на сайте НАКС (naks.ru):
+                # _get_absolute_url(request, update_password_url)
+                send_mail(
+                    subject,
+                    text_content,
+                    from_email,
+                    [to],
+                    fail_silently=False,
+                    html_message=html_content
+                )
+                return Response({
+                    'password_recovery_email_sent':
+                    'На указанный адрес отправлено письмо со \
+                    ссылкой для восстановления пароля'})
+            except CustomUser.DoesNotExist:
+                # import pdb; pdb.set_trace()
+                return Response(
+                    {'password_recovery_error': ['Пользователь не найден']})
+            except SMTPException:
+                return Response(
+                    {'password_recovery_error': 'Ошибка отправки, обратитесь к администратору сайта'}
+                )
+        else:
+            errors = [v[0] for k, v in form.errors.items()]
+            return Response(
+                {'password_recovery_error': errors}, status=HTTP_200_OK)
 
 def validate_signed_token(uid, token, require_token=True):
     """
@@ -307,10 +319,23 @@ def update_password(request, uid, token):
         # import pdb; pdb.set_trace()
         form = SetPasswordForm(user, data=request.POST)
         if form.is_valid():
-            form.save()
-            # Token.objects.filter(user_id__exact=user.pk).delete()
-            # return redirect(reverse('mhacks-login') + '?username=' + user.email)
-            return JsonResponse({'password_updated': 'successfully'})
+            if not user.is_superuser:
+                # check if user in edo
+                # https://ac.naks.ru/auth/external/change.php?LOGIN=test@test.ru&IS_EXIST=Y&AUTH_ID=popov@naks.ru
+                password_change_link = 'https://ac.naks.ru/auth/external/change.php'
+                check_user_exist_data = {
+                    'AUTH_ID': 'popov@naks.ru',
+                    'IS_EXIST': 'Y',
+                    'LOGIN': user.email
+                }
+                edo_check_response = requsts.post(password_change_link, check_user_exist_data)
+                import pdb; pdb.set_trace()
+                # change edo-user password and save token
+                # https://ac.naks.ru/auth/external/change.php?LOGIN=test@test.ru&PASSWORD=12345678&AUTH_ID=popov@naks.ru
+                form.save()
+                # Token.objects.filter(user_id__exact=user.pk).delete()
+                # return redirect(reverse('mhacks-login') + '?username=' + user.email)
+                return JsonResponse({'password_updated': 'successfully'})
         else:
             errors = [v for k, v in form.errors.items()]
             return JsonResponse({'form_errors': errors})

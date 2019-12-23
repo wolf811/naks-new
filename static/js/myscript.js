@@ -357,6 +357,7 @@ if ($('#auth_app').length > 0) {
                 },
                 recoverRequestMessageSuccess: null,
                 recoverRequestMessageFailure: null,
+                passwordRecoverUrl: null,
                 stupidpot: null,
                 showSpinner: false,
             }
@@ -477,6 +478,10 @@ if ($('#auth_app').length > 0) {
                 $('#login-page').hide();
             },
             register_user: function() {
+                if (this.logged_in == true) {
+                    $('#modal-authorization').modal('hide');
+                    return
+                }
                 this.registered = false;
                 this.showSpinner = true;
                 this.resetForm();
@@ -563,6 +568,9 @@ if ($('#auth_app').length > 0) {
                         if (response.data['password_recovery_error']) {
                             this.recoverRequestMessageFailure = response.data['password_recovery_error'];
                         }
+                        if (response.data['user_recover_link']) {
+                            this.passwordRecoverUrl = response.data['user_recover_link']
+                        }
                     })
                     .catch(err => console.log('recover email ERROR', err))
                     .finally(() => {
@@ -596,8 +604,13 @@ if ($('#auth_app').length > 0) {
                 const edo_token = this.edo_token;
                 const auth_url = this.endpoints.authEdoByToken;
                 const edo_auth_url = `${auth_url}?token=${edo_token}`;
-                console.log('EDO AUTH TOKEN URL', edo_auth_url);
-                window.location.href = edo_auth_url;
+                // console.log('EDO AUTH TOKEN URL', edo_auth_url);
+                if (edo_token.length > 0) {
+                    window.location.href = edo_auth_url;
+                } else {
+                    console.log('ERROR: NO EDO TOKEN!');
+                    return
+                }
 
                 // var form = document.createElement('form');
                 // var data = document.createElement('input');
