@@ -11,16 +11,24 @@
         <form>
             <div class="modal-body">
                 <div v-if="showSpinner">
-                    <i class="fa fa-spinner fa-spin fa-3x fa-fw text-primary"></i>
+                    <i class="fa fa-spinner fa-spin fa-2x fa-fw text-primary"></i>
                 </div>
                 <div v-else-if="token && registered" id="reg-info">
-                    <div class="alert alert-info rounded-0 text-sm" role="alert">
+                    <!-- <div class="alert alert-info rounded-0 text-sm" role="alert">
                         <p class="mb-0">Пользователь зарегистрирован и авторизован.
                             Вам отправлено письмо со ссылкой-подтверждением.
                             Для окончания регистрации пройдите по ссылке в письме.<br>
                             <strong>Окно можно закрыть.</strong>
                         </p>
+                    </div> -->
+                    <div class="row mb-2">
+                        <div class="col-sm-9 mx-auto pr-0">
+                            <p class="text-success font-weight-bold text-sm mb-0"><i class="fa fa-check mr-2"></i>Вы авторизованы.</p>
+                            <p class="text-success text-sm mb-0">Для окончания регистрации пройдите по ссылке, отправленной Вам на E-mail.</p>
+                            <p class="text-success font-weight-bold text-sm mb-0">Окно можно закрыть.</p>
+                        </div>
                     </div>
+                    <hr>
                 </div>
                 <div v-else class="alert alert-warning alert-dismissible fade show rounded-0 text-sm" role="alert">
                     <p>Личный кабинет <strong>юридического лица</strong> позволяет заполнять заявки на аттестацию персонала сварочного производства, сварочных материалов (СМ), сварочного оборудования (СО) и сварочных технологий (СТ)</p>
