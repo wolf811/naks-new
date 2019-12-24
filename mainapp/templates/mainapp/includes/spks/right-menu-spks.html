@@ -51,13 +51,13 @@
             <div class="card-header bg-naks" id="heading_02">
                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_12" aria-expanded="false" aria-controls="collapse_12">Профессиональные стандарты и квалификации</a>
             </div>
-            <div id="collapse_12" class="collapse" aria-labelledby="heading_02" data-parent="#accordion_spks">
+            <div id="collapse_12" class="collapse {% if 'spks_standarts' in request.path %}show{% endif %}" aria-labelledby="heading_02" data-parent="#accordion_spks">
                 <div class="card-body">
-                    <a href="#" class="dropdown-item">Утвержденные профессиональные стандарты</a>
+                    <a href="{% url 'spks_standarts_ok' %}" class="dropdown-item {% if '/spks_standarts/' in request.path %}active{% endif %}">Утвержденные профессиональные стандарты</a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">Разработка профессиональных стандартов</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Разработка проектов квалификации</a>
+                    <a href="#" class="dropdown-item">Разработка проектов квалификаций</a>
                 </div>
             </div>
         </div>
