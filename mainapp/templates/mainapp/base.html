@@ -51,10 +51,10 @@
     <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
     <!-- VUE JS 2 and AXIOS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vuex@2.0.0/dist/vuex.js"></script>
+    {% comment %} <script src="https://unpkg.com/vuex@2.0.0/dist/vuex.js"></script> {% endcomment %}
     <script src="{% static 'js/vue-cookies.js' %}"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    {% comment %} <script src="https://unpkg.com/vue-yandex-maps@0.8.18/dist/vue-yandex-maps.umd.js"></script> {% endcomment %}
+    {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script> {% endcomment %}
+    <script src="{% static 'js/axios.js' %}"></script>
     <!-- VUE JS 2 and AXIOS CDN -->
     <!-- My scripts -->
     <script src="{% static 'js/map-script.js' %}"></script>
