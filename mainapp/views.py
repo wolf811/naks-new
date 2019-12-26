@@ -446,12 +446,26 @@ def spks_reestr_qual(request):
     }
     return render(request, 'mainapp/spks_reestr_qual.html', content)
 
+def spks_standarts_ok(request):
+    title = 'СПКС - Профессиональные стандарты'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_standarts_ok.html', content)
+
 def spks_cok018(request):
     title = 'СПКС - ЦОК-018'
     content = {
         'title': title
     }
     return render(request, 'mainapp/spks_cok018.html', content)
+
+def monitoring(request):
+    title = 'Мониторинг рынка труда'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/monitoring.html', content)
 # ============= end SPKS ===============
 
 

@@ -51,20 +51,20 @@
             <div class="card-header bg-naks" id="heading_02">
                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_12" aria-expanded="false" aria-controls="collapse_12">Профессиональные стандарты и квалификации</a>
             </div>
-            <div id="collapse_12" class="collapse" aria-labelledby="heading_02" data-parent="#accordion_spks">
+            <div id="collapse_12" class="collapse {% if 'spks_standarts' in request.path %}show{% endif %}" aria-labelledby="heading_02" data-parent="#accordion_spks">
                 <div class="card-body">
-                    <a href="#" class="dropdown-item">Утвержденные профессиональные стандарты</a>
+                    <a href="{% url 'spks_standarts_ok' %}" class="dropdown-item {% if '/spks_standarts/' in request.path %}active{% endif %}">Утвержденные профессиональные стандарты</a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">Разработка профессиональных стандартов</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Разработка проектов квалификации</a>
+                    <a href="#" class="dropdown-item">Разработка проектов квалификаций</a>
                 </div>
             </div>
         </div>
         <div class="card rounded-0">
             <!-- TODO: При переходе на страницу к .bg-naks добавляем класс .bg-naks-active -->
-            <div class="card-header bg-naks" id="heading_03">
-                <a href="#" class="collapsed">Мониторинг рынка труда</a>
+            <div class="card-header bg-naks {% if 'monitoring' in request.path %}bg-naks-active{% endif %}" id="heading_03">
+                <a href="{% url 'monitoring' %}" class="collapsed">Мониторинг рынка труда</a>
             </div>
         </div>
         <div class="card rounded-0">
@@ -85,7 +85,7 @@
             </div>
         </div>
         <div class="card rounded-0">
-            <div class="card-header bg-naks" id="heading_05">
+            <div class="card-header bg-naks {% if 'spks_docs' in request.path %}bg-naks-active{% endif %}" id="heading_05">
                 <a href="{% url 'spks_docs' %}" class="collapsed">Нормативные правовые акты РФ по вопросам оценки квалификации</a>
             </div>
         </div>

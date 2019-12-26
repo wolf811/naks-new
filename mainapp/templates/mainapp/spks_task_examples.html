@@ -1,11 +1,9 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 {% block content %}
-
 <!-- Header-page -->
 {% include 'mainapp/includes/header-page.html' %}
 <!-- End Header-page -->
-
 <div class="container">
     <h4 class="text-dark mt-5">Совет по профессиональным квалификациям в области сварки (СПКС)</h4>
     <nav aria-label="breadcrumb" role="navigation">
@@ -17,20 +15,17 @@
     <hr>
     <div class="row">
         <div class="col-xs-12 col-md-8 col-xl-9">
-
             <!-- Mobil right main -->
             <div class="d-block d-md-none mt-3 mb-4">
                 {% include 'mainapp/includes/spks/mobil-right-menu-spks.html' %}
-            </div> 
+            </div>
             <!-- End mobil right main -->
-
             <div class="main-content mt-4">
                 <h5 class="text-primary mt-2 mb-4">Примеры заданий, входящих в состав оценочных средств</h5>
-                <!-- Протоколы -->
+                <!-- Примеры -->
                 {% include 'mainapp/includes/spks/task_examples.html' %}
-                <!-- END Протоколы -->
+                <!-- END Примеры -->
             </div>
-            
         </div>
         <div class="d-none d-md-block col-md-4 col-xl-3">
             <!-- Content Right menu -->
