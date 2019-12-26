@@ -59,9 +59,7 @@ urlpatterns = [
     path('sasv_acst/', mainapp.sasv_acst, name='sasv_acst'),
     path('sasv_br1gac/', mainapp.sasv_br1gac, name='sasv_br1gac'),
     path('sasv_helpInfo/', mainapp.sasv_helpInfo, name='sasv_helpInfo'),
-
     path('sasv_nts/', mainapp.sasv_nts, name='sasv_nts'),
-
     path('sasv_openNaks/', mainapp.sasv_openNaks, name='sasv_openNaks'),
     path('sasv_docs/', mainapp.sasv_docs, name='sasv_docs'),
     path('sasv_experts/', mainapp.sasv_experts, name='sasv_experts'),
@@ -82,7 +80,6 @@ urlpatterns = [
     path('sro_legislation/', mainapp.sro_legislation, name='sro_legislation'),
     path('sro_forms_docs/', mainapp.sro_forms_docs, name='sro_forms_docs'),
     path('tk364/', mainapp.tk364, name='tk364'),
-
     path('spks_about/', mainapp.spks, name='spks'),
     path('spks_about_composition/', mainapp.spks_composition, name='spks_composition'),
     path('spks_about_work_plan/', mainapp.spks_work_plan, name='spks_work_plan'),
@@ -91,9 +88,7 @@ urlpatterns = [
     path('spks_about_docs/', mainapp.spks_docs, name='spks_docs'),
     path('spks_about_composition_region/', mainapp.spks_composition_region, name='spks_composition_region'),
     path('spks_about_composition_experts/', mainapp.spks_composition_experts, name='spks_composition_experts'),
-
     path('spks_help_info/', mainapp.spks_help_info, name='spks_help_info'),
-
     path('spks_reestr_task_examples/', mainapp.spks_task_examples, name='spks_task_examples'),
     path('spks_reestr_qual/', mainapp.spks_reestr_qual, name='spks_reestr_qual'),
     path('spks_reestr_svid/', mainapp.spks_reestr_svid, name='spks_reestr_svid'),
@@ -110,6 +105,7 @@ urlpatterns = [
     path('sds_reestr_so/', mainapp.sds_reestr_so, name='sds_reestr_so'),
     path('sds_reestr_st/', mainapp.sds_reestr_st, name='sds_reestr_st'),
     path('reestr/', include('reestr.urls', namespace='reestr')),
+    path('registry/', include('registry.urls', namespace='registry')),
     path('reestradmin/', include('reestradmin.urls', namespace='reestradmin')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),

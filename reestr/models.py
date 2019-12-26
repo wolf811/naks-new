@@ -22,7 +22,7 @@ def get_maps_api_key():
 
 class Spr(models.Model):
     short_name = models.CharField(u'Краткое название', max_length=15)
-    full_name = models.CharField(u'Расшифровка', max_length=150)
+    full_name = models.CharField(u'Расшифровка', max_length=500)
     number = models.SmallIntegerField(u'Порядок сортировки', null=True, blank=True)
     parent = models.ForeignKey('self', blank=True, null=True, default=None, on_delete=models.CASCADE)
 
@@ -69,7 +69,7 @@ class GTU(Spr):
 
 class Level(models.Model):
     # I-IV
-    level = models.CharField(u'Уровень', max_length=2)
+    level = models.CharField(u'Уровень', max_length=3)
 
 
     class Meta:
@@ -110,7 +110,7 @@ class Qualification(Spr):
 
 
 class City(models.Model):
-    title = models.CharField(u'Название', max_length=30)
+    title = models.CharField(u'Название', max_length=50)
 
     class Meta:
         verbose_name = 'Город'
