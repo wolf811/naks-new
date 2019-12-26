@@ -94,6 +94,8 @@ urlpatterns = [
 
     path('spks_standarts/', mainapp.spks_standarts_ok, name='spks_standarts_ok'),
 
+    path('monitoring/', mainapp.monitoring, name='monitoring'),
+
     path('spks_help_info/', mainapp.spks_help_info, name='spks_help_info'),
 
     path('spks_reestr_task_examples/', mainapp.spks_task_examples, name='spks_task_examples'),

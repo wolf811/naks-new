@@ -459,6 +459,13 @@ def spks_cok018(request):
         'title': title
     }
     return render(request, 'mainapp/spks_cok018.html', content)
+
+def monitoring(request):
+    title = 'Мониторинг рынка труда'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/monitoring.html', content)
 # ============= end SPKS ===============
 
 

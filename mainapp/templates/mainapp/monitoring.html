@@ -1,0 +1,50 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+<div class="container">
+    <h4 class="text-dark mt-5">Совет по профессиональным квалификациям в области сварки (СПКС)</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Мониторинг рынка труда</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/spks/mobil-right-menu-spks.html' %}
+            </div>
+            <!-- End mobil right main -->
+            <div class="main-content mt-4">
+                <h5 class="text-primary my-4">Мониторинг рынка труда</h5>
+                <p class="text-secondary font-weight-bold">12.12.2019 Результаты мониторинга в 2019 году рынка труда в области сварки и родственных процессов, неразрушающего контроля и разрушающих испытаний</p>
+                <p class="text-secondary">В 2019 году Советом проведено очередное всероссийское анкетирование работодателей промышленных предприятий, осуществляющих деятельность в области сварки, родственных процессов (термическая резка, пайка), неразрушающего контроля и механических испытаний.</p>
+                <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                <hr>
+                <p class="text-secondary font-weight-bold">29.01.2018 Мониторинг рынка труда в области сварки и родственных процессов, неразрушающего контроля и разрушающих испытаний</p>
+                <p class="text-secondary">Согласно Приказа № 758н от 19.12.2016 г. Министерства труда и социальной защиты Российской Федерации одной из ключевых функций Советов по профессиональным квалификациям является проведение не реже одного раза в два года мониторинга рынка труда, обеспечение его потребностей в квалификациях и профессиональном образовании.</p>
+                <p class="text-secondary">Мониторинг рынка труда за 2016 и 2017 год проводился Советом по профессиональным квалификациям в области сварки (СПКС) в границах сектора Сварка (Сварка, родственные процессы (термическая резка, пайка, термообработка), технические испытания (неразрушающий контроль и разрушающие испытания), исследования, контроль и сертификация, обслуживание оборудования и машин для сварки (ремонт, монтаж, наладка), профессиональное образование и обучение), определенных по результатам обзора сектора сварка и родственные процессы в 2015 г.</p>
+                <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                <hr>
+                <p class="text-secondary font-weight-bold">20.01.2016 Обзор сектора профессиональной деятельности</p>
+                <p class="text-secondary">Советом по профессиональным квалификациям в области сварки (СПКС), в рамках реализации имеющихся полномочий, подготовлен обзор сектора профессиональной деятельности в области сварки и родственных процессов, неразрушающего контроля и разрушающих испытаний сварных соединений.</p>
+                <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a>
+                <hr>
+                <p class="text-secondary font-weight-bold">Потребность в рабочих сварочных профессий в федеральных округах РФ<br><small class="text-muted">(По данным Федеральной службы занятости на 01.02.2015г.)</small></p>
+                <img src="/static_root/images/potrebnost_shema.jpg" class="img-fluid" alt="Алешин Н.П.">
+                <hr>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/spks/right-menu-spks.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}
