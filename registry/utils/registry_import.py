@@ -43,6 +43,8 @@ class RegistryRecordAdapter:
         }
 
     def converted_date(self, date_string):
+        if ' ' in date_string:
+            date_string = date_string.split(' ')[0]
         if len(date_string) > 0:
             return datetime.datetime.strptime(date_string, '%d.%m.%Y')
         else:
@@ -59,7 +61,7 @@ class RegistryRecordAdapter:
     def save_to_db(self):
         try:
             record_obj = RegistryRecordPersonal.objects.create(**self.__dict__)
-            record_obj.save()
+            # record_obj.save()
         except Exception as e:
             print('ERROR SAVING to DB', e)
 

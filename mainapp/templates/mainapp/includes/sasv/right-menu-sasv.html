@@ -11,7 +11,7 @@
                     <div class="dropdown-divider"></div>
                     <a href="{% url 'reestr:centers' 'personal' %}" class="dropdown-item {% if '/centers/personal' in request.path %}active{% endif %}">Центры аттестации сварщиков и специалистов сварочного производства (АЦ)</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{% url 'sasv_reestr_staff' %}" class="dropdown-item">Реестр аттестованного персонала</a>
+                    <a href="{% url 'registry:personal' %}" class="dropdown-item">Реестр аттестованного персонала</a>
                     <div class="dropdown-divider"></div>
                     <a href="{% url 'sasv_experts' %}" class="dropdown-item {% if 'sasv_experts' in request.path %}active{% endif %}">Реестр экспертов</a>
                 </div>

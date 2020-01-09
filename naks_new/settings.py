@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'rest_auth',
     'sass_processor',
     'captcha',
+    'prettyjson',
+    'rangefilter'
     # 'drf_multiple_model',
 ]
 

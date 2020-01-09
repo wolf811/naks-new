@@ -86,7 +86,7 @@
                                     <div class="dropdown-divider d-xs-block d-sm-none"></div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
-                                    <a class="dropdown-item" href="{% url 'sasv_reestr_staff' %}">Реестр аттестованного персонала</a>
+                                    <a class="dropdown-item" href="{% url 'registry:personal' %}">Реестр аттестованного персонала</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'sasv_reestr_sm' %}">Реестр аттестованных сварочных материалов</a>
                                     <div class="dropdown-divider"></div>
@@ -133,24 +133,16 @@
                     {% include 'mainapp/includes/modal/modal-login-account.html' %}
                     <div v-cloak>
                         {% if user.is_authenticated %}
-                        <!-- <div id="btnGroupEntered" class="btn-group" role="group" aria-label="Basic example">
-                            <a @click.prevent="edo_login_by_token" href="#" class="btn btn-primary text-truncate" title="Перейти в личный кабинет" style="max-width: 150px; font-size: 0.875rem;">{{ user }}</a>
-                            <a href="{% url 'users:logout' %}" @click="cleanLocalStorage()" class="btn btn-outline-primary" title="Выйти"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-                        </div> -->
                         <div v-if="logged_in == true" id="btnGroupEntered" class="btn-group">
                             <button id="dropdownMenuButton" class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user }}<i class="fa fa-angle-down ml-2"></i></button>
                             <div class="dropdown-menu dropdown-menu-center shadow rounded-0" aria-labelledby="dropdownMenuButton">
                                 <a @click.prevent="edo_login_by_token" class="dropdown-item" href="#">Вход в ЭДО</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{% url 'users:logout' %}" @click.prevent="logout_current_user()">Выйти<i class="fa fa-sign-out ml-1" aria-hidden="true"></i></a>
+                                <a class="dropdown-item" href="#" @click.prevent="logout_current_user()">Выйти<i class="fa fa-sign-out ml-1" aria-hidden="true"></i></a>
                             </div>
                         </div>
                         <a v-else href="#" class="btn btn-primary btn-sign-in" data-toggle="modal" data-target="#modal-authorization"><i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Войти</a>
                         {% else %}
-                        <!-- <div v-if="logged_in == true" id="btnGroupEntered" class="btn-group" role="group" aria-label="Basic example">
-                            <a @click.prevent="edo_login_by_token" href="#" class="btn btn-primary text-truncate" title="Перейти в личный кабинет" style="max-width: 150px; font-size: 0.875rem;">[[ user ]]</a>
-                            <a href="#" @click.prevent="logout_current_user()" class="btn btn-outline-primary" title="Выйти"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-                        </div> -->
                         <div v-if="logged_in == true" id="btnGroupEntered" class="btn-group">
                             <button id="dropdownMenuButton" class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">[[ user ]]<i class="fa fa-angle-down ml-2"></i></button>
                             <div class="dropdown-menu dropdown-menu-center shadow rounded-0" aria-labelledby="dropdownMenuButton">

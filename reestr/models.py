@@ -131,7 +131,7 @@ class SROMember(models.Model):
         (active, 'Действует'),
         (not_active, 'Исключен')
     )
-    short_name = models.CharField(u'Краткое наименование', max_length=50)
+    short_name = models.CharField(u'Краткое наименование', max_length=200)
     full_name = models.CharField(u'Полное наименование', max_length=200)
     become_member_information = models.CharField(
         u'Информация о включении в реестр НАКС',
@@ -220,6 +220,7 @@ class Center(models.Model):
 
 
 class AccreditedCenter(Center):
+
     materials = 'attsm'
     equipment = 'attso'
     technologies = 'attst'
@@ -326,6 +327,7 @@ class AccreditedCenter(Center):
 class AccreditedCertificationPoint(AccreditedCenter):
     short_code = None
     point_short_code = models.CharField(u'Шифр АП', max_length=50)
+    parent_short_code = models.ForeignKey(AccreditedCenter, related_name="Центр", on_delete=models.CASCADE)
     base_org_name = models.CharField(
         u'Наименование организации', max_length=100)
     base_org_ur_address = models.CharField(

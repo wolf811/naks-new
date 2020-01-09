@@ -47,7 +47,7 @@ class CustomUser(AbstractUser):
             print('REFRESHING TOKEN EXCEPTION', e)
             send_mail(
                 "EDO refreshing token error",
-                "USER: {}, USER PK: {}, USER PROFILE: {}".format(self.user, self.user.pk, self.userprofile),
+                "USER: {}, USER PROFILE: {}".format(self.email, self.userprofile),
                 "noreply@naks.ru",
                 ['popov@naks.ru'],
                 fail_silently=True
