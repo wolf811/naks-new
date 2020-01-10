@@ -179,7 +179,9 @@ class SROMemberSerializer(serializers.ModelSerializer):
             )
 
     def get_coordinates(self, obj):
-        return obj.coordinates.split(" ")
+        if obj.coordinates:
+            return obj.coordinates.split(" ")
+        return ['no coordinates']
 
     def get_centers(self, obj):
         return " ".join([c.short_code for c in AccreditedCenter.objects.filter(active=True, sro_member=obj)])

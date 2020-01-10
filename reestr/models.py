@@ -212,7 +212,7 @@ class Center(models.Model):
         blank=True
     )
     chief = models.CharField(u'ФИО руководителя центра', max_length=50)
-    sro_member = models.ForeignKey(SROMember, on_delete=models.CASCADE)
+    sro_member = models.ForeignKey(SROMember, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         abstract = True
@@ -317,27 +317,47 @@ class AccreditedCenter(Center):
         return self.short_code
 
     def save(self, *args, **kwargs):
-        if self.sro_member.status == 'na':
-            self.active = False
+        if self.sro_member:
+            if self.sro_member.status == 'na':
+                self.active = False
         if self.active_since is not None:
             self.active_until = self.active_since+timedelta(days=365*3+1)
         super(AccreditedCenter, self).save(*args, **kwargs)
 
 
-class AccreditedCertificationPoint(AccreditedCenter):
-    short_code = None
-    point_short_code = models.CharField(u'Шифр АП', max_length=50)
-    parent_short_code = models.ForeignKey(AccreditedCenter, related_name="Центр", on_delete=models.CASCADE)
+class AccreditedCertificationPoint(models.Model):
+    short_code = models.CharField(
+        u'Шифр пункта',
+        max_length=10
+        )
+    parent = models.ForeignKey(AccreditedCenter, on_delete=models.CASCADE)
     base_org_name = models.CharField(
-        u'Наименование организации', max_length=100)
+        u'Наименование организации', max_length=200)
     base_org_ur_address = models.CharField(
-        u'Юридический адрес организации', max_length=100)
+        u'Юридический адрес организации', max_length=200)
     base_actual_address = models.CharField(
-        u'Фактический адрес организации', max_length=100)
+        u'Фактический адрес организации', max_length=200)
+
+    weldtypes = models.ManyToManyField(
+        WeldType,
+        verbose_name='Способы сварки',
+        blank=True
+    )
+    gtus = models.ManyToManyField(
+        GTU,
+        verbose_name='Группы ТУ',
+        blank=True
+        )
+
+    so_types = models.ManyToManyField(
+        SO,
+        verbose_name="Шифры СО",
+        blank=True
+    )
 
     class Meta:
         verbose_name = 'Аттестационный пункт'
         verbose_name_plural = 'Аттестационные пункты'
 
     def __str__(self):
-        return self.point_short_code
+        return self.short_code

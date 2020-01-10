@@ -35,7 +35,9 @@ def get_accred_centers(obj):
 
 
 def get_city(obj):
-    return obj.sro_member.city
+    if obj.sro_member:
+        return obj.sro_member.city
+    return 'город не указан'
 
 
 class AccreditedCenterInline(admin.StackedInline):
@@ -71,6 +73,11 @@ class AccreditedCenterAdmin(admin.ModelAdmin):
 class GTUAdmin(admin.ModelAdmin):
     list_display = ['id', 'short_name', 'full_name']
 
+@admin.register(AccreditedCertificationPoint)
+class AccreditedCertificationPointAdmin(admin.ModelAdmin):
+    list_display = ['id', 'short_code', 'parent']
+    list_filter = ['parent']
+
 admin.site.register(Level)
 admin.site.register(Qualification)
 admin.site.register(SM)
@@ -80,3 +87,4 @@ admin.site.register(WeldType)
 # admin.site.register(AccreditedCenter)
 admin.site.register(CheckProtocol)
 admin.site.register(City)
+# admin.site.register(AccreditedCertificationPoint)

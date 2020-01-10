@@ -127,8 +127,9 @@
                         <a class="nav-link" href="{% url 'contacts' %}">Контакты</a>
                     </li>
                 </ul>
-                {% comment %} {{ request.user }}
-                {{ request.user.is_authenticated }} {% endcomment %}
+                {% comment %}
+                <!--TODO: fix this->
+                {% endcomment %}
                 <div id="auth_app">
                     {% include 'mainapp/includes/modal/modal-login-account.html' %}
                     <div v-cloak>
@@ -137,6 +138,11 @@
                             <button id="dropdownMenuButton" class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user }}<i class="fa fa-angle-down ml-2"></i></button>
                             <div class="dropdown-menu dropdown-menu-center shadow rounded-0" aria-labelledby="dropdownMenuButton">
                                 <a @click.prevent="edo_login_by_token" class="dropdown-item" href="#">Вход в ЭДО</a>
+
+                                {% if user.is_staff %}
+                                    <a class="dropdown-item" href="/admin" target="_blank">Админка</a>
+                                {% endif %}
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" @click.prevent="logout_current_user()">Выйти<i class="fa fa-sign-out ml-1" aria-hidden="true"></i></a>
                             </div>
