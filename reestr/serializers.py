@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .useful import serializer_factory
 
 
-from .models import AccreditedCenter, Level, WeldType, GTU, Activity
+from .models import AccreditedCenter, Level, WeldType, GTU, Activity, AccreditedCertificationPoint
 from .models import SM, SO, Qualification, SROMember
 
 
@@ -107,6 +107,7 @@ class CenterSerializer(serializers.ModelSerializer):
     actual_address = serializers.SerializerMethodField()
     coordinates = serializers.SerializerMethodField()
     company_full_name = serializers.SerializerMethodField()
+    cert_points = serializers.SerializerMethodField()
 
     class Meta:
         model = AccreditedCenter
@@ -134,8 +135,17 @@ class CenterSerializer(serializers.ModelSerializer):
             'sm_types',
             'so_types',
             'qualifications',
-            'cok_nark_code'
+            'cok_nark_code',
+            'cert_points',
         )
+
+    def get_cert_points(self, obj):
+        try:
+            points = [p.id for p in AccreditedCertificationPoint.objects.filter(parent=obj)]
+            return points
+        except Exception as e:
+            print('CERT POINTS ERORR', e)
+            return []
 
     def get_company_full_name(self, obj):
         try:

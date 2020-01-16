@@ -12,7 +12,52 @@
             <form>
                 <div class="modal-body">
                     <!-- type activity -->
-                    {% include 'reestr/includes/reestr_filter_table_activity.html' %}
+                    <div class="accordion" id="accordionFilterActivities">
+                        <div class="card">
+                                <div class="card-header" id="collapseActivitiesTableHead">
+                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseActivitiesTable" aria-expanded="true" aria-controls="collapseAccordFilterAc_centrs">Направления деятельности&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                                    <span class="float-sm-right text-secondary">
+                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">1212</span>
+                                    </span>
+                                </div>
+                                <div id="collapseActivitiesTable" class="collapse" aria-labelledby="collapseActivitiesTableHead" data-parent="#accordionFilterActivities">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                                <div class="col-sm-6">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input id="chk123" type="checkbox" class="custom-control-input">
+                                                        <label for="chk123" class="custom-control-label">oeouuoue</label>
+                                                    </div>
+                                                    <div class="dropdown-divider"></div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="card">
+                                <div class="card-header" id="headingAccordFilterAc_centrs">
+                                    <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseAccordFilterAc_centrs" aria-expanded="true" aria-controls="collapseAccordFilterAc_centrs">Направления деятельности&nbsp;<i class="fa fa-angle-down mr-1"></i></a>
+                                    <span class="float-sm-right text-secondary">
+                                        <small>Выбрано:</small>&nbsp;<span class="badge badge-secondary">1212</span>
+                                    </span>
+                                </div>
+                                <div id="collapseAccordFilterAc_centrs" class="collapse" aria-labelledby="headingAccordFilterAc_centrs" data-parent="#accordionFilterActivities">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                                <div class="col-sm-6">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input id="chk124" type="checkbox" class="custom-control-input">
+                                                        <label for="chk124" class="custom-control-label">oeouuoue</label>
+                                                    </div>
+                                                    <div class="dropdown-divider"></div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                    {% comment %} {% include 'reestr/includes/reestr_filter_table_activity.html' %} {% endcomment %}
                     <!-- type activity -->
                 </div>
                 <div class="modal-footer">

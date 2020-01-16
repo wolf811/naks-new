@@ -6,6 +6,9 @@
 
 var APP_LOG_LIFECYCLE_EVENTS = true;
 
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
 if (document.getElementById('app_loading_naks_news')) {
     new Vue({
         delimiters: ['[[', ']]'],
@@ -422,4 +425,122 @@ if (document.getElementById('app_reestr_centers')) {
         },
 
     });
+}
+
+if (document.getElementById('app_registry_personal')) {
+    var vm_registry_personal = new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#app_registry_personal',
+        data() {
+            return {
+                selected_activities: {},
+                stamp_input: '',
+                fio_input: '',
+                company_input: '',
+                place_of_att__center: null,
+                place_of_att__point: null,
+                accred_fields: {},
+                searchResultHTML: null,
+                centersAndPoints: [],
+                reestrCenters: [],
+                selectedCenter: '',
+                selectedCenterPoints: []
+            }
+        },
+        beforeMount() {
+            this.check_local_storage_and_cookie();
+            this.update_dirs();
+        },
+        methods: {
+            check_local_storage_and_cookie: function () {
+                let centers_updated_flag = this.$cookies.get("centers_storage_updated");
+                if (localStorage.reestrCenters && centers_updated_flag) {
+                    this.reestrCenters = JSON.parse(localStorage.reestrCenters)
+                } else {
+                    this.load_reestr_centers();
+                }
+            },
+            load_reestr_centers: function () {
+                localStorage.clear();
+                axios
+                    .get('/naks_api/centers/')
+                    .then(response => {
+                        localStorage.reestrCenters = JSON.stringify(response.data);
+                        this.reestrCenters = response.data;
+                        this.$cookies.set("centers_storage_updated", "1", "1h");
+                    }).finally(() => {
+                        // console.log('rendering map...');
+                        this.map_render();
+                    });
+            },
+            update_dirs: function() {
+                axios
+                .get('/naks_api/dirs/')
+                .then(response => {
+                // console.log('response data', response.data[0]);
+                    var dirs = [
+                        {'name': 'activity', 'plural': 'activities'},
+                        {'name': 'weldtype', 'plural': 'weldtypes'},
+                        {'name': 'level', 'plural': 'levels'},
+                        {'name': 'gtu', 'plural': 'gtus'},
+                        {'name': 'so_types', 'plural': 'so'},
+                        {'name': 'sm_types', 'plural': 'sm'}
+                    ];
+                    for (var dir of dirs) {
+                        var reactive_arr = [];
+                        for (var el of response.data[0][dir.plural]) {
+                            var extended_el = el;
+                            extended_el.selected = false;
+                            extended_el.type = dir.name;
+                            reactive_arr.push(extended_el);
+                        }
+                        // this.$set(this.accred_fields, dir.name, response.data[0][dir.plural]);
+                        this.$set(this.accred_fields, dir.name, reactive_arr);
+                    }
+                })
+                .finally(() => {
+                    // console.log('beforeMount: api parameters loaded', this, 'weldtype', this.accred_fields.weldtype, 'weldtypes > 0:', this.accred_fields.weldtype.length > 0);
+                    console.log('******************************************');
+                    console.log('beforeMount: api parameters loaded', this);
+                    console.log('******************************************');
+                });
+            },
+            selectGtu: function (item) {
+                item = null;
+            },
+            sendSearchRequest: function() {
+                let payload = new FormData();
+                payload.append("search_request", "i am searching!");
+                axios
+                    .post('/registry/personal/', payload)
+                    .then(response => {
+                        // console.log(response.data);
+                        this.searchResultHTML = response.data;
+                        // console.log(response);
+
+                    })
+                    .catch( error => {
+                        console.log(error);
+                    })
+                    .finally( ()=>{
+                        console.log('finnally sendSearchRequest');
+                    })
+            },
+            resetSearchQuery: function() {
+                this.searchResultHTML = null;
+            }
+        },
+        computed: {
+            getAttPlaces: function() {
+                let centers = this.reestrCenters;
+                let resulting = {}
+                for cnt in centers.filter(item=>{
+                    item.direction == 'personal' && item.active = true;
+                })
+
+                return centers
+            }
+        }
+    })
+    console.log('reestr here')
 }

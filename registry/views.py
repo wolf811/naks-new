@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from users.models import CustomUser
 from .models import RegistryRecordPersonal
+from .forms import *
 from django.http import HttpResponse, HttpResponseForbidden
 from datetime import datetime, timedelta
 import requests, json
@@ -56,4 +57,12 @@ def initiate_import(request, year):
         return HttpResponseForbidden('FORBIDDEN')
 
 def personal(request):
-    return render(request, 'registry/registry_main_template.html')
+    # import pdb; pdb.set_trace()
+    print('LEN request', len(request.POST))
+    content = {
+        'i_am_content': 'true'
+    }
+    if request.POST.get('search_request'):
+        print('REQUEST -------->', request.POST.get('search_request'))
+        return render(request, 'registry/includes/registry_table_personal.html', content)
+    return render(request, 'registry/registry_main_template.html', content)

@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from .models import *
 from django.contrib import messages
+from prettyjson import PrettyJSONWidget
 # Register your models here.
 
 
@@ -54,6 +55,7 @@ def get_sro_member(obj):
     return obj.sro_member
 
 
+
 @admin.register(AccreditedCenter)
 class AccreditedCenterAdmin(admin.ModelAdmin):
 
@@ -61,6 +63,10 @@ class AccreditedCenterAdmin(admin.ModelAdmin):
     list_filter = ['direction', 'active', 'temporary_suspend_date', SroStatusFilter]
     search_fields = ('short_code',)
     # import pdb; pdb.set_trace()
+
+    formfield_overrides = {
+        JSONField : {'widget': PrettyJSONWidget(attrs={'initial': 'parsed'}) }
+    }
 
     def save_model(self, request, obj, form, change):
         if 'active' in form.changed_data:

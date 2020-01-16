@@ -30,6 +30,9 @@ class RegistryRecord(models.Model):
 
     class Meta:
         abstract = True
+        indexes = [
+            models.Index(fields=['company', 'data']),
+        ]
 
 
 class RegistryRecordPersonal(RegistryRecord):
@@ -42,6 +45,11 @@ class RegistryRecordPersonal(RegistryRecord):
     class Meta:
         verbose_name = 'Запись'
         verbose_name_plural = 'Записи'
+        indexes = [
+            models.Index(fields=['fio', 'active_since', 'active_until', 'extension_date']),
+            # models.Index(fields=['first_name'], name='first_name_idx'),
+        ]
+
 
     def __str__(self):
         return self.fio

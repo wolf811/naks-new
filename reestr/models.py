@@ -6,6 +6,8 @@ from django.conf import settings
 import os
 import json
 from xml.dom import minidom
+from django.contrib.postgres.fields import JSONField
+
 # Create your models here.
 
 def get_maps_api_key():
@@ -213,9 +215,13 @@ class Center(models.Model):
     )
     chief = models.CharField(u'ФИО руководителя центра', max_length=50)
     sro_member = models.ForeignKey(SROMember, null=True, blank=True, on_delete=models.SET_NULL)
+    data = JSONField(u'JSON-данные', blank=True, null=True, db_index=True)
 
     class Meta:
         abstract = True
+        indexes = [
+            models.Index(fields=['data']),
+            ]
 
 
 
