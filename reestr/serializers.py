@@ -138,13 +138,25 @@ class CenterSerializer(serializers.ModelSerializer):
         )
 
     def get_company_full_name(self, obj):
-        return obj.sro_member.full_name
+        try:
+            return obj.sro_member.full_name
+        except Exception as e:
+            print('COMPANY ERROR', e)
+            return 'company_name'
 
     def get_actual_address(self, obj):
-        return obj.sro_member.actual_address
+        try:
+            return obj.sro_member.actual_address
+        except Exception as e:
+            print('ADDRESS ERROR', e)
+            return 'full_address'
 
     def get_coordinates(self, obj):
-        return map(lambda x: float(x), obj.sro_member.coordinates.split(" "))
+        try:
+            return map(lambda x: float(x), obj.sro_member.coordinates.split(" "))
+        except Exception as e:
+            print('COORDINATES ERROR', e)
+            return []
 
     def get_company(self, obj):
         try:

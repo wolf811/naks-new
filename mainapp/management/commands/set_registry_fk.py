@@ -25,27 +25,31 @@ class Command(BaseCommand):
             records = RegistryRecordPersonal.objects.all().order_by('pk')[i:i+chunk_size]
             started = time.time()
             for rec in records:
-                if rec.data['place_of_att']:
-                    code = rec.data['place_of_att'].strip()
-                    if 'АП' in code:
-                        match = re.search(regex, code)
-                        start_end = match.span()
-                        point = code[start_end[0]:start_end[1]]
-                        center_code = code.replace(point, "")
-                        center, center_created = AccreditedCenter.objects.get_or_create(
-                            short_code=center_code,
-                            direction='personal')
-                        cert_point_code = point.replace(", ", "")
-                        cert_point, cert_point_created = AccreditedCertificationPoint.objects.get_or_create(
-                            short_code=cert_point_code,
-                            parent=center
-                        )
-                        rec.data['center_pk'] = center.pk
-                        rec.data['cert_point_pk'] = cert_point.pk
-                    else:
-                        center, created = AccreditedCenter.objects.get_or_create(short_code=code)
-                        rec.data['center_pk'] = center.pk
-                    rec.save()
+                try:
+                    if rec.data['place_of_att']:
+                        code = rec.data['place_of_att'].strip()
+                        if 'АП' in code:
+                            match = re.search(regex, code)
+                            start_end = match.span()
+                            point = code[start_end[0]:start_end[1]]
+                            center_code = code.replace(point, "")
+                            center, center_created = AccreditedCenter.objects.get_or_create(
+                                short_code=center_code,
+                                direction='personal')
+                            cert_point_code = point.replace(", ", "")
+                            cert_point, cert_point_created = AccreditedCertificationPoint.objects.get_or_create(
+                                short_code=cert_point_code,
+                                parent=center
+                            )
+                            rec.data['center_pk'] = center.pk
+                            rec.data['cert_point_pk'] = cert_point.pk
+                        else:
+                            center, created = AccreditedCenter.objects.get_or_create(short_code=code)
+                            rec.data['center_pk'] = center.pk
+                        rec.save()
+                except Exception as e:
+                    print('FK ERROR: ', e, code)
+                    continue
             print('---------> i:', i, '<----------- elapsed:', time.time() - started)
 
 

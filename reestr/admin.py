@@ -58,7 +58,8 @@ def get_sro_member(obj):
 class AccreditedCenterAdmin(admin.ModelAdmin):
 
     list_display = ['id', 'short_code', get_city, get_sro_member, 'active', 'temporary_suspend_date', 'direction']
-    list_filter = ['short_code', 'active', 'temporary_suspend_date', SroStatusFilter]
+    list_filter = ['direction', 'active', 'temporary_suspend_date', SroStatusFilter]
+    search_fields = ('short_code',)
     # import pdb; pdb.set_trace()
 
     def save_model(self, request, obj, form, change):
@@ -72,17 +73,23 @@ class AccreditedCenterAdmin(admin.ModelAdmin):
 @admin.register(GTU)
 class GTUAdmin(admin.ModelAdmin):
     list_display = ['id', 'short_name', 'full_name']
+    list_filter = ('short_name',)
 
 @admin.register(AccreditedCertificationPoint)
 class AccreditedCertificationPointAdmin(admin.ModelAdmin):
     list_display = ['id', 'short_code', 'parent']
     list_filter = ['parent']
 
+@admin.register(WeldType)
+class WeldTypeAdmin(admin.ModelAdmin):
+    list_display = ['id', 'short_name']
+
 admin.site.register(Level)
+admin.site.register(Activity)
 admin.site.register(Qualification)
 admin.site.register(SM)
 admin.site.register(SO)
-admin.site.register(WeldType)
+# admin.site.register(WeldType)
 # admin.site.register(SROMember)
 # admin.site.register(AccreditedCenter)
 admin.site.register(CheckProtocol)

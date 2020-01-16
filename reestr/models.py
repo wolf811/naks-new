@@ -309,6 +309,14 @@ class AccreditedCenter(Center):
         blank=True
         )
 
+    center_edo_link = models.CharField(
+        u'Ссылка на страницу центра в ЭДО',
+        max_length=100,
+        blank=True,
+        null=True,
+        default=""
+    )
+
     class Meta:
         verbose_name = 'Аккредитация'
         verbose_name_plural = 'Аккредитации'
