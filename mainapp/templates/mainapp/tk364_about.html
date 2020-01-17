@@ -1,0 +1,193 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+<div class="container">
+    <h4 class="text-dark mt-5">Технический комитет Росстандарта ТК&nbsp;364</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Новости ТК&nbsp;364</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/tk364/mobil-right-menu-tk364.html' %}
+            </div>
+            <!-- End mobil right main -->
+            <div class="main-content mt-4">
+                <!-- Big Radiobuttons -->
+                <div class="show-units">
+                    <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
+                        <li class="col-auto col-lg-6 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block active" id="pills-composition-tab" data-toggle="pill" href="#pills-composition" role="tab" aria-controls="pills-composition" aria-selected="true">Область деятельности</a>
+                        </li>
+                        <li class="col-auto col-lg-6 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block" id="pills-protocols-tab" data-toggle="pill" href="#pills-protocols" role="tab" aria-controls="pills-protocols" aria-selected="false">Документы</a>
+                        </li>
+                        <li class="col-auto col-lg-6 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block" id="pills-committees-tab" data-toggle="pill" href="#pills-committees" role="tab" aria-controls="pills-committees" aria-selected="false">Контакты ТК&nbsp;364</a>
+                        </li>
+                    </ul>
+                </div><!-- End Big Radiobuttons -->
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-composition" role="tabpanel" aria-labelledby="pills-composition-tab">
+                        <h5 class="text-primary my-4">Область деятельности</h5>
+                        <p class="text-secondary">ТК 364 «Сварка и родственные процессы» создан 24.01.2007г.<br>Организация, ведущая секретариат ТК 364 - СРО Ассоциация «НАКС».</p>
+                        <h6>Технический комитет осуществляет деятельность по стандартизации в следующей области:</h6>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-contacts mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th>Коды областей стандартизации по ОКС</th>
+                                        <td>
+                                            <p class="mb-1">03.120 - Качество в целом *Включая общие аспекты, связанные с надежностью и ремонтопригодностью;</p>
+                                            <p class="mb-1">25.160 - Сварка, пайка твердым и мягким припоем *Включая газовую сварку, электрическую сварку, плазменную сварку, электронно-лучевую сварку, плазменную резку и т.д.;</p>
+                                            <p class="mb-1">25.160.01 - Сварка, пайка твердым и мягким припоем в целом *Включая квалификацию сварщика;</p>
+                                            <p class="mb-1">25.160.10 - Процессы сварки *Включая термическую резку и покрытие;</p>
+                                            <p class="mb-1">25.160.20 - Сварочные расходуемые материалы *Включая электроды, присадочные материалы, газы и т.д.;</p>
+                                            <p class="mb-1">25.160.30 - Сварочное оборудование *Включая оборудование для термической резки;</p>
+                                            <p class="mb-1">25.160.40 - Сварочные швы и сварка *Включая положение шва и механические неразрушающие испытания сварных соединений;</p>
+                                            <p class="mb-1">25.160.50 - Пайка твердым и мягким припоем *Включая сплавы и оборудование для пайки твердым и мягким припоем;</p>
+                                            <p class="mb-1">77.040 - Испытания металлов в целом;</p>
+                                            <p class="mb-0">13.100 - Безопасность профессиональной деятельности. Промышленная гигиена;</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Коды продукции по ОКП2</th>
+                                        <td>
+                                            <p class="mb-1">20.59.56.120 - Флюсы;</p>
+                                            <p class="mb-1">22.19.30.138 - Рукава резиновые для газовой сварки и резки металлов;</p>
+                                            <p class="mb-1">22.21.10.110 - Мононити с размером поперечного сечения более 1 мм пластмассовые;</p>
+                                            <p class="mb-1">22.21.10.120 - Прутки, стержни пластмассовые;</p>
+                                            <p class="mb-1">22.21.2 - Трубы, трубки и шланги и их фитинги пластмассовые;</p>
+                                            <p class="mb-1">24.34.11 - Проволока холоднотянутая из нелегированной стали;</p>
+                                            <p class="mb-1">24.34.11.130 - Проволока стальная сварочная из нелегированной стали;</p>
+                                            <p class="mb-1">24.34.12 - Проволока холоднотянутая из нержавеющей стали;</p>
+                                            <p class="mb-1">24.34.12.000 - Проволока холоднотянутая из нержавеющей стали;</p>
+                                            <p class="mb-0">24.34.13 - Проволока холоднотянутая из прочей легированной стали;</p>
+                                            <p class="mb-1">20.59.56.120 - Флюсы;</p>
+                                            <p class="mb-1">22.19.30.138 - Рукава резиновые для газовой сварки и резки металлов;</p>
+                                            <p class="mb-1">22.21.10.110 - Мононити с размером поперечного сечения более 1 мм пластмассовые;</p>
+                                            <p class="mb-1">22.21.10.120 - Прутки, стержни пластмассовые;</p>
+                                            <p class="mb-1">22.21.2 - Трубы, трубки и шланги и их фитинги пластмассовые;</p>
+                                            <p class="mb-1">24.34.11 - Проволока холоднотянутая из нелегированной стали;</p>
+                                            <p class="mb-1">24.34.11.130 - Проволока стальная сварочная из нелегированной стали;</p>
+                                            <p class="mb-1">24.34.12 - Проволока холоднотянутая из нержавеющей стали;</p>
+                                            <p class="mb-1">24.34.12.000 - Проволока холоднотянутая из нержавеющей стали;</p>
+                                            <p class="mb-0">24.34.13 - Проволока холоднотянутая из прочей легированной стали;</p>
+                                            <p class="mb-1">20.59.56.120 - Флюсы;</p>
+                                            <p class="mb-1">22.19.30.138 - Рукава резиновые для газовой сварки и резки металлов;</p>
+                                            <p class="mb-1">22.21.10.110 - Мононити с размером поперечного сечения более 1 мм пластмассовые;</p>
+                                            <p class="mb-1">22.21.10.120 - Прутки, стержни пластмассовые;</p>
+                                            <p class="mb-1">22.21.2 - Трубы, трубки и шланги и их фитинги пластмассовые;</p>
+                                            <p class="mb-1">24.34.11 - Проволока холоднотянутая из нелегированной стали;</p>
+                                            <p class="mb-1">24.34.11.130 - Проволока стальная сварочная из нелегированной стали;</p>
+                                            <p class="mb-1">24.34.12 - Проволока холоднотянутая из нержавеющей стали;</p>
+                                            <p class="mb-1">24.34.12.000 - Проволока холоднотянутая из нержавеющей стали;</p>
+                                            <p class="mb-0">24.34.13 - Проволока холоднотянутая из прочей легированной стали;</p>
+                                            <p class="mb-1">20.59.56.120 - Флюсы;</p>
+                                            <p class="mb-1">22.19.30.138 - Рукава резиновые для газовой сварки и резки металлов;</p>
+                                            <p class="mb-1">22.21.10.110 - Мононити с размером поперечного сечения более 1 мм пластмассовые;</p>
+                                            <p class="mb-1">22.21.10.120 - Прутки, стержни пластмассовые;</p>
+                                            <p class="mb-1">22.21.2 - Трубы, трубки и шланги и их фитинги пластмассовые;</p>
+                                            <p class="mb-1">24.34.11 - Проволока холоднотянутая из нелегированной стали;</p>
+                                            <p class="mb-1">24.34.11.130 - Проволока стальная сварочная из нелегированной стали;</p>
+                                            <p class="mb-1">24.34.12 - Проволока холоднотянутая из нержавеющей стали;</p>
+                                            <p class="mb-1">24.34.12.000 - Проволока холоднотянутая из нержавеющей стали;</p>
+                                            <p class="mb-0">24.34.13 - Проволока холоднотянутая из прочей легированной стали;</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-protocols" role="tabpanel" aria-labelledby="pills-protocols-tab">
+                        <h5 class="text-primary my-4">Документы</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-docs mb-0">
+                                <tr>
+                                    <th>Приказ Росстандарта №2753 от 19 ноября 2019 г. «О внесении изменения в приказ Федерального агентства по техническому регулированию и метрологии от 2 октября 2017 г. № 2064 Об организации деятельности технического комитета по стандартизации «Сварка и родственные процессы»</th>
+                                    <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Приказ Росстандарта №2064 от 02 октября 2017 г. Об организации деятельности технического комитета по стандартизации «Сварка и родственные процессы»</th>
+                                    <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Положение о техническом комитете по стандартизации «Сварка и родственные процессы»</th>
+                                    <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Приказ Росстандарта №1070 от 04 июля 2014 г. О внесении изменений в приказ Федерального агентства по техническому регулированию и метрологии от 06 февраля 2012 г. № 71 «О внесении изменений в приказ Федерального агентства по техническому регулированию и метрологии от 24 января 2007 г. № 208» </th>
+                                    <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Приказ Росстандарта №208 от 24 января 2007 г. О создании технического комитета по стандартизации «Сварка и родственные процессы»</th>
+                                    <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- <p class="text-secondary">В соответствии со статьей 13 315-ФЗ «О саморегулируемых организациях» СРО Ассоциация «НАКС» вправе применять следующие способы обеспечения имущественной ответственности своих членов перед потребителями произведенных ими товаров (работ, услуг) и иными лицами:</p>
+                        <ol class="text-secondary">
+                            <li>создание системы личного и (или) коллективного страхования;</li>
+                            <li>формирование компенсационного фонда.</li>
+                        </ol>
+                        <p class="text-secondary">В случае применения в качестве способа обеспечения ответственности членов саморегулируемой организации перед потребителями произведенных ими товаров (работ, услуг) и иными лицами системы личного и (или) коллективного страхования минимальный размер страховой суммы по договору страхования ответственности каждого члена не может быть менее чем тридцать тысяч рублей в год.</p>
+                        <p class="text-secondary">В соответствии с п. 2.2 Устава СРО Ассоциация «НАКС», п. 2.1.4 Условий членства в СРО Ассоциация «НАКС» имущественная ответственность организаций-членов СРО Ассоциация «НАКС» перед потребителями произведенных ими товаров (работ, услуг) и иными лицами обеспечивается путем страхования своей деятельности на сумму не менее 1 000 000 рублей в год.</p>
+                        <p class="text-secondary">Оригинал полиса страхования или же его копия, заверенная страховой компанией, представляется в дирекцию НАКС после решения Президиума о приеме организации в члены СРО Ассоциация «НАКС».</p>
+                        <div class="row mb-4">
+                            <div class="col-xl-6">
+                                <div class="card card-doc rounded-0">
+                                    <div class="card-body">
+                                        <p class="card-text">Типовые формулировки, используемые в договорах страхования</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-outline-dark btn-sm" role="button" target="_blank"><i class="fa fa-download mr-2" aria-hidden="true"></i>Скачать документ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-secondary">Компенсационный фонд не создается.</p> -->
+                    </div>
+                    <div class="tab-pane fade" id="pills-committees" role="tabpanel" aria-labelledby="pills-committees-tab">
+                        <h5 class="text-primary my-4">Контакты ТК&nbsp;364</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-contacts mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th>Ответственный секретарь</th>
+                                        <td>Чупрак Александр Иванович<br><small>технический директор СРО Ассоциация "НАКС"</small></td>
+                                        <td>
+                                            <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847275">(499) 784-72-75</a></div>
+                                            <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:tk364@naks.ru">tk364@naks.ru</a></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Фактический адрес</th>
+                                        <td colspan="2">109341, г. Москва, ул. Братиславская, д. 6, подъезд 4, этаж 4, офис "НАКС"</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Почтовый адрес</th>
+                                        <td colspan="2">109469, г. Москва, ул. Марьинский парк, д.23, корп.3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/tk364/right-menu-tk364.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

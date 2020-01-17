@@ -343,12 +343,61 @@ def sro_forms_docs(request):
 
 
 # ============= TK364 ===============
-def tk364(request):
-    title = 'НАКС - ТК-364'
+def tk364_news(request):
+    title = 'ТК-364 - Новости'
     content = {
         'title': title
     }
-    return render(request, 'mainapp/tk364.html', content)
+    return render(request, 'mainapp/tk364_news.html', content)
+
+def tk364_about(request):
+    title = 'ТК-364 - О ТК-364'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_about.html', content)
+
+def tk364_sostav(request):
+    title = 'ТК-364 - Состав ТК-364'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_sostav.html', content)
+
+def tk364_development(request):
+    title = 'ТК-364 - Разработка стандартов'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_development.html', content)
+
+def tk364_standarts(request):
+    title = 'ТК-364 - Разработанные стандарты'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_standarts.html', content)
+
+def tk364_plan(request):
+    title = 'ТК-364 - План работ'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_plan.html', content)
+
+def tk364_fund(request):
+    title = 'ТК-364 - Фонд стандартов'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_fund.html', content)
+
+def tk364_ntd(request):
+    title = 'ТК-364 - Нормативные документы'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_ntd.html', content)
 # ============= end TK364 ===============
 
 

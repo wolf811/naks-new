@@ -1,0 +1,14 @@
+mixer==6.1.3
+Pillow==5.4.1
+django-stdimage==4.1.0
+pytest==5.1.0
+pytest-django==3.5.1
+django-stdimage-serializer==0.1.2
+mock==3.0.5
+# django rest-framework
+# fabric
+# requests
+# django-rest-auth-0.9.5
+# djangorestframework-jwt-1.11.0
+# !!! django-cors-headers
+# django-prettyjson-0.4.1
