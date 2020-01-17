@@ -1,0 +1,79 @@
+{% load static %}
+<div id="wrap" class="w-100">
+    <div id="accordion_00" class="right-main">
+        <div class="card rounded-0">
+            <!-- TODO: При переходе на страницу к .bg-naks добавляем класс .bg-naks-active -->
+            <div class="card-header bg-naks {% if 'tk364_news' in request.path %}bg-naks-active{% endif %}" id="heading_01">
+                <a href="{% url 'tk364_news' %}" class="collapsed">Новости ТК&nbsp;364</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks" id="heading_02">
+                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_02" aria-expanded="false" aria-controls="collapse_02">О ТК&nbsp;364</a>
+            </div>
+            <div id="collapse_02" class="collapse {% if 'tk364_about' in request.path %}show{% endif %}" aria-labelledby="heading_02" data-parent="#accordion_00">
+                <div class="card-body">
+                    <a href="{% url 'tk364_about' %}" class="dropdown-item active">Область деятельности</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'tk364_about' %}" class="dropdown-item">Документы</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'tk364_about' %}" class="dropdown-item">Контакты ТК&nbsp;364</a>
+                </div>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks" id="heading_03">
+                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_03" aria-expanded="false" aria-controls="collapse_03">Состав ТК&nbsp;364</a>
+            </div>
+            <!-- TODO: По клику на пункте меню к collapse добавляется .show, а к .dropdown-item добавляем .active -->
+            <div id="collapse_03" class="collapse {% if 'tk364_sostav' in request.path %}show{% endif %}" aria-labelledby="heading_03" data-parent="#accordion_00">
+                <div class="card-body">
+                    <a href="{% url 'tk364_sostav' %}" class="dropdown-item">Руководство ТК&nbsp;364</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'tk364_sostav' %}" class="dropdown-item">Члены ТК&nbsp;364</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'tk364_sostav' %}" class="dropdown-item">Структура ТК&nbsp;364</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="https://www.gost.ru/portal/gost/home/activity/standardization/techcom?portal:componentId=12284de1-cc29-4eaf-9342-9dabdd531503&portal:isSecure=false&portal:portletMode=view&navigationalstate=JBPNS_rO0ABXc4AAZhY3Rpb24AAAABABBjb25jcmV0ZURvY3VtZW50AAZkb2NfaWQAAAABAAMyNDgAB19fRU9GX18*" class="dropdown-item" target="_blank">ТК&nbsp;364 на сайте Росстандарта</a>
+                </div>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks" id="heading_04">
+                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_04" aria-expanded="false" aria-controls="collapse_04">Разработка стандартов</a>
+            </div>
+            <div id="collapse_04" class="collapse {% if 'tk364_development' in request.path %}show{% endif %}" aria-labelledby="heading_04" data-parent="#accordion_00">
+                <div class="card-body">
+                    <a href="{% url 'tk364_about' %}" class="dropdown-item">Разрабатываемые стандарты</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'tk364_about' %}" class="dropdown-item">Личный кабинет</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'tk364_about' %}" class="dropdown-item">Электронное голосование по проектам стандартов</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'tk364_about' %}" class="dropdown-item">Реестр СТО</a>
+                </div>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <!-- TODO: При переходе на страницу к .bg-naks добавляем класс .bg-naks-active -->
+            <div class="card-header bg-naks {% if 'tk364_standarts' in request.path %}bg-naks-active{% endif %}" id="heading_05">
+                <a href="{% url 'tk364_standarts' %}" class="collapsed">Стандарты, разработанные ТК&nbsp;364</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks {% if 'tk364_plan' in request.path %}bg-naks-active{% endif %}" id="heading_07">
+                <a href="{% url 'tk364_plan' %}" class="collapsed">План работ ТК&nbsp;364</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks {% if 'tk364_fund' in request.path %}bg-naks-active{% endif %}" id="heading_08">
+                <a href="{% url 'tk364_fund' %}" class="collapsed">Фонд стандартов ТК&nbsp;364</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks {% if 'tk364_ntd' in request.path %}bg-naks-active{% endif %}" id="heading_08">
+                <a href="{% url 'tk364_ntd' %}" class="collapsed">Нормативные документы в области стандартизации</a>
+            </div>
+        </div>
+    </div>
+</div>

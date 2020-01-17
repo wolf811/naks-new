@@ -22,6 +22,16 @@
                         <div class="dropdown-menu dropdown-menu-right shadow rounded-0" aria-labelledby="navbarDropdown">
                             <div class="row mb-4">
                                 <div class="col-xs-12 col-sm-4">
+                                    <a href="{% url 'spks' %}" class="dropdown-item" style='font-weight: bold;'>СПКС - Совет по профессиональным квалификациям в области сварки</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="{% url 'spks_reestr_qual' %}" class="dropdown-item">Оценка квалификаций</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="{% url 'spks_standarts_ok' %}" class="dropdown-item">Профессиональные стандарты и квалификации</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="{% url 'monitoring' %}" class="dropdown-item">Мониторинг рынка труда</a>
+                                    <div class="dropdown-divider d-xs-block d-sm-none"></div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
                                     <a href="{% url 'sasv' %}" class="dropdown-item" style='font-weight: bold;'>САСв - Система аттестации сварочного производства</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="{% url 'sasv_ac' %}" class="dropdown-item">Аттестация специалистов сварочного производства</a>
@@ -31,36 +41,20 @@
                                     <a href="{% url 'sasv_acso' %}" class="dropdown-item">Аттестация сварочного оборудования</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="{% url 'sasv_acst' %}" class="dropdown-item">Аттестация сварочных технологий</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="{% url 'sro' %}" class="dropdown-item" style='font-weight: bold;'>СРО - Саморегулируемая организация Ассоциация НАКС</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href='http://bewelder.ru/' class="dropdown-item" target="_blank" style='font-weight: bold;'>Bewelder.ru</a>
-                                    <div class="dropdown-divider d-xs-block d-sm-none"></div>
-                                </div>
-                                <div class="col-xs-12 col-sm-4">
-                                    <a href="{% url 'spks' %}" class="dropdown-item" style='font-weight: bold;'>СПКС - Совет по профессиональным квалификациям в области сварки</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="{% url 'spks_reestr_qual' %}" class="dropdown-item">Оценка квалификаций</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="{% url 'spks_standarts_ok' %}" class="dropdown-item">Профессиональные стандарты и квалификации</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="{% url 'monitoring' %}" class="dropdown-item">Мониторинг рынка труда</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="{% url 'tk364' %}" class="dropdown-item" style='font-weight: bold;'>ТК364 - Технический комитет Росстандарта "Сварка и родственные процессы"</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href='http://svarka.naks.ru/' class="dropdown-item" target="_blank" style='font-weight: bold;'>Журнал "Сварка и диагностика"</a>
                                     <div class="dropdown-divider d-xs-block d-sm-none"></div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <a href="{% url 'sds' %}" class="dropdown-item" style='font-weight: bold;'>СДС - Система добровольной сертификации</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="{% url 'sds' %}" class="dropdown-item">Сертификация персонала сварочного производства, специалистов неразрушающего контроля и разрушающих испытаний</a>
+                                    <a href="{% url 'tk364_news' %}" class="dropdown-item" style='font-weight: bold;'>ТК364 - Технический комитет Росстандарта "Сварка и родственные процессы"</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="{% url 'sds' %}" class="dropdown-item">Сертификация сварочного оборудования</a>
+                                    <a href="{% url 'sro' %}" class="dropdown-item" style='font-weight: bold;'>СРО - Саморегулируемая организация Ассоциация НАКС</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="{% url 'sds' %}" class="dropdown-item">Сертификация сварочных материалов</a>
+                                    <a href='#' class="dropdown-item" target="_blank" style='font-weight: bold;'>НАКС Медиа</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="{% url 'sds' %}" class="dropdown-item">Сертификация сварочных технологических процессов</a>
+                                    <a href='http://svarka.naks.ru/' class="dropdown-item" target="_blank" style='font-weight: bold;'>Журнал "Сварка и диагностика"</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href='http://bewelder.ru/' class="dropdown-item" target="_blank" style='font-weight: bold;'>Bewelder.ru</a>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +64,7 @@
                         <div class="dropdown-menu dropdown-menu-right shadow rounded-0" aria-labelledby="navbarDropdown">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-4">
-                                    <a class="dropdown-item" href="{% url 'reestr:centers' 'personal' %}">Центры по аттестации сварщиков и специалистов сварочного производства (АЦ)</a>
+                                    <a class="dropdown-item" href="{% url 'reestr:centers' 'personal' %}">Центры по аттестации сварщиков и специалистов сварочного производства (АЦСП)</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'reestr:centers' 'specpod' %}">Центры специальной подготовки (ЦСП)</a>
                                     <div class="dropdown-divider"></div>

@@ -1,11 +1,9 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 {% block content %}
-
 <!-- Header-page -->
 {% include 'mainapp/includes/header-page.html' %}
 <!-- End Header-page -->
-
 <div class="container">
     <h4 class="text-dark mt-5">Саморегулируемая организация Ассоциация НАКС</h4>
     <nav aria-label="breadcrumb" role="navigation">
@@ -17,24 +15,19 @@
     <hr>
     <div class="row">
         <div class="col-xs-12 col-md-8 col-xl-9">
-
             <!-- Mobil right main -->
             <div class="d-block d-md-none mt-3 mb-4">
                 {% include 'mainapp/includes/sro/mobil-right-menu-sro.html' %}
-            </div> 
+            </div>
             <!-- End mobil right main -->
-
             <h5 class="text-primary mt-2 mb-4">СРО Ассоциация НАКС</h5>
-
             <p class="text-secondary">Национальное Агентство Контроля Сварки наделено <a href="http://nspkrf.ru/" target="_blank">Национальным советом при Президенте РФ по профессиональным квалификациям</a> полномочиями <strong>Совета по профессиональным квалификациям в области сварки</strong>.</p>
             <p class="text-secondary">Саморегулируемая организация Ассоциация «Национальное Агентство Контроля Сварки» (СРО Ассоциация «НАКС», НАКС) - центральный орган <a href="{% url 'sasv' %}">Системы аттестации сварочного производства ( САСв) Ростехнадзора</a>.</p>
             <p class="text-secondary">СРО Ассоциация «НАКС» зарегистрирована в государственном реестре саморегулируемых организаций и объединяет организации, занимающиеся оценкой соответствия в области сварочного производства.</p>
-            <p class="text-secondary">На базе НАКС функционирует Технический комитет Росстандарта <a href="{% url 'tk364' %}" target="_blank">ТК 364 "Сварка и родственные процессы"</a>, занимающийся разработкой национальных стандартов по сварке и их гармонизацией  с международными.</p>
-
+            <p class="text-secondary">На базе НАКС функционирует Технический комитет Росстандарта <a href="{% url 'tk364_news' %}" target="_blank">ТК 364 "Сварка и родственные процессы"</a>, занимающийся разработкой национальных стандартов по сварке и их гармонизацией с международными.</p>
             <!-- Yandex Maps -->
             <div id="map" class="w-100"></div>
             <!-- End map -->
-            
             <hr class="mt-4">
             <div class="main-content mt-4">
                 <h5 class="text-primary my-4">Наши партнёры</h5>
