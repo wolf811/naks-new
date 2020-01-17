@@ -85,7 +85,7 @@ class DirectoriesViewSet(viewsets.ModelViewSet):
 
 class CentersViewSet(viewsets.ModelViewSet):
     # queryset = AccreditedCenter.objects.all().order_by('pk')
-    queryset = AccreditedCenter.objects.filter(active=True).order_by('pk')
+    queryset = AccreditedCenter.objects.all().order_by('pk')
     serializer_class = CenterSerializer
 
 

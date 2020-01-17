@@ -7,7 +7,9 @@ from django.http import HttpResponse, HttpResponseForbidden
 from datetime import datetime, timedelta
 import requests, json
 from registry.utils.registry_import import RegistryRecordAdapter
-
+from django.db.models import Q
+from functools import reduce
+import operator
 
 # Create your views here.
 def generate_days(year):
@@ -63,6 +65,16 @@ def personal(request):
         'i_am_content': 'true'
     }
     if request.POST.get('search_request'):
-        print('REQUEST -------->', request.POST.get('search_request'))
-        return render(request, 'registry/includes/registry_table_personal.html', content)
+        if len(request.POST) > 0:
+            print('REQUEST -------->', request.POST.get('search_request'))
+            query_list = [Q(pk__isnull=False)]
+            # import pdb; pdb.set_trace()
+            if request.POST.get("fio_query"):
+                fio_query = Q(fio__icontains=request.POST.get('fio_query'))
+                query_list.append(fio_query)
+            query = reduce(operator.and_, query_list)
+            count = RegistryRecordPersonal.objects.filter(query).count()
+            print('COUNT', count)
+            content.update({"search_result_count": count})
+            return render(request, 'registry/includes/registry_table_personal.html', content)
     return render(request, 'registry/registry_main_template.html', content)

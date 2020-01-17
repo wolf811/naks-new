@@ -372,6 +372,7 @@ class AccreditedCertificationPoint(models.Model):
     class Meta:
         verbose_name = 'Аттестационный пункт'
         verbose_name_plural = 'Аттестационные пункты'
+        indexes = [models.Index(fields=['parent'])]
 
     def __str__(self):
         return self.short_code

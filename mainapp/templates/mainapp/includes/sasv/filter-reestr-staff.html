@@ -2,30 +2,34 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="form-group row">
-            <label for="" class="col-lg-4 col-form-label col-form-label-sm">Место аттестации:</label>
+            <label for="selectCenterID" class="col-lg-4 col-form-label col-form-label-sm">Место аттестации:</label>
             <div class="col-6 col-lg-5">
-                <select class="form-control form-control-sm">
-                    <option>АЦ</option>
-                    <option>АР-1ГАЦ</option>
-                    <option>АР-ГАЦ</option>
-                    <option>БР-АЦ</option>
-                    <option>БР-1ГАЦ</option>
-                    <option>БР-ГАЦ</option>
-                    <option>ВВР-1АЦ</option>
+
+                <select @change="selectCenter($event)" id="selectCenterID" class="form-control form-control-sm" :disabled="reestrCenters.length == 0">
+                    <option v-if="reestrCenters.length == 0" selected>... список загружается ...</option>
+                    <option v-else disabled selected>АЦ</option>
+                    <option v-for="cnt in getAttPlaces"
+                        v-bind:class="{'text-danger': !cnt.is_active}"
+                        v-bind:value="cnt.cert_points"
+                        :data-id="cnt.id"
+                        :data-name="cnt.center_name"
+                    >[[ cnt.center_name ]]</option>
                 </select>
+
+
             </div>
             <div class="col-6 col-lg-3">
-                <select class="form-control form-control-sm">
-                    <option>АП</option>
-                    <option>АП1</option>
-                    <option>АП2</option>
+                <select class="form-control form-control-sm" :disabled="selectedCertPointCodes.length == 0">
+                    <option v-if="selectedCertPointCodes.length == 0" value="" disabled selected>АП</option>
+                    <option v-else disabled selected>АП</option>
+                    <option v-for="cert_point_code in selectedCertPointCodes">[[ cert_point_code ]]</option>
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <label for="" class="col-lg-4 col-form-label col-form-label-sm">ФИО:</label>
             <div class="col-lg-8">
-                <input type="text" class="form-control form-control-sm">
+                <input v-model="fio_input" type="text" class="form-control form-control-sm">
             </div>
         </div>
         <div class="form-group row">

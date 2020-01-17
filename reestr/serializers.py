@@ -108,6 +108,7 @@ class CenterSerializer(serializers.ModelSerializer):
     coordinates = serializers.SerializerMethodField()
     company_full_name = serializers.SerializerMethodField()
     cert_points = serializers.SerializerMethodField()
+    cert_point_codes = serializers.SerializerMethodField()
 
     class Meta:
         model = AccreditedCenter
@@ -137,50 +138,65 @@ class CenterSerializer(serializers.ModelSerializer):
             'qualifications',
             'cok_nark_code',
             'cert_points',
+            'cert_point_codes'
         )
+
+    def get_cert_point_codes(self, obj):
+        try:
+            if AccreditedCertificationPoint.objects.filter(parent=obj).count() > 0:
+                point_codes = [p.short_code for p in AccreditedCertificationPoint.objects.filter(parent=obj)]
+                return point_codes
+            else:
+                return []
+        except Exception as e:
+            print('CERT POINT CODES EXCEPTION', e)
+            return []
 
     def get_cert_points(self, obj):
         try:
-            points = [p.id for p in AccreditedCertificationPoint.objects.filter(parent=obj)]
-            return points
+            if AccreditedCertificationPoint.objects.filter(parent=obj).count() > 0:
+                points = [p.id for p in AccreditedCertificationPoint.objects.filter(parent=obj)]
+                return points
+            else:
+                return []
         except Exception as e:
-            print('CERT POINTS ERORR', e)
+            # print('CERT POINTS ERORR', e)
             return []
 
     def get_company_full_name(self, obj):
         try:
             return obj.sro_member.full_name
         except Exception as e:
-            print('COMPANY ERROR', e)
+            # print('COMPANY ERROR', e)
             return 'company_name'
 
     def get_actual_address(self, obj):
         try:
             return obj.sro_member.actual_address
         except Exception as e:
-            print('ADDRESS ERROR', e)
+            # print('ADDRESS ERROR', e)
             return 'full_address'
 
     def get_coordinates(self, obj):
         try:
             return map(lambda x: float(x), obj.sro_member.coordinates.split(" "))
         except Exception as e:
-            print('COORDINATES ERROR', e)
+            # print('COORDINATES ERROR', e)
             return []
 
     def get_company(self, obj):
         try:
             return obj.sro_member.short_name
         except Exception as e:
-            print('TITLE ERROR', obj, e)
+            # print('TITLE ERROR', obj, e)
             return ''
 
     def get_city(self, obj):
         try:
             return obj.sro_member.city.title
         except Exception as e:
-            print('CITY ERROR', obj, e)
-            return ''
+            # print('CITY ERROR', obj, e)
+            return 'city'
 
 
 class SROMemberSerializer(serializers.ModelSerializer):

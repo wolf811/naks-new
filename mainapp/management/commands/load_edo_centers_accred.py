@@ -92,7 +92,7 @@ class Command(BaseCommand):
                                     obl_accred = [''.join(i.split()) for i in tg.stripped_strings]
                                     cntr_gtus = re.findall(r"['А-Я']{1,5}", obl_accred[1])
                                     cntr_weldtypes = re.findall(r"['А-Я']{1,5}", obl_accred[3])
-                                    cntr_levels = re.findall(r"['A-Z']{1,2}", obl_accred[5])
+                                    cntr_levels = re.findall(r"['A-Z']{1,3}", obl_accred[5])
                                     needed_gtus = GTU.objects.filter(short_name__in=cntr_gtus)
                                     needed_weldtypes = WeldType.objects.filter(short_name__in=cntr_weldtypes)
                                     needed_levels = Level.objects.filter(level__in=cntr_levels)

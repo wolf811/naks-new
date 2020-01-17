@@ -444,7 +444,10 @@ if (document.getElementById('app_registry_personal')) {
                 centersAndPoints: [],
                 reestrCenters: [],
                 selectedCenter: '',
-                selectedCenterPoints: []
+                selectedCertPoint: '',
+                selectedCertPointCodes: [],
+                centerListUpdated: false,
+                searching : false
             }
         },
         beforeMount() {
@@ -470,7 +473,7 @@ if (document.getElementById('app_registry_personal')) {
                         this.$cookies.set("centers_storage_updated", "1", "1h");
                     }).finally(() => {
                         // console.log('rendering map...');
-                        this.map_render();
+                        // this.map_render();
                     });
             },
             update_dirs: function() {
@@ -508,9 +511,24 @@ if (document.getElementById('app_registry_personal')) {
             selectGtu: function (item) {
                 item = null;
             },
+            selectCenter: function(event) {
+                this.selectedCenterPoints = event.target.value;
+                this.selectedCenter = event.target.options[event.target.selectedIndex].dataset.name;
+                // don't forget how you got this f..ing ingex!
+                var id = event.target.options[event.target.selectedIndex].dataset.id;
+                this.selectedCertPointCodes = this.reestrCenters
+                    .filter(item=>item.id==id)[0]
+                    .cert_point_codes
+                    .sort((a, b) => a.localeCompare(b, 'ru', {numeric: true, sensivity: 'base'}));
+                // console.log('name', this.selectedCenter, this.selectedCenterPoints);
+            },
             sendSearchRequest: function() {
+                this.searching = true;
                 let payload = new FormData();
                 payload.append("search_request", "i am searching!");
+                if (this.fio_input.length > 0) {
+                    payload.append('fio_query', this.fio_input)
+            }
                 axios
                     .post('/registry/personal/', payload)
                     .then(response => {
@@ -524,6 +542,7 @@ if (document.getElementById('app_registry_personal')) {
                     })
                     .finally( ()=>{
                         console.log('finnally sendSearchRequest');
+                        this.searching = false;
                     })
             },
             resetSearchQuery: function() {
@@ -533,12 +552,30 @@ if (document.getElementById('app_registry_personal')) {
         computed: {
             getAttPlaces: function() {
                 let centers = this.reestrCenters;
-                let resulting = {}
-                for cnt in centers.filter(item=>{
-                    item.direction == 'personal' && item.active = true;
+                let personal_centers = centers.filter(item=>{
+                    return item.direction == 'personal'
                 })
-
-                return centers
+                var center_objects = Array.from(
+                    personal_centers,
+                    (element) => {
+                        let short_name_string = '';
+                        element.active == true ?
+                            short_name_string = `${element.short_code}`:
+                            short_name_string =`${element.short_code} (исключен)`;
+                        return {
+                            'id': element.id,
+                            'is_active': element.active,
+                            'center_name': short_name_string,
+                            'cert_points': element.cert_points,
+                        }
+                    }
+                )
+                let centers_sorted = center_objects.sort(function(a, b) {
+                    var textA = a.center_name.toUpperCase();
+                    var textB = b.center_name.toUpperCase();
+                    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                });
+                return centers_sorted;
             }
         }
     })
