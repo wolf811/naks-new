@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render
 from django.contrib.auth import logout, login
 from django.http import JsonResponse
@@ -13,6 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
+import requests
 from .models import CustomUser, EdoUser
 from .forms import CustomUserCreationForm, EdoUserCreationForm
 from smtplib import SMTPException
@@ -20,8 +22,6 @@ from django.utils.translation import gettext as _
 from django.core.mail import send_mail
 from django.template.loader import get_template
 from django.shortcuts import redirect
-import datetime
-import requests
 from django.utils import timezone
 
 

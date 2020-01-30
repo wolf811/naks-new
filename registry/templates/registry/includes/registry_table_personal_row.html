@@ -1,0 +1,27 @@
+<tr>
+    <td>{{ rec.fio }}</td>
+    <td>
+    {% if rec.data.stamp %}
+        {{ rec.data.stamp }}
+    {% else %}
+        ---
+    {% endif %}
+    </td>
+    <td>{{ rec.company }}</td>
+    <td>{{ rec.data.position }}</td>
+    <td>{{ rec.data.udost }}</td>
+    <td></td>
+    <td>{{ rec.data.place_of_att }}</td>
+    <td></td>
+    <td>{{ rec.active_since|date:"d.m.Y" }}</td>
+    <td>{{ rec.active_until|date:"d.m.Y" }}</td>
+    <td>
+    {% if rec.extension_date %}
+        {{ rec.extension_date|date:"d.m.Y" }}
+    {% else %}
+        ---
+    {% endif %}
+    </td>
+    <td>{{ rec.data.activity }}</td>
+    <td>{{ rec.data.gtus }}<br><a href="#" class="mt-3" data-toggle="modal" data-target="#modalDetail">Подробнее</a></td>
+</tr>

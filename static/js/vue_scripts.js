@@ -447,7 +447,8 @@ if (document.getElementById('app_registry_personal')) {
                 selectedCertPoint: '',
                 selectedCertPointCodes: [],
                 centerListUpdated: false,
-                searching : false
+                searching : false,
+                current_page: null
             }
         },
         beforeMount() {
@@ -524,11 +525,15 @@ if (document.getElementById('app_registry_personal')) {
             },
             sendSearchRequest: function() {
                 this.searching = true;
+                let page = this.current_page;
                 let payload = new FormData();
                 payload.append("search_request", "i am searching!");
+                if (page) {
+                    payload.append("page", page);
+                }
                 if (this.fio_input.length > 0) {
                     payload.append('fio_query', this.fio_input)
-            }
+                }
                 axios
                     .post('/registry/personal/', payload)
                     .then(response => {
@@ -579,5 +584,5 @@ if (document.getElementById('app_registry_personal')) {
             }
         }
     })
-    console.log('reestr here')
+    // console.log('reestr here')
 }

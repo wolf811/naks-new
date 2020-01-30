@@ -1,6 +1,8 @@
+import operator
+from functools import reduce
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from users.models import CustomUser
+# from users.models import CustomUser
 from .models import RegistryRecordPersonal
 from .forms import *
 from django.http import HttpResponse, HttpResponseForbidden
@@ -8,8 +10,7 @@ from datetime import datetime, timedelta
 import requests, json
 from registry.utils.registry_import import RegistryRecordAdapter
 from django.db.models import Q
-from functools import reduce
-import operator
+from django.core.paginator import Paginator
 
 # Create your views here.
 def generate_days(year):
@@ -22,10 +23,12 @@ def generate_days(year):
         dates.append(d)
     return dates
 
+
 # 'https://ac.naks.ru/auth/external/json.php?url=reestr_personal&popov=Y&from=01.01.2019&to=05.01.2019&AUTH_ID=popov@naks.ru'
 
 @login_required
 def initiate_import(request, year):
+    """ import several numbers of records """
     user = request.user
     if user.is_staff:
         delete_before = request.GET.get('delete_before')
@@ -59,22 +62,32 @@ def initiate_import(request, year):
         return HttpResponseForbidden('FORBIDDEN')
 
 def personal(request):
+    """ main view for reestr personal page with searching and pagination"""
     # import pdb; pdb.set_trace()
     print('LEN request', len(request.POST))
     content = {
         'i_am_content': 'true'
     }
     if request.POST.get('search_request'):
-        if len(request.POST) > 0:
-            print('REQUEST -------->', request.POST.get('search_request'))
-            query_list = [Q(pk__isnull=False)]
-            # import pdb; pdb.set_trace()
-            if request.POST.get("fio_query"):
-                fio_query = Q(fio__icontains=request.POST.get('fio_query'))
-                query_list.append(fio_query)
-            query = reduce(operator.and_, query_list)
-            count = RegistryRecordPersonal.objects.filter(query).count()
-            print('COUNT', count)
-            content.update({"search_result_count": count})
-            return render(request, 'registry/includes/registry_table_personal.html', content)
+        print('REQUEST -------->', request.POST.get('search_request'))
+        query_list = []
+        # import pdb; pdb.set_trace()
+        if request.POST.get("fio_query"):
+            fio_query = Q(fio__istartswith=request.POST.get('fio_query'))
+            query_list.append(fio_query)
+        if not query_list:
+            query_list.append(Q(pk__isnull=False))
+        query = reduce(operator.and_, query_list)
+        count = RegistryRecordPersonal.objects.filter(query).count()
+        records_list = RegistryRecordPersonal.objects.filter(query).order_by('-active_since')
+        # print("---->", records_list.explain())
+        # print("---->", records_list.query)
+        paginator = Paginator(records_list, 25) # show 25 per page
+        page = request.POST.get('page')
+        records = paginator.get_page(page)
+        content.update({
+            "search_result_count": count,
+            "records": records
+            })
+        return render(request, 'registry/includes/registry_table_personal.html', content)
     return render(request, 'registry/registry_main_template.html', content)

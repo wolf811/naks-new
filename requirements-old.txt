@@ -12,3 +12,60 @@ mock==3.0.5
 # djangorestframework-jwt-1.11.0
 # !!! django-cors-headers
 # django-prettyjson-0.4.1
+
+
+# create index by migrations examples
+# from django.db import migrations, models
+
+
+# class Migration(migrations.Migration):
+
+#     dependencies = [
+#         ('registry', '0004_auto_20200129_1526'),
+#     ]
+
+#     operations = [
+#         migrations.AlterField(
+#             model_name='registryrecordpersonal',
+#             name='fio',
+#             field=models.CharField(
+#                 db_index=True,
+#                 max_length=80,
+#                 verbose_name='ФИО')
+#         ),
+#     ]
+
+# activate BtreeGinExtension
+# from django.db import migrations, models
+# from django.contrib.postgres.operations import BtreeGinExtension
+# from django.contrib.postgres.indexes import GinIndex
+
+# class Migration(migrations.Migration):
+
+#     dependencies = [
+#         ('registry', '0007_auto_20200130_0847'),
+#     ]
+
+#     operations = [
+#         BtreeGinExtension(),
+#     ]
+
+# create GIN Index on fields
+
+# import django.contrib.postgres.fields.jsonb
+# import django.contrib.postgres.indexes
+# from django.db import migrations
+
+# #
+# class Migration(migrations.Migration):
+
+#     operations = [
+#         migrations.AddIndex(
+#             model_name='registryrecordmaterials',
+#             index=django.contrib.postgres.indexes.GinIndex(fields=['data'], name='materials_data_json_index', opclasses=['jsonb_path_ops']),
+#         ),
+#         migrations.AddIndex(
+#             model_name='registryrecordpersonal',
+#             index=django.contrib.postgres.indexes.GinIndex(fields=['data'], name='personal_data_json_index', opclasses=['jsonb_path_ops']),
+#         ),
+#     ]
