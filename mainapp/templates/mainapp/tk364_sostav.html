@@ -20,55 +20,262 @@
                 {% include 'mainapp/includes/tk364/mobil-right-menu-tk364.html' %}
             </div>
             <!-- End mobil right main -->
-            <div class="bg-light p-3 mb-3">
-                <div class="row align-items-center">
-                    <div class="col text-center">
-                        <a href="https://www.gost.ru/portal/gost//home/standarts" target="_blank"><img src="/static_root/images/rst_logo.png" class="img-fluid" alt="logo rst"></a>
+            <div class="main-content mt-4">
+                <!-- Big Radiobuttons -->
+                <div class="show-units">
+                    <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
+                        <li class="col-auto col-lg-4 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block active" id="pills-composition-tab" data-toggle="pill" href="#pills-composition" role="tab" aria-controls="pills-composition" aria-selected="true">Руководство ТК 364</a>
+                        </li>
+                        <li class="col-auto col-lg-4 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block" id="pills-protocols-tab" data-toggle="pill" href="#pills-protocols" role="tab" aria-controls="pills-protocols" aria-selected="false">Члены ТК 364</a>
+                        </li>
+                        <li class="col-auto col-lg-4 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block" id="pills-committees-tab" data-toggle="pill" href="#pills-committees" role="tab" aria-controls="pills-committees" aria-selected="false">Структура ТК 364</a>
+                        </li>
+                        <li class="col-auto col-lg-4 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block" id="pills-committees-tab" href="https://www.gost.ru/portal/gost/home/activity/standardization/techcom?portal:componentId=12284de1-cc29-4eaf-9342-9dabdd531503&portal:isSecure=false&portal:portletMode=view&navigationalstate=JBPNS_rO0ABXc4AAZhY3Rpb24AAAABABBjb25jcmV0ZURvY3VtZW50AAZkb2NfaWQAAAABAAMyNDgAB19fRU9GX18*" role="tab" aria-controls="pills-committees" aria-selected="false" target="_blank">ТК 364 на сайте Росстандарта</a>
+                        </li>
+                    </ul>
+                </div><!-- End Big Radiobuttons -->
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-composition" role="tabpanel" aria-labelledby="pills-composition-tab">
+                        <h5 class="text-primary my-4">Руководство ТК&nbsp;364</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-contacts mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th>Председатель технического комитета</th>
+                                        <td colspan="2">Николай Павлович Алёшин<br><small>академик <a href="http://www.ras.ru/" target="_blank">Российской академии наук</a>, доктор технических наук, профессор, заведующий кафедрой <a href="http://mt.bmstu.ru/mt7.php" target="_blank">"Технологии сварки и диагностики" МГТУ им. Н.Э. Баумана</a>, член Национального совета при Президенте РФ по профессиональным квалификациям, Президент СРО Ассоциация «НАКС»</small></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Ответственный секретарь технического комитета</th>
+                                        <td>Чупрак Александр Иванович<br><small>технический директор СРО Ассоциация «НАКС»</small></td>
+                                        <td>
+                                            <div class="mb-2"><i class="d-none d-sm-inline-block fa fa-phone-square mr-2" aria-hidden="true"></i><a href="tel:+74997847275">(499) 784-72-75</a></div>
+                                            <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:tk364@naks.ru">tk364@naks.ru</a></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Юридический адрес</th>
+                                        <td colspan="2">109469, г. Москва, ул. Марьинский парк, д.23, корп.3</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Фактический адрес</th>
+                                        <td colspan="2">109341, г. Москва, ул. Братиславская, д. 6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="col text-center">
-                        <a href="https://www.iso.org/home.html" target="_blank"><img src="/static_root/images/iso_logo.png" class="img-fluid" alt="logo iso"></a>
+                    <div class="tab-pane fade" id="pills-protocols" role="tabpanel" aria-labelledby="pills-protocols-tab">
+                        <h5 class="text-primary my-4">Члены ТК 364</h5>
+                        <form class="mt-4 mb-3">
+                            <h6 class="font-weight-bold">Быстрый поиск</h6>
+                            <div class="form-row">
+                                <div class="form-group col-sm-8 col-xl-4">
+                                    <label for="" class="pb-0 col-form-label-sm">Название</label>
+                                    <input type="text" class="form-control form-control-sm">
+                                </div>
+                                <div class="form-group col-sm-4 col-xl-4">
+                                    <label for="" class="pb-0 col-form-label-sm">Город</label>
+                                    <input type="text" class="form-control form-control-sm">
+                                </div>
+                                <div class="form-group col-sm-8 col-xl-4">
+                                    <label for="" class="pb-0 col-form-label-sm">ФИО руководителя</label>
+                                    <input type="text" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                                    <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
+                        <div class="table-reestr mt-4">
+                            <h6>Найдено записей: <span class="font-weight-bold">50</span></h6>
+                            <div class="row d-flex align-items-center">
+                                <div class="col-sm-5">
+                                    <p class="text-secondary">Элементы 1 - 10 из 50</p>
+                                </div>
+                                <div class="col-sm-7">
+                                    <nav aria-label="..." class="float-sm-right">
+                                        <ul class="pagination pagination-sm">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
+                                            </li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover text-center">
+                                    <thead>
+                                        <tr class="table-secondary">
+                                            <th>Название</th>
+                                            <th>Город</th>
+                                            <th>ФИО руководителя</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>ОАО "Спецтеплохиммонтаж"</td>
+                                            <td>Санкт-Петербург</td>
+                                            <td>Кормашов Дмитрий Борисович</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ГУП "Мосгаз"</td>
+                                            <td>Москва</td>
+                                            <td>Гасангаджиев Гасан Гизбуллатович</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ООО АЦ "Сваркатехсервис"</td>
+                                            <td>Владивосток</td>
+                                            <td>Карташев Анатолий Васильевич</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row d-flex align-items-center">
+                                <div class="col-sm-5">
+                                    <p class="text-secondary">Элементы 1 - 10 из 50</p>
+                                </div>
+                                <div class="col-sm-7">
+                                    <nav aria-label="..." class="float-sm-right">
+                                        <ul class="pagination pagination-sm">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
+                                            </li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col text-center">
-                        <a href="https://www.iec.ch/" target="_blank"><img src="/static_root/images/iec_logo.png" class="img-fluid" alt="logo iec"></a>
+                    <div class="tab-pane fade" id="pills-committees" role="tabpanel" aria-labelledby="pills-committees-tab">
+                        <h5 class="text-primary my-4">Структура ТК&nbsp;364</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-docs mb-0">
+                                <tr class="table-secondary">
+                                    <th colspan="2">ПК 1 Материалы для сварки, наплавки, пайки и газопламенной обработки</th>
+                                </tr>
+                                <tr>
+                                    <th>Дата создания:</th>
+                                    <td>24.01.2007</td>
+                                </tr>
+                                <tr>
+                                    <th>Наименование и номер распорядительного документа:</th>
+                                    <td>Приказ Федерального агентства по техническому регулированию и метрологии от 19.11.2019г. № 2753</td>
+                                </tr>
+                                <tr>
+                                    <th>Секретариат:</th>
+                                    <td>Подкомитет имеет свой секретариат</td>
+                                </tr>
+                                <tr>
+                                    <th>Наименование организации:</th>
+                                    <td>НП "Национальное промышленное сварочное общество"</td>
+                                </tr>
+                                <tr>
+                                    <th>Адрес:</th>
+                                    <td>350020, Краснодарский край, г. Краснодар, ул. Красная 155/1</td>
+                                </tr>
+                                <tr>
+                                    <th>Телефон:</th>
+                                    <td>(861) 255-54-58</td>
+                                </tr>
+                                <tr>
+                                    <th>E-mail:</th>
+                                    <td>np.npso@mail.ru</td>
+                                </tr>
+                                <tr class="table-secondary">
+                                    <th colspan="2">ПК 2 Оборудование для электросварки и наплавки</th>
+                                </tr>
+                                <tr>
+                                    <th>Дата создания:</th>
+                                    <td>24.01.2007</td>
+                                </tr>
+                                <tr>
+                                    <th>Наименование и номер распорядительного документа:</th>
+                                    <td>Приказ Федерального агентства по техническому регулированию и метрологии от 19.11.2019г. № 2753</td>
+                                </tr>
+                                <tr>
+                                    <th>Секретариат:</th>
+                                    <td>Подкомитет имеет свой секретариат</td>
+                                </tr>
+                                <tr>
+                                    <th>Наименование организации:</th>
+                                    <td>ООО «Шторм»</td>
+                                </tr>
+                                <tr>
+                                    <th>Адрес:</th>
+                                    <td>624090, Свердловская область, г. Верхняя Пышма, ул. Бажова, 28</td>
+                                </tr>
+                                <tr>
+                                    <th>Телефон:</th>
+                                    <td>(343) 283-00-50</td>
+                                </tr>
+                                <tr>
+                                    <th>E-mail:</th>
+                                    <td>amf@shtorm-its.ru</td>
+                                </tr>
+                                <tr class="table-secondary">
+                                    <th colspan="2">ПК 3 Оборудование и технологии для газовой сварки, пайки, термической и газопламенной обработки</th>
+                                </tr>
+                                <tr>
+                                    <th>Дата создания:</th>
+                                    <td>19.11.2019</td>
+                                </tr>
+                                <tr>
+                                    <th>Наименование и номер распорядительного документа:</th>
+                                    <td>Приказ Федерального агентства по техническому регулированию и метрологии от 19.11.2019г. № 2753</td>
+                                </tr>
+                                <tr>
+                                    <th>Секретариат:</th>
+                                    <td>Подкомитет имеет свой секретариат</td>
+                                </tr>
+                                <tr>
+                                    <th>Наименование организации:</th>
+                                    <td>ООО «Шторм»</td>
+                                </tr>
+                                <tr>
+                                    <th>Адрес:</th>
+                                    <td>624090, Свердловская область, г. Верхняя Пышма, ул. Бажова, 28</td>
+                                </tr>
+                                <tr>
+                                    <th>Телефон:</th>
+                                    <td>(495) 915-09-60</td>
+                                </tr>
+                                <tr>
+                                    <th>E-mail:</th>
+                                    <td>amf@shtorm-its.ru</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-            <h5 class="text-primary my-4">Новости ТК&nbsp;364</h5>
-            <ul class="list-unstyled">
-                <li class="media">
-                    <!-- <img src="..." class="mr-3" alt="..."> -->
-                    <div class="media-body">
-                        <p class="text-sm text-muted mb-1">26.12.2019</p>
-                        <h6 class="mt-0">Заседание технического комитета по стандартизации ТК 364 «Сварка и родственные процессы»</h6>
-                        <p class="text-sm text-secondary">21 января 2020 года состоится открытое заседание технического комитета по стандартизации ТК 364 «Сварка и родственные процессы».
-                            Место проведения: МГТУ им. Н.Э. Баумана (УЛК, конференц-зал, 3 этаж), г. Москва, Рубцовская наб., 2/18.
-                            Начало заседания в 11.00.</p>
-                        <p class="text-sm text-secondary mb-0">Повестка дня:<a href="#" class="ml-1" target="_blank">открыть</a></p>
-                        <p class="text-sm text-secondary mb-0">Материалы к заседанию:<a href="#" class="ml-1" target="_blank">открыть</a></p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media my-4">
-                    <div class="media-body">
-                        <p class="text-sm text-muted mb-1">02.12.2019</p>
-                        <h6 class="mt-0">Внесены изменения в приказ Росстандарта от 02.10.2017г. № 2064 «Об организации деятельности технического комитета по стандартизации «Сварка и родственные процессы»</h6>
-                        <p class="text-sm text-secondary">Приказом Федерального агентства по техническому регулированию и метрологии (Росстандарт) от 19.11.2019г. № 2753 внесены изменения в приказ Росстандарта от 02.10.2017г. № 2064 «Об организации деятельности технического комитета по стандартизации «Сварка и родственные процессы». Изменения коснулись структуры и состава технического комитета ТК 364.
-                        </p>
-                        <p class="text-sm text-secondary mb-0">Приказ №2753 от 19.11.2019:<a href="#" class="ml-2" target="_blank">открыть</a></p>
-                        <p class="text-sm text-secondary mb-0">Приложение №1 (состав технического комитета по стандартизации "Сварка и родственные процессы"):<a href="#" class="ml-2" target="_blank">открыть</a></p>
-                        <p class="text-sm text-secondary mb-0">Приложение №2 (структура технического комитета по стандартизации "Сварка и родственные процессы"):<a href="#" class="ml-2" target="_blank">открыть</a></p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media">
-                    <div class="media-body">
-                        <div class="text-sm text-muted mb-1">29.08.2019</div>
-                        <h5 class="mt-0">Первая редакции проекта стандарта Специалист сварочного производства</h5>
-                        <p class="text-sm text-secondary mb-0">Для публичного обсуждения размещена первая редакции проекта стандарта</p>
-                        <p class="text-sm text-secondary mb-0">Просим предоставить <a href="#" target="_blank">отзывы</a> в срок до 29.10.2019.</p>
-                    </div>
-                </li>
-            </ul>
         </div>
         <div class="d-none d-md-block col-md-4 col-xl-3">
             <!-- Content Right menu -->
