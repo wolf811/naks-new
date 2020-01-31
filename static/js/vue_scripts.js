@@ -559,7 +559,6 @@ if (document.getElementById('app_registry_personal')) {
                         // console.log(response.data);
                         this.searchResultHTML = response.data;
                         // console.log(response);
-
                     })
                     .catch( error => {
                         console.log(error);
@@ -567,6 +566,9 @@ if (document.getElementById('app_registry_personal')) {
                     .finally( ()=>{
                         console.log('finally sendSearchRequest');
                         this.searching = false;
+                        for (var el of $('td.gtu')) {
+                            el.innerText = el.innerText.replace(/["'(]/g, " (");
+                        }
                     })
             },
             resetSearchQuery: function() {
