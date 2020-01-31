@@ -448,12 +448,17 @@ if (document.getElementById('app_registry_personal')) {
                 selectedCertPointCodes: [],
                 centerListUpdated: false,
                 searching : false,
-                current_page: null
+                pageNumber: null
             }
         },
         beforeMount() {
             this.check_local_storage_and_cookie();
             this.update_dirs();
+        },
+        watch: {
+            pageNumber: function(newPage, oldPage) {
+                this.sendSearchRequest();
+            }
         },
         methods: {
             check_local_storage_and_cookie: function () {
@@ -523,9 +528,23 @@ if (document.getElementById('app_registry_personal')) {
                     .sort((a, b) => a.localeCompare(b, 'ru', {numeric: true, sensivity: 'base'}));
                 // console.log('name', this.selectedCenter, this.selectedCenterPoints);
             },
+            handleClick: function(e) {
+                e.preventDefault();
+                // console.log('target', e.target)
+                if (e.target.matches('.page-link, .page-link *')) {
+                    let currentTarget = e.target;
+                    let currentTargetData = currentTarget.dataset;
+                    let pageNumber = parseInt(currentTargetData.page);
+                    this.pageNumber = pageNumber;
+                }
+            },
+            pushSearch: function() {
+                this.pageNumber = null;
+                this.sendSearchRequest();
+            },
             sendSearchRequest: function() {
                 this.searching = true;
-                let page = this.current_page;
+                let page = this.pageNumber;
                 let payload = new FormData();
                 payload.append("search_request", "i am searching!");
                 if (page) {
@@ -546,7 +565,7 @@ if (document.getElementById('app_registry_personal')) {
                         console.log(error);
                     })
                     .finally( ()=>{
-                        console.log('finnally sendSearchRequest');
+                        console.log('finally sendSearchRequest');
                         this.searching = false;
                     })
             },

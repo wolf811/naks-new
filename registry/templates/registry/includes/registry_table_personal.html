@@ -2,93 +2,110 @@
     <h6>Найдено записей: <span class="font-weight-bold">{{ search_result_count }}</span></h6>
     <div class="row d-flex align-items-center">
         <div class="col-sm-5">
-            <p class="text-secondary">Элементы 1 - 10 из 9465</p>
+            <p class="text-secondary">Элементы {{ records.start_index }} - {{ records.end_index }} из {{ search_result_count }}</p>
         </div>
         <div class="col-sm-7">
+            {% if records.has_other_pages %}
             <nav aria-label="..." class="float-sm-right">
                 <ul class="pagination pagination-sm">
                     {% if records.has_previous %}
-                    <li class="page-item active">
-                        <a data-page="1" class="page-link" href="1">1</a></li>
+                    <li class="page-item">
+                        <a data-page="{{ records.previous_page_number }}" class="page-link" href="#">&laquo;</a></li>
+                    {% else %}
                     <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
-                    </li>
-                    <li class="page-item active">
-                        <a data-page="{{ records.previous_page_number }}" class="page-link" href="#">
-                            {{ records.previous_page_number }}
-                        </a>
+                        <a class="page-link" href="#">&laquo;</a>
                     </li>
                     {% endif %}
-                    <li class="page-item active"><a class="page-link" href="#">{{ records.number }} </a></li>
-                    {% if records.has_next %}
-                    <li class="page-item">
-                        {% comment %} <i class="fa fa-angle-right"></i> {% endcomment %}
-                        <a data-page="{{ records.next_page_number }}" class="page-link" href="#">{{ records.next_page_number }}</a>
+                    {% for i in records.paginator.page_range %}
+                    {% if records.number == i %}
+                    <li class="page-item active">
+                        <a data-page="{{ i }}" class="page-link" href="#">{{ i }}<span class="sr-only">(current)</span></a>
                     </li>
-                    {% if records.next_page_number < records.paginator.num_pages %} <li class="page-item disabled">
-                        <a class="page-link" href="#">...</a>
-                        </li>
-                        <li class="page-item">
-                            <a data-page="{{ records.paginator.num_pages }}" class="page-link" href="#">{{ records.paginator.num_pages }}</a>
+                    {% elif i > records.number|add:'-3' and i < records.number|add:'3' %} <li class="page-item">
+                        <a data-page="{{ i }}" class="page-link" href="#">{{ i }}</span></a>
                         </li>
                         {% endif %}
+                        {% endfor %}
+                        {% if records.has_next %}
+                        <li class="page-item">
+                            <a data-page="{{ records.next_page_number }}" class="page-link" href="#">&raquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
                         {% endif %}
                 </ul>
             </nav>
+            {% endif %}
         </div>
     </div>
-    <div class="table-fit-content mb-3">
-        <table class="table table-responsive table-striped table-bordered table-hover text-center">
-            <thead>
-                <tr class="table-secondary">
-                    <th rowspan="2">ФИО</th>
-                    <th rowspan="2">Шифр клейма</th>
-                    <th rowspan="2">Место работы<br>(Организация)</th>
-                    <th rowspan="2">Должность<br>(Специальность)</th>
-                    <th class="border-bottom-0">Номер удост.</th>
-                    <th rowspan="2">Доп. Атт.</th>
-                    <th colspan="2" class="border-bottom-0">Место аттестации</th>
-                    <th rowspan="2">Дата аттестации</th>
-                    <th rowspan="2">Окончание срока действия удост.</th>
-                    <th rowspan="2">Срок продления</th>
-                    <th rowspan="2">Вид деят.</th>
-                    <th rowspan="2">Область аттестации</th>
-                </tr>
-                <tr class="table-secondary">
-                    <th>Шифр АЦ, Уровень, Номер</th>
-                    <th>АЦ</th>
-                    <th>АП</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for rec in records %}
-                {% include 'registry/includes/registry_table_personal_row.html' %}
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-responsive table-striped table-bordered table-hover text-center">
+        <thead>
+            <tr class="table-secondary">
+                <th rowspan="2">ФИО</th>
+                <th rowspan="2">Шифр клейма</th>
+                <th rowspan="2">Место работы<br>(Организация)</th>
+                <th rowspan="2">Должность<br>(Специальность)</th>
+                <th class="border-bottom-0">Номер удост.</th>
+                <th rowspan="2">Доп. Атт.</th>
+                <th colspan="2" class="border-bottom-0">Место аттестации</th>
+                <th rowspan="2">Дата аттестации</th>
+                <th rowspan="2">Окончание срока действия удост.</th>
+                <th rowspan="2">Срок продления</th>
+                <th rowspan="2">Вид деят.</th>
+                <th rowspan="2">Область аттестации</th>
+            </tr>
+            <tr class="table-secondary">
+                <th>Шифр АЦ, Уровень, Номер</th>
+                <th>АЦ</th>
+                <th>АП</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rec in records %}
+            {% include 'registry/includes/registry_table_personal_row.html' %}
+            {% endfor %}
+        </tbody>
+    </table>
     <div class="row d-flex align-items-center">
         <div class="col-sm-5">
             <p class="text-secondary">Элементы 1 - 10 из 9465</p>
         </div>
         <div class="col-sm-7">
+            {% if records.has_other_pages %}
             <nav aria-label="..." class="float-sm-right">
                 <ul class="pagination pagination-sm">
+                    {% if records.has_previous %}
+                    <li class="page-item">
+                        <a data-page="{{ records.previous_page_number }}" class="page-link" href="#">&laquo;</a></li>
+                    {% else %}
                     <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
+                        <a class="page-link" href="#">&laquo;</a>
                     </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                    {% endif %}
+                    {% for i in records.paginator.page_range %}
+                    {% if records.number == i %}
+                    <li class="page-item active">
+                        <a data-page="{{ i }}" class="page-link" href="#">{{ i }}<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
-                    </li>
+                    {% elif i > records.number|add:'-3' and i < records.number|add:'3' %} <li class="page-item">
+                        <a data-page="{{ i }}" class="page-link" href="#">{{ i }}</span></a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if records.has_next %}
+                        <li class="page-item">
+                            <a data-page="{{ records.next_page_number }}" class="page-link" href="#">&raquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                        {% endif %}
                 </ul>
             </nav>
+            {% endif %}
         </div>
     </div>
 </div>
