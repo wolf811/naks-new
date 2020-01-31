@@ -644,6 +644,17 @@ body {
 }
 
 .table-reestr {
+    .table-fit-content {
+        @media (min-width: 1440px) {
+            width: fit-content;
+            -moz-width: fit-content;
+
+            table {
+                margin: auto;
+            }
+        }
+    }
+
     p {
         font-size: 0.875rem;
     }
@@ -657,7 +668,7 @@ body {
     .table td {
         vertical-align: middle;
         border-bottom: 1px solid #1880e7;
-        padding: 0.25rem;
+        padding: 0.5rem 0.25rem;
     }
 
     .table-secondary {
