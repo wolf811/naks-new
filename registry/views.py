@@ -80,8 +80,8 @@ def personal(request):
         query = reduce(operator.and_, query_list)
         count = RegistryRecordPersonal.objects.filter(query).count()
         records_list = RegistryRecordPersonal.objects.filter(query).order_by('-active_since')
-        # print("---->", records_list.explain())
-        # print("---->", records_list.query)
+        print("---->", records_list.explain())
+        print("---->", records_list.query)
         paginator = Paginator(records_list, 25) # show 25 per page
         page = request.POST.get('page')
         records = paginator.get_page(page)
