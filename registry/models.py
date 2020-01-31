@@ -50,6 +50,7 @@ class RegistryRecordPersonal(RegistryRecord):
         indexes = [
             models.Index(fields=['-active_since',]),
             models.Index(fields=['fio',]),
+            models.Index(fields=['fio', '-active_since']),
         ]
 
 

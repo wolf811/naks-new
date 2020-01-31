@@ -165,9 +165,16 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row align-items-center">
     <div class="col-auto">
-        <button @click.prevent="sendSearchRequest()" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+        <button @click.prevent="pushSearch()" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
         <button @click.prevent="resetSearchQuery()" type="button" class="btn btn-link btn-sm">Сбросить</button>
+    </div>
+    <div class="col-auto">
+        <div v-if="searching">
+        <p class="text-primary text-sm mb-0">
+            Подождите...<i class="fa fa-spinner fa-spin fa-fw text-primary"></i>
+        </p>
+    </div>
     </div>
 </div>

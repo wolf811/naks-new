@@ -36,14 +36,8 @@
                 {% comment %} <input type="hidden" name="search_request" value="Y"> {% endcomment %}
             </div>
             <hr>
-            <div v-if="searching">
-                <p class="text-primary">
-                    Пожалуйста, подождите ...
-                    <i class="fa fa-spinner fa-spin fa-2x fa-fw text-primary"></i>
-                </p>
-            </div>
             <div v-if="searchResultHTML">
-                <div v-html="searchResultHTML"></div>
+                <div v-html="searchResultHTML" @click="handleClick"></div>
             </div>
         </div>
     </div>
