@@ -84,6 +84,7 @@ urlpatterns = [
     path('tk364_sostav/', mainapp.tk364_sostav, name='tk364_sostav'),
     path('tk364_development/', mainapp.tk364_development, name='tk364_development'),
     path('tk364_standarts/', mainapp.tk364_standarts, name='tk364_standarts'),
+    path('tk364_sto/', mainapp.tk364_sto, name='tk364_sto'),
     path('tk364_plan/', mainapp.tk364_plan, name='tk364_plan'),
     path('tk364_fund/', mainapp.tk364_fund, name='tk364_fund'),
     path('tk364_ntd/', mainapp.tk364_ntd, name='tk364_ntd'),

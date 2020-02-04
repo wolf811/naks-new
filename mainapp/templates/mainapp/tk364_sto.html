@@ -1,0 +1,86 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+<div class="container">
+    <h4 class="text-dark mt-5">Технический комитет Росстандарта ТК&nbsp;364</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Реестр СТО</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/tk364/mobil-right-menu-tk364.html' %}
+            </div>
+            <!-- End mobil right main -->
+            <h5 class="text-primary my-4">Реестр стандартов организаций</h5>
+            <form class="mt-4 mb-3">
+                <h6 class="font-weight-bold">Быстрый поиск</h6>
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        <label for="" class="pb-0 col-form-label-sm">№ Свидетельства о регистрации: ТК-364-</label>
+                        <input type="text" class="form-control form-control-sm">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="" class="pb-0 col-form-label-sm">Организация-разработчик стандарта</label>
+                        <input type="text" class="form-control form-control-sm">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        <label for="" class="pb-0 col-form-label-sm">Наименование стандарта организации</label>
+                        <input type="text" class="form-control form-control-sm">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="" class="pb-0 col-form-label-sm">Обозначение стандарта организации</label>
+                        <input type="text" class="form-control form-control-sm">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                        <button type="button" class="btn btn-link btn-sm">Сбросить</button>
+                    </div>
+                </div>
+            </form>
+            <hr>
+            <div class="table-reestr mt-4">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover text-center">
+                        <thead>
+                            <tr class="table-secondary">
+                                <th>№ Свидетельства о регистрации</th>
+                                <th>Дата экспертного заключения</th>
+                                <th>Обозначение и наименование стандарта</th>
+                                <th>Организация-разработчик</th>
+                                <th>Дата утверждения</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/tk364/right-menu-tk364.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

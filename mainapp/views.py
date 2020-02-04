@@ -378,6 +378,13 @@ def tk364_standarts(request):
     }
     return render(request, 'mainapp/tk364_standarts.html', content)
 
+def tk364_sto(request):
+    title = 'ТК-364 - Реестр СТО'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_sto.html', content)
+
 def tk364_plan(request):
     title = 'ТК-364 - План работ'
     content = {
