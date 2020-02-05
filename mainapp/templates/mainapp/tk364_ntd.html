@@ -9,7 +9,7 @@
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb my-4 p-0">
             <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Новости ТК&nbsp;364</li>
+            <li class="breadcrumb-item active" aria-current="page">Нормативные документы в области стандартизации</li>
         </ol>
     </nav>
     <hr>
@@ -20,55 +20,118 @@
                 {% include 'mainapp/includes/tk364/mobil-right-menu-tk364.html' %}
             </div>
             <!-- End mobil right main -->
-            <div class="bg-light p-3 mb-3">
-                <div class="row align-items-center">
-                    <div class="col text-center">
-                        <a href="https://www.gost.ru/portal/gost//home/standarts" target="_blank"><img src="/static_root/images/rst_logo.png" class="img-fluid" alt="logo rst"></a>
+            <h5 class="text-primary my-4">Нормативные документы в области стандартизации</h5>
+            <form class="mt-4 mb-3">
+                <h6 class="font-weight-bold">Быстрый поиск</h6>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="" class="pb-0 col-form-label-sm">№ ГОСТ или наименование</label>
+                        <input type="text" class="form-control form-control-sm">
                     </div>
-                    <div class="col text-center">
-                        <a href="https://www.iso.org/home.html" target="_blank"><img src="/static_root/images/iso_logo.png" class="img-fluid" alt="logo iso"></a>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-outline-primary btn-sm"><i class="fa fa-search"></i> Найти</button>
+                        <button type="button" class="btn btn-link btn-sm">Сбросить</button>
                     </div>
-                    <div class="col text-center">
-                        <a href="https://www.iec.ch/" target="_blank"><img src="/static_root/images/iec_logo.png" class="img-fluid" alt="logo iec"></a>
+                </div>
+            </form>
+            <hr>
+            <div class="table-reestr mt-4">
+                <h6>Найдено записей: <span class="font-weight-bold">50</span></h6>
+                <div class="row d-flex align-items-center">
+                    <div class="col-sm-5">
+                        <p class="text-secondary">Элементы 1 - 10 из 50</p>
+                    </div>
+                    <div class="col-sm-7">
+                        <nav aria-label="..." class="float-sm-right">
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover text-center">
+                        <thead>
+                            <tr class="table-secondary">
+                                <th>№ пп</th>
+                                <th>Номер ГОСТ или ГОСТ Р</th>
+                                <th>Год утв.</th>
+                                <th>Наименование стандарта</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td class='text-left'>ГОСТ 6996-66</td>
+                                <td>1966</td>
+                                <td class='text-left'>Сварные соединения. Методы определения механических свойств</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class='text-left'>ГОСТ 13585-68</td>
+                                <td>1968</td>
+                                <td class='text-left'>Сталь. Метод валиковой пробы для определения допускаемых режимов дуговой сварки и наплавки</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class='text-left'>ГОСТ 2246-70</td>
+                                <td>1970</td>
+                                <td class='text-left'>Проволока стальная сварочная. Технические условия</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class='text-left'>ГОСТ 16882.1-71</td>
+                                <td>1971</td>
+                                <td class='text-left'>Серебряно-медно-фосфорные припои. Метод определения массовой доли серебра</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td class="text-left">ГОСТ 16882.2-71</td>
+                                <td>1971</td>
+                                <td class="text-left">Серебряно-медно-фосфорные припои. Методы определения массовой доли фосфора, свинца, железа и висмута</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row d-flex align-items-center">
+                    <div class="col-sm-5">
+                        <p class="text-secondary">Элементы 1 - 10 из 50</p>
+                    </div>
+                    <div class="col-sm-7">
+                        <nav aria-label="..." class="float-sm-right">
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <h5 class="text-primary my-4">Новости ТК&nbsp;364</h5>
-            <ul class="list-unstyled">
-                <li class="media">
-                    <!-- <img src="..." class="mr-3" alt="..."> -->
-                    <div class="media-body">
-                        <p class="text-sm text-muted mb-1">26.12.2019</p>
-                        <h6 class="mt-0">Заседание технического комитета по стандартизации ТК 364 «Сварка и родственные процессы»</h6>
-                        <p class="text-sm text-secondary">21 января 2020 года состоится открытое заседание технического комитета по стандартизации ТК 364 «Сварка и родственные процессы».
-                            Место проведения: МГТУ им. Н.Э. Баумана (УЛК, конференц-зал, 3 этаж), г. Москва, Рубцовская наб., 2/18.
-                            Начало заседания в 11.00.</p>
-                        <p class="text-sm text-secondary mb-0">Повестка дня:<a href="#" class="ml-1" target="_blank">открыть</a></p>
-                        <p class="text-sm text-secondary mb-0">Материалы к заседанию:<a href="#" class="ml-1" target="_blank">открыть</a></p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media my-4">
-                    <div class="media-body">
-                        <p class="text-sm text-muted mb-1">02.12.2019</p>
-                        <h6 class="mt-0">Внесены изменения в приказ Росстандарта от 02.10.2017г. № 2064 «Об организации деятельности технического комитета по стандартизации «Сварка и родственные процессы»</h6>
-                        <p class="text-sm text-secondary">Приказом Федерального агентства по техническому регулированию и метрологии (Росстандарт) от 19.11.2019г. № 2753 внесены изменения в приказ Росстандарта от 02.10.2017г. № 2064 «Об организации деятельности технического комитета по стандартизации «Сварка и родственные процессы». Изменения коснулись структуры и состава технического комитета ТК 364.
-                        </p>
-                        <p class="text-sm text-secondary mb-0">Приказ №2753 от 19.11.2019:<a href="#" class="ml-2" target="_blank">открыть</a></p>
-                        <p class="text-sm text-secondary mb-0">Приложение №1 (состав технического комитета по стандартизации "Сварка и родственные процессы"):<a href="#" class="ml-2" target="_blank">открыть</a></p>
-                        <p class="text-sm text-secondary mb-0">Приложение №2 (структура технического комитета по стандартизации "Сварка и родственные процессы"):<a href="#" class="ml-2" target="_blank">открыть</a></p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media">
-                    <div class="media-body">
-                        <div class="text-sm text-muted mb-1">29.08.2019</div>
-                        <h5 class="mt-0">Первая редакции проекта стандарта Специалист сварочного производства</h5>
-                        <p class="text-sm text-secondary mb-0">Для публичного обсуждения размещена первая редакции проекта стандарта</p>
-                        <p class="text-sm text-secondary mb-0">Просим предоставить <a href="#" target="_blank">отзывы</a> в срок до 29.10.2019.</p>
-                    </div>
-                </li>
-            </ul>
         </div>
         <div class="d-none d-md-block col-md-4 col-xl-3">
             <!-- Content Right menu -->
