@@ -73,7 +73,7 @@ def personal(request):
         query_list = []
         # import pdb; pdb.set_trace()
         if request.POST.get("fio_query"):
-            fio_query = Q(fio__istartswith=request.POST.get('fio_query'))
+            fio_query = Q(fio__istartswith=request.POST.get('fio_query').upper())
             query_list.append(fio_query)
         if not query_list:
             query_list.append(Q(pk__isnull=False))

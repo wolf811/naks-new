@@ -566,13 +566,14 @@ if (document.getElementById('app_registry_personal')) {
                     .finally( ()=>{
                         console.log('finally sendSearchRequest');
                         this.searching = false;
-                        for (var el of $('td.gtu')) {
-                            el.innerText = el.innerText.replace(/["'(]/g, " (");
-                        }
+                        // for (var el of $('td.gtu')) {
+                        //     el.innerText = el.innerText.replace(/["'(]/g, " (");
+                        // }
                     })
             },
             resetSearchQuery: function() {
                 this.searchResultHTML = null;
+                this.fio_input = '';
             }
         },
         computed: {
