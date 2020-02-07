@@ -89,6 +89,7 @@ urlpatterns = [
     path('tk364_fund/', mainapp.tk364_fund, name='tk364_fund'),
     path('tk364_ntd/', mainapp.tk364_ntd, name='tk364_ntd'),
     path('tk364_lk/', mainapp.tk364_lk, name='tk364_lk'),
+    path('tk364_lk_new_docs/', mainapp.tk364_lk_new_docs, name='tk364_lk_new_docs'),
     path('spks_about/', mainapp.spks, name='spks'),
     path('spks_about_composition/', mainapp.spks_composition, name='spks_composition'),
     path('spks_about_work_plan/', mainapp.spks_work_plan, name='spks_work_plan'),

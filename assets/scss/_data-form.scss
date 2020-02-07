@@ -1,0 +1,15 @@
+.data-form {
+    border-left: 1px solid #007bff;
+    font-size: 0.875rem;
+    color: #6c757d;
+
+    .data-form-title {
+        padding: 1rem;
+        border-bottom: 1px solid #dee2e6;
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .data-form-body {
+        padding-left: 1rem;
+    }
+}

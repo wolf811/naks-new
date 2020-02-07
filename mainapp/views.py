@@ -412,6 +412,13 @@ def tk364_lk(request):
         'title': title
     }
     return render(request, 'mainapp/tk364_lk.html', content)
+
+def tk364_lk_new_docs(request):
+    title = 'ТК-364 - Личный кабинет'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_lk_new_docs.html', content)
 # ============= end TK364 ===============
 
 
