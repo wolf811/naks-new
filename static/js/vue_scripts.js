@@ -434,9 +434,9 @@ if (document.getElementById('app_registry_personal')) {
         data() {
             return {
                 selected_activities: {},
-                stamp_input: '',
                 fio_input: '',
                 company_input: '',
+                stamp_input: '',
                 place_of_att__center: null,
                 place_of_att__point: null,
                 accred_fields: {},
@@ -543,6 +543,11 @@ if (document.getElementById('app_registry_personal')) {
                 this.sendSearchRequest();
             },
             sendSearchRequest: function() {
+                if (this.stamp_input.length > 4) {
+                    this.searchResultHTML = `<p class="text-sm"><i class="text-warning fa fa-exclamation-triangle"></i>
+                    Поле "Клеймо" не может быть больше 4 символов</p>`;
+                    return;
+                }
                 this.searching = true;
                 let page = this.pageNumber;
                 let payload = new FormData();
@@ -550,17 +555,28 @@ if (document.getElementById('app_registry_personal')) {
                 if (page) {
                     payload.append("page", page);
                 }
-                if (this.fio_input.length > 0) {
-                    payload.append('fio_query', this.fio_input)
-                }
+                let inputs = [
+                    ["fio_query", this.fio_input],
+                    ["company_query", this.company_input],
+                    ["stamp_query", this.stamp_input]
+                ];
+                inputs.forEach(el=>{
+                    if (el[1].length > 0) {
+                        // console.log('EL', el);
+                        payload.append(el[0], el[1])
+                    }
+                });
                 axios
                     .post('/registry/personal/', payload)
                     .then(response => {
-                        // console.log(response.data);
-                        this.searchResultHTML = response.data;
-                        // console.log(response);
+                        if (!response.data["specify_request_error"]) {
+                            this.searchResultHTML = response.data;
+                            return
+                        }
+                        this.searchResultHTML = `<p class="text-sm"><i class="text-warning fa fa-exclamation-triangle"></i>
+                        ${response.data["specify_request_error"]}</p>`;
                     })
-                    .catch( error => {
+                    .catch(error => {
                         console.log(error);
                     })
                     .finally( ()=>{

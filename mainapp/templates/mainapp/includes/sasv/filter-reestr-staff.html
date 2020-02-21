@@ -27,7 +27,7 @@
         <div class="form-group row">
             <label for="" class="col-lg-4 col-form-label col-form-label-sm">Организация:</label>
             <div class="col-lg-8">
-                <input type="text" class="form-control form-control-sm">
+                <input v-model="company_input" v-on:keyup.enter="pushSearch" type="text" class="form-control form-control-sm">
             </div>
         </div>
         <div class="form-group row">
@@ -59,7 +59,7 @@
         <div class="form-group row">
             <label for="" class="col-lg-4 col-form-label col-form-label-sm">Клеймо:</label>
             <div class="col-lg-5">
-                <input type="text" class="form-control form-control-sm">
+                <input v-model="stamp_input" v-on:keyup.enter="pushSearch" type="text" class="form-control form-control-sm" :class="{'is-invalid': stamp_input.length > 4}">
             </div>
         </div>
     </div>

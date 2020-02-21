@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 # from users.models import CustomUser
 from .models import RegistryRecordPersonal
 from .forms import *
-from django.http import HttpResponse, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from datetime import datetime, timedelta
 import requests, json
 from registry.utils.registry_import import RegistryRecordAdapter
@@ -62,9 +62,8 @@ def initiate_import(request, year):
         return HttpResponseForbidden('FORBIDDEN')
 
 def personal(request):
-    """ main view for reestr personal page with searching and pagination"""
+    """main view for reestr personal page with searching and pagination"""
     # import pdb; pdb.set_trace()
-    print('LEN request', len(request.POST))
     content = {
         'i_am_content': 'true'
     }
@@ -72,22 +71,32 @@ def personal(request):
         print('REQUEST -------->', request.POST.get('search_request'))
         query_list = []
         # import pdb; pdb.set_trace()
-        if request.POST.get("fio_query"):
-            fio_query = Q(fio__istartswith=request.POST.get('fio_query').upper())
-            query_list.append(fio_query)
+
+        queries_factory = {
+            "fio_query": Q(fio__istartswith=request.POST.get('fio_query').upper()) if request.POST.get('fio_query') else None,
+            "company_query": Q(company__name__icontains=request.POST.get('company_query')) if request.POST.get('company_query') else None,
+            "stamp_query": Q(data__stamp=request.POST.get('stamp_query')) if request.POST.get('stamp_query') else None,
+        }
+        for req in request.POST:
+            if req.endswith('_query') and request.POST.get(req):
+                query_list.append(queries_factory[req])
+
         if not query_list:
             query_list.append(Q(pk__isnull=False))
+
         query = reduce(operator.and_, query_list)
         count = RegistryRecordPersonal.objects.filter(query).count()
-        records_list = RegistryRecordPersonal.objects.filter(query).order_by('-active_since')
-        print("---->", records_list.explain())
-        print("---->", records_list.query)
-        paginator = Paginator(records_list, 25) # show 25 per page
-        page = request.POST.get('page')
-        records = paginator.get_page(page)
-        content.update({
-            "search_result_count": count,
-            "records": records
-            })
-        return render(request, 'registry/includes/registry_table_personal.html', content)
+        if count < 500:
+            records_list = RegistryRecordPersonal.objects.filter(query).order_by('-active_since')
+            print("---->", records_list.explain())
+            print("---->", records_list.query)
+            paginator = Paginator(records_list, 25) # show 25 per page
+            page = request.POST.get('page')
+            records = paginator.get_page(page)
+            content.update({
+                "search_result_count": count,
+                "records": records
+                })
+            return render(request, 'registry/includes/registry_table_personal.html', content)
+        return JsonResponse({"specify_request_error": "Слишком много результатов поиска, уточните запрос: {}".format(count)})
     return render(request, 'registry/registry_main_template.html', content)
