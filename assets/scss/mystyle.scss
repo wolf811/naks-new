@@ -25,17 +25,22 @@ body {
 @import "_header-xs.scss";
 /* HEADER-XS */
 
-/* Footer */
+/* map-block */
 @import "_map-block.scss";
-/* Footer */
+/* map-block */
+
+/* data-form */
+@import "_data-form.scss";
+/* data-form */
 
 /* Footer */
 @import "_footer.scss";
 /* Footer */
 
-/* Footer */
+/* cookie-warning */
 @import "_cookie-warning.scss";
-/* Footer */
+/* cookie-warning */
+
 
 // Центральные кнопки, карта
 .main-activity {
@@ -682,6 +687,7 @@ body {
     }
 }
 
+.btn-group-xs>.btn,
 .btn-xs {
     padding: .1rem .3rem;
     font-size: .75rem;
