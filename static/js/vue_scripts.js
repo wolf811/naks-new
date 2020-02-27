@@ -452,17 +452,45 @@ if (document.getElementById('app_registry_personal')) {
                 udostFiveDigitNumber: '',
                 centerListUpdated: false,
                 searching : false,
-                pageNumber: null
+                pageNumber: null,
+                actSinceStart: '',
+                actSinceEnd: '',
+                actUntilStard: '',
+                actUntilEnd: '',
+                extensionStart: '',
+                extensionEnd: ''
             }
         },
         beforeMount() {
             this.check_local_storage_and_cookie();
             this.update_dirs();
         },
+        mounted() {
+            var vm = this;
+            var pickers = [
+                ['#picker_active_since_start', 'actSinceStart'],
+                ['#picker_active_since_end', 'actSinceEnd'],
+                ['#picker_active_until_start', 'actUntilStart'],
+                ['#picker_active_until_end', 'actUntilEnd'],
+                ['#picker_extension_start', 'extensionStart'],
+                ['#picker_extension_end', 'extensionEnd']
+            ];
+            pickers.forEach(function(p) {
+                $(p[0]).on("dp.change", function() {
+                    var datePickerObj = $(p[0]).data("DateTimePicker").date();
+                    if (datePickerObj) {
+                        vm[p[1]] = datePickerObj._d.toLocaleDateString();
+                    }
+                })
+            })
+        },
         watch: {
             pageNumber: function(newPage, oldPage) {
                 this.sendSearchRequest();
-            }
+            },
+            // actSinceStart: function(newD, oldD) {
+            //     console.log(newD, oldD);
+            // },
         },
         methods: {
             check_local_storage_and_cookie: function () {
