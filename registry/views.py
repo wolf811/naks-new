@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 # from users.models import CustomUser
 from .models import RegistryRecordPersonal
+from reestr.models import AccreditedCertificationPoint, AccreditedCenter
 from .forms import *
 from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from datetime import datetime, timedelta
@@ -68,17 +69,50 @@ def personal(request):
         'i_am_content': 'true'
     }
     if request.POST.get('search_request'):
-        print('REQUEST -------->', request.POST.get('search_request'))
-        query_list = []
+        print('REQUEST -------->', request.POST)
+
         # import pdb; pdb.set_trace()
+        # start filling query list to use and_ operator
+        query_list = []
 
         queries_factory = {
-            "fio_query": Q(fio__istartswith=request.POST.get('fio_query').upper()) if request.POST.get('fio_query') else None,
-            "company_query": Q(company__name__icontains=request.POST.get('company_query')) if request.POST.get('company_query') else None,
-            "stamp_query": Q(data__stamp=request.POST.get('stamp_query')) if request.POST.get('stamp_query') else None,
+            "certcenter_query": Q(
+                data__center_pk=int(request.POST.get(
+                'certcenter_query'))) if request.POST.get('certcenter_query') else None,
+            "certpoint_query": Q(
+                data__cert_point_pk=AccreditedCertificationPoint.objects.filter(
+                parent__id=request.POST.get("certcenter_query"),
+                short_code=request.POST.get("certpoint_query")).first().pk) if all(
+                    [request.POST.get("certpoint_query"), request.POST.get(
+                        "certcenter_query")]) else None,
+            "fio_query": Q(
+                fio__istartswith=request.POST.get(
+                'fio_query')) if request.POST.get("fio_query") else None,
+            "company_query": Q(
+                company__name__icontains=request.POST.get(
+                'company_query')) if request.POST.get("company_query") else None,
+            "stamp_query": Q(
+                data__stamp=request.POST.get(
+                'stamp_query')) if request.POST.get("stamp_query") else None,
+            "udost_center_code_query": Q(
+                data__udost_center_code_id=int(request.POST.get("udost_center_code_query"))) if request.POST.get(
+                    "udost_center_code_query") else None,
+            "udost_level_query": Q(
+                data__level_id=int(request.POST.get("udost_level_query"))) if request.POST.get(
+                    "udost_level_query") else None,
+            "udost_five_digit_number_query": Q(
+                data__udost_5digit_number=request.POST.get(
+                    "udost_five_digit_number_query")) if request.POST.get(
+                        "udost_five_digit_number_query") else None,
+            "active_since_start_query": Q(
+                active_since__gte=datetime.date(request.POST.get("active_since_start_query"))) if \
+                request.POST.get("active_since_start_query") else None
         }
+
+        # import pdb; pdb.set_trace()
+
         for req in request.POST:
-            if req.endswith('_query') and request.POST.get(req):
+            if req.endswith('_query'):
                 query_list.append(queries_factory[req])
 
         if not query_list:

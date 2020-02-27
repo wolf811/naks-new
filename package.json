@@ -1,7 +1,6 @@
 {
   "name": "naks-new",
   "version": "1.0.0",
-  "description": "",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,5 +18,9 @@
   "devDependencies": {
     "eslint": "^6.4.0",
     "eslint-plugin-vue": "^6.0.1"
-  }
+  },
+  "dependencies": {
+    "vue-datetime-picker": "^0.2.1"
+  },
+  "description": ""
 }

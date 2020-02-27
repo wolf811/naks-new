@@ -11,7 +11,7 @@
                 </select>
             </div>
             <div class="col-6 col-lg-3">
-                <select class="form-control form-control-sm" :disabled="selectedCertPointCodes.length == 0">
+                <select v-model="selectedCertPoint" id="selectCertPointID" class="form-control form-control-sm" :disabled="selectedCertPointCodes.length == 0">
                     <option v-if="selectedCertPointCodes.length == 0" value="" disabled selected>АП</option>
                     <option v-else disabled selected>АП</option>
                     <option v-for="cert_point_code in selectedCertPointCodes">[[ cert_point_code ]]</option>
@@ -33,27 +33,19 @@
         <div class="form-group row">
             <label for="" class="col-lg-4 col-form-label col-form-label-sm">№ удостоверения:</label>
             <div class="col-6 col-sm-4 col-lg-3">
-                <select class="form-control form-control-sm">
+                <select v-model="selectedUdostCenterCodeId" class="form-control form-control-sm">
                     <option></option>
-                    <option>АР-1ГАЦ</option>
-                    <option>АР-ГАЦ</option>
-                    <option>БР-АЦ</option>
-                    <option>БР-1ГАЦ</option>
-                    <option>БР-ГАЦ</option>
-                    <option>ВВР-1АЦ</option>
+                    <option v-for="cnt in getAttPlaces" :value="cnt.id" >[[ cnt.center_name ]]</option>
                 </select>
             </div>
             <div class="col-6 col-sm-4 col-lg-2">
-                <select class="form-control form-control-sm">
+                <select v-model="selectedUdostLevelId" class="form-control form-control-sm">
                     <option></option>
-                    <option>I</option>
-                    <option>II</option>
-                    <option>III</option>
-                    <option>IV</option>
+                    <option v-for="lv of accred_fields.level" :value="lv.id">[[ lv.level ]]</option>
                 </select>
             </div>
             <div class="col-6 col-sm-4 col-lg-3 mt-3 mt-sm-0">
-                <input type="text" class="form-control form-control-sm" placeholder="">
+                <input v-model="udostFiveDigitNumber" v-on:keyup.enter="pushSearch" type="text" class="form-control form-control-sm" :class="{'is-invalid': udostFiveDigitNumber.length > 5}" placeholder="">
             </div>
         </div>
         <div class="form-group row">
@@ -68,7 +60,7 @@
             <label for="" class="col-lg-4 col-form-label col-form-label-sm">Дата аттестации:</label>
             <div class="col col-lg-4">
                 <div class="input-group input-group-sm date" name="datepicker">
-                    <input type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
+                    <input id="activeSinceStart" type="text" class="form-control rounded-0" placeholder="дд.мм.гггг" aria-label="дд.мм.гггг">
                     <div class="input-group-append input-group-addon">
                         <button class="btn btn-outline-secondary rounded-0" type="button"><i class="fa fa-calendar"></i></button>
                     </div>

@@ -446,6 +446,9 @@ if (document.getElementById('app_registry_personal')) {
                 selectedCenter: '',
                 selectedCertPoint: '',
                 selectedCertPointCodes: [],
+                selectedUdostCenterCodeId: '',
+                selectedUdostLevelId: '',
+                udostFiveDigitNumber: '',
                 centerListUpdated: false,
                 searching : false,
                 pageNumber: null
