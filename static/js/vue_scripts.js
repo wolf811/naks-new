@@ -437,13 +437,14 @@ if (document.getElementById('app_registry_personal')) {
                 fio_input: '',
                 company_input: '',
                 stamp_input: '',
-                place_of_att__center: null,
-                place_of_att__point: null,
+                // place_of_att__center: null,
+                // place_of_att__point: null,
                 accred_fields: {},
                 searchResultHTML: null,
                 centersAndPoints: [],
                 reestrCenters: [],
                 selectedCenter: '',
+                selectedCenterId: '',
                 selectedCertPoint: '',
                 selectedCertPointCodes: [],
                 selectedUdostCenterCodeId: '',
@@ -525,6 +526,7 @@ if (document.getElementById('app_registry_personal')) {
                 this.selectedCenter = event.target.options[event.target.selectedIndex].dataset.name;
                 // don't forget how you got this f..ing ingex!
                 var id = event.target.options[event.target.selectedIndex].dataset.id;
+                this.selectedCenterId = id;
                 this.selectedCertPointCodes = this.reestrCenters
                     .filter(item=>item.id==id)[0]
                     .cert_point_codes
@@ -561,10 +563,12 @@ if (document.getElementById('app_registry_personal')) {
                 let inputs = [
                     ["fio_query", this.fio_input],
                     ["company_query", this.company_input],
-                    ["stamp_query", this.stamp_input]
+                    ["stamp_query", this.stamp_input],
+                    ["udost_center_code_query", this.selectedUdostCenterCodeId],
+                    ["certcenter_query", this.selectedCenterId],
                 ];
                 inputs.forEach(el=>{
-                    if (el[1].length > 0) {
+                    if (el[1].length > 0 || el[1] > 0) {
                         // console.log('EL', el);
                         payload.append(el[0], el[1])
                     }
@@ -593,6 +597,11 @@ if (document.getElementById('app_registry_personal')) {
             resetSearchQuery: function() {
                 this.searchResultHTML = null;
                 this.fio_input = '';
+                this.selectedCenter = '',
+                this.selectedCenterId = '',
+                this.selectedUdostCenterCodeId = '',
+                $("#selectCenterID").prop("selectedIndex", 0);
+                $("#selectCertPointID").prop("selectedIndex", 0);
             }
         },
         computed: {
