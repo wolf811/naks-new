@@ -72,7 +72,7 @@
     </div>
     <div class="row align-items-center">
         <div class="col-sm-5">
-            <p class="text-secondary">Элементы 1 - 10 из 9465</p>
+            <p class="text-secondary">Элементы {{ records.start_index }} - {{ records.end_index }} из {{ search_result_count }}</p>
         </div>
         <div class="col-sm-7">
             {% if records.has_other_pages %}

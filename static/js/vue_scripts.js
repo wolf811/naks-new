@@ -434,31 +434,63 @@ if (document.getElementById('app_registry_personal')) {
         data() {
             return {
                 selected_activities: {},
-                stamp_input: '',
                 fio_input: '',
                 company_input: '',
-                place_of_att__center: null,
-                place_of_att__point: null,
+                stamp_input: '',
+                // place_of_att__center: null,
+                // place_of_att__point: null,
                 accred_fields: {},
                 searchResultHTML: null,
                 centersAndPoints: [],
                 reestrCenters: [],
                 selectedCenter: '',
+                selectedCenterId: '',
                 selectedCertPoint: '',
                 selectedCertPointCodes: [],
+                selectedUdostCenterCodeId: '',
+                selectedUdostLevelId: '',
+                udostFiveDigitNumber: '',
                 centerListUpdated: false,
                 searching : false,
-                pageNumber: null
+                pageNumber: null,
+                actSinceStart: '',
+                actSinceEnd: '',
+                actUntilStard: '',
+                actUntilEnd: '',
+                extensionStart: '',
+                extensionEnd: ''
             }
         },
         beforeMount() {
             this.check_local_storage_and_cookie();
             this.update_dirs();
         },
+        mounted() {
+            var vm = this;
+            var pickers = [
+                ['#picker_active_since_start', 'actSinceStart'],
+                ['#picker_active_since_end', 'actSinceEnd'],
+                ['#picker_active_until_start', 'actUntilStart'],
+                ['#picker_active_until_end', 'actUntilEnd'],
+                ['#picker_extension_start', 'extensionStart'],
+                ['#picker_extension_end', 'extensionEnd']
+            ];
+            pickers.forEach(function(p) {
+                $(p[0]).on("dp.change", function() {
+                    var datePickerObj = $(p[0]).data("DateTimePicker").date();
+                    if (datePickerObj) {
+                        vm[p[1]] = datePickerObj._d.toLocaleDateString();
+                    }
+                })
+            })
+        },
         watch: {
             pageNumber: function(newPage, oldPage) {
                 this.sendSearchRequest();
-            }
+            },
+            // actSinceStart: function(newD, oldD) {
+            //     console.log(newD, oldD);
+            // },
         },
         methods: {
             check_local_storage_and_cookie: function () {
@@ -522,6 +554,7 @@ if (document.getElementById('app_registry_personal')) {
                 this.selectedCenter = event.target.options[event.target.selectedIndex].dataset.name;
                 // don't forget how you got this f..ing ingex!
                 var id = event.target.options[event.target.selectedIndex].dataset.id;
+                this.selectedCenterId = id;
                 this.selectedCertPointCodes = this.reestrCenters
                     .filter(item=>item.id==id)[0]
                     .cert_point_codes
@@ -543,6 +576,11 @@ if (document.getElementById('app_registry_personal')) {
                 this.sendSearchRequest();
             },
             sendSearchRequest: function() {
+                if (this.stamp_input.length > 4) {
+                    this.searchResultHTML = `<p class="text-sm"><i class="text-warning fa fa-exclamation-triangle"></i>
+                    Поле "Клеймо" не может быть больше 4 символов</p>`;
+                    return;
+                }
                 this.searching = true;
                 let page = this.pageNumber;
                 let payload = new FormData();
@@ -550,17 +588,30 @@ if (document.getElementById('app_registry_personal')) {
                 if (page) {
                     payload.append("page", page);
                 }
-                if (this.fio_input.length > 0) {
-                    payload.append('fio_query', this.fio_input)
-                }
+                let inputs = [
+                    ["fio_query", this.fio_input],
+                    ["company_query", this.company_input],
+                    ["stamp_query", this.stamp_input],
+                    ["udost_center_code_query", this.selectedUdostCenterCodeId],
+                    ["certcenter_query", this.selectedCenterId],
+                ];
+                inputs.forEach(el=>{
+                    if (el[1].length > 0 || el[1] > 0) {
+                        // console.log('EL', el);
+                        payload.append(el[0], el[1])
+                    }
+                });
                 axios
                     .post('/registry/personal/', payload)
                     .then(response => {
-                        // console.log(response.data);
-                        this.searchResultHTML = response.data;
-                        // console.log(response);
+                        if (!response.data["specify_request_error"]) {
+                            this.searchResultHTML = response.data;
+                            return
+                        }
+                        this.searchResultHTML = `<p class="text-sm"><i class="text-warning fa fa-exclamation-triangle"></i>
+                        ${response.data["specify_request_error"]}</p>`;
                     })
-                    .catch( error => {
+                    .catch(error => {
                         console.log(error);
                     })
                     .finally( ()=>{
@@ -574,6 +625,11 @@ if (document.getElementById('app_registry_personal')) {
             resetSearchQuery: function() {
                 this.searchResultHTML = null;
                 this.fio_input = '';
+                this.selectedCenter = '',
+                this.selectedCenterId = '',
+                this.selectedUdostCenterCodeId = '',
+                $("#selectCenterID").prop("selectedIndex", 0);
+                $("#selectCertPointID").prop("selectedIndex", 0);
             }
         },
         computed: {
