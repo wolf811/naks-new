@@ -523,6 +523,13 @@ def spks_standarts_ok(request):
     }
     return render(request, 'mainapp/spks_standarts_ok.html', content)
 
+def spks_standarts_new(request):
+    title = 'СПКС - Профессиональные стандарты'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/spks_standarts_new.html', content)
+
 def spks_cok018(request):
     title = 'СПКС - ЦОК-018'
     content = {

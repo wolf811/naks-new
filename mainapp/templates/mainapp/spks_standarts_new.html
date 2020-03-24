@@ -1,0 +1,240 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+<div class="container">
+    <h4 class="text-dark mt-5">Совет по профессиональным квалификациям в области сварки (СПКС)</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Разработка профессиональных стандартов</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-xl-9">
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/spks/mobil-right-menu-spks.html' %}
+            </div>
+            <!-- End mobil right main -->
+            <div class="main-content mt-4">
+                <!-- <h5 class="text-primary my-4">Разработка профессиональных стандартов</h5> -->
+                <!-- Big Radiobuttons -->
+                <div class="show-units">
+                    <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
+                        <li class="col-auto col-lg-6 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block active" id="pills-comiss-tab" data-toggle="pill" href="#pills-comiss" role="tab" aria-controls="pills-comiss" aria-selected="true">Актуализация профессиональных стандартов</a>
+                        </li>
+                        <li class="col-auto col-lg-6 nav-item mb-4">
+                            <a class="btn btn-outline-danger btn-block" id="pills-comiss-central-tab" data-toggle="pill" href="#pills-comiss-central" role="tab" aria-controls="pills-comiss-central" aria-selected="false">Разрабатываемые стандарты</a>
+                        </li>
+                    </ul>
+                </div><!-- End Big Radiobuttons -->
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-comiss" role="tabpanel" aria-labelledby="pills-comiss-tab">
+                        <h5 class="text-primary my-4">Актуализация профессиональных стандартов</h5>
+                        <p class="text-secondary">План актуализации профессиональных стандартов в области сварки и родственных процессов, неразрушающего контроля и разрушающих испытаний сварных соединений:</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-contacts mb-3">
+                                <thead>
+                                    <tr class="table-secondary">
+                                        <th>Действующий профессиональный стандарт</th>
+                                        <th>Проект профессионального стандарта</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>1. Сварщик</th>
+                                        <td>
+                                            <p class="mb-1">1. Сварщик ручной дуговой сварки</p>
+                                            <p class="mb-1">2. Сварщик газовой сварки</p>
+                                            <p class="mb-1">3. Сварщик ручной дуговой сварки неплавящимся электродом в защитном газе</p>
+                                            <p class="mb-1">4. Сварщик механизированной дуговой сварки плавящимся электродом в защитном газе</p>
+                                            <p class="mb-1">5. Сварщик механизированной дуговой сварки самозащитной проволокой</p>
+                                            <p class="mb-1">6. Сварщик механизированной дуговой сварки под флюсом</p>
+                                            <p class="mb-1">7. Сварщик термитной сварки</p>
+                                            <p class="mb-1">8. Сварщик закладными нагревателями полимерных материалов</p>
+                                            <p class="mb-1">9. Сварщик нагретым газом полимерных материалов</p>
+                                            <p class="mb-1">10. Сварщик нагретым инструментом полимерных материалов</p>
+                                            <p class="mb-0">11. Сварщик экструзионной сварки полимерных материалов</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>2. Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</th>
+                                        <td>
+                                            <p class="mb-1">12. Сварщик-оператор автоматической сварки плавлением металлических материалов</p>
+                                            <p class="mb-1">13. Сварщик-оператор автоматической сварки давлением</p>
+                                            <p class="mb-1">14. Сварщик-оператор автоматической сварки высококонцентрированным источником нагрева</p>
+                                            <p class="mb-0">15. Сварщик-оператор роботизированной сварки</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>3. Резчик термической резки металлов</th>
+                                        <td>
+                                            <p class="mb-0">16. Резчик термической резки металлов</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>4. Контролер сварочных работ</th>
+                                        <td>
+                                            <p class="mb-0">17. Контролер сварочных работ</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>5. Специалист сварочного производства</th>
+                                        <td>
+                                            <p class="mb-0">18. Специалист сварочного производства</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>6. Специалист по неразрушающему контролю</th>
+                                        <td>
+                                            <p class="mb-1">19. Дефектоскопист по визуальному и измерительному контролю</p>
+                                            <p class="mb-1">20. Дефектоскопист по ультразвуковому контролю</p>
+                                            <p class="mb-1">21. Дефектоскопист рентгено-, гаммаграфирования</p>
+                                            <p class="mb-0">22. Дефектоскопист по магнитному контролю</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>7. Специалист по механическим испытаниям сварных соединений и наплавленного металла</th>
+                                        <td>
+                                            <p class="mb-0">31. Лаборант по физико-механическим испытаниям</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-secondary"><strong>20.12.2019</strong> В соответствии с приказом Министерства труда и социальной защиты Российской Федерации от 30 сентября 2014 г. N 671н «Об утверждении методических рекомендаций по организации профессионально-общественного обсуждения и экспертизы проектов профессиональных стандартов» размещены обобщенные результаты обсуждения проектов актуализированных профессиональных стандартов.</p>
+                    </div>
+                    <div class="tab-pane fade" id="pills-comiss-central" role="tabpanel" aria-labelledby="pills-comiss-central-tab">
+                        <h5 class="text-primary my-4">Разрабатываемые стандарты</h5>
+                        <div class="table-reestr mb-3">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover text-center">
+                                    <thead>
+                                        <tr class="table-secondary">
+                                            <th>Наименование проекта стандарта</th>
+                                            <th>Стадия</th>
+                                            <th>Дата начала</th>
+                                            <th>Дата окончания</th>
+                                            <th>Количество отзывов</th>
+                                            <th>Сводка отзывов</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Дефектоскопист по акустико-эмиссионному контролю</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>11</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Дефектоскопист по вибрационному контролю</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>14</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Дефектоскопист по визуальному и измерительному контролю</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>27</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Сварщик механизированной дуговой сварки плавящимся электродом в защитном газе</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>2</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Дефектоскопист по акустико-эмиссионному контролю</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>11</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Дефектоскопист по вибрационному контролю</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>14</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Дефектоскопист по визуальному и измерительному контролю</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>27</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Сварщик механизированной дуговой сварки плавящимся электродом в защитном газе</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>2</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Дефектоскопист по акустико-эмиссионному контролю</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>11</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Дефектоскопист по вибрационному контролю</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>14</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Дефектоскопист по визуальному и измерительному контролю</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>27</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left"><a href="#">Сварщик механизированной дуговой сварки плавящимся электродом в защитном газе</a></td>
+                                            <td>Первая редакция</td>
+                                            <td>29.08.2019</td>
+                                            <td>29.10.2019</td>
+                                            <td>2</td>
+                                            <td><a href="#" class="btn btn-outline-primary btn-xs">Скачать</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p class="text-secondary">Портал разработки профессиональных стандартов и квалификаций:<a href="http://dev.nspkrf.ru/" class="ml-2" target="_blank">http://dev.nspkrf.ru/</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-4 col-xl-3">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/spks/right-menu-spks.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}

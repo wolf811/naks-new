@@ -53,9 +53,9 @@
             </div>
             <div id="collapse_12" class="collapse {% if 'spks_standarts' in request.path %}show{% endif %}" aria-labelledby="heading_02" data-parent="#accordion_spks">
                 <div class="card-body">
-                    <a href="{% url 'spks_standarts_ok' %}" class="dropdown-item {% if '/spks_standarts/' in request.path %}active{% endif %}">Утвержденные профессиональные стандарты</a>
+                    <a href="{% url 'spks_standarts_ok' %}" class="dropdown-item {% if '/spks_standarts_ok/' in request.path %}active{% endif %}">Утвержденные профессиональные стандарты</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Разработка профессиональных стандартов</a>
+                    <a href="{% url 'spks_standarts_new' %}" class="dropdown-item {% if '/spks_standarts_new/' in request.path %}active{% endif %}">Разработка профессиональных стандартов</a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">Разработка проектов квалификаций</a>
                 </div>
