@@ -1,0 +1,66 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <!-- Include FILTER-BLOCK -->
+    {% include 'reestradmin/includes/filter-webinars.html' %}
+    <!-- End Include FILTER-BLOCK -->
+    <div class="container-fluid">
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+        <div class="table-responsive table-no-overflow">
+            <table class="table table-hover table-bordered table-main">
+                <thead>
+                    <tr class="active">
+                        <th>Дата вебинара</th>
+                        <th>Наименование</th>
+                        <th colspan="3">Управление вебинаром</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>19.02.2018</td>
+                        <td class="text-left">Группа спецподготовки на 25.04.2020</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-outline-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Управление вебинаром"><i class="fa fa-cogs mr-1"></i>Вебинар<i class="fa fa-angle-down ml-1"></i></button>
+                                <div class="dropdown-menu">
+                                    <h6 class="dropdown-header">Управление доступом</h6>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-link mr-1"></i>Ссылка на регистрацию</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-link mr-1"></i>Free ссылка на регистрацию</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-link mr-1"></i>Ссылка на вебинар</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-eye mr-1"></i>Открыть доступ</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-envelope mr-1"></i>Сделать рассылку</a>
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="dropdown-header">Управление трансляцией</h6>
+                                    <a class="dropdown-item disabled" href="#">Трансляций нет</a>
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="dropdown-header">Другие действия</h6>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-outline-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Запись вебинара"><i class="fa fa-film mr-1"></i>Запись<i class="fa fa-angle-down ml-1"></i></button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-video-camera mr-1"></i>01.04.2020 02:51:05 (2 мин.)</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-video-camera mr-1"></i>01.04.2020 02:51:05 (30 мин.)</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-xs" type="button"><i class="fa fa-users mr-1"></i>Участники</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+    </div>
+</div>
+{% endblock %}

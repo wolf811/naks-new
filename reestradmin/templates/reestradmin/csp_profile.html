@@ -1,0 +1,44 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="accordion accordion-main" id="accordionProfileCsp">
+        <div class="card">
+            <a href="#" class="card-header active" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-angle-down mr-2"></i>Сведения о центре</a>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionProfileCsp">
+                <div class="card-body">
+                    <!-- Include profile-info -->
+                    {% include 'reestradmin/includes/csp/profile-info.html' %}
+                    <!-- End Include profile-info -->
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <a href="#" class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-angle-down mr-2"></i>Область деятельности</a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionProfileCsp">
+                <div class="card-body">
+                    <!-- Include profile-activity -->
+                    {% include 'reestradmin/includes/csp/profile-activity.html' %}
+                    <!-- End Include profile-activity -->
+                </div>
+            </div>
+        </div>
+        {% comment %} <div class="card">
+            <a href="#" class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseTrhee" aria-expanded="true" aria-controls="collapseTrhee"><i class="fa fa-angle-down mr-2"></i>Состав комиссии</a>
+            <div id="collapseTrhee" class="collapse" aria-labelledby="headingThree" data-parent="#accordionProfileCsp">
+                <div class="card-body">
+                    {% include 'reestradmin/includes/center_acsm_experts.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <a href="#" class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour"><i class="fa fa-angle-down mr-2"></i>Подразделения</a>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionProfileCsp">
+                <div class="card-body">
+                    {% include 'reestradmin/includes/org_profile_units.html' %}
+                </div>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</div>
+{% endblock %}

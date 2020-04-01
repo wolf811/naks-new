@@ -203,6 +203,12 @@ body {
 }
 
 // END CONTENT styles
+.table-no-overflow {
+    @media (min-width: 768px) {
+        overflow-x: inherit;
+    }
+
+}
 
 .table {
     color: #333;
@@ -223,6 +229,14 @@ body {
         font-size: 0.8rem;
         vertical-align: middle;
         padding: 0.5rem;
+    }
+}
+
+.table-main {
+    .dropdown-menu {
+        .dropdown-header {
+            font-weight: bold;
+        }
     }
 }
 

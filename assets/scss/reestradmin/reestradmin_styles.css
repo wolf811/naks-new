@@ -306,7 +306,6 @@ footer {
   @media screen and (max-width: 575px) {
     .centers-list .left-main {
       position: static; } }
-
 .centers-list .nav {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem; }
@@ -483,6 +482,10 @@ body {
 .btn-add-instruction {
   display: none; }
 
+@media (min-width: 768px) {
+  .table-no-overflow {
+    overflow-x: inherit; } }
+
 .table {
   color: #333; }
   .table tr.active th {
@@ -497,6 +500,9 @@ body {
     font-size: 0.8rem;
     vertical-align: middle;
     padding: 0.5rem; }
+
+.table-main .dropdown-menu .dropdown-header {
+  font-weight: bold; }
 
 .table-sm td,
 .table-sm th {

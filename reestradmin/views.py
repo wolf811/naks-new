@@ -16,6 +16,13 @@ def centers_list(request):
     }
     return render(request, 'reestradmin/centers_list.html', content)
 
+def csp_profile(request):
+    title = 'ЭДО - Профиль центра'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/csp_profile.html', content)
+
 def center_acsm_edit(request):
     title = 'ЭДО - Профиль центра'
     content = {
@@ -72,3 +79,10 @@ def certificates_list(request):
         'title': title
     }
     return render(request, 'reestradmin/certificates_list.html', content)
+
+def webinars(request):
+    title = 'ЭДО - Вебинары'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/webinars.html', content)
