@@ -1,0 +1,51 @@
+<div class="modal fade" id="modal-add-webinar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавить вебинар</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-row mb-3">
+                        <div class="col-6 col-sm-4">
+                            <label for="" class="col-form-label-sm">Дата вебинара:</label>
+                            <input type="date" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-form-label-sm">Название вебинара:</label>
+                        <textarea class="form-control" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-form-label-sm">Загрузить презентацию: <a href="#" data-toggle="tooltip" data-placement="top" title="Загружать файл в формате PDF, не более 3Mb"><i class="fa fa-info-circle"></i></a></label>
+                        <div class="input-group input-group-sm mb-3">
+                            <input type="file" class="form-control">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" title="Загрузить"><i class="fa fa-download"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <a href="#" class="form-control text-primary bg-light" target="_blank">document.pdf</a>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" title="Удалить"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="alert alert-info" role="alert">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="paidCheck">
+                            <label class="custom-control-label" for="paidCheck">платный вебинар</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">Сохранить</button>
+                    <a href="#" class="btn btn-outline-secondary btn-sm" data-dismiss="modal" role="button">Закрыть</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

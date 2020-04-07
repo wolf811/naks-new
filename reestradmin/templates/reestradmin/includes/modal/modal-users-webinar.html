@@ -1,0 +1,219 @@
+<div class="modal fade" id="modal-users-webinar" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Зарегистрированные участники</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <p><strong>Даты назначения экспертов выводятся в случаях:</strong></p>
+                        <p><strong>1)</strong> прошедшие даты: прошло не больше 3х дней с окончания назначенной даты;</p>
+                        <p class="mb-0"><strong>2)</strong> даты в будущем: назначена не позднее текущей даты+2 месяца.</p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div> -->
+                <ul class="nav nav-tabs mb-3" id="usersWebinar" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="regUsers" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Зарегистрировались</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="onlineUsers" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Онлайн</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="onlineUsersUnic" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Онлайн (уникальных)</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="usersWebinarContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="regUsers">
+                        <p class="text-sm">Всего:<span class="ml-2 text-bold">6</span></p>
+                        <div class="table-responsive table-modal-scroll mb-0">
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead>
+                                    <tr class="table-active">
+                                        <th>#</th>
+                                        <th>ФИО</th>
+                                        <th>Организация</th>
+                                        <th>Группа</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav aria-label="...">
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-lonlineUsers">
+                        <p class="text-sm">Всего:<span class="ml-2 text-bold">4</span></p>
+                        <div class="table-responsive table-modal-scroll mb-0">
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead>
+                                    <tr class="table-active">
+                                        <th>#</th>
+                                        <th>ФИО</th>
+                                        <th>Организация</th>
+                                        <th>Группа</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav aria-label="...">
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="onlineUsersUnic">
+                        <p class="text-sm">Всего:<span class="ml-2 text-bold">4</span></p>
+                        <div class="table-responsive table-modal-scroll mb-0">
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead>
+                                    <tr class="table-active">
+                                        <th>#</th>
+                                        <th>ФИО</th>
+                                        <th>Организация</th>
+                                        <th>Группа</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Иванов Роман Александрович</td>
+                                        <td>ООО "Сварка трубопроводов"</td>
+                                        <td>группа спецподготовки</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav aria-label="...">
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="submit" class="btn btn-primary btn-sm">Подтвердить</button> -->
+                <a href="#" class="btn btn-outline-secondary btn-sm" data-dismiss="modal" role="button">Закрыть</a>
+            </div>
+        </div>
+    </div>
+</div>

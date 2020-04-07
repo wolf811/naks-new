@@ -23,6 +23,20 @@ def csp_profile(request):
     }
     return render(request, 'reestradmin/csp_profile.html', content)
 
+def csp_groups(request):
+    title = 'ЭДО - Группы спецподготовки'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/csp_groups.html', content)
+
+def csp_add_group(request):
+    title = 'ЭДО - Группы спецподготовки'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/csp_add_group.html', content)
+
 def center_acsm_edit(request):
     title = 'ЭДО - Профиль центра'
     content = {

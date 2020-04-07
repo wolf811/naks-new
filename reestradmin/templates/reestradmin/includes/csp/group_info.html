@@ -1,0 +1,43 @@
+{% load static %}
+<div class="container">
+    <form class="editing-form shadow-sm">
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Период проведения спецподготовки</label>
+            <div class="col-sm-4 col-lg-2 mb-3 mb-md-0">
+                <input type="date" class="form-control form-control-sm">
+            </div>
+            <div class="col-sm-4 col-lg-2">
+                <input type="date" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Название группы</label>
+            <div class="col-sm-8">
+                <textarea class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Загрузить документ</label>
+            <div class="col-sm-8 col-lg-4">
+                <div class="input-group input-group-sm">
+                    <input type="file" class="form-control">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" title="Загрузить"><i class="fa fa-download"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Загрузить документ</label>
+            <div class="col-sm-8 col-lg-4">
+                <div class="input-group input-group-sm mb-3">
+                    <a href="#" class="form-control text-primary bg-light" target="_blank">document.pdf</a>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" title="Удалить"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
+    </form>
+</div>

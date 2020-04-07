@@ -1,0 +1,31 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="accordion accordion-main" id="accordionGroupCsp">
+        <div class="card">
+            <a href="#" class="card-header active" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-angle-down mr-2"></i>Сведения о группе</a>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionGroupCsp">
+                <div class="card-body">
+                    <!-- Include group-info -->
+                    {% include 'reestradmin/includes/csp/group_info.html' %}
+                    <!-- End Include group-info -->
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <a href="#" class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-angle-down mr-2"></i>Состав группы</a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionGroupCsp">
+                <div class="card-body">
+                    <!-- Include group-sostav -->
+                    {% include 'reestradmin/includes/csp/group_sostav.html' %}
+                    <!-- End Include group-sostav -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL INCLUDES -->
+{% include 'reestradmin/includes/modal/modal-add-member-group.html' %}
+<!-- END MODAL INCLUDES -->
+{% endblock %}

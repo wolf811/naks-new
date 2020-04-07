@@ -1,0 +1,106 @@
+<div class="modal fade" id="modal-add-group-csp" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавить группу спецподготовки</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <!-- <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <p><strong>Даты назначения экспертов выводятся в случаях:</strong></p>
+                        <p><strong>1)</strong> прошедшие даты: прошло не больше 3х дней с окончания назначенной даты;</p>
+                        <p class="mb-0"><strong>2)</strong> даты в будущем: назначена не позднее текущей даты+2 месяца.</p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div> -->
+                    <div class="table-responsive table-modal-scroll mb-0">
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead>
+                                <tr class="table-active">
+                                    <th>Название группы</th>
+                                    <th>Дата начала</th>
+                                    <th>Дата окончания</th>
+                                    <th>Кол-во участников</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="group1" name="group_csp" class="custom-control-input" checked>
+                                            <label class="custom-control-label" for="group1">Группа спецподготовки НГДО, ОХНВП</label>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">25.04.2020</td>
+                                    <td class="text-center">27.04.2020</td>
+                                    <td class="text-center">6</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="group2" name="group_csp" class="custom-control-input" checked>
+                                            <label class="custom-control-label" for="group2">Группа спецподготовки НГДО</label>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">28.04.2020</td>
+                                    <td class="text-center">29.04.2020</td>
+                                    <td class="text-center">10</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="group3" name="group_csp" class="custom-control-input">
+                                            <label class="custom-control-label" for="group3">Группа спецподготовки ОХНВП, СК</label>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">11.05.2020</td>
+                                    <td class="text-center">12.05.2020</td>
+                                    <td class="text-center">15</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav aria-label="...">
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-angle-left"></i></a>
+                            </li>
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="table-responsive mt-4">
+                        <table class="table table-hover table-sm">
+                            <tbody>
+                                <tr class="bg-light">
+                                    <td>Группа спецподготовки НГДО, ОХНВП</td>
+                                    <td>25.04.2020 - 27.04.2020</td>
+                                    <td><button type="button" class="close" title="отменить">×</button></td>
+                                </tr>
+                                <tr class="bg-light">
+                                    <td>Группа спецподготовки НГДО</td>
+                                    <td>28.04.2020 - 29.04.2020</td>
+                                    <td><button type="button" class="close" title="отменить">×</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">Сохранить</button>
+                    <a href="#" class="btn btn-outline-secondary btn-sm" data-dismiss="modal" role="button">Закрыть</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{% load static %}
+<a href="#" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#modal-add-member-group"><i class="fa fa-plus mr-1" aria-hidden="true"></i>Добавить участника</a>
+<div class="table-responsive">
+    <table class="table table-bordered table-main">
+        <thead>
+            <tr class="active">
+                <th colspan="2">ФИО</th>
+                <th>Организация</th>
+                <th>Телефон</th>
+                <th>E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td width="30">
+                    <div class="dropright">
+                        <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="instructions.html"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-clone mr-1"></i>Копировать</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                        </div>
+                    </div>
+                </td>
+                <td>Вепрев Алексей Николаевич</td>
+                <td>ООО "Организация"</td>
+                <td><a href="tel:+79261234569"><i class="fa fa-phone-square mr-1"></i>(926)123-45-69</a></td>
+                <td><a href="mailto:vepr@mail.ru"><i class="fa fa-envelope mr-1"></i>vepr@mail.ru</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

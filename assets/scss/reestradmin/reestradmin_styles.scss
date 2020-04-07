@@ -198,6 +198,10 @@ body {
     }
 }
 
+.custom-control-label-sm {
+    font-size: 0.875rem;
+}
+
 .btn-add-instruction {
     display: none;
 }
@@ -408,6 +412,13 @@ a {
         border-bottom: 1px solid rgba(0, 0, 0, .125);
     }
 
+    .card-body {
+        .container {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
     .static-text {
         box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 
@@ -451,4 +462,5 @@ a {
         background-color: #f8f9fa;
         padding: 0.5rem 1rem;
     }
+
 }

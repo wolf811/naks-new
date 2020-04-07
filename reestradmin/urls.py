@@ -14,6 +14,8 @@ urlpatterns = [
     path('expert_profile/', reestradmin.expert_profile, name='expert_profile'),
     path('certificates_list/', reestradmin.certificates_list, name='certificates_list'),
     path('csp_profile/', reestradmin.csp_profile, name='csp_profile'),
+    path('csp_groups/', reestradmin.csp_groups, name='csp_groups'),
+    path('csp_add_group/', reestradmin.csp_add_group, name='csp_add_group'),
     path('webinars/', reestradmin.webinars, name='webinars'),
 ]
 

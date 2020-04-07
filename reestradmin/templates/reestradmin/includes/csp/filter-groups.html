@@ -3,8 +3,7 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-md mb-2 mb-md-0">
-                    <a href="#" class="btn btn-sm btn-primary mb-2 mb-lg-0" data-toggle="modal" data-target="#modal-add-webinar"><i class="fa fa-plus mr-2"></i>Добавить вебинар</a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-add-group-csp"><i class="fa fa-plus mr-2"></i>Добавить группу спецподготовки</a>
+                    <a href="{% url 'reestradmin:csp_add_group' %}" class="btn btn-sm btn-primary"><i class="fa fa-plus mr-2"></i>Добавить группу спецподготовки</a>
                 </div>
                 <div class="col-md col-lg-5 col-xl-4 float-sm-right">
                     <form>
@@ -33,7 +32,7 @@
                     </div>
                     <div class="col-6 col-sm-3 col-xl-2">
                         <div class="form-group">
-                            <label class="label-sm" for="">Дата вебинара, от</label>
+                            <label class="label-sm" for="">Дата начала, от</label>
                             <input type="date" class="form-control form-control-sm" id="">
                         </div>
                     </div>

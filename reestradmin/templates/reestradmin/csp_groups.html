@@ -1,0 +1,118 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <!-- Include FILTER-BLOCK -->
+    {% include 'reestradmin/includes/csp/filter-groups.html' %}
+    <!-- End Include FILTER-BLOCK -->
+    <div class="container-fluid">
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+        <div class="table-responsive table-no-overflow">
+            <table class="table table-hover table-bordered table-main">
+                <thead>
+                    <tr class="active">
+                        <th colspan="2">Статус, действия</th>
+                        <th>Название группы</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Документ</th>
+                        <th>Состав группы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="30"><i class="fa fa-file-o" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="новая" data-original-title="" title=""></i></td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="instructions.html"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-clone mr-1"></i>Копировать</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-left">Группа спецподготовки НГДО, ОХНВП</td>
+                        <td>25.04.2020</td>
+                        <td>27.04.2020</td>
+                        <td><a href="#" target="_blank">document.pdf</a></td>
+                        <td>
+                            <button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-users-webinar" type="button">Участники<span class="badge badge-light ml-2">6</span></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30"><i class="fa fa-file-o" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="новая" data-original-title="" title=""></i></td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="instructions.html"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-clone mr-1"></i>Копировать</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-left">Группа спецподготовки НГДО</td>
+                        <td>28.04.2020</td>
+                        <td>29.04.2020</td>
+                        <td><a href="#" target="_blank">document.pdf</a></td>
+                        <td>
+                            <button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-users-webinar" type="button">Участники<span class="badge badge-light ml-2">10</span></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30"><i class="fa fa-file-o" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="новая" data-original-title="" title=""></i></td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="instructions.html"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-clone mr-1"></i>Копировать</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-left">Группа спецподготовки ОХНВП, СК</td>
+                        <td>11.05.2020</td>
+                        <td>12.05.2020</td>
+                        <td><a href="#" target="_blank">document.pdf</a></td>
+                        <td>
+                            <button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-users-webinar" type="button">Участники<span class="badge badge-light ml-2">15</span></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30"><i class="fa fa-check text-success" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="проведена" data-original-title="" title=""></i></td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="instructions.html"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-clone mr-1"></i>Копировать</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-left">Группа спецподготовки СК</td>
+                        <td>15.03.2020</td>
+                        <td>16.03.2020</td>
+                        <td><a href="#" target="_blank">document.pdf</a></td>
+                        <td>
+                            <button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal-users-webinar" type="button">Участники<span class="badge badge-light ml-2">21</span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+    </div>
+</div>
+<!-- MODAL INCLUDES -->
+{% include 'reestradmin/includes/modal/modal-add-webinar.html' %}
+<!-- {% include 'reestradmin/includes/modal/modal-groups-csp.html' %} -->
+{% include 'reestradmin/includes/modal/modal-users-webinar.html' %}
+<!-- END MODAL INCLUDES -->
+{% endblock %}
