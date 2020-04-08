@@ -3,8 +3,15 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-md mb-2 mb-md-0">
-                    <a href="#" class="btn btn-sm btn-primary mb-2 mb-lg-0" data-toggle="modal" data-target="#modal-add-webinar"><i class="fa fa-plus mr-2"></i>Добавить вебинар</a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-add-group-csp"><i class="fa fa-plus mr-2"></i>Добавить группу спецподготовки</a>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownAddWebinar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus mr-2"></i>Добавить вебинар<i class="fa fa-angle-down ml-2"></i></button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownAddWebinar">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-add-webinar">Информационный вебинар</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-choice-group-csp">Для групп спецподготовки</a>
+                        </div>
+                    </div>
+                    <!-- <a href="#" class="btn btn-sm btn-primary mb-2 mb-lg-0" data-toggle="modal" data-target="#modal-add-webinar"><i class="fa fa-plus mr-2"></i>Добавить вебинар</a>
+                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-add-group-csp"><i class="fa fa-plus mr-2"></i>Выбрать группу спецподготовки</a> -->
                 </div>
                 <div class="col-md col-lg-5 col-xl-4 float-sm-right">
                     <form>
@@ -27,7 +34,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6 col-xl-4">
                         <div class="form-group">
-                            <label class="label-sm" for="">Наименование</label>
+                            <label class="label-sm" for="">Название</label>
                             <input type="text" class="form-control form-control-sm" id="">
                         </div>
                     </div>

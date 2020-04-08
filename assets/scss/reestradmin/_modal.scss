@@ -1,41 +1,57 @@
 .modal {
-	.alert p {
-		margin-bottom: 0.25rem;
-		font-size: 0.875rem;
-	}
-	.table-modal-scroll {
-		max-height: 400px;
-		overflow-y: auto;
-		overflow-x: hidden;
-		margin-bottom: 1rem;
-	}
-	.table {
-		td, th {
-			font-size: 0.875rem;
-			vertical-align: middle;
-		}
-		th {
-			text-align: center;
-		}
-	}
-	.col-form-label-sm {
-		margin-bottom: 0;
-	}
-	.custom-radio, .custom-checkbox {
-		input, label {
-			cursor: pointer;
-		}
-	}
-	.scrollspy-records {
-		max-height: 250px;
-		overflow-y: auto;
-		overflow-x: hidden;
-		margin-bottom: 0.5rem;
-	}
-	.scrollspy-folder {
-		label {margin-bottom: 0;}
-	}
-	.modal-scroll {
+    .alert p {
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+    }
+
+    .table-modal-scroll {
+        max-height: 400px;
+        overflow: auto;
+        /*overflow-y: auto;
+		overflow-x: hidden;*/
+        margin-bottom: 1rem;
+    }
+
+    .table {
+
+        td,
+        th {
+            font-size: 0.875rem;
+            vertical-align: middle;
+        }
+
+        th {
+            text-align: center;
+        }
+    }
+
+    .col-form-label-sm {
+        margin-bottom: 0;
+    }
+
+    .custom-radio,
+    .custom-checkbox {
+
+        input,
+        label {
+            cursor: pointer;
+        }
+    }
+
+    .scrollspy-records {
+        max-height: 250px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-bottom: 0.5rem;
+    }
+
+    .scrollspy-folder {
+        label {
+            margin-bottom: 0;
+        }
+    }
+
+    .modal-scroll {
         max-height: 600px;
         overflow-x: auto;
     }

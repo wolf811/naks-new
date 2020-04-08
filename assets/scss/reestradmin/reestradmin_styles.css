@@ -140,11 +140,13 @@ footer {
 
 .modal .table-modal-scroll {
   max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
+  /*overflow-y: auto;
+		overflow-x: hidden;*/
   margin-bottom: 1rem; }
 
-.modal .table td, .modal .table th {
+.modal .table td,
+.modal .table th {
   font-size: 0.875rem;
   vertical-align: middle; }
 
@@ -154,7 +156,10 @@ footer {
 .modal .col-form-label-sm {
   margin-bottom: 0; }
 
-.modal .custom-radio input, .modal .custom-radio label, .modal .custom-checkbox input, .modal .custom-checkbox label {
+.modal .custom-radio input,
+.modal .custom-radio label,
+.modal .custom-checkbox input,
+.modal .custom-checkbox label {
   cursor: pointer; }
 
 .modal .scrollspy-records {
