@@ -100,3 +100,10 @@ def webinars(request):
         'title': title
     }
     return render(request, 'reestradmin/webinars.html', content)
+
+def user_ul_profile(request):
+    title = 'ЛК юридического лица'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/user_ul_profile.html', content)

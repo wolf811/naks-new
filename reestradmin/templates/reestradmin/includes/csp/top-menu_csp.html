@@ -1,0 +1,40 @@
+{% load static %}
+<div class="top-menu">
+    <nav class="navbar navbar-expand-lg bg-light">
+        <button class="navbar-toggler border" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">Главная</a>
+                </li> -->
+                <li class="nav-item {% if 'csp_profile' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'reestradmin:csp_profile' %}">Учетная запись</a>
+                </li>
+                <li class="nav-item {% if 'centers_list' in request.path or 'center_acsm_edit' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'reestradmin:centers_list' %}">Центры</a>
+                </li>
+                <li class="nav-item {% if 'csp_groups' in request.path or 'csp_add_group' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'reestradmin:csp_groups' %}">Группы</a>
+                </li>
+                <li class="nav-item {% if 'webinars' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'reestradmin:webinars' %}">Вебинары</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Сервисы<i class="fa fa-angle-down d-inline ml-1"></i></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'reestradmin:webinars' %}">Вебинары</a>
+                        <a class="dropdown-item" href="#">Заказ&nbsp;удостоверений</a>
+                        <a class="dropdown-item" href="#">Аналитика</a>
+                        <a class="dropdown-item" href="#">Бланки</a>
+                        <a class="dropdown-item" href="#">Сборники&nbsp;вопросов</a>
+                        <a class="dropdown-item" href="#">Графики</a>
+                        <a class="dropdown-item" href="#">Обеспечение&nbsp;ФЗ-152</a>
+                    </div>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Справочник&nbsp;НАКС</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

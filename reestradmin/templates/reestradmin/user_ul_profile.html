@@ -1,0 +1,44 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'reestradmin/includes/user_ul/top-menu_user_ul.html' %}
+{% include 'reestradmin/includes/breadcrumb.html' %}
+<div class="content">
+    <div class="accordion accordion-main" id="accordionProfileUserUl">
+        <div class="card">
+            <a href="#" class="card-header active" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-angle-down mr-2"></i>Общие сведения</a>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionProfileUserUl">
+                <div class="card-body">
+                    <!-- Include profile-info -->
+                    {% include 'reestradmin/includes/user_ul/user_ul_info.html' %}
+                    <!-- End Include profile-info -->
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <a href="#" class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-angle-down mr-2"></i>Регистрация организации в качестве производителя и/или уполномоченной организации</a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionProfileUserUl">
+                <div class="card-body">
+                    <!-- Include profile-activity -->
+                    {% include 'reestradmin/includes/center_acsm_activity.html' %}
+                    <!-- End Include profile-activity -->
+                </div>
+            </div>
+        </div>
+        <!-- <div class="card">
+            <a href="#" class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseTrhee" aria-expanded="true" aria-controls="collapseTrhee"><i class="fa fa-angle-down mr-2"></i>Состав комиссии</a>
+            <div id="collapseTrhee" class="collapse" aria-labelledby="headingThree" data-parent="#accordionProfileUserUl">
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <a href="#" class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour"><i class="fa fa-angle-down mr-2"></i>Подразделения</a>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionProfileUserUl">
+                <div class="card-body">
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+{% endblock %}

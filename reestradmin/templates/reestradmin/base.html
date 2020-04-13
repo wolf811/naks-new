@@ -30,8 +30,8 @@
     <div class="wrapper">
         {% include 'reestradmin/includes/header.html' %}
         {% include 'reestradmin/includes/name-page.html' %}
-        {% include 'reestradmin/includes/top-menu.html' %}
-        {% include 'reestradmin/includes/breadcrumb.html' %}
+        {% comment %} {% include 'reestradmin/includes/top-menu.html' %} {% endcomment %}
+        {% comment %} {% include 'reestradmin/includes/breadcrumb.html' %} {% endcomment %}
         {% block content%}
         {% endblock %}
         {% include 'reestradmin/includes/footer.html' %}
