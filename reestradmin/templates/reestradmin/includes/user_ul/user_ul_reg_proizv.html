@@ -1,0 +1,174 @@
+{% load static %}
+<div class="container">
+    <div class="static-text static-text-sm">
+        <div id="activityEdit">
+            <div class="alert alert-info" role="alert">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="checkRegProizv">
+                    <label class="custom-control-label" for="checkRegProizv">Зарегистрировать организацию в качестве <strong>производителя</strong></label>
+                </div>
+            </div>
+            <div class="alert alert-info" role="alert">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="checkRegUpoln">
+                    <label class="custom-control-label" for="checkRegUpoln">Зарегистрировать организацию в качестве <strong>уполномоченной организации</strong></label>
+                </div>
+            </div>
+            <!-- <div class="row-main">
+    <div class="row align-items-center">
+        <div class="col-md-3">
+            <div class="text-secondary">Группы технических устройств:</div>
+        </div>
+        <div class="col-md-9">
+            ГДО, ГО, КО, КСМ, МО, НГДО, ОТОГ, ОХНВП, ПТО, СК [10]
+        </div>
+    </div>
+</div>
+<div class="row-main">
+    <div class="row align-items-center">
+        <div class="col-md-3">
+            <div class="text-secondary">Виды сварочных материалов:</div>
+        </div>
+        <div class="col-md-9">
+            Гг, Гз, Пм, Пп, Пр, Пс, Тм, Ф, Эн, Эп [10]
+        </div>
+    </div>
+</div>
+<div class="row-main">
+    <div class="row align-items-center">
+        <div class="col-md-3">
+            <div class="text-secondary">Аттестация с учетом дополнительных требований ПАО "АК "Транснефть":</div>
+        </div>
+        <div class="col-md-9">
+            ДА
+        </div>
+    </div>
+</div>
+<div class="row-main">
+    <div class="row align-items-center">
+        <div class="col-md-3">
+            <div class="text-secondary">Экспертное заключение:</div>
+        </div>
+        <div class="col-md-9">
+            <div>от 19.07.2019</div>
+        </div>
+    </div>
+</div>
+<div class="row-main">
+    <button type="submit" class="btn btn-primary btn-sm">Выгрузить на сайт<i class="fa fa-angle-right ml-1"></i></button>
+    <button id="btnEditActivity" class="btn btn-outline-primary btn-sm" type="button">Изменить</button>
+</div> -->
+        </div>
+    </div>
+    <div id="orgActivityEdit" style="display: none;">
+        <form class="editing-form shadow-sm">
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Группы технических устройств</label>
+                <div class="col-sm-8">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">ГДО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">ГО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">КО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">КСМ</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">МО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">НГДО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">ОТОГ</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">ОХНВП</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">ПТО</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">СК [10]</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Виды сварочных материалов</label>
+                <div class="col-sm-8">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">Гг</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">Гз</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Пм</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Пп</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Пр</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Пс</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Тм</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Ф</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Эн</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">Эп [10]</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Экспертное заключение от</label>
+                <div class="col-sm-4 col-lg-2">
+                    <input type="date" class="form-control form-control-sm">
+                </div>
+            </div>
+            <div class="form-group row align-items-center mb-3">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm"></label>
+                <div class="col-sm-9">
+                    <div class="form-check form-check-sm">
+                        <input class="form-check-input" type="checkbox" id="tn_acsm">
+                        с <label class="form-check-label" for="tn_acsm">Аттестация с учетом дополнительных требований ПАО "АК "Транснефть"</label>
+                    </div>
+                </div>
+            </div>
+            <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
+            <button id="cancelActivityEdit" class="btn btn-outline-primary btn-sm" type="button">Отмена</button>
+        </form>
+    </div>
+</div>

@@ -16,12 +16,12 @@
             </div>
         </div>
         <div class="card">
-            <a href="#" class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-angle-down mr-2"></i>Регистрация организации в качестве производителя и/или уполномоченной организации</a>
+            <a href="#" class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-angle-down mr-2"></i>Регистрация организации в качестве производителя и/или уполномоченной организации<span class="text-light ml-2" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Если Вам необходимо, при заполнении заявки на аттестацию СМ или СО, указывать себя в качестве производителя и/или уполномоченной организации, то Вам предварительно нужно зарегистрироваться в реестре производителей и уполномоченных организаций. Для потребителя достаточно заполнения полей раздела &quot;Общие сведения&quot;"><i class="fa fa-info-circle"></i></span></a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionProfileUserUl">
                 <div class="card-body">
-                    <!-- Include profile-activity -->
-                    {% include 'reestradmin/includes/center_acsm_activity.html' %}
-                    <!-- End Include profile-activity -->
+                    <!-- Include profile-reg -->
+                    {% include 'reestradmin/includes/user_ul/user_ul_reg_proizv.html' %}
+                    <!-- End Include profile-reg -->
                 </div>
             </div>
         </div>
