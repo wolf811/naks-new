@@ -671,5 +671,7 @@ a {
 .accordion-main .editing-form {
   background-color: #f8f9fa;
   padding: 0.5rem 1rem; }
+  .accordion-main .editing-form hr {
+    border-color: #5CB85C; }
 
 /*# sourceMappingURL=reestradmin_styles.css.map */

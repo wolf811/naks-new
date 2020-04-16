@@ -1,0 +1,232 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'reestradmin/includes/user_ul/top-menu_user_ul.html' %}
+{% include 'reestradmin/includes/breadcrumb.html' %}
+<div class="content">
+    <!-- Include FILTER-BLOCK -->
+    {% include 'reestradmin/includes/user_ul/spks-applications-filter.html' %}
+    <!-- End Include FILTER-BLOCK -->
+    <div class="container-fluid">
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="active">
+                        <th colspan="2">Статус, действия</th>
+                        <th width="110">№&nbsp;заявления, дата</th>
+                        <th>Соискатель</th>
+                        <th>ЦОК</th>
+                        <th>Профессиональный стандарт</th>
+                        <th>Квалификация</th>
+                        <th>Комментарий ЦОК</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center"><i class="fa fa-file-o fa-lg text-secondary" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Новое"></i></td>
+                        <td>
+                            <div class="btn-group btn-group-xs group-user">
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <div><a target="_blank" title="печать заявки" href="#">00023</a><br>от 14.04.2020г.</div>
+                        </td>
+                        <td>Волобуев Александр Анатольевич</td>
+                        <td>ЦОК-777</td>
+                        <td>Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</td>
+                        <td>Сварщик-оператор автоматической сварки плавлением металлических материалов (4 уровень квалификации)</td>
+                        <td class="text-secondary"><em></em></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><i class="fa fa-file-o fa-lg text-secondary" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Новое"></i></td>
+                        <td>
+                            <div class="btn-group btn-group-xs group-user">
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <a target="_blank" title="печать заявки" href="#">20120</a>
+                                <a href="#" class="btn btn-outline-primary btn-xs my-1" role="button" title="Перейти в группу">Группа 123</a><br>от 20.06.2019г.
+                            </div>
+                        </td>
+                        <td>Радзинский Владимир Яковлевич</td>
+                        <td>ЦОК-006</td>
+                        <td>Сварщик</td>
+                        <td>Сварщик дуговой сварки плавящимся покрытым электродом (4 уровень квалификации)</td>
+                        <td class="text-secondary"><em></em></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <div><a href="#" class="btn btn btn-success btn-sm" role="button" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Отправить в ЦОК"><i class="fa fa-arrow-right"></i></a></div>
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-xs group-user">
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
+                                <a href="#" class="btn btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                            </div>
+                        </td>
+                        <td><a target="_blank" title="печать заявки" href="#">45679</a><br>от 16.02.2020г.</td>
+                        <td>Иванов Иван Иванович</td>
+                        <td>ЦОК-777</td>
+                        <td>Сварщик</td>
+                        <td>Сварщик термитной сварки (3 уровень квалификации)</td>
+                        <td class="text-secondary"><em></em></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><i class="fa fa-arrow-left fa-lg text-danger" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Возвращено"></i></td>
+                        <td>
+                            <div class="btn-group btn-group-xs group-user">
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
+                                <a href="#" class="btn btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <div><a target="_blank" title="печать заявки" href="#">45678</a><br>от 18.12.2019г.</div>
+                        </td>
+                        <td>Горбатенко Андрей Васильевич</td>
+                        <td>ЦОК-777</td>
+                        <td>Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</td>
+                        <td>Сварщик-оператор автоматической сварки давлением металлических материалов (4 уровень квалификации)</td>
+                        <td class="text-secondary"><em>комментарии экспертов ЦОК</em></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><i class="fa fa-arrow-left fa-lg text-danger" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Возвращено"></i></td>
+                        <td>
+                            <div class="btn-group btn-group-xs group-user">
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
+                                <a href="#" class="btn btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <div><a target="_blank" title="печать заявки" href="#">52145</a><br>от 29.02.2020г.</div>
+                        </td>
+                        <td>Иванов Иван Иванович</td>
+                        <td>ЦОК-777</td>
+                        <td>Сварщик</td>
+                        <td>Сварщик термитной сварки (3 уровень квалификации)</td>
+                        <td class="text-secondary"><em>Загружены не все документы для оценки квалификации</em></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><i class="fa fa-arrow-right fa-lg text-success" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Отправлено"></i></td>
+                        <td>
+                            <div class="btn-group btn-group-xs group-user">
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
+                                <a href="#" class="btn btn-outline-primary disabled" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" class="btn btn-outline-primary disabled" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <div><a target="_blank" title="печать заявки" href="#">00003</a><br>от 21.09.2015г.</div>
+                        </td>
+                        <td>Киселев Кирилл Александрович</td>
+                        <td>ЦОК-032</td>
+                        <td>Сварщик</td>
+                        <td>Сварщик дуговой сварки под флюсом (2 уровень квалификации)</td>
+                        <td class="text-secondary"><em></em></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <div class="table-responsive">
+            <table class="table table-hover table-bordered table-documents">
+                <thead>
+                    <tr class="active">
+                        <th colspan="2">Статус, действия</th>
+                        <th>Шифр организации, город</th>
+                        <th>Вид документа</th>
+                        <th>Документы</th>
+                        <th>Дата формирования<br><small>(исх. № письма)</small></th>
+                        <th>№ заявки, дата</th>
+                        <th>Эксперт НАКС</th>
+                        <th>Эксперты НЭДК</th>
+                        <th>Рабочая группа</th>
+                        <th>Срок проведения работ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="30"><i class="fa fa-file-o" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="новое"></i></td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="instructions.html"><i class="fa fa-pencil-square-o mr-1"></i>Изменить</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-clone mr-1"></i>Копировать</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="badge badge-pill badge-info mb-1" data-toggle="popover" data-placement="right" data-trigger="hover" data-content='Автономная некоммерческая организация "АТТЕСТАЦИОННЫЙ ЦЕНТР АТТЕСТАЦИИ СВАРЩИКОВ И СПЕЦИАЛИСТОВ СВАРОЧНОГО ПРОИЗВОДСТВА'>СУР-5АЦ</div>
+                            <div>Нижневартовск</div>
+                        </td>
+                        <td>Расширение состава комиссии</td>
+                        <td>
+                            <a href="#" class="d-block" target="_blank">НАКС: Указ. РК-АЦ</a>
+                            <a href="#" class="d-block" target="_blank">НЭДК: Указ. тех. аудит РК-АЦ</a>
+                            <a href="#" class="d-block" target="_blank">Калькуляция</a>
+                        </td>
+                        <td>22.05.2019</td>
+                        <td>125 от 22.05.2019</td>
+                        <td class="experts">Пономаренко Алексей Сергеевич</td>
+                        <td class="experts">
+                            <p>Кузнецов Евгений Иванович</p>
+                            <p>Афиногенов Александр Вениаминович</p>
+                            <p>Иванов Иван Иванович</p>
+                        </td>
+                        <td class="experts">-</td>
+                        <td>27.05.2019-29.05.2019</td>
+                    </tr>
+                    <tr>
+                        <td width="30"><i class="fa fa-check text-success" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="готово"></i></td>
+                        <td width="30">
+                            <div class="dropright">
+                                <a href="#" class="text-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Действия"><i class="fa fa-bars"></i></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-clone mr-1"></i>Копировать</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-times mr-1 text-danger"></i>Удалить</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="badge badge-pill badge-info mb-1" data-toggle="popover" data-placement="right" data-trigger="hover" data-content='АНО "ВРАЦ"'>ЦОК-002</div>
+                            <div>Вологда</div>
+                        </td>
+                        <td>Инспекционная проверка</td>
+                        <td>
+                            <a href="#" class="d-block" target="_blank">НАКС: Указ. эксперт. АЦ инспекц. (ИАЦ)</a>
+                            <a href="#" class="d-block" target="_blank">НЭДК: Указ. тех. аудит АЦ инспекц. (ИАЦ)</a>
+                            <a href="#" class="d-block" target="_blank">Калькуляция</a>
+                        </td>
+                        <td>22.05.2019</td>
+                        <td>-</td>
+                        <td class="experts">Пономаренко Алексей Сергеевич</td>
+                        <td class="experts">-</td>
+                        <td class="experts">
+                            <p class="chairman">Кузнецов Евгений Иванович<span class="badge badge-pill badge-secondary ml-1" data-toggle="popover" data-placement="top" data-trigger="hover" data-content='Председатель'>ПР</span></p>
+                            <p>Афиногенов Александр Вениаминович</p>
+                            <p>Иванов Иван Иванович</p>
+                        </td>
+                        <td>27.05.2019-29.05.2019</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+    </div>
+</div>
+{% endblock %}

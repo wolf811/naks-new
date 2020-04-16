@@ -16,9 +16,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Аттестационные&nbsp;пункты</a>
                 </li>
-                <li class="nav-item {% if 'csp_groups' in request.path or 'csp_add_group' in request.path %}active{% endif %}">
+                <!-- <li class="nav-item {% if 'csp_groups' in request.path or 'csp_add_group' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'reestradmin:csp_groups' %}">Группы&nbsp;ЦСП</a>
-                </li>
+                </li> -->
                 <li class="nav-item {% if 'experts_list' in request.path or 'expert_profile' in request.path or 'certificates_list' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'reestradmin:experts_list' %}">Эксперты&nbsp;НАКС</a>
                 </li>

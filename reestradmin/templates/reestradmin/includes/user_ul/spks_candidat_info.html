@@ -1,0 +1,323 @@
+{% load static %}
+<div class="container">
+    <form class="editing-form shadow-sm pt-3">
+        <h6 class="text-primary text-center mb-3">Общие сведения</h6>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Фамилия Имя Отчество<span class="text-danger">*</span></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" required="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Дата рождения<span class="text-danger">*</span></label>
+            <div class="col-sm-4 col-lg-2">
+                <input type="date" class="form-control form-control-sm" required="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Документ, удостоверяющий личность<span class="text-danger">*</span></label>
+            <div class="col-sm-3">
+                <select class="form-control form-control-sm">
+                    <option value="Паспорт">Паспорт</option>
+                    <option value="Военный билет">Военный билет</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm" required="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Адрес регистрации по месту жительства<span class="text-danger">*</span></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" required="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Контактный телефон / E-mail<span class="text-danger">*</span></label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm" required>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <hr>
+        <h6 class="text-primary text-center mb-3">Сведения о месте работы</h6>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Наименование организации<span class="text-danger">*</span></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" value='ООО "Тестовая организация"' disabled="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm text-bold">Должность<span class="text-danger">*</span></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Местонахождение организации<span class="text-danger">*</span></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" value='109428, город Москва, улица Стахановская, дом 20' disabled="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Телефон организации<span class="text-danger">*</span></label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm" value='(499) 674-70-78' disabled="">
+            </div>
+        </div>
+        <hr>
+        <h6 class="text-primary text-center mb-3">Сведения об образовании (обучении)</h6>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Уровень образования<span class="text-danger">*</span></label>
+            <div class="col-sm-3">
+                <select class="form-control form-control-sm">
+                    <option value=""></option>
+                    <option value="Начальное (НПО)">Начальное (НПО)</option>
+                    <option value="Среднее (СПО)" selected="">Среднее (СПО)</option>
+                    <option value="Высшее (ВО)">Высшее (ВО)</option>
+                    <option value="Проф.обучение">Проф.обучение</option>
+                    <option value="Дополнительное проф.обучение (ДПО)">Дополнительное проф.обучение (ДПО)</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Квалификация, профессия, специальность по образованию/обучению<small class="text-danger ml-1">(при наличии)</small></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Кем выдан документ об образовании/обучении<small class="text-danger ml-1">(при наличии)</small></label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">№ документа, дата выдачи<small class="text-danger ml-1">(при наличии)</small></label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+            <div class="col-sm-3 col-lg-2">
+                <input type="date" class="form-control form-control-sm">
+            </div>
+        </div>
+        <hr>
+        <h6 class="text-primary text-center mb-3">Сведения об опыте работы</h6>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Стаж работы по квалификации</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Уровень квалификации по национальной рамке квалификаций<small class="text-danger ml-1">(при наличии)</small></label>
+            <div class="col-sm-3">
+                <select class="form-control form-control-sm">
+                    <option value="">-</option>
+                    <option value="2">2 уровень</option>
+                    <option value="3">3 уровень</option>
+                    <option value="4">4 уровень</option>
+                    <option value="5">5 уровень</option>
+                    <option value="6">6 уровень</option>
+                    <option value="7">7 уровень</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 offset-xl-1 col-form-label col-form-label-sm">Разряд<small class="text-danger ml-1">(при наличии)</small></label>
+            <div class="col-sm-3">
+                <select class="form-control form-control-sm">
+                    <option value="">-</option>
+                    <option value="1">1 разряд</option>
+                    <option value="2">2 разряд</option>
+                    <option value="3">3 разряд</option>
+                    <option value="4">4 разряд</option>
+                    <option value="5">5 разряд</option>
+                    <option value="6">6 разряд</option>
+                    <option value="7">7 разряд</option>
+                </select>
+            </div>
+        </div>
+        <!-- <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Полное наименование</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Наименование в реестре</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <hr>
+        <div class="form-group row align-items-center">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Членство в СРО</label>
+            <div class="col-sm-4 col-lg-2">
+                <div class="form-check form-check-sm">
+                    <input class="form-check-input" type="checkbox" id="membershipSelection">
+                    <label class="form-check-label" for="membershipSelection">ДА</label>
+                </div>
+            </div>
+        </div>
+        <div id="membershipYes" style="display: none;">
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Свидетельство о членстве</label>
+                <div class="col-sm-4 col-lg-2">
+                    <input type="text" class="form-control form-control-sm" placeholder="№">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Основание / Протокол (№, дата)</label>
+                <div class="col-sm-8 col-lg-4 mb-3 mb-md-0">
+                    <input type="text" class="form-control form-control-sm">
+                </div>
+                <div class="col-sm-4 offset-sm-3 col-lg-2 offset-lg-0 mb-3 mb-md-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="№">
+                </div>
+                <div class="col-sm-4 col-lg-2">
+                    <input type="date" class="form-control form-control-sm">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm">Страхование деятельности до</label>
+                <div class="col-sm-4 col-lg-2">
+                    <input type="date" class="form-control form-control-sm">
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <label for="" class="col-sm-3 col-form-label col-form-label-sm"></label>
+                <div class="col-sm-4 col-lg-2">
+                    <div class="form-check form-check-sm">
+                        <input class="form-check-input" type="checkbox" id="membershipExpulsion">
+                        <label class="form-check-label text-danger" for="membershipExpulsion">исключен</label>
+                    </div>
+                </div>
+            </div>
+            <div id="membershipNo" style="display: none;">
+                <div class="form-group row">
+                    <label for="" class="col-sm-3 col-form-label col-form-label-sm text-danger">Исключен из членов СРО / Решение президиума об исключении</label>
+                    <div class="col-sm-4 col-lg-2 mb-3 mb-md-0">
+                        <input type="date" class="form-control form-control-sm">
+                    </div>
+                    <div class="col-sm-4 col-lg-2">
+                        <input type="text" class="form-control form-control-sm" placeholder="№">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Город</label>
+            <div class="col-sm-4 col-lg-4">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Юридический адрес</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Фактический адрес</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Почтовый адрес</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Телефон / Факс</label>
+            <div class="col-sm-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="телефон">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm" placeholder="факс">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Сайт / E-mail</label>
+            <div class="col-sm-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="адрес сайта">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm" placeholder="e-mail">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">ОГРН / ИНН</label>
+            <div class="col-sm-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="ОГРН">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm" placeholder="ИНН">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Руководитель (ФИО) / Должность</label>
+            <div class="col-sm-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="ФИО">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm" placeholder="должность">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Банковские реквизиты</label>
+            <div class="col-sm-8">
+                <textarea class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Бухгалтер</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm" placeholder="ФИО">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Телефоны бухгалтерии</label>
+            <div class="col-sm-4 mb-3 mb-md-0">
+                <input type="text" class="form-control form-control-sm" placeholder="Рабочий">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm" placeholder="Мобильный">
+            </div>
+        </div>
+        <hr> -->
+        <!-- <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">СМК-файл</label>
+            <div class="col-sm-4">
+                <input type="file" class="form-control-file form-control-sm" id="smkFile">
+            </div>
+
+        </div>
+        <hr>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label col-form-label-sm">Примечание</label>
+            <div class="col-sm-8">
+                <textarea class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-7 offset-sm-3">
+                <p class="text-bold text-sm">Техническое оснащение (фото)</p>
+            </div>
+        </div>
+        <div class="form-group row" id="addPhotoBlock">
+            <div class="col-sm-7 offset-sm-3">
+                <button type="button" class="btn btn-outline-secondary btn-xs">Добавить фото</button>
+            </div>
+        </div> -->
+        <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
+        <!-- <button id="cancelInfoEdit" class="btn btn-outline-primary btn-sm" type="button">Отмена</button> -->
+    </form>
+</div>

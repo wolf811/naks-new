@@ -107,3 +107,17 @@ def user_ul_profile(request):
         'title': title
     }
     return render(request, 'reestradmin/user_ul_profile.html', content)
+
+def spks_user_applications(request):
+    title = 'ЛК_ЮЛ оценка квалификаций'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/spks_user_applications.html', content)
+
+def spks_new_application(request):
+    title = 'ЛК_ЮЛ оценка квалификаций'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/spks_new_application.html', content)
