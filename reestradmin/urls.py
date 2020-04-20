@@ -20,5 +20,6 @@ urlpatterns = [
     path('user_ul_profile/', reestradmin.user_ul_profile, name='user_ul_profile'),
     path('spks_user_applications/', reestradmin.spks_user_applications, name='spks_user_applications'),
     path('spks_new_application/', reestradmin.spks_new_application, name='spks_new_application'),
+    path('spks_new_group/', reestradmin.spks_new_group, name='spks_new_group'),
 ]
 

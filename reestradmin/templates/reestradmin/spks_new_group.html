@@ -1,0 +1,43 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'reestradmin/includes/user_ul/top-menu_user_ul.html' %}
+{% include 'reestradmin/includes/breadcrumb.html' %}
+<div class="content">
+    <div class="accordion accordion-main" id="accordionSpksApplication">
+        <div class="card">
+            <a href="#" class="card-header active" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-angle-down mr-2"></i>Заявляемая квалификация</a>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionSpksApplication">
+                <div class="card-body">
+                    <!-- Include profile-info -->
+                    {% include 'reestradmin/includes/user_ul/spks_qualification_selection.html' %}
+                    <!-- End Include profile-info -->
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <a href="#" class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-angle-down mr-2"></i>Сведения о группе</a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSpksApplication">
+                <div class="card-body">
+                    <!-- Include profile-activity -->
+                    {% include 'reestradmin/includes/user_ul/spks_group_info.html' %}
+                    <!-- End Include profile-activity -->
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <a href="#" class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseTrhee" aria-expanded="true" aria-controls="collapseTrhee"><i class="fa fa-angle-down mr-2"></i>Документы для прохождения профессионального экзамена</a>
+            <div id="collapseTrhee" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSpksApplication">
+                <div class="card-body">
+                    <!-- Include profile-experts -->
+                    {% include 'reestradmin/includes/user_ul/spks_candidat_docs.html' %}
+                    <!-- End Include profile-experts -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL INCLUDES -->
+{% include 'reestradmin/includes/modal/modal-choice-ps.html' %}
+<!-- END MODAL INCLUDES -->
+{% endblock %}

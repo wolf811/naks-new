@@ -1,0 +1,47 @@
+{% load static %}
+<div class="container">
+    <form class="editing-form shadow-sm pt-3">
+        <div class="mb-3">
+            <a href="#" class="btn btn-outline-primary btn-sm"><i class="fa fa-download mr-1"></i>Импорт из .CSV</a>
+            <span class="text-primary" data-toggle="popover" data-placement="left" data-trigger="hover" data-original-title="Требования к файлу для загрузки:" data-content="1. Расширение файла - CSV (XLS, XLSX и другие форматы таблиц не поддерживаются); 2. Разделителем столбцов в файле для загрузки должна быть точка с запятой (при сохранении таблицы в формате CSV в Microsoft Excel этот разделитель установлен по умолчанию); 3. Каждая строка должна содержать сведения только об одном соискателе; 4. Последовательность столбцов должна быть в точности такой как в образце файла для загрузки; 5. Форматирование ячеек: выделение цветом, изменение шрифтов, объединение ячеек, толщины границ и т.д. - не поддерживается."><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+            <a href="#" class="btn btn-link btn-sm">Скачать шаблон</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-main">
+                <thead>
+                    <tr class="active">
+                        <th>Действия</th>
+                        <th>Заявление</th>
+                        <th>ФИО</th>
+                        <th>Дата рождения</th>
+                        <th>Телефон / E-mail</th>
+                        <th>Должность</th>
+                        <th>Стаж по квалификации</th>
+                        <th>Уровень</th>
+                        <th>Разряд</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="btn-group btn-group-xs group-user">
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                            </div>
+                        </td>
+                        <td><a href="#" target="_blank">00023</a></td>
+                        <td>Волобуев Александр Анатольевич</td>
+                        <td>15.12.1988</td>
+                        <td>+7(926)995-01-65, volob@mail.ru</td>
+                        <td>электрогазосварщик</td>
+                        <td>7 мес.</td>
+                        <td>3</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
+        <!-- <button id="cancelInfoEdit" class="btn btn-outline-primary btn-sm" type="button">Отмена</button> -->
+    </form>
+</div>
