@@ -201,3 +201,10 @@ $('#addPhotoBlock').click(function() {
 $('#addInstructions').click(function() {
     $('.btn-add-instruction').toggle();
 })
+
+//Выбор профессионального стандарта
+$('#saveChoisePs').click(function() {
+    $('#btnChoicePs').hide();
+    $('.choice-qual').show();
+
+})

@@ -1,9 +1,9 @@
 {% load static %}
 <div class="container">
     <form class="editing-form shadow-sm pt-3">
-        <div class="form-group row">
-            <label for="" class="col-sm-4 offset-xl-1 col-form-label col-form-label-sm">Документ о профессиональном образовании или обучении по искомой квалификации</label>
-            <div class="col-sm-5">
+        <div class="form-group row align-items-center">
+            <label for="" class="col-sm-5 col-xl-4 offset-xl-1 col-form-label col-form-label-sm">Документ о профессиональном образовании или обучении по искомой квалификации</label>
+            <div class="col-sm-6">
                 <div class="input-group input-group-sm">
                     <input type="file" class="form-control">
                     <div class="input-group-append">
@@ -12,9 +12,9 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
-            <label for="" class="col-sm-4 offset-xl-1 col-form-label col-form-label-sm">Документ, подтверждающий опыт работы не менее шести месяцев в качестве сварщика дуговой сварки плавящимся электродом в защитном газе (соответствующий 2 уровню квалификации)</label>
-            <div class="col-sm-5">
+        <div class="form-group row align-items-center">
+            <label for="" class="col-sm-5 col-xl-4 offset-xl-1 col-form-label col-form-label-sm">Документ, подтверждающий опыт работы не менее шести месяцев в качестве сварщика дуговой сварки плавящимся электродом в защитном газе (соответствующий 2 уровню квалификации)</label>
+            <div class="col-sm-6">
                 <div class="input-group input-group-sm">
                     <input type="file" class="form-control">
                     <div class="input-group-append">
@@ -23,9 +23,9 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
-            <label for="" class="col-sm-4 offset-xl-1 col-form-label col-form-label-sm">Загрузить документ</label>
-            <div class="col-sm-5">
+        <div class="form-group row align-items-center">
+            <label for="" class="col-sm-5 col-xl-4 offset-xl-1 col-form-label col-form-label-sm text-warning"><em>Пример загруженного документа</em></label>
+            <div class="col-sm-6">
                 <div class="input-group input-group-sm mb-3">
                     <a href="#" class="form-control text-primary bg-light" target="_blank">document.pdf</a>
                     <div class="input-group-append">
@@ -34,6 +34,26 @@
                 </div>
             </div>
         </div>
-        <button type="summit" class="btn btn-success btn-sm">Перейти к списку заявлений<i class="fa fa-angle-right ml-1"></i></button>
+        <div class="form-group row align-items-center">
+            <label for="" class="col-sm-5 col-xl-4 offset-xl-1 col-form-label col-form-label-sm"> Медицинское заключение по результатам предварительного (периодического) медицинского осмотра (обследования)</label>
+            <div class="col-sm-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="med-user" name="med" class="custom-control-input">
+                    <label class="custom-control-label" for="med-user">Соискатель уведомлен и обязуется предоставить</label>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group row align-items-center">
+            <label for="" class="col-sm-5 col-xl-4 offset-xl-1 col-form-label col-form-label-sm"> Политика обработки ПДн</label>
+            <div class="col-sm-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="sogl-user" name="sogl" class="custom-control-input">
+                    <label class="custom-control-label" for="sogl-user">Соискатель ознакомился с <a href="#" target="_blank">Политикой обработки персональных данных в СРО Ассоциация "НАКС"</a></label>
+                </div>
+            </div>
+        </div>
+        <button type="summit" class="btn btn-primary btn-sm">Сохранить</button>
+        <a href="{% url 'reestradmin:spks_user_applications' %}" class="btn btn-success btn-sm">Перейти к списку заявлений<i class="fa fa-angle-right ml-1"></i></a>
     </form>
 </div>
