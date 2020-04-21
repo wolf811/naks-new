@@ -128,3 +128,10 @@ def spks_new_group(request):
         'title': title
     }
     return render(request, 'reestradmin/spks_new_group.html', content)
+
+def spks_user_certificates(request):
+    title = 'ЛК_ЮЛ оценка квалификаций'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/spks_user_certificates.html', content)

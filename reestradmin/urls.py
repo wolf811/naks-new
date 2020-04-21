@@ -21,5 +21,6 @@ urlpatterns = [
     path('spks_user_applications/', reestradmin.spks_user_applications, name='spks_user_applications'),
     path('spks_new_application/', reestradmin.spks_new_application, name='spks_new_application'),
     path('spks_new_group/', reestradmin.spks_new_group, name='spks_new_group'),
+    path('spks_user_certificates/', reestradmin.spks_user_certificates, name='spks_user_certificates'),
 ]
 

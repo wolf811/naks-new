@@ -1,0 +1,102 @@
+{% extends 'reestradmin/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'reestradmin/includes/user_ul/top-menu_user_ul.html' %}
+{% include 'reestradmin/includes/breadcrumb.html' %}
+<div class="content">
+    <!-- Include FILTER-BLOCK -->
+    {% include 'reestradmin/includes/user_ul/spks-certificates-filter.html' %}
+    <!-- End Include FILTER-BLOCK -->
+    <div class="container-fluid">
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-documents">
+                <thead>
+                    <tr class="active">
+                        <th>Готовность</th>
+                        <th>Протокол</th>
+                        <th>Дата создания</th>
+                        <th>ЦОК</th>
+                        <th>Соискатель</th>
+                        <th>Срок действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#" class="btn btn btn-success btn-sm" target="_blank" role="button"><i class="fa fa-check mr-1"></i>Свидетельство</a></td>
+                        <td>
+                            <a target="_blank" title="печать протокола" href="#">40.00200.02-61.002-00065</a>
+                            <div class="mt-1 text-muted">Группа&nbsp;123</div>
+                        </td>
+                        <td>21.06.2020г.</td>
+                        <td class="text-center">
+                            <div class="mb-1">ЦОК-777</div>
+                            <div class="text-muted">Москва</div>
+                        </td>
+                        <td class="text-center">Волобуев Александр Анатольевич</td>
+                        <td class="text-center">21.06.2023г.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="btn btn btn-outline-success btn-sm text-danger" target="_blank" role="button"><i class="fa fa-check mr-1"></i>Заключение</a></td>
+                        <td>
+                            <a target="_blank" title="печать протокола" href="#">40.00200.02-61.002-00065x</a>
+                            <div class="mt-1 text-muted">Группа&nbsp;123</div>
+                        </td>
+                        <td>21.06.2020г.</td>
+                        <td class="text-center">
+                            <div class="mb-1">ЦОК-777</div>
+                            <div class="text-muted">Москва</div>
+                        </td>
+                        <td class="text-center">Афанасьев Александр Анатольевич</td>
+                        <td class="text-center">21.06.2023г.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="btn btn btn-success btn-sm" target="_blank" role="button"><i class="fa fa-check mr-1"></i>Свидетельство</a></td>
+                        <td>
+                            <a target="_blank" title="печать протокола" href="#">40.00200.02-61.002-00065</a>
+                        </td>
+                        <td>21.06.2020г.</td>
+                        <td class="text-center">
+                            <div class="mb-1">ЦОК-777</div>
+                            <div class="text-muted">Москва</div>
+                        </td>
+                        <td class="text-center">Переверзев Никита Анатольевич</td>
+                        <td class="text-center">21.06.2023г.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="btn btn btn-success btn-sm" target="_blank" role="button"><i class="fa fa-check mr-1"></i>Свидетельство</a></td>
+                        <td>
+                            <a target="_blank" title="печать протокола" href="#">40.00200.02-61.002-00065</a>
+                        </td>
+                        <td>21.06.2020г.</td>
+                        <td class="text-center">
+                            <div class="mb-1">ЦОК-032</div>
+                            <div class="text-muted">Воронеж</div>
+                        </td>
+                        <td class="text-center">Волобуев Александр Анатольевич</td>
+                        <td class="text-center">21.06.2023г.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="btn btn btn-outline-success btn-sm text-danger" target="_blank" role="button"><i class="fa fa-check mr-1"></i>Заключение</a></td>
+                        <td>
+                            <a target="_blank" title="печать протокола" href="#">40.00200.02-61.002-00065x</a>
+                        </td>
+                        <td>21.06.2020г.</td>
+                        <td class="text-center">
+                            <div class="mb-1">ЦОК-006</div>
+                            <div class="text-muted">Санкт-Петербург</div>
+                        </td>
+                        <td class="text-center">Афанасьев Александр Анатольевич</td>
+                        <td class="text-center">21.06.2023г.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- pagination -->
+        {% include 'reestradmin/includes/pagination.html' %}
+        <!-- end pagination -->
+    </div>
+</div>
+{% endblock %}

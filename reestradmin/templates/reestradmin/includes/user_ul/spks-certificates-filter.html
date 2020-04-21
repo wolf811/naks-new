@@ -1,0 +1,101 @@
+{% load static %}
+<div class="filter-block mb-4">
+    <div class="line-filter py-2">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-md">
+                    <!-- <a href="{% url 'reestradmin:spks_new_application' %}" class="btn btn-sm btn-primary"><i class="fa fa-plus mr-2"></i>Новое заявление</a>
+                    <a href="{% url 'reestradmin:spks_new_group' %}" class="btn btn-sm btn-primary"><i class="fa fa-plus mr-2"></i>Новая группа</a> -->
+                </div>
+                <div class="col-md col-lg-5 col-xl-4 float-sm-right">
+                    <form>
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" placeholder="Поиск..." aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit" id="button-addon2" title="Найти"><i class="fa fa-search"></i></button>
+                                <button type="button" class="btn btn-primary" data-toggle="collapse" href="#collapse-filter" role="button" aria-expanded="false" aria-controls="collapse-filter">Фильтр <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="collapse filter py-3" id="collapse-filter">
+        <!-- Расширенный фильтр -->
+        <div class="container-fluid">
+            <form role="form">
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Готовность</label>
+                            <select class="form-control form-control-sm" id="">
+                                <option>все</option>
+                                <option>Свидетельство</option>
+                                <option>Заключение</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">ЦОК</label>
+                            <select class="form-control form-control-sm" id="">
+                                <option>все</option>
+                                <option>ЦОК-777 Москва</option>
+                                <option>ЦОК-006 Санкт-Петербург</option>
+                                <option>ЦОК-032 Воронеж</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-xl-4">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Соискатель</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="label-sm" for="">№ протокола</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Дата создания от</label>
+                            <input type="date" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">до</label>
+                            <input type="date" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Группы</label>
+                            <select class="form-control form-control-sm" id="">
+                                <option>все</option>
+                                <option>да</option>
+                                <option>нет</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-xl-2">
+                        <div class="form-group">
+                            <label class="label-sm" for="">Шифр группы</label>
+                            <input type="text" class="form-control form-control-sm" id="">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search mr-2"></i>Найти</button>
+                <button type="submit" class="btn btn-outline-primary btn-sm">Сбросить</button>
+                <button type="button" class="btn btn-link btn-sm" data-toggle="collapse" href="#collapse-filter" role="button" aria-expanded="true" aria-controls="collapse-filter">Закрыть</button>
+            </form>
+        </div>
+    </div>
+</div>
