@@ -260,7 +260,7 @@ footer {
   font-size: 0.875rem; }
   .table-documents td {
     text-align: center; }
-    .table-documents td:last-child, .table-documents td:nth-child(4), .table-documents td:nth-child(5), .table-documents td:nth-child(8), .table-documents td:nth-child(9), .table-documents td:nth-child(10) {
+    .table-documents td:last-child {
       text-align: left; }
     .table-documents td a {
       white-space: nowrap; }

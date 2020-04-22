@@ -22,13 +22,16 @@
                         <a class="dropdown-item" href="#">Заявки СТ</a>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if 'spks_user_applications' in request.path or 'spks_new_application' in request.path or 'spks_new_group' in request.path%}active{% endif %}">
+                    <a class="nav-link" href="{% url 'reestradmin:spks_user_applications' %}">Оценка&nbsp;квалификаций&nbsp;(СПКС)</a>
+                </li>
+                <!-- <li class="nav-item">
                     <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Оценка&nbsp;квалификаций&nbsp;(СПКС)<i class="fa fa-angle-down d-inline ml-1"></i></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{% url 'reestradmin:spks_user_applications' %}">Заявления</a>
                         <a class="dropdown-item" href="{% url 'reestradmin:spks_user_certificates' %}">Свидетельства и заключения</a>
                     </div>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="#">Справочник&nbsp;НАКС</a>
                 </li>

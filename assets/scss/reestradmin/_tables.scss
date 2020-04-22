@@ -67,12 +67,14 @@
     td {
         text-align: center;
 
-        &:last-child,
-        &:nth-child(4),
+        &:last-child
+
+        /*&:nth-child(4),
         &:nth-child(5),
         &:nth-child(8),
         &:nth-child(9),
-        &:nth-child(10) {
+        &:nth-child(10)*/
+            {
             text-align: left;
         }
 
