@@ -135,3 +135,10 @@ def spks_user_certificates(request):
         'title': title
     }
     return render(request, 'reestradmin/spks_user_certificates.html', content)
+
+def center_org_edit(request):
+    title = 'ЛК_Члена СРО'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/center_org_edit.html', content)
