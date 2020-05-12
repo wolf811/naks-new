@@ -115,6 +115,13 @@ def spks_user_applications(request):
     }
     return render(request, 'reestradmin/spks_user_applications.html', content)
 
+def spks_cok_applications(request):
+    title = 'ЛК_Центр - оценка квалификаций'
+    content = {
+        'title': title
+    }
+    return render(request, 'reestradmin/spks_cok_applications.html', content)
+
 def spks_new_application(request):
     title = 'ЛК_ЮЛ оценка квалификаций'
     content = {
