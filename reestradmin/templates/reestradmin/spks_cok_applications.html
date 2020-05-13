@@ -6,7 +6,7 @@
 {% include 'reestradmin/includes/breadcrumb.html' %}
 <div class="content">
     <!-- Include FILTER-BLOCK -->
-    {% include 'reestradmin/includes/centers/spks-applications-filter.html' %}
+    {% include 'reestradmin/includes/centers/cok-applications-filter.html' %}
     <!-- End Include FILTER-BLOCK -->
     <div class="container-fluid">
         <!-- pagination -->
@@ -19,13 +19,13 @@
                         <th colspan="2">Статус, действия</th>
                         <th width="110">№&nbsp;заявления, дата</th>
                         <th>Соискатель</th>
-                        <th>ЦОК</th>
+                        <th>Заявитель</th>
                         <th>Профессиональный стандарт</th>
                         <th>Квалификация</th>
                         <th class="text-bold">Готовность</th>
                         <th class="text-bold">№ протокола, дата</th>
                         <th class="text-bold">Срок действия</th>
-                        <th>Комментарий ЦОК</th>
+                        <th>Комментарий СПК</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,7 +35,7 @@
                             <div class="btn-group btn-group-xs group-user">
                                 <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
                                 <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
-                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
                             </div>
                         </td>
                         <td>
@@ -44,7 +44,7 @@
                         </td>
                         <td>Волобуев Александр Анатольевич</td>
                         <td>
-                            <div class="mb-1">ЦОК-777</div>
+                            <div class="mb-1">ООО "Сварка трубопроводов"</div>
                             <div class="text-muted">Москва</div>
                         </td>
                         <td>Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</td>
@@ -55,12 +55,12 @@
                         <td class="text-secondary"><em></em></td>
                     </tr>
                     <tr>
-                        <td><i class="fa fa-file-o fa-lg text-secondary" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Новое"></i></td>
+                        <td><i class="fa fa-file-o fa-lg text-warning" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Новое от заявителя"></i></td>
                         <td>
                             <div class="btn-group btn-group-xs group-user">
                                 <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
                                 <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
-                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                                <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-comments" role="button"><i class="fa fa-arrow-left" title="Вернуть заявителю"></i></a>
                             </div>
                         </td>
                         <td>
@@ -70,7 +70,7 @@
                         </td>
                         <td>Радзинский Владимир Яковлевич</td>
                         <td>
-                            <div class="mb-1">ЦОК-006</div>
+                            <div class="mb-1">ООО "Тестовая организация"</div>
                             <div class="text-muted">Санкт-Петербург</div>
                         </td>
                         <td>Сварщик</td>
@@ -82,13 +82,13 @@
                     </tr>
                     <tr>
                         <td>
-                            <div><a href="#" class="btn btn btn-success btn-sm" role="button" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Отправить в ЦОК"><i class="fa fa-arrow-right"></i></a></div>
+                            <div><a href="#" class="btn btn-success btn-sm" role="button" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Отправить в СПК"><i class="fa fa-arrow-right"></i></a></div>
                         </td>
                         <td>
                             <div class="btn-group btn-group-xs group-user">
                                 <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
-                                <a href="#" class="btn btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
-                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
                             </div>
                         </td>
                         <td>
@@ -97,7 +97,7 @@
                         </td>
                         <td>Иванов Иван Иванович</td>
                         <td>
-                            <div class="mb-1">ЦОК-777</div>
+                            <div class="mb-1">ООО "Сварка трубопроводов"</div>
                             <div class="text-muted">Москва</div>
                         </td>
                         <td>Сварщик</td>
@@ -122,7 +122,7 @@
                         </td>
                         <td>Киселев Кирилл Александрович</td>
                         <td>
-                            <div class="mb-1">ЦОК-032</div>
+                            <div class="mb-1">ООО "СварТехКомплект"</div>
                             <div class="text-muted">Воронеж</div>
                         </td>
                         <td>Сварщик</td>
@@ -137,8 +137,8 @@
                         <td>
                             <div class="btn-group btn-group-xs group-user">
                                 <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
-                                <a href="#" class="btn btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
-                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" onclick="if (!confirm('Вы уверены, что хотите удалить?')) return false;" class="btn btn-outline-primary" role="button"><i class="fa fa-trash-o" title="удалить"></i></a>
                             </div>
                         </td>
                         <td>
@@ -147,7 +147,32 @@
                         </td>
                         <td>Горбатенко Андрей Васильевич</td>
                         <td>
-                            <div class="mb-1">ЦОК-777</div>
+                            <div class="mb-1">ООО "Сварка трубопроводов"</div>
+                            <div class="text-muted">Москва</div>
+                        </td>
+                        <td>Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</td>
+                        <td>Сварщик-оператор автоматической сварки давлением металлических материалов (4 уровень квалификации)</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="text-secondary"><em>комментарии экспертов ЦОК</em></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-arrow-left fa-lg text-warning" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Возвращено"></i></td>
+                        <td>
+                            <div class="btn-group btn-group-xs group-user">
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-clone" title="копировать"></i></a>
+                                <a href="#" class="btn btn-outline-primary" role="button"><i class="fa fa-pencil-square-o" title="редактировать"></i></a>
+                                <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-comments" role="button"><i class="fa fa-arrow-left" title="Вернуть заявителю"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="#" class="mb-1" target="_blank" title="печать заявки">45679</a>
+                            <div>16.02.2020г.</div>
+                        </td>
+                        <td>Горбатенко Андрей Васильевич</td>
+                        <td>
+                            <div class="mb-1">ООО "Сварка трубопроводов"</div>
                             <div class="text-muted">Москва</div>
                         </td>
                         <td>Сварщик-оператор полностью механизированной, автоматической и роботизированной сварки</td>
@@ -177,7 +202,7 @@
                         </td>
                         <td>Сварщик</td>
                         <td>Сварщик дуговой сварки под флюсом (2 уровень квалификации)</td>
-                        <td><a href="#" class="btn btn btn-success btn-sm" target="_blank" title="Печать свидетельства" role="button"><i class="fa fa-check mr-1"></i>Свидетельство</a></td>
+                        <td><a href="#" class="btn btn-success btn-sm" target="_blank" title="Печать свидетельства" role="button"><i class="fa fa-check mr-1"></i>Свидетельство</a></td>
                         <td>
                             <a href="#" class="mb-1" target="_blank" title="печать заявки">40.00200.02-61.002-00065</a>
                             <div>20.06.2020г.</div>
@@ -201,12 +226,12 @@
                         </td>
                         <td>Киселев Кирилл Александрович</td>
                         <td>
-                            <div class="mb-1">ЦОК-032</div>
+                            <div class="mb-1">ООО "СварТехКомплект"</div>
                             <div class="text-muted">Воронеж</div>
                         </td>
                         <td>Сварщик</td>
                         <td>Сварщик дуговой сварки под флюсом (2 уровень квалификации)</td>
-                        <td><a href="#" class="btn btn btn-success btn-sm" target="_blank" title="Печать свидетельства" role="button"><i class="fa fa-check mr-1"></i>Свидетельство</a></td>
+                        <td><a href="#" class="btn btn-success btn-sm" target="_blank" title="Печать свидетельства" role="button"><i class="fa fa-check mr-1"></i>Свидетельство</a></td>
                         <td>
                             <a href="#" class="mb-1" target="_blank" title="печать заявки">40.00200.02-61.002-00065</a>
                             <div class="btn-group btn-group-xs group-user mb-1">
@@ -234,12 +259,12 @@
                         </td>
                         <td>Киселев Кирилл Александрович</td>
                         <td>
-                            <div class="mb-1">ЦОК-032</div>
+                            <div class="mb-1">ООО "СварТехКомплект"</div>
                             <div class="text-muted">Воронеж</div>
                         </td>
                         <td>Сварщик</td>
                         <td>Сварщик дуговой сварки под флюсом (2 уровень квалификации)</td>
-                        <td><a href="#" class="btn btn btn-outline-success btn-sm text-danger" target="_blank" title="Печать заключения" role="button"><i class="fa fa-check mr-1"></i>Заключение</a></td>
+                        <td><a href="#" class="btn btn-outline-success btn-sm text-danger" target="_blank" title="Печать заключения" role="button"><i class="fa fa-check mr-1"></i>Заключение</a></td>
                         <td>
                             <a href="#" class="mb-1" target="_blank" title="печать заявки">40.00200.02-61.002-00065x</a>
                             <div class="btn-group btn-group-xs group-user mb-1">
@@ -259,4 +284,7 @@
         <!-- end pagination -->
     </div>
 </div>
+<!-- MODAL INCLUDES -->
+{% include 'reestradmin/includes/modal/modal-comments.html' %}
+<!-- END MODAL INCLUDES -->
 {% endblock %}
