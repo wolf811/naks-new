@@ -47,7 +47,7 @@ pathlib2==2.3.5           # via pytest
 pillow==5.4.1
 pluggy==0.13.1            # via pytest
 progressbar2==3.47.0      # via django-stdimage
-psycopg2==2.8.4
+psycopg2==2.8.4           (pip install psycopg2-binary)
 py==1.8.1                 # via pytest
 pycparser==2.19           # via cffi
 pynacl==1.3.0             # via paramiko
