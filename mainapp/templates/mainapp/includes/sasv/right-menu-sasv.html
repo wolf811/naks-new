@@ -85,10 +85,20 @@
             </div>
         </div>
         <div class="card rounded-0">
+            <!-- TODO: 26.08.2020 Данный пункт вертикального меню дублируется горизонтальными табами на странице, поэтому данный пункт лучше упростить -->
+            {% comment %}
             <div class="card-header bg-naks" id="heading_06">
                 <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_06" aria-expanded="false" aria-controls="collapse_06">Научно-технический совет НАКС</a>
             </div>
+            {% endcomment %}
+            <!-- TODO: Упрощенный пункт меню -->
+            <div class="card rounded-0">
+                <div class="card-header bg-naks {% if 'sasv_nts' in request.path %}bg-naks-active{% endif %}" id="heading_07">
+                    <a href="{% url 'sasv_nts' %}" class="collapsed">Научно-технический совет НАКС</a>
+                </div>
+            </div>
             <!-- TODO: Здесь со всех подпунктов переход на одну страницу под разные табы, надо учесть активность кнопок -->
+            {% comment %}
             <div id="collapse_06" class="collapse{% if 'nts' in request.path %} show{% endif %}" aria-labelledby="heading_06" data-parent="#accordion_00">
                 <div class="card-body">
                     <a href="{% url 'sasv_nts' %}" class="dropdown-item {% if 'sasv_nts_sostav' in request.path %}active{% endif %}">Состав НТС</a>
@@ -98,6 +108,7 @@
                     <a href="{% url 'sasv_nts' %}" class="dropdown-item {% if 'sasv_nts_committees' in request.path %}active{% endif %}">Комитеты НТС</a>
                 </div>
             </div>
+            {% endcomment %}
         </div>
         <div class="card rounded-0">
             <div class="card-header bg-naks {% if 'sasv_openNaks' in request.path %}bg-naks-active{% endif %}" id="heading_07">
