@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'sass_processor',
     'captcha',
     'prettyjson',
-    'rangefilter'
+    'rangefilter',
+    'control'
     # 'drf_multiple_model',
 ]
 
