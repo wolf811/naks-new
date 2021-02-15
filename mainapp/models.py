@@ -52,6 +52,12 @@ class Post(models.Model):
     published_date = models.DateTimeField(u'Дата публикации', default=timezone.now)
     active = models.BooleanField(u'Опубликована', default=True)
     mark_as_announcement = models.BooleanField(u'Отметить как анонс события', default=False)
+    publish_in_side_panel= models.BooleanField(
+        verbose_name="Опубликовать в боковой панели", default=False
+    )
+    spread_over_api = models.BooleanField(
+        verbose_name="Распространить по сайтам АЦ", default=False
+    )
 
     class Meta:
         verbose_name = 'Публикация'

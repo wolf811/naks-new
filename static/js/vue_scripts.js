@@ -455,7 +455,7 @@ if (document.getElementById('app_registry_personal')) {
                 pageNumber: null,
                 actSinceStart: '',
                 actSinceEnd: '',
-                actUntilStard: '',
+                actUntilStart: '',
                 actUntilEnd: '',
                 extensionStart: '',
                 extensionEnd: ''

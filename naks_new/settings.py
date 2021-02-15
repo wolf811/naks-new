@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'reestr',
     'reestradmin',
     'registry',
+    'documentsapp',
     'users',
     'ckeditor',
     'ckeditor_uploader',
