@@ -1,11 +1,9 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 {% block content %}
-
 <!-- Header-page -->
 {% include 'mainapp/includes/header-page.html' %}
 <!-- End Header-page -->
-
 <div class="container">
     <h4 class="text-dark mt-5">Контакты</h4>
     <div class="row">
@@ -22,9 +20,7 @@
         </div>
     </div>
     <hr>
-
     <div class="main-content mt-4">
-
         <!-- Big Radiobuttons -->
         <div class="show-units">
             <ul class="row nav nav-fill mt-4" id="pills-tab" role="tablist">
@@ -42,20 +38,17 @@
                 </li>
             </ul>
         </div><!-- End Big Radiobuttons -->
-
         <div class="tab-content" id="pills-tabContent">
-
             <div class="tab-pane fade show active" id="pills-directorate" role="tabpanel" aria-labelledby="pills-directorate-tab">
                 <h5 class="text-primary my-4">Контакты дирекции НАКС</h5>
-
                 <div class="table-responsive">
-                    <table class="table table-bordered table-contacts mb-0" >
-                    {% if departments %}
-                    {% for d in departments %}
+                    <table class="table table-bordered table-contacts mb-0">
+                        {% if departments %}
+                        {% for d in departments %}
                         {% for member in d.department.members %}
                         <tr>
                             {% if forloop.first %}
-                             <th rowspan="{{d.department.members|length}}">{{ d.department.name }}</th>
+                            <th rowspan="{{d.department.members|length}}">{{ d.department.name }}</th>
                             {% endif %}
                             <td>{{ member.name }}<br><small>{{ member.description }}</small></td>
                             <td>
@@ -67,9 +60,8 @@
                             </td>
                         </tr>
                         {% endfor %}
-                    {% endfor %}
-
-                    {% else %}
+                        {% endfor %}
+                        {% else %}
                         <tr>
                             <th>Президент</th>
                             <td>Алёшин Николай Павлович<br><small>Академик РАН</small></td>
@@ -320,16 +312,14 @@
                                 <div><i class="d-none d-sm-inline-block fa fa-envelope mr-2" aria-hidden="true"></i><a href="mailto:svarka@naks.ru">svarka@naks.ru</a></div>
                             </td>
                         </tr>
-                    {% endif %}
+                        {% endif %}
                     </table>
                 </div>
             </div>
-            
             <div class="tab-pane fade show" id="pills-spks" role="tabpanel" aria-labelledby="pills-spks-tab">
                 <h5 class="text-primary my-4">Контакты СПКС</h5>
-
                 <div class="table-responsive">
-                    <table class="table table-bordered table-contacts mb-0" >
+                    <table class="table table-bordered table-contacts mb-0">
                         <tr>
                             <th>Председатель Совета</th>
                             <td>Алёшин Николай Павлович<br><small>Президент СРО Ассоциация "НАКС", академик РАН</small></td>
@@ -358,15 +348,13 @@
                             <th>Почтовый адрес</th>
                             <td colspan="2">109469, г. Москва, ул. Марьинский парк, д.23, корп.3</td>
                         </tr>
-                        
                     </table>
                 </div>
             </div>
-
             <div class="tab-pane fade" id="pills-protocols" role="tabpanel" aria-labelledby="pills-protocols-tab">
                 <h5 class="text-primary my-4">Реквизиты</h5>
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped table-contacts mb-0" >
+                    <table class="table table-hover table-striped table-contacts mb-0">
                         <tr>
                             <th>Полное наименование</th>
                             <td>Саморегулируемая организация Ассоциация «Национальное Агентство Контроля Сварки»</td>
@@ -402,7 +390,6 @@
                     </table>
                 </div>
             </div>
-
             <div class="tab-pane fade" id="pills-committees" role="tabpanel" aria-labelledby="pills-committees-tab">
                 <h5 class="text-primary my-4">Схема проезда</h5>
                 <div class="alert alert-secondary rounded-0" role="alert">
@@ -410,7 +397,6 @@
                 </div>
                 <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af3119275a59b984d3c7b66daa87d80fb906555637f767420395115407306fa8a&amp;width=100%25&amp;height=600&amp;lang=ru_RU&amp;scroll=false"></script>
             </div>
-
         </div>
     </div>
 </div>

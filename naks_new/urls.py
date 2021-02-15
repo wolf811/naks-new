@@ -118,6 +118,7 @@ urlpatterns = [
     path('reestr/', include('reestr.urls', namespace='reestr')),
     path('registry/', include('registry.urls', namespace='registry')),
     path('reestradmin/', include('reestradmin.urls', namespace='reestradmin')),
+    path('control/', include('control.urls', namespace='control')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('naks_api/', include(router.urls)),

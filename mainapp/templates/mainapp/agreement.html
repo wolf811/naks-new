@@ -1,11 +1,9 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 {% block content %}
-
 <!-- Header-page -->
 {% include 'mainapp/includes/header-page.html' %}
 <!-- End Header-page -->
-
 <div class="all-docs">
     <div class="container">
         <h4 class="text-dark mt-5">Партнеры и соглашения</h4>
@@ -23,7 +21,6 @@
             </div>
         </div>
         <hr>
-
         <!-- Radiobuttons -->
         <div class="show-units">
             <ul class="row nav nav-fill mt-4 mb-3" id="pills-tab" role="tablist">
@@ -36,7 +33,6 @@
             </ul>
         </div>
         <!-- End Radiobuttons -->
-
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-ac" role="tabpanel" aria-labelledby="pills-ac-tab">
                 <div class="main-content mt-4">
@@ -49,7 +45,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="tab-pane fade" id="pills-ap" role="tabpanel" aria-labelledby="pills-ap-tab">
                 <h5 class="text-primary my-4">Соглашения</h5>
                 <form class="mt-4 mb-3">
@@ -61,7 +56,7 @@
                         </div>
                         <div class="form-group col-sm-3">
                             <label for="" class="pb-0">По годам</label>
-                            <select  class="form-control form-control-sm">
+                            <select class="form-control form-control-sm">
                                 <option selected>Все</option>
                                 <option>2003</option>
                                 <option>2004</option>
@@ -77,7 +72,7 @@
                         </div>
                         <div class="form-group col-sm-3">
                             <label for="" class="pb-0">Деятельность</label>
-                            <select  class="form-control form-control-sm">
+                            <select class="form-control form-control-sm">
                                 <option selected>Все</option>
                                 <option>САСв</option>
                                 <option>СПКС</option>
@@ -98,14 +93,18 @@
                 <div class="table-responsive">
                     <table class="table table-hover table-striped table-agreement mb-0">
                         <tr class="bg-secondary">
-                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0"><h5 class="mb-0">2019</h5></th>
+                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0">
+                                <h5 class="mb-0">2019</h5>
+                            </th>
                         </tr>
                         <tr>
                             <th>Соглашение между Советом по профессиональным квалификациям в области сварки и агентством труда и занятости населения Красноярского края о сотрудничестве<span class="ml-2 badge badge-light shadow-sm">СПКС</span></th>
                             <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
                         </tr>
                         <tr class="bg-secondary">
-                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0"><h5 class="mb-0">2018</h5></th>
+                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0">
+                                <h5 class="mb-0">2018</h5>
+                            </th>
                         </tr>
                         <tr>
                             <th>Соглашение между Советом по профессиональным квалификациям в области сварки и Министерством труда и социальной защиты населения Забайкальского края<span class="ml-2 badge badge-light shadow-sm">СРО</span></th>
@@ -125,7 +124,9 @@
                         </tr>
                         <tr>
                         <tr class="bg-secondary">
-                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0"><h5 class="mb-0">2017</h5></th>
+                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0">
+                                <h5 class="mb-0">2017</h5>
+                            </th>
                         </tr>
                         <tr>
                             <th>Соглашение о сотрудничестве между АСРО "Содружество строителей РТ", СРО Ассоциацией "ППСО" и СРО НП "НАКС"<span class="ml-2 badge badge-light shadow-sm">СРО</span></th>
@@ -168,7 +169,9 @@
                             <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
                         </tr>
                         <tr class="bg-secondary">
-                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0"><h5 class="mb-0">2016</h5></th>
+                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0">
+                                <h5 class="mb-0">2016</h5>
+                            </th>
                         </tr>
                         <tr>
                             <th>Соглашение о сотрудничестве между Общероссийской Общественной организацией "Российское общество по неразрушающему контролю и технической диагностике" и Советом по профессиональным квалификациям в области сварки</th>
@@ -187,7 +190,9 @@
                             <td><a href="#" class="btn btn-outline-dark btn-sm" name="btnOpenDoc" role="button" target="_blank"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Открыть документ</a></td>
                         </tr>
                         <tr class="bg-secondary">
-                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0"><h5 class="mb-0">2015</h5></th>
+                            <th colspan="2" class="font-weight-bold text-white text-center text-sm-left border-left-0">
+                                <h5 class="mb-0">2015</h5>
+                            </th>
                         </tr>
                         <tr>
                             <th>Соглашение о сотрудничестве между ООО "ТехноНИКОЛЬ-Строительные Системы" и СРО НП "НАКС"</th>
@@ -199,10 +204,8 @@
                         </tr>
                     </table>
                 </div>
-
             </div>
         </div>
-
     </div>
 </div>
 {% endblock %}
