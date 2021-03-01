@@ -243,10 +243,9 @@ def recover_password_request(request):
             user = CustomUser.objects.get(email=form.cleaned_data['email'])
             # token for password reset
             token = default_token_generator.make_token(user)
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            # import pdb; pdb.set_trace()
+            uid = urlsafe_base64_encode(force_bytes(user.pk)).decode()
             update_password_url = reverse(
-                'users:update-password', kwargs={'uid': uid.decode(), 'token': token}
+                'users:update-password', kwargs={'uid': uid, 'token': token}
             )
             plaintext_message = get_template('users/email_plain.txt')
             html_message = get_template('users/email_template.html')
@@ -329,7 +328,6 @@ def update_password(request, uid, token):
                     'LOGIN': user.email
                 }
                 edo_check_response = requsts.post(password_change_link, check_user_exist_data)
-                import pdb; pdb.set_trace()
                 # change edo-user password and save token
                 # https://ac.naks.ru/auth/external/change.php?LOGIN=test@test.ru&PASSWORD=12345678&AUTH_ID=popov@naks.ru
                 form.save()

@@ -350,6 +350,13 @@ def tk364_news(request):
     }
     return render(request, 'mainapp/tk364_news.html', content)
 
+def tk364(request):
+    title = 'ТК-364 - Новости'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/tk364_news.html', content)
+
 def tk364_about(request):
     title = 'ТК-364 - О ТК-364'
     content = {

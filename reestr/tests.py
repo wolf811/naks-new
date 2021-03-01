@@ -54,8 +54,8 @@ class TestClass:
             Level,
             SO,
             SM,
-            PS,
-            PK,
+            # PS,
+            # PK,
             City,
             SROMember,
             CheckProtocol,
@@ -75,13 +75,13 @@ class TestClass:
             (Level, 'level'),
             (SO, 'short_name'),
             (SM, 'short_name'),
-            (PS, 'short_name'),
-            (PK, 'short_name'),
+            # (PS, 'short_name'),
+            # (PK, 'short_name'),
             (City, 'title'),
             (SROMember, 'short_name'),
             (CheckProtocol, 'name'),
             (AccreditedCenter, 'short_code'),
-            (AccreditedCertificationPoint, 'point_short_code')
+            (AccreditedCertificationPoint, 'short_code')
         ]
 
         for model in reestr_models_str:

@@ -271,7 +271,7 @@ class AccreditedCenter(Center):
 
     short_code = models.CharField(
         u'Шифр центра',
-        max_length=10
+        max_length=20
         )
     weldtypes = models.ManyToManyField(
         WeldType,
