@@ -1,0 +1,89 @@
+{% load static %}
+<div id="wrap" class="w-100">
+    <div id="accordion_00" class="right-main">
+        <div class="card rounded-0">
+            <div class="card-header bg-naks" id="heading_00">
+                <a href="#" {% if 'personal' not in request.path %}class="collapsed" {% endif %} data-toggle="collapse" data-target="#collapse_00" aria-expanded="true" aria-controls="collapse_00">Аттестация специалистов неразрушающего контроля</a>
+            </div>
+            <div id="collapse_00" class="collapse{% if 'personal' in request.path %} show{% endif %}" aria-labelledby="heading_00" data-parent="#accordion_00">
+                <div class="card-body">
+                    <a href="{% url 'sasv_docs' %}" class="dropdown-item {% if 'sasv_docs' in request.path %}active{% endif %}">Документы</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'reestr:centers' 'personal' %}" class="dropdown-item {% if '/centers/personal' in request.path %}active{% endif %}">Центры аттестации специалистов неразрушающего контроля (АЦСНК)</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'registry:personal' %}" class="dropdown-item">Реестр аттестованных специалистов НК</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'sasv_experts' %}" class="dropdown-item {% if 'sasv_experts' in request.path %}active{% endif %}">Реестр экспертов</a>
+                </div>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks" id="heading_02">
+                <a href="#" {% if 'attsm' not in request.path %}class="collapsed" {% endif %} data-toggle="collapse" data-target="#collapse_02" aria-expanded="false" aria-controls="collapse_02">Аттестация лабораторий неразрушающего контроля</a>
+            </div>
+            <div id="collapse_02" class="collapse{% if 'attsm' in request.path %} show{% endif %}" aria-labelledby="heading_02" data-parent="#accordion_00">
+                <div class="card-body">
+                    <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'reestr:centers' 'attsm' %}" class="dropdown-item {% if '/centers/attsm' in request.path %}active{% endif %}">Центры аттестации лабораторий неразрушающего контроля (АЦЛНК)</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'reestr:centers' 'attsm' %}" class="dropdown-item">Реестр аттестованных лабораторий НК</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'sasv_experts' %}" class="dropdown-item {% if 'sasv_experts' in request.path %}active{% endif %}">Реестр экспертов</a>
+                </div>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks" id="heading_01">
+                <a href="#" {% if 'specpod' not in request.path %}class="collapsed" {% endif %} data-toggle="collapse" data-target="#collapse_01" aria-expanded="false" aria-controls="collapse_01">Специальная подготовка</a>
+            </div>
+            <div id="collapse_01" class="collapse{% if 'specpod' in request.path %} show{% endif %}" aria-labelledby="heading_01" data-parent="#accordion_00">
+                <div class="card-body">
+                    <a href="{% url 'sasv_docs' %}" class="dropdown-item">Документы</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'reestr:centers' 'specpod' %}" class="dropdown-item {% if '/centers/specpod' in request.path %}active{% endif %}">Центры специальной подготовки (ЦСП)</a>
+                </div>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <!-- TODO: При переходе на страницу к .bg-naks добавляем класс .bg-naks-active -->
+            <div class="card-header bg-naks {% if 'sasv_helpInfo' in request.path %}bg-naks-active{% endif %}" id="heading_05">
+                <a href="{% url 'sasv_helpInfo' %}" class="collapsed">Справочно-техническая информация</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <!-- TODO: 26.08.2020 Данный пункт вертикального меню дублируется горизонтальными табами на странице, поэтому данный пункт лучше упростить -->
+            {% comment %}
+            <div class="card-header bg-naks" id="heading_06">
+                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapse_06" aria-expanded="false" aria-controls="collapse_06">Научно-технический совет НАКС</a>
+            </div>
+            {% endcomment %}
+            <!-- TODO: Упрощенный пункт меню -->
+            <div class="card-header bg-naks {% if 'sasv_nts' in request.path %}bg-naks-active{% endif %}" id="heading_07">
+                <a href="{% url 'sasv_nts' %}" class="collapsed">Научно-технический совет НАКС</a>
+            </div>
+            <!-- TODO: Здесь со всех подпунктов переход на одну страницу под разные табы, надо учесть активность кнопок -->
+            {% comment %}
+            <div id="collapse_06" class="collapse{% if 'nts' in request.path %} show{% endif %}" aria-labelledby="heading_06" data-parent="#accordion_00">
+                <div class="card-body">
+                    <a href="{% url 'sasv_nts' %}" class="dropdown-item {% if 'sasv_nts_sostav' in request.path %}active{% endif %}">Состав НТС</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'sasv_nts' %}" class="dropdown-item {% if 'sasv_nts_protocols' in request.path %}active{% endif %}">Протоколы НТС</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'sasv_nts' %}" class="dropdown-item {% if 'sasv_nts_committees' in request.path %}active{% endif %}">Комитеты НТС</a>
+                </div>
+            </div>
+            {% endcomment %}
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks {% if 'sasv_openNaks' in request.path %}bg-naks-active{% endif %}" id="heading_07">
+                <a href="{% url 'sasv_openNaks' %}" class="collapsed">Открытый НАКС</a>
+            </div>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-header bg-naks" id="heading_08">
+                <a href="{% url 'agreement' %}" class="collapsed">Партнеры и соглашения</a>
+            </div>
+        </div>
+    </div>
+</div>

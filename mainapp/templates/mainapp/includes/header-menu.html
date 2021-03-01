@@ -21,7 +21,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Деятельность <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <div class="dropdown-menu dropdown-menu-right shadow rounded-0" aria-labelledby="navbarDropdown">
                             <div class="row mb-4">
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-sm">
                                     <a href="{% url 'spks' %}" class="dropdown-item" style='font-weight: bold;'>СПКС - Совет по профессиональным квалификациям в области сварки</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="{% url 'spks_reestr_qual' %}" class="dropdown-item">Оценка квалификаций</a>
@@ -31,7 +31,7 @@
                                     <a href="{% url 'monitoring' %}" class="dropdown-item">Мониторинг рынка труда</a>
                                     <div class="dropdown-divider d-xs-block d-sm-none"></div>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-sm">
                                     <a href="{% url 'sasv' %}" class="dropdown-item" style='font-weight: bold;'>САСв - Система аттестации сварочного производства</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="{% url 'sasv_ac' %}" class="dropdown-item">Аттестация специалистов сварочного производства</a>
@@ -43,7 +43,15 @@
                                     <a href="{% url 'sasv_acst' %}" class="dropdown-item">Аттестация сварочных технологий</a>
                                     <div class="dropdown-divider d-xs-block d-sm-none"></div>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-sm">
+                                    <a href="{% url 'snk' %}" class="dropdown-item" style='font-weight: bold;'>СНК - Система неразрушающего контроля</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item">Аттестация специалистов неразрушающего контроля</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item">Аттестация лабораторий неразрушающего контроля</a>
+                                    <div class="dropdown-divider d-xs-block d-sm-none"></div>
+                                </div>
+                                <div class="col-sm">
                                     <a href="{% url 'sds' %}" class="dropdown-item" style='font-weight: bold;'>СДС - Система добровольной сертификации</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="{% url 'tk364_news' %}" class="dropdown-item" style='font-weight: bold;'>ТК364 - Технический комитет Росстандарта "Сварка и родственные процессы"</a>
@@ -63,7 +71,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Реестры <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <div class="dropdown-menu dropdown-menu-right shadow rounded-0" aria-labelledby="navbarDropdown">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-sm-4">
                                     <a class="dropdown-item" href="{% url 'reestr:centers' 'personal' %}">Центры по аттестации сварщиков и специалистов сварочного производства (АЦСП)</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'reestr:centers' 'specpod' %}">Центры специальной подготовки (ЦСП)</a>
@@ -79,7 +87,7 @@
                                     <a class="dropdown-item" href="{% url 'reestr:centers' 'certification' %}">Органы по сертификации (ОС)</a>
                                     <div class="dropdown-divider d-xs-block d-sm-none"></div>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-sm-4">
                                     <a class="dropdown-item" href="{% url 'registry:personal' %}">Реестр аттестованного персонала</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'sasv_reestr_sm' %}">Реестр аттестованных сварочных материалов</a>
@@ -89,9 +97,13 @@
                                     <a class="dropdown-item" href="{% url 'sasv_reestr_st' %}">Реестр аттестованных сварочных технологий</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'spks_reestr_svid' %}">Реестр свидетельств о квалификации</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Реестр аттестованных специалистов неразрушающего контроля</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Реестр аттестованных лабораторий неразрушающего контроля</a>
                                     <div class="dropdown-divider d-xs-block d-sm-none"></div>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-sm-4">
                                     <a class="dropdown-item" href="{% url 'sds_reestr_staff' %}">Реестр сертифицированного персонала</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'sds_reestr_sm' %}">Реестр сертифицированных сварочных материалов</a>
@@ -109,6 +121,8 @@
                             <a class="dropdown-item" href="{% url 'sasv_docs' %}">Документы САСв</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{% url 'spks_docs' %}">Документы СПКС</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Документы СНК</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{% url 'sds_docs' %}">Документы СДС</a>
                             <div class="dropdown-divider"></div>

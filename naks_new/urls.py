@@ -130,6 +130,8 @@ urlpatterns = [
     # path('api-token-auth/', obtain_jwt_token),
     # path('api-token-refresh/', refresh_jwt_token),
     # path('api-token-verify/', verify_jwt_token),
+
+    path('snk/', mainapp.snk, name='snk'),
 ]
 if settings.DEBUG:
     urlpatterns += static(

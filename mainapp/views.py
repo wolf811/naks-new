@@ -595,6 +595,17 @@ def sds_reestr_st(request):
     return render(request, 'mainapp/sds_reestr_st.html', content)
 # ============= end SDS ===============
 
+# ============= SNK ====================
+
+def snk(request):
+    title = 'НАКС - СНК'
+    content = {
+        'title': title
+    }
+    return render(request, 'mainapp/snk/snk.html', content)
+
+# ============= end SNK ===============
+
 def password_recovery(request):
     title = 'Восстановление пароля'
     content = {

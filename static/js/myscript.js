@@ -92,6 +92,13 @@ if ($('.right-main').length > 0) {
     });
 }
 
+// $(window).resize(function() {
+//     if ($(window).width() > 768) {
+
+//     }
+// });
+
+
 // Показать еще
 $('#btnNews_showMore').click(function() {
     $('#blockNews_02').slideDown();
@@ -343,7 +350,7 @@ if ($('#auth_app').length > 0) {
                     recoverPassword: '/users/recover-password/',
                     saveNewPassword: '/users/update-password/',
                     refreshToken: '/users/refresh-edo-token/',
-                    authEdoByToken:'https://ac.naks.ru/auth/external/auth.php'
+                    authEdoByToken: 'https://ac.naks.ru/auth/external/auth.php'
                     // refreshJWT: '/api-token-refresh/',
                     // verifyJWT:  '/api-token-verify/'
                 },
@@ -454,7 +461,7 @@ if ($('#auth_app').length > 0) {
                             const token = response.data.token;
                             localStorage.setItem('token', token);
                             localStorage.setItem('user', this.username);
-                            let edoToken = {'token': response.data.edo_token, 'created': response.data.edo_token_created};
+                            let edoToken = { 'token': response.data.edo_token, 'created': response.data.edo_token_created };
                             localStorage.edo_token = JSON.stringify(edoToken);
                             this.edo_token = response.data.edo_token;
                             this.edo_token_created = response.data.edo_token_created;
@@ -515,7 +522,7 @@ if ($('#auth_app').length > 0) {
                             this.user = this.username;
                             localStorage.setItem('token', this.token);
                             localStorage.setItem('user', this.username);
-                            let edoToken = {'token': response.data.edo_token, 'created': response.data.edo_token_created};
+                            let edoToken = { 'token': response.data.edo_token, 'created': response.data.edo_token_created };
                             localStorage.edo_token = JSON.stringify(edoToken);
                             this.edo_token = edoToken.token;
                             this.edo_token_created = edoToken.created;
@@ -535,23 +542,23 @@ if ($('#auth_app').length > 0) {
                 let formData = new FormData();
                 formData.append('logout_current_user', true);
                 axios
-                .post('/users/logout/', formData)
-                .then(response => {
-                    console.log('response', response.data);
-                    if (response.data['user_logged_out']) {
-                        this.logged_in = false;
-                    }
-                })
-                .finally(() => {
-                    this.username = '';
-                    this.password = '';
-                    this.user = '';
-                    this.logged_in = false;
-                    this.registered = false;
-                    localStorage.clear();
-                    // TODO: send REST request to logout on ac.naks.ru
+                    .post('/users/logout/', formData)
+                    .then(response => {
+                        console.log('response', response.data);
+                        if (response.data['user_logged_out']) {
+                            this.logged_in = false;
+                        }
                     })
-                },
+                    .finally(() => {
+                        this.username = '';
+                        this.password = '';
+                        this.user = '';
+                        this.logged_in = false;
+                        this.registered = false;
+                        localStorage.clear();
+                        // TODO: send REST request to logout on ac.naks.ru
+                    })
+            },
             send_recovery_email: function() {
                 console.log('ajax call email sending with link to change password');
                 this.recoverRequestMessageSuccess = null;
@@ -581,16 +588,16 @@ if ($('#auth_app').length > 0) {
             refresh_edo_token: function() {
                 axios
                     .post(this.endpoints.refreshToken)
-                    .then(response=>{
+                    .then(response => {
                         console.log('RESPONSE', response);
                         this.edo_token = response.data.edo_token;
                         this.edo_token_created = response.data.edo_token_created;
                         // var existing = localStorage.getItem('edo_token');
-                        let edoToken = {'token': this.edo_token, 'created': this.edo_token_created};
+                        let edoToken = { 'token': this.edo_token, 'created': this.edo_token_created };
                         localStorage.edo_token = JSON.stringify(edoToken);
                     })
-                    .catch(error=>{console.log('ERROR', error);})
-                    .finally(()=>{console.log('REFRESHING TOKEN');})
+                    .catch(error => { console.log('ERROR', error); })
+                    .finally(() => { console.log('REFRESHING TOKEN'); })
             },
             edo_login_by_token: function() {
                 var token_created = new Date(this.edo_token_created);
@@ -670,7 +677,7 @@ if ($('#password_change_app').length > 0) {
                 data.append('new_password2', newPassword2);
                 axios
                     .post(`${this.endpoints.saveNewPassword}${uid}/${token}`, data)
-                    .then(response=>{
+                    .then(response => {
                         console.log('RESPONSE', response.data, typeof response.data['form_errors']);
                         if (response.data['password_updated']) {
                             this.serverConfirm = true;
@@ -679,8 +686,8 @@ if ($('#password_change_app').length > 0) {
                             this.formErrors = response.data['form_errors'][0];
                         }
                     })
-                    .catch(err=>{console.log('CHANGE PASSWORD ERROR')})
-                    .finally(()=>{console.log('server change finally callback')});
+                    .catch(err => { console.log('CHANGE PASSWORD ERROR') })
+                    .finally(() => { console.log('server change finally callback') });
             }
         }
     })

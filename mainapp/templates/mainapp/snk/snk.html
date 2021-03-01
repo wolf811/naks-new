@@ -1,0 +1,76 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header-page -->
+{% include 'mainapp/includes/header-page.html' %}
+<!-- End Header-page -->
+<div class="container">
+    <h4 class="text-dark mt-5">Система неразрушающего контроля на опасных производственных объектах (СНК ОПО)</h4>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb my-4 p-0">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">СНК</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="row">
+        <div class="col-md-8 col-xl-9 order-2 order-md-1">
+            {% comment %}
+            <!-- Mobil right main -->
+            <div class="d-block d-md-none mt-3 mb-4">
+                {% include 'mainapp/includes/sasv/mobil-right-menu-sasv.html' %}
+            </div>
+            <!-- End mobil right main -->
+            {% endcomment %}
+            <p class="text-secondary">
+                Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Rerum explicabo alias fuga repudiandae? Ipsam atque, magni officia recusandae illum sit deleniti accusamus modi voluptatem cum est optio totam soluta ratione.
+            </p>
+            <hr>
+            <h5 class="text-primary mt-2 mb-4">Аттестационные центры на карте</h5>
+            <div class="alert alert-warning">
+                <b>Модуль в разработке!</b>
+            </div>
+            <!-- Big Radiobuttons -->
+            <div id="app_map_points">
+                <div class="show-units" id="btn-card-units">
+                    <div class="d-block">
+                        <div class="row mb-3">
+                            <div class="col mb-4">
+                                {% comment %} <button @click="buttonPress('allCenters')" type="button" :class="[show_map=='allCenters' ? 'btn btn-outline-danger btn-block active' : 'btn btn-outline-danger btn-block']">Аттестационные центры</button> {% endcomment %}
+                                <a href="#" @click.prevent="buttonPress('personal')" :class="[show_map=='personal' ? 'btn btn-outline-danger btn-block btn-sm active' : 'btn btn-outline-danger btn-block btn-sm']" role="button">Аттестация специалистов</a>
+                            </div>
+                            <div class="col mb-4">
+                                <a href="#" @click.prevent="buttonPress('attsm')" :class="[show_map=='attsm' ? 'btn btn-outline-danger btn-block btn-sm active' : 'btn btn-outline-danger btn-block btn-sm']" role="button">Аттестация лабораторий</a>
+                            </div>
+                            <div class="col align-self-center mb-4">
+                                <a href="#" @click.prevent="buttonPress('specpod')" :class="[show_map=='specpod' ? 'btn btn-outline-danger btn-block btn-sm active' : 'btn btn-outline-danger btn-block btn-sm']" role="button">Центры специальной подготовки</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Big Radiobuttons -->
+                <!-- Yandex Maps -->
+                <div ref="direction" data-direction="personal"></div>
+                <div id="map" class="w-100">
+                </div>
+            </div>
+            <!-- End map -->
+            <hr class="mt-4">
+            <div class="main-content mt-4">
+                <h5 class="text-primary my-4">Наши партнёры</h5>
+                <div id="sasvPartnersContent">
+                    <!-- Partners -->
+                    {% include 'mainapp/includes/partners.html' %}
+                    <!-- End Partners -->
+                </div>
+            </div>
+            <hr class="mb-4">
+        </div>
+        <div class="col-md-4 col-xl-3 order-1 order-md-2">
+            <!-- Content Right menu -->
+            {% include 'mainapp/includes/snk/right-menu-snk.html' %}
+            <!-- End Content Right menu -->
+        </div>
+    </div>
+</div>
+{% endblock %}
